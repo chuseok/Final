@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 
 $(function(){
 			//영문숫자만
@@ -15,6 +18,7 @@ $(function(){
 				    required: true, 
 				    alphanumeric: true, 
 				    minlength: 6, 
+				    /* remote: "checkid.jsp" */
 				    },
 				    userPwd:{
 						required : true, 
@@ -30,7 +34,7 @@ $(function(){
 			                required: "아이디는 필수입력입니다.",
 			                minlength: "아이디가  짧습니다! 6자리이상 입력해주세요.",
 			                alphanumeric: "영문,숫자만 입력가능합니다.",
-			                
+			                /* remote: "존재하는 아이디입니다." */
 			            },
 			            userPwd:{
 						required: "비밀번호는 필수입력입니다.",

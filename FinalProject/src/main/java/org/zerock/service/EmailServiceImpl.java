@@ -20,9 +20,7 @@ public class EmailServiceImpl implements EmailService {
 
 	@Autowired
 	private JavaMailSender emailSender;
-	@Autowired
-	private SimpleMailMessage template;
-	
+
 	
 	@Override
 	public void sendSimpleMessage(String to, String subject, String text) {
@@ -55,10 +53,11 @@ public class EmailServiceImpl implements EmailService {
 	}
 
 	@Override
-	public void sendTemplateMessage(String to, String subject) {
+	public void sendTemplateMessage(String to, String subject, String text) {
 		String[] templateArgs = {"utf8", "html"};
-		String text = String.format(template.getText(), templateArgs);
-		log.info("to : " + to + ", " + "subject : " + subject + ", " + "text : " + text); 
+		
+		String textValue = String.format(text, templateArgs);
+		log.info("to : " + to + ", " + "subject : " + subject + ", " + "text : " + textValue); 
 		sendSimpleMessage(to, subject, text);
 	}
 	

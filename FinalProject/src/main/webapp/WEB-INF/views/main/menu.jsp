@@ -88,6 +88,21 @@
       </div>
       </div>
   </section>
-
+  <section class="HomeLayout-main">
+    <div class="mainWrapper">
+      <div class="mainContents">
+       
+        <div class="mainContents-recommand">
+          
+          <div class="recommand-cards">
+            <div class="recommand-cardItem">카드1</div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
 </body>
 </html>
