@@ -17,8 +17,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.ItemType;
-import org.zerock.domain.JsonDTO;
-import org.zerock.domain.WordDTO;
+import org.zerock.domain.ReadFileDTO;
+import org.zerock.domain.WordVO;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -34,7 +34,7 @@ import net.sf.json.JSONObject;
 public class WordServiceImpl implements WordService {
 
 	@Override
-	public WordDTO createJson(WordDTO word, String userId) {//이거 안씀!!!!!!!!!!!
+	public WordVO createJson(WordVO word, String userId) {//이거 안씀!!!!!!!!!!!
 		JSONObject itemsObj = new JSONObject();
 		JSONObject itemObj = new JSONObject();
 		JSONObject wordInfo = new JSONObject();
@@ -65,7 +65,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public JSONArray readJson(JSONArray jsonArray, JsonDTO jsonDTO) {
+	public JSONArray readJson(JSONArray jsonArray, ReadFileDTO jsonDTO) {
 
 		log.info("readJson.....");
 
@@ -83,14 +83,14 @@ public class WordServiceImpl implements WordService {
 		try {
 //			reader = Files.newBufferedReader(Paths.get("C:\\temp\\test01.json"), StandardCharsets.UTF_8);
 
-			List<JsonDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
-					new TypeReference<List<JsonDTO>>() {});
+			List<ReadFileDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
+					new TypeReference<List<ReadFileDTO>>() {});
 
 			int size = jsonDTOList.size();
 
 			for (int i = 0; i < size; i++) {
 
-				JsonDTO str = jsonDTOList.get(i);
+				ReadFileDTO str = jsonDTOList.get(i);
 				
 				int removedIndex = 0;
 				/*
@@ -135,7 +135,7 @@ public class WordServiceImpl implements WordService {
 			}
 			log.info("남은 단어장 확인 : " + jsonDTOList);
 			
-			for (JsonDTO j : jsonDTOList) {
+			for (ReadFileDTO j : jsonDTOList) {
 				JSONArray resultArray = new JSONArray();
 				if(jsonDTOList.isEmpty()) {
 					log.info("비어있음.");
@@ -171,7 +171,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public void writeJson(JSONArray jsonArray, List<JsonDTO> oldArray, JsonDTO jsonDTO) {
+	public void writeJson(JSONArray jsonArray, List<ReadFileDTO> oldArray, ReadFileDTO jsonDTO) {
 		log.info("writeJson.....");
 
 		JSONObject itemsObj = new JSONObject();
@@ -181,7 +181,7 @@ public class WordServiceImpl implements WordService {
 		try {
 			// 1.oldArray값을 풀어서 object로 다시 통째로 추가한 후 새로운 값을 추가
 			if (!oldArray.isEmpty()) {
-				for(JsonDTO j:oldArray) {
+				for(ReadFileDTO j:oldArray) {
 					itemArray = new JSONArray();
 					itemsObj.put("id", j.getId());
 					itemsObj.put("title", j.getTitle());
@@ -220,11 +220,11 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public List<JsonDTO> stringToJson(String result) {
-		List<JsonDTO> jsonDTOList = null;
+	public List<ReadFileDTO> stringToJson(String result) {
+		List<ReadFileDTO> jsonDTOList = null;
 		try {
 			jsonDTOList = new ObjectMapper().readValue(result,
-					new TypeReference<List<JsonDTO>>() {});
+					new TypeReference<List<ReadFileDTO>>() {});
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

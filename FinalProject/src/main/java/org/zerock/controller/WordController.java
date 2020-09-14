@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.domain.JsonDTO;
-import org.zerock.domain.WordDTO;
+import org.zerock.domain.ReadFileDTO;
 import org.zerock.service.WordService;
 
 import lombok.AllArgsConstructor;
@@ -42,7 +41,7 @@ public class WordController {
 //		JSONArray wordArray = service.readJson(array, wordTitle);
 //		String result = wordArray.toString();
 //		rttr.addAttribute("item", result);
-		JsonDTO readJson = new JsonDTO();
+		ReadFileDTO readJson = new ReadFileDTO();
 		readJson.setId(userId.getName());
 		readJson.setTitle(wordTitle);
 		JSONArray oldArray = service.readJson(array, readJson);
@@ -65,10 +64,10 @@ public class WordController {
 		
 		JSONArray array = JSONArray.fromObject(item);
 //		JSONArray oldArray = JSONArray.fromObject(oldItem);
-		List<JsonDTO> jsonDTO = service.stringToJson(oldItem);
+		List<ReadFileDTO> jsonDTO = service.stringToJson(oldItem);
 		log.info("jsonDTO»Æ¿Œ1 = " + jsonDTO);
 		
-		JsonDTO writeJson = new JsonDTO();
+		ReadFileDTO writeJson = new ReadFileDTO();
 		writeJson.setId(userId.getName());
 		writeJson.setTitle(wordTitle);
 		service.writeJson(array, jsonDTO, writeJson);

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class JsonDTO {
+public class ReadFileDTO {
 
 	private String id;
 	private String title;
