@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.WordBookMapper">
+
+	<insert id="insert">
+		insert into wordBook (bookId, folderId, userId,
+		wordTitle)
+		values(seq_wordbook.nextval, #{folderId}, #{userId},
+		#{wordTitle})
+	</insert>
+	
+	<insert id="insertToFolder">
+		insert into wordBook (bookId, userId,
+		wordTitle)
+		values(seq_wordbook.nextval, #{userId},
+		#{wordTitle})
+	</insert>
+	
+	<select id="read" resultType="org.zerock.domain.WordBookVO">
+		select * from wordBook where bookId = #{bookId}
+	</select>
+	
+	<select id="readYourSet" resultType="org.zerock.domain.WordBookVO">
+		select * from wordBook where userId = #{userId}
+	</select>
+	
+	<delete id="delete">
+		delete from wordBook where bookId = #{bookId}
+	</delete>
+	
+	<update id="update">
+		update wordBook set wordTitle = #{wordTitle}
+		where bookId = #{bookId}
+	</update>
+	
+	<update id="updateFromFolder">
+		update wordBook set folderId = #{folderId}
+		where bookId = #{bookId}
+	</update>
+	
+	<select id="getListWithPaging" resultType="org.zerock.domain.WordBookVO">
+	
+<!-- 	<![CDATA[
+	select rno, bno, reply, replyer, replydate, updatedate
+	from
+	(
+		select /*+INDEX(tbl_reply idx_reply */
+			rownum rn, rno, bno, reply, replyer, replyDate, updatedate
+			from folder
+			where bno =  #{bno}
+			and rno > 0
+			and rownum <= #{cri.pageNum} * #{cri.amount}
+	)	where rn > (#{cri.pageNum}-1) * #{cri.amount}	
+	]]> -->
+		<![CDATA[
+ 		select bookId, folderId, userId, wordTitle
+		from wordBook
+		where folderId = #{folderId} and userId = #{userId}
+		]]>
+		
+		<!-- <include refid="criteria"></include> -->
+		
+		<![CDATA[
+		order by bookId asc	
+		]]>
+			
+		
+	</select>
+	
+	<sql id="criteria">
+		
+			userId = #{userId}
+		
+	</sql>
+	
+	<select id="getTotalCount" resultType="int">
+
+		select count(*) from wordBook
+		where folderId = #{folderId} and
+		<include refid="criteria"></include>
+		
+	</select>
+</mapper>
