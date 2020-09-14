@@ -43,7 +43,7 @@
 <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
+<link src="/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <script src="/resources/js/wordBook.js"></script>
 <script src="/resources/js/folder.js"></script>
@@ -62,13 +62,17 @@
 						<div class="DashboardPage-header">
 							<div class="DashboardHeader">
 								<div class="FolderPageHeader-info">
-									<span>0 sets</span>
-									<span class="FolderPageHeader-byline">created by</span>
-									<span><sec:authentication property="principal.member.userName"/></span>
+									<span><c:out value="${pageMaker.total}"/> sets</span>
+									
+									
+									<sec:authorize access="isAuthenticated()">
+										<span class="FolderPageHeader-byline">created by</span>
+										<span><sec:authentication property="principal.member.userName"/></span>
+									</sec:authorize>
 								</div>
 								<div class="DashboardHeaderTitle">
-<!-- 									<i class="far fa-folder DashboardFolderIcon"></i>
- -->									<i class="far fa-folder DashboardFolderIcon"></i>
+<!-- 									<i class="fas fa-folder DashboardFolderIcon"></i>
+ -->									<i class="fas fa-folder DashboardFolderIcon"></i>
 									<span class="DashboardHeaderTitle-title"><c:out value="${folder.folderTitle }"/></span>
 								</div>
 								<div class="DashboardHeaderActions">
@@ -77,7 +81,7 @@
 											
 												<button class="UIButton" data-oper='add'>
 												<span class="UIButton-wrapper">
-												<i class="far fa-plus"></i>
+												<i class="fas fa-plus"></i>
 												</span>
 												</button>
 											
@@ -90,7 +94,7 @@
 											
 												<button class="UIButton" data-oper='upload'>
 												<span class="UIButton-wrapper">
-													<i class="far fa-upload"></i>
+													<i class="fas fa-upload"></i>
 													</span>
 												</button>
 											
@@ -102,7 +106,7 @@
 											
 												<button class="UIButton" data-oper='ellipsis'>
 												<span class="UIButton-wrapper">
-													<i class="far fa-ellipsis-h"></i>
+													<i class="fas fa-ellipsis-h"></i>
 													</span>
 												</button>
 											</span>
@@ -159,7 +163,7 @@
 											</div>
 											<div class="UIBaseCard-contextMenu">
 												<button class="UIButton UIButton--borderless">
-													<i class="far fa-ellipsis-v"></i>
+													<i class="fas fa-ellipsis-v"></i>
 												</button>
 											</div>
 										</div>
@@ -193,7 +197,7 @@
 											</div>
 											<div class="UIBaseCard-contextMenu">
 												<button class="UIButton UIButton--borderless">
-													<i class="far fa-ellipsis-v"></i>
+													<i class="fas fa-ellipsis-v"></i>
 												</button>
 											</div>
 										</div>
@@ -226,7 +230,7 @@
 											</div>
 											<div class="UIBaseCard-contextMenu">
 												<button class="UIButton UIButton--borderless">
-													<i class="far fa-ellipsis-v"></i>
+													<i class="fas fa-ellipsis-v"></i>
 												</button>
 											</div>
 										</div>
@@ -375,13 +379,28 @@
 	
 	$(document).ready(function() {
 		var folderIdValue = '<c:out value="${folder.folderId}"/>';
+		var userIdValue = '';
+		var userNameValue = '';
+		<sec:authorize access="isAuthenticated()">
+		userIdValue = '<sec:authentication property="principal.member.userId"/>';
+		userNameValue = '<sec:authentication property="principal.member.userName"/>';
+		</sec:authorize>
+		
+		if(!userIdValue) {
+			userIdValue = <c:out value="${pageMaker.cri.userId}"/>
+		} 
 		
 		var bookUL = $(".FolderPageSetsView-sets");
 		
 		showList(1);
+		var total = '<c:out value="${pageMaker.cri.pageNum}"/>';
+
+		console.log('total : ' + total);
+		
 		showYourSets();
 		function showList(page) {//폴더페이지에서 가지고 있는 단어장을 보여줌
-			wordBookService.getList({folderId:folderIdValue, page:page||1}, function(list) {
+			wordBookService.getList({folderId:folderIdValue, page:page||1, userId: userIdValue}, function(list) {
+				
 				
 				var str="";
 				if(list == null || list.length == 0) {
@@ -409,10 +428,10 @@
 					str += '</div>';
 					str += '<div class="UserLink-content">';
 					str += '<a class="UILink" href="">';
-					str += '<span class="UserLink-username">chuseok</span></a></div></div></div>';
+					str += '<span class="UserLink-username">'+userNameValue+'</span></a></div></div></div>';
 					str += '<div class="UIBaseCard-contextMenu">';
 					str += '<button class="UIButton UIButton--borderless">';
-					str += '<i class="far fa-ellipsis-v"></i></button></div></div></div></div>';
+					str += '<i class="fas fa-ellipsis-v"></i></button></div></div></div></div>';
 					str += '</div>';
 				}
 				
@@ -421,10 +440,12 @@
 		}
 		
 		function showYourSets() {
-			var wordIdValue = 'hansol';
+			
+			
+			
 			var state = $('#AddSetsToClass option:selected').val();
 			var setUL = $(".ToggleList");
-			wordBookService.getYourSet(wordIdValue, function(list){
+			wordBookService.getYourSet(userIdValue, function(list){
 				var str="";
 				
 				if(list == null || list.length == 0) {
@@ -445,16 +466,14 @@
 					str += '<div class="ToggleInclusionCard-toggle">';
 					if(list[i].folderId==folderIdValue) {
 						str += '<input type="checkbox" class="UISwitch-input" id="toggle'+i+'" checked="true">';
-						console.log('true.. list: ' + list[i].folderId + ', value : ' + folderIdValue);
 
 					} else {
 						str += '<input type="checkbox" class="UISwitch-input" id="toggle'+i+'">';
-						console.log('false.. list: ' + list[i].folderId + ', value : ' + folderIdValue);
 
 					}
 					str += '<label for="toggle'+i+'">';
-					str += '<i id="plus" class="far fa-plus"></i>';
-					str += '<i id="minus" class="far fa-minus"></i>';
+					str += '<i id="plus" class="fa fa-plus"></i>';
+					str += '<i id="minus" class="fa fa-minus"></i>';
 					str += '</label>';
 					str += '</div>';
 					str += '</div>';
@@ -471,11 +490,12 @@
 		}
 		
 		$('#AddSetsToClass').change(function() {//add a set에서 your sets select 값
-			var wordIdValue = 'hansol';
+			<sec:authorize access="isAuthenticated()">
+			var userIdValue = '<sec:authentication property="principal.member.userId"/>';
 			var state = $('#AddSetsToClass option:selected').val();
 			var setUL = $(".ToggleList");
-			
-			wordBookService.getYourSet(wordIdValue, function(list){
+			</sec:authorize>
+			wordBookService.getYourSet(userIdValue, function(list){
 				var str="";
 				
 				if(list == null || list.length == 0) {
@@ -502,8 +522,8 @@
 
 						}
 						str += '<label for="toggle'+i+'">';
-						str += '<i id="plus" class="far fa-plus"></i>';
-						str += '<i id="minus" class="far fa-minus"></i>';
+						str += '<i id="plus" class="fas fa-plus"></i>';
+						str += '<i id="minus" class="fas fa-minus"></i>';
 						str += '</label>';
 						str += '</div>';
 						str += '</div>';
@@ -645,6 +665,9 @@
 		});
 	</script>
 	<script>
+	<sec:authorize access="isAuthenticated()">
+	var userIdValue = '<sec:authentication property="principal.member.userId"/>';
+	</sec:authorize>
 		$(document).ready(function() {
 			$("button").on("click", function(e) {
 				e.preventDefault();
@@ -664,9 +687,11 @@
 					var receiver = $('.UIInput-input').val();
 					/* alert(receiver); */
 					var subjectValue = "hi";
+					
 					var mail = {
 							to : receiver,
-							subject : subjectValue
+							subject : subjectValue,
+							text : 'http://localhost:8080/folder/get?folderId=<c:out value="${folder.folderId }"/>&userId='+userIdValue
 					};
 					folderService.send(mail, function(result) {
 						alert(result);

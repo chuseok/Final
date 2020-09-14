@@ -1,0 +1,163 @@
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+a:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.pagination > li {
+  display: inline;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+
+/* previous, next */
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+
+
+/* DashboardPage-main-header */
+
+.is-showing {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 40px;
+}
+
+.DashboardFeedControls-sort {
+    display: flex;
+    flex-wrap: nowrap;
+    float:left;
+    align-items: center;
+}
+
+
+.DashboardFeedControls-dropdown {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.UIDropdown {
+    background: #fff;
+    border: .125rem solid #d9dde8;
+    border-radius: .25rem;
+    color: #3ccfcf;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0 2.5rem 0 0;
+    position: relative;
+    vertical-align: middle;
+    width: auto;
+}
+
+.UIDropdown-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    border-radius: .25rem;
+    color: #3ccfcf;
+    cursor: pointer;
+    display: block;
+    font: inherit;
+    margin: 0;
+    outline: none;
+    padding: .625rem 0 .625rem 1rem;
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: calc(100% + 100px);
+}
+
+.DashboardFeedControls-filter {
+    
+    width: 40%;
+    float:right;
+}
+
+.UIInput-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: initial;
+    border: none;
+    border-radius: .25rem;
+    box-shadow: none;
+    color: #1a1d28;
+    cursor: text;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    outline: none;
+    padding-bottom: .375rem;
+    text-align: inherit;
+    white-space: pre-wrap;
+    width: 100%;
+    word-break: break-word;
+}
+
+.UIInput-border {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+    -ms-flex-item-align: end;
+    display: block;
+    height: .25rem;
+    box-shadow: 0 0.125rem 0 0 #303545;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: 100%;
+}

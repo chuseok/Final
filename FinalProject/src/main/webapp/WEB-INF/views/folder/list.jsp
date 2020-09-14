@@ -99,7 +99,7 @@
 								<c:if test="${folder.userId eq currentUserName}">
 								<div class="DashboardListItem">
 								
-									<a href="/folder/get?folderId=<c:out value='${folder.folderId }'/>">
+									<a href="/folder/get?folderId=<c:out value='${folder.folderId }'/>&userId=${currentUserName }">
 									<div class="UILinkBox">
 										<div class="FolderPreview-cardByLineWrapper"></div>
 										<header class="FolderPreview-cardHeader">

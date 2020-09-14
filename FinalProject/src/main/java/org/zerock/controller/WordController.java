@@ -1,5 +1,6 @@
 package org.zerock.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,7 @@ public class WordController {
 	}
 	
 	@PostMapping("/read")
-	public String read(@RequestParam(value="item") String item, @RequestParam(value="wordTitle") String wordTitle, RedirectAttributes rttr) {
+	public String read(@RequestParam(value="item") String item, @RequestParam(value="wordTitle") String wordTitle, Principal userId, RedirectAttributes rttr) {
 		log.info("read......");
 		
 		JSONArray array = JSONArray.fromObject(item);
@@ -41,8 +42,10 @@ public class WordController {
 //		JSONArray wordArray = service.readJson(array, wordTitle);
 //		String result = wordArray.toString();
 //		rttr.addAttribute("item", result);
-		
-		JSONArray oldArray = service.readJson(array, wordTitle);
+		JsonDTO readJson = new JsonDTO();
+		readJson.setId(userId.getName());
+		readJson.setTitle(wordTitle);
+		JSONArray oldArray = service.readJson(array, readJson);
 		
 		String result = oldArray.toString();
 		rttr.addAttribute("item", item);
@@ -52,7 +55,7 @@ public class WordController {
 	}
 
 	@GetMapping("/write")
-	public void write(@RequestParam(value="item") String item, @RequestParam(value="oldItem") String oldItem, @RequestParam(value="wordTitle") String wordTitle, RedirectAttributes rttr) {
+	public void write(@RequestParam(value="item") String item, @RequestParam(value="oldItem") String oldItem, @RequestParam(value="wordTitle") String wordTitle, Principal userId, RedirectAttributes rttr) {
 		/*
 		 * String json = parameters.get("items").toString(); String json2 =
 		 * parameters.get("wordTitle").toString(); log.info(json2 +"json은 : " + json);
@@ -64,7 +67,11 @@ public class WordController {
 //		JSONArray oldArray = JSONArray.fromObject(oldItem);
 		List<JsonDTO> jsonDTO = service.stringToJson(oldItem);
 		log.info("jsonDTO확인1 = " + jsonDTO);
-		service.writeJson(array, jsonDTO, wordTitle);//변경!!
+		
+		JsonDTO writeJson = new JsonDTO();
+		writeJson.setId(userId.getName());
+		writeJson.setTitle(wordTitle);
+		service.writeJson(array, jsonDTO, writeJson);
 
 		for(int i=0; i<array.size(); i++){
 			JSONObject obj = (JSONObject)array.get(i);
