@@ -9,11 +9,11 @@ import net.sf.json.JSONArray;
 
 public interface WordService {
 
-	public WordDTO createJson(WordDTO word, String userId);
+	public WordDTO createJson(WordDTO word);
 	
-	public JSONArray readJson(JSONArray jsonArray, JsonDTO jsonDTO);
+	public JSONArray readJson(JSONArray jsonArray, String wordTitle);
 	
-	public void writeJson(JSONArray jsonArray,List<JsonDTO> oldArray, JsonDTO jsonDTO);
+	public void writeJson(JSONArray jsonArray,List<JsonDTO> oldArray, String wordTitle);
 	
 	public List<JsonDTO> stringToJson(String result);
 }

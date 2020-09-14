@@ -8,5 +8,5 @@ public interface EmailService {
 	
 	public void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) throws MessagingException;
 	
-	public void sendTemplateMessage(String to, String subject, String text);
+	public void sendTemplateMessage(String to, String subject);
 }

@@ -18,11 +18,10 @@ public interface WordBookMapper {
 	
 	public int updateFromFolder(WordBookVO vo);
 	
-	public List<WordBookVO> getListWithPaging(Criteria cri);
+	public List<WordBookVO> getListWithPaging(
+			@Param("cri") Criteria cri,
+			@Param("folderId") Long folderId);
 	//특정 게시물의 폴더를 가져온다.
 	
-	public List<WordBookVO> readYourSet(String userId);
-	
-	public int getTotalCount(Criteria cri);
-
+	public List<WordBookVO> readYourSet(String wordId);
 }

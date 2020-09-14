@@ -16,10 +16,7 @@ public interface WordBookService {
 	
 	public int remove(Long bookId);
 	
-	public List<WordBookVO> getList(Criteria cri);
+	public List<WordBookVO> getList(Criteria cri, Long folderId);
 	
-	public List<WordBookVO> getYourSet(String userId);
-	
-	public int getTotal(Criteria cri);
-
+	public List<WordBookVO> getYourSet(String wordId);
 }

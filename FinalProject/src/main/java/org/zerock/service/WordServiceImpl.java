@@ -34,7 +34,7 @@ import net.sf.json.JSONObject;
 public class WordServiceImpl implements WordService {
 
 	@Override
-	public WordDTO createJson(WordDTO word, String userId) {//ÀÌ°Å ¾È¾¸!!!!!!!!!!!
+	public WordDTO createJson(WordDTO word) {//ï¿½Ì°ï¿½ ï¿½È¾ï¿½!!!!!!!!!!!
 		JSONObject itemsObj = new JSONObject();
 		JSONObject itemObj = new JSONObject();
 		JSONObject wordInfo = new JSONObject();
@@ -45,7 +45,7 @@ public class WordServiceImpl implements WordService {
 		itemArray.add(wordInfo);
 		itemObj.put("item", itemArray);
 		itemsObj.put("items", itemObj);
-		itemsObj.put("id", userId);
+		itemsObj.put("id", "hansol");
 		idArray.add(itemsObj);
 
 		try {
@@ -65,7 +65,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public JSONArray readJson(JSONArray jsonArray, JsonDTO jsonDTO) {
+	public JSONArray readJson(JSONArray jsonArray, String wordTitle) {
 
 		log.info("readJson.....");
 
@@ -77,6 +77,7 @@ public class WordServiceImpl implements WordService {
 
 		Gson gson = new Gson();
 		JSONObject wordObj;
+		String myId = "hansol";
 
 //		BufferedReader reader;
 		Reader reader;
@@ -116,29 +117,29 @@ public class WordServiceImpl implements WordService {
 				wordObj.put("item", itemArray);
 				wordArray.add(wordObj);
 
-				if (str.getId().equals(jsonDTO.getId()) && str.getTitle().equals(jsonDTO.getTitle())) {
-					log.info("id¿Í Á¦¸ñÀÌ °°À½." + str.getId() + "," + str.getTitle());
-					log.info("ÀÔ·ÂÇÑ Á¦¸ñ = " + jsonDTO.getTitle() + ", ÀÐ¾î¿Â Á¦¸ñ" + str.getTitle());
+				if (str.getId().equals(myId) && str.getTitle().equals(wordTitle)) {
+					log.info("idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½." + str.getId() + "," + str.getTitle());
+					log.info("ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ = " + wordTitle + ", ï¿½Ð¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" + str.getTitle());
 					log.info("jsonDTOList = " + jsonDTOList + "\n");
 					jsonDTOList.remove(str);
 					size--;
 					i--;
 					
-				} else if (str.getId().equals(jsonDTO.getId()) && !str.getTitle().equals(jsonDTO.getTitle())) {
-					log.info("id°¡ °°À½." + str.getId() + "," + str.getTitle() + "\n");
+				} else if (str.getId().equals("hansol") && !str.getTitle().equals(wordTitle)) {
+					log.info("idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½." + str.getId() + "," + str.getTitle() + "\n");
 
-				} else if (!str.getId().equals(jsonDTO.getId()) && !str.getTitle().equals(jsonDTO.getTitle())) {
-					log.info("°°Áö ¾ÊÀ½." + str.getId() + "," + str.getTitle());
+				} else if (!str.getId().equals("hansol") && !str.getTitle().equals(wordTitle)) {
+					log.info("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½." + str.getId() + "," + str.getTitle());
 					
 				}
 		
 			}
-			log.info("³²Àº ´Ü¾îÀå È®ÀÎ : " + jsonDTOList);
+			log.info("ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½ï¿½ï¿½ È®ï¿½ï¿½ : " + jsonDTOList);
 			
 			for (JsonDTO j : jsonDTOList) {
 				JSONArray resultArray = new JSONArray();
 				if(jsonDTOList.isEmpty()) {
-					log.info("ºñ¾îÀÖÀ½.");
+					log.info("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
 				}
 				
 				oldObj = new JSONObject();
@@ -153,13 +154,13 @@ public class WordServiceImpl implements WordService {
 					
 					resultArray.add(itemObj);
 				}
-				System.out.println("³ÖÀºÈÄ");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				oldObj.put("item", resultArray);
 				
 				newArray.add(oldObj);
 
-				log.info("write¿¡ ³Ñ°ÜÁÜ: " + oldObj + "\n");
-				log.info("write¿¡ ³Ñ°ÜÁÜ2: " + newArray + "\n");
+				log.info("writeï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½: " + oldObj + "\n");
+				log.info("writeï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½2: " + newArray + "\n");
 				
 			}
 
@@ -171,7 +172,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public void writeJson(JSONArray jsonArray, List<JsonDTO> oldArray, JsonDTO jsonDTO) {
+	public void writeJson(JSONArray jsonArray, List<JsonDTO> oldArray, String wordTitle) {
 		log.info("writeJson.....");
 
 		JSONObject itemsObj = new JSONObject();
@@ -179,7 +180,7 @@ public class WordServiceImpl implements WordService {
 		JSONArray itemsArray = new JSONArray();
 
 		try {
-			// 1.oldArray°ªÀ» Ç®¾î¼­ object·Î ´Ù½Ã ÅëÂ°·Î Ãß°¡ÇÑ ÈÄ »õ·Î¿î °ªÀ» Ãß°¡
+			// 1.oldArrayï¿½ï¿½ï¿½ï¿½ Ç®ï¿½î¼­ objectï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½Â°ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 			if (!oldArray.isEmpty()) {
 				for(JsonDTO j:oldArray) {
 					itemArray = new JSONArray();
@@ -197,9 +198,9 @@ public class WordServiceImpl implements WordService {
 				}
 			}
 
-			// 2.id¿Í title°ªÀ» ¹Þ¾Æ¿Í¼­ ³Ö°Å³ª ¼¼¼ÇÀ¸·Î °¡Á®¿À±â
-			itemsObj.put("id", jsonDTO.getId());
-			itemsObj.put("title", jsonDTO.getTitle());
+			// 2.idï¿½ï¿½ titleï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Í¼ï¿½ ï¿½Ö°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			itemsObj.put("id", "hansol");
+			itemsObj.put("title", wordTitle);
 			itemsObj.put("item", jsonArray);
 
 			itemsArray.add(itemsObj);
@@ -214,7 +215,7 @@ public class WordServiceImpl implements WordService {
 			e.printStackTrace();
 		}
 
-		log.info("»õ·Î¿î obj= " + itemsObj);
+		log.info("ï¿½ï¿½ï¿½Î¿ï¿½ obj= " + itemsObj);
 		log.info("itemsArray= " + itemsArray + "\n");
 
 	}

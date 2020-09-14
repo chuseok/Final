@@ -8,5 +8,4 @@ public class MailDTO {
 
 	String to;
 	String subject;
-	String text;
 }

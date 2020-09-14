@@ -16,7 +16,6 @@ public class Criteria {
 	private String userId;
 	private String type;
 	private String keyword;
-	private Long folderId;
 	
 	public Criteria() {
 		this(1,5);
@@ -39,8 +38,7 @@ public class Criteria {
 				.queryParam("amount", this.getAmount())
 				.queryParam("type", this.getType())
 				.queryParam("pageNum", this.getKeyword())
-				.queryParam("userId", this.getUserId())
-				.queryParam("folderId", this.getFolderId());
+				.queryParam("userId", this.getUserId());
 		
 		return builder.toUriString();
 	}

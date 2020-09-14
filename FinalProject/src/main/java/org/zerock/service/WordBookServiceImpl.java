@@ -54,25 +54,17 @@ public class WordBookServiceImpl implements WordBookService {
 	}
 
 	@Override
-	public List<WordBookVO> getList(Criteria cri) {
-		log.info("get WordBook List of a Folder ");
+	public List<WordBookVO> getList(Criteria cri, Long folderId) {
+		log.info("get WordBook List of a Folder " + folderId);
 		
-		return mapper.getListWithPaging(cri);
+		return mapper.getListWithPaging(cri, folderId);
 	}
 
 	@Override
-	public List<WordBookVO> getYourSet(String userId) {
-		log.info("get WordBook List of Your set " + userId);
+	public List<WordBookVO> getYourSet(String wordId) {
+		log.info("get WordBook List of Your set " + wordId);
 		
-		return mapper.readYourSet(userId);
+		return mapper.readYourSet(wordId);
 	}
-
-	@Override
-	public int getTotal(Criteria cri) {
-		log.info("wordBook total count");
-		return mapper.getTotalCount(cri);
-	}
-	
-	
 
 }

@@ -5,16 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.zerock.mapper.WordBookMapper">
 
 	<insert id="insert">
-		insert into wordBook (bookId, folderId, userId,
+		insert into wordBook (bookId, folderId, wordId,
 		wordTitle)
-		values(seq_wordbook.nextval, #{folderId}, #{userId},
+		values(seq_wordbook.nextval, #{folderId}, #{wordId},
 		#{wordTitle})
 	</insert>
 	
 	<insert id="insertToFolder">
-		insert into wordBook (bookId, userId,
+		insert into wordBook (bookId, wordId,
 		wordTitle)
-		values(seq_wordbook.nextval, #{userId},
+		values(seq_wordbook.nextval, #{wordId},
 		#{wordTitle})
 	</insert>
 	
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="readYourSet" resultType="org.zerock.domain.WordBookVO">
-		select * from wordBook where userId = #{userId}
+		select * from wordBook where wordId = #{wordId}
 	</select>
 	
 	<delete id="delete">
@@ -54,32 +54,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and rownum <= #{cri.pageNum} * #{cri.amount}
 	)	where rn > (#{cri.pageNum}-1) * #{cri.amount}	
 	]]> -->
-		<![CDATA[
- 		select bookId, folderId, userId, wordTitle
+		
+ 		select bookId, folderId, wordId, wordTitle
 		from wordBook
-		where folderId = #{folderId} and userId = #{userId}
-		]]>
-		
-		<!-- <include refid="criteria"></include> -->
-		
-		<![CDATA[
-		order by bookId asc	
-		]]>
-			
-		
-	</select>
-	
-	<sql id="criteria">
-		
-			userId = #{userId}
-		
-	</sql>
-	
-	<select id="getTotalCount" resultType="int">
-
-		select count(*) from wordBook
-		where folderId = #{folderId} and
-		<include refid="criteria"></include>
-		
+		where folderId = #{folderId}
+		order by bookId asc		
 	</select>
 </mapper>

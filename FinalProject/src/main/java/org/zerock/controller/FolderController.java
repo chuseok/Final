@@ -1,7 +1,6 @@
 package org.zerock.controller;
 
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,6 @@ import org.zerock.domain.FolderVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.WordBookVO;
 import org.zerock.service.FolderService;
-import org.zerock.service.WordBookService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -33,7 +31,6 @@ import lombok.extern.log4j.Log4j;
 public class FolderController {
 	
 	private FolderService service;
-	private WordBookService wordBookService;
 
 	
 	@PostMapping(value="/new",
@@ -87,22 +84,11 @@ public class FolderController {
 		return "redirect:/folder/list";
 	}
 	
-	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping({"/modify", "/get"})
-	public void get(@RequestParam("folderId") Long folderId, @RequestParam("userId") String userId, Model model) {
-		Criteria cri = new Criteria(1, 5);
-		cri.setUserId(userId);
-		cri.setFolderId(folderId);
-		
-		log.info("cri : " + cri);
-		
-		int total = wordBookService.getTotal(cri);
-		log.info("folder total: " + total);
-		
+	public void get(@RequestParam("folderId") Long folderId, Model model) {
 		log.info("/get or /modify");
 		model.addAttribute("folder", service.get(folderId));
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		
 	}
 	
 	@PostMapping("/modify")

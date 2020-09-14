@@ -30,7 +30,7 @@ public class MailController {
 	public ResponseEntity<String> sendMail(@RequestBody MailDTO mail) { 
 		log.info("send controller: " + mail);
 
-		service.sendTemplateMessage(mail.getTo(), mail.getSubject(), mail.getText());
+		service.sendTemplateMessage(mail.getTo(), mail.getSubject());
 		boolean result = true;
 		return result
 		? new ResponseEntity<>("success", HttpStatus.OK)
