@@ -47,9 +47,8 @@
 			<div class="sidenav-menuItem">
 				<!-- addEventListener() -->
 				<button class="UILink">
-					<span class="UlmenuItem-extend">
-						<span class="UlmenuItem-inner"> <i class="fas fa-plus"></i>폴더
-							만들기
+					<span class="UlmenuItem-extend"> <!-- 					 	<span class="UlmenuItem-extend" onclick="showFolderModal();"> -->
+						<span class="UlmenuItem-inner"> <i class="fas fa-plus"></i>폴더 만들기
 					</span>
 					</span>
 				</button>

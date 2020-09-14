@@ -7,13 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/login.css">
+<!-- <link rel="stylesheet" href="/resources/css/login.css"> -->
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
 <script src="/resources/jquery/jquery.validate.min.js"></script>	
 <script src="/resources/js/login.js"></script>	
 <link	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<!-- Bootstrap Core CSS -->
+<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
 </head>
 <style>
 
@@ -120,7 +127,7 @@
   font-size: 1.5em;
   fill: #D0DADF;
 }
-.hide {
+.menu-hide {
   display: none;
 }
 .clicked {
@@ -153,30 +160,30 @@
 	cursor: pointer;
 }
 
-.menu .hide {
+.menu .menu-hide {
 	background-color: #f9d56e;
 	margin-top: 10px;
 	z-index: 100;
 	padding: 8px 0;
 }
 
-.menu .hide:visible {
-	display: block;
+.menu .menu-hide:visible {
+	display: block !important;
 	z-index: 100;
 }
 
-.menu .hide li {
+.menu .menu-hide li {
 	display: flex;
 	align-item: center;
 	justify-content: center;
 	height: 17px;
 }
 
-.menu .hide li a {
+.menu .menu-hide li a {
 	display: block;
 }
 
-.menu .hide li a :hover {	
+.menu .menu-hide li a :hover {	
 	opacity: 0.5;
   cursor: pointer;
 }
@@ -220,7 +227,7 @@
         <div class="header__notification">
       		<div class="far fa-bell bell-icon small-icon">
         		<span class="notification-number bell-number">0</span>
-        		<ul class="notification__list dropdown hide">
+        		<ul class="notification__list dropdown menu-hide">
           			<li><h3 class="notification__list__name">Notifications</h3></li>
         		</ul>
       		</div> <!-- bell-icon-->
@@ -246,7 +253,7 @@
 							<div class="userInfo-menu">
 							<ul>
 								<li class="menu"><a><i class="fas fa-bars"></i>메뉴</a>
-									<ul class="hide">								
+									<ul class="menu-hide">								
 										<li><a href="../main/update">회원정보변경</a></li>
 										<li>친구추천</li>
 										<li><a href="/withdrawal">회원탈퇴</a></li>
@@ -268,21 +275,30 @@
   </header>
   
   <!-- 로그인 모달 -->
-	<div class="modal" style="display:none;" id="loginModal">
+  	<div class="modal" id="loginModal" tableindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">로그인</h4>
 				<div class="close">+</div>
 			</div>
-	
-			<h2>
-				<c:out value="${error}" />
-			</h2>
-			<h2>
-				<c:out value="${logout}" />
-			</h2>
-			<form class="form" method="POST" action="/login" novalidate>
-				<fieldset>
+			<div class="modal-body">
+				<div class="form-group">
+					<h2>
+						<c:out value="${error}" />
+					</h2>
+					1111111111111111111111
+				</div>
+				<div class="form-group">
+				<h2>
+					<c:out value="${logout}" />
+				</h2>
+				222222222222222222222222222222
+				</div>
+				<div class="form-group">
+				<form class="form" method="POST" action="/login" novalidate>
+					<fieldset>
 					<p class="clearfix">
 						<label>아이디</label> <input type="text" id="Id" name="username" placeholder="영문,숫자 6~12자 입력하세요.">
 					</p>
@@ -299,18 +315,26 @@
 					</p>
 						아이디를 잊어버리셨나요? <a href="#">아이디 찾기</a> 
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				</fieldset>
-			</form>
-			<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
-			<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
-			<div id="naver_id_login" style="text-align:center"><a href="${url}">
-				<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+					</fieldset>
+				</form>
+				</div>
+				<div class="form-group">
+				
+				<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
+				<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
+				<div id="naver_id_login" style="text-align:center"><a href="${url}">
+					<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+				</div>
+				</div>
 			</div>
+			
+		</div>
 		</div>
 	</div>
 	
 	<!-- 회원가입모달 -->
 	<div class="modal" style="display:none;" id="joinModal">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">회원가입</h4>
@@ -351,6 +375,7 @@
 					<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
 				</fieldset>
 			</form>
+		</div>
 		</div>
 	</div>
 
@@ -483,8 +508,8 @@ function bellCheck(event){
   var isClickInside = bellIcon.contains(event.target);
   
     if (isClickInside) {
-      dropdownMenu.classList.toggle('hide');
-      if(dropdownMenu.classList.contains('hide')){
+      dropdownMenu.classList.toggle('menu-hide');
+      if(dropdownMenu.classList.contains('menu-hide')){
     	var arr = document.querySelectorAll('.list__item');
     	for(var i=0;i<arr.length;i++){
     		arr[i].classList.add('clicked');
@@ -502,7 +527,7 @@ function bellCheck(event){
     }
     }
     else {
-      dropdownMenu.classList.add('hide');
+      dropdownMenu.classList.add('menu-hide');
       clearInterval(notificationInterval);
       notificationInterval = setInterval(checkNumber, 5000);
     }
@@ -573,8 +598,9 @@ if(<c:out value="${loginSuccess}"/> == true&&size==0){
 $(document).ready(function(){
     // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
     $(".menu>a").click(function(){
+    	
         var submenu = $(this).next("ul");
-
+        //alert(submenu.prop('tagName'));
         // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
         if( submenu.is(":visible") ){
             submenu.slideUp();

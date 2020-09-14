@@ -12,43 +12,43 @@
 <meta name="_csrf_header" content="${_csrf.headerName}">
 <title>암기용-Home</title>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Bootstrap Core CSS -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core CSS -->
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<!-- MetisMenu CSS -->
+	<!-- MetisMenu CSS -->
 <link href="/resources/vendor/metisMenu/metisMenu.min.css"
 	rel="stylesheet">
-<!-- DataTables CSS -->
+	<!-- DataTables CSS -->
 <link
 	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
 	rel="stylesheet">
-<!-- DataTables Responsive CSS -->
+	<!-- DataTables Responsive CSS -->
 <link
 	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
 	rel="stylesheet">
-<!-- Custom CSS -->
-<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
-<!-- Custom Fonts -->
-<link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<link rel="stylesheet" href="./resources/css/main.css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
+
+
+<!-- Custom CSS -->
+<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
+<link rel="stylesheet" href="./resources/css/main.css">
+<!-- Custom Fonts -->
+<link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
 	rel="stylesheet">
+	
+	
 <script src="/resources/js/folder.js"></script>
 </head>
 <body>
@@ -57,10 +57,8 @@
 
 	<div class="HomeLayout">
 		<div class="HomeLayout-container">
-			
-			
 			<%@ include file="includes/sidebar.jsp"%>
-			
+
 			<section class="HomeLayout-main">
 				<div class="mainWrapper">
 					<div class="mainContents">
@@ -89,8 +87,8 @@
 			</section>
 		</div>
 	</div>
-	
-	
+
+
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tableindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
@@ -103,12 +101,12 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label>Folder Title</label> <input class="form-control" name='folderTitle'
-							value='New Folder!!!!'>
+						<label>Folder Title</label> <input class="form-control"
+							name='folderTitle' value='New Folder!!!!'>
 					</div>
 					<div class="form-group">
-						<label>Description</label> <input class="form-control" name='description'
-							value='description'>
+						<label>Description</label> <input class="form-control"
+							name='description' value='description'>
 					</div>
 
 				</div>
@@ -174,6 +172,6 @@
 			});
 		});
 	</script>
-	
+
 </body>
 </html>

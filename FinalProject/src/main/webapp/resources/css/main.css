@@ -343,10 +343,6 @@ header a {
 	height: 100vh;
 }
 
-.mainWrapper .mainContents {
-
-}
-
 .mainContents-recentFeed {
 	padding: 0;
 }
@@ -423,7 +419,6 @@ header a {
 	border-radius: 6px;
 	margin: 10px;
 	background-color: rgb(224, 224, 224);
-	
 	position: relative;
 	top: 50%;
 	left: 230px;

@@ -43,10 +43,10 @@ html, body {
 	 min-height: 100%;
 }
 
-* {
+/* * {
   box-sizing: inherit;
 
-}
+} 모달 창이 찌그러짐*/
 
 
 a {
@@ -306,7 +306,7 @@ header a {
   color: #ff9a76;
 }
 
-/* 폴더 만들기 button */
+/* side-nav 폴더 만들기 */
 
 .UILink {
 	display: block;

@@ -3,27 +3,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>암기용-Home</title>
-  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
+<title>암기용-Home</title>
+<%@ include file="includes/header.jsp" %>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<!-- Bootstrap Core CSS -->
+<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+	<!-- MetisMenu CSS -->
+<link href="/resources/vendor/metisMenu/metisMenu.min.css"
+	rel="stylesheet">
+	<!-- DataTables CSS -->
+<link
+	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
+	rel="stylesheet">
+	<!-- DataTables Responsive CSS -->
+<link
+	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+	crossorigin="anonymous">
+	
+<!-- Custom CSS -->
+<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
+<link rel="stylesheet" href="./resources/css/main.css">
+<!-- Custom Fonts -->
+<link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
   
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-  <link rel="stylesheet" href="/resources/css/main.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
-  
-	<!-- Bootstrap Core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
+<script src="/resources/js/folder.js"></script>
 
 </head>
 <body>
   
-<%@ include file="includes/header.jsp" %>
+
 
   <div class="HomeLayout">
     <div class="HomeLayout-container">
@@ -94,10 +115,10 @@
 	
 	<script>
 		$(document).ready(function() {
-			
+			console.log('test folder..');
 			var folderIdValue = '<c:out value="${folder.folderId}"/>';
 			
-			var modal = $('.modal');
+			var modal = $('.fade');
 			/* $(".modal").modal("show"); */
 			var modalInputFolderTitle = modal.find("input[name='folderTitle']");
 			var modalInputDescription = modal.find("input[name='description']");
@@ -115,7 +136,7 @@
 					modal.find("input").val("");
 					modal.find("button[id !='modalCloseBtn']").hide();
 					modalRegisterBtn.show();
-				$(".modal").modal("show");
+				$(".fade").modal("show");
 			</sec:authorize>
 			});
 			
