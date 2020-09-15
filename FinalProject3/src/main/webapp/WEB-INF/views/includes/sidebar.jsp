@@ -54,18 +54,28 @@
 				</button>
 
 			</div>
-			<div class="sidenav-menuItem">
-				<span class="UlmenuItem"> <a href="./"> <span
-						class="UlmenuItem-inner"> <i class="fas fa-user-friends"></i>클래스
-					</span></a></span>
-			</div>
-			<div class="sidenav-menuItem">
-				<span class="UlmenuItem-extend"> <a href=""> <span
-						class="UlmenuItem-inner"> <i class="fas fa-plus"></i>클래스
-							만들기/참여하기
-					</span></a></span>
-			</div>
 		</div>
+		
+		<div class="sidebar-navSection">
+      <div class="sidenav-menuItem">
+        <span class="UlmenuItem">
+          <a href="/dragon/dragonPanel">
+            <span class="UlmenuItem-inner">
+            <i class="fas fa-dragon"></i>용키우기</span></a></span>
+      </div>
+      <div class="sidenav-menuItem">
+        <span class="UlmenuItem">
+          <a href="/shop/shop">
+            <span class="UlmenuItem-inner">
+              <i class="fas fa-store"></i>상점</span></a></span>
+      </div>
+      <div class="sidenav-menuItem">
+        <span class="UlmenuItem">
+          <a href="/dragon/ranking">
+            <span class="UlmenuItem-inner">
+             <i class="fas fa-medal"></i>랭킹</span></a></span>
+      </div>
+    </div>
 
 		<div class="sidebar-footer">
 			<div>
