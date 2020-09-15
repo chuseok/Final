@@ -53,7 +53,7 @@ a {
   text-decoration: none;
 }
 
-a:visited {
+a:hover {
   text-decoration: none;
 }
 
@@ -65,6 +65,14 @@ header {
 
 header a {
   color: #fff;
+}
+
+header a:visited {
+  color: #fff;
+}
+
+header a:hover {
+  text-decoration: none;
 }
 
 .header-navbar {

@@ -160,6 +160,10 @@
 	cursor: pointer;
 }
 
+.userInfo-menu ul,li {
+  list-style-type: none
+}
+
 .menu .menu-hide {
 	background-color: #f9d56e;
 	margin-top: 10px;
@@ -202,7 +206,7 @@
 <header>
     <nav class="header-navbar">
       <div class="header-logo">
-        <a href="">암기용</a>        
+        <a href="/main">암기용</a>        
       </div>
       <div style='display:none' class="header-transitionGroup-Wrapper">
      		<div class="header-search">
@@ -268,7 +272,7 @@
 							</div>
 						</sec:authorize>
 
-					</div>
+			</div>
         </div>
       </div>
     </nav>
@@ -288,13 +292,11 @@
 					<h2>
 						<c:out value="${error}" />
 					</h2>
-					1111111111111111111111
 				</div>
 				<div class="form-group">
 				<h2>
 					<c:out value="${logout}" />
 				</h2>
-				222222222222222222222222222222
 				</div>
 				<div class="form-group">
 				<form class="form" method="POST" action="/login" novalidate>
