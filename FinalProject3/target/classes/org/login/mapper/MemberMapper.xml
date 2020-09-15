@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	insert into mem (userId,userPwd,userName,birthday,phoneNo,email)
 	values (#{userId},#{userPwd},#{userName},#{birthday},#{phoneNo},#{email})
 	</insert>
+	
 	<insert id="insertAuth">
 	insert into tbl_member_auth(userId,auth)
 	values (#{userId},'ROLE_MEMBER')

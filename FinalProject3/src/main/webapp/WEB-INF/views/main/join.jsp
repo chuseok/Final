@@ -14,6 +14,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/join.css">
 <!-- <script type="text/javascript" src="/resources/js/join.js"></script> -->
+<script src="/resources/jquery/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/resources/js/join.js"></script>
 
 
 </head>
@@ -33,8 +35,7 @@
 						<label>아이디</label> <input type="text" id="userId" name="userId"
 							placeholder="영문,숫자 6~12자 입력하세요.">
 							<button class="idCheck" type="button" id="idCheck" name="idCheck"onclick="fn_idCheck();" value="N">중복확인</button>
-					</p>
-					
+					</p>					
 
 					<p class="clearfix">
 						<label>비밀번호</label> <input type="password" id="password"
@@ -61,14 +62,14 @@
 							placeholder="ex)01012345678">
 					</p>
 									
-
+					<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+					
 					<p class="clearfix">
 						<button type="submit"class="button" id="uploadBtn">가입하기</button>
 					</p>
 					
-					아이디가 있으신가요?<a href="/customLogin">로그인하기</a>
+					아이디가 있으신가요?<a href="/home">로그인하기</a>
 					
-					<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
 				</fieldset>
 			</form>
 		</div>
@@ -138,24 +139,18 @@
 			console.log("aaa" + asd);
 			xhr.setRequestHeader( "${_csrf.headerName}", "${_csrf.token}" );
 			});	
+		
 	</script>
 	
 	<script>
 	$(document).ready(function(){
-		$("#uploadBtn").on("click",function(e){
+		$('#uploadBtn').on("click",function(e){
 			var formdata = new FormData();
-		    var inputFile = $("input[name='uploadFile']");
-		    var files = inputFile[0].files;
-		    console.log(files);
-		    //add filedate to formdata
-		    for(var i =0; i<files.length; i++){
-		    	formData.append("uploadFile",files[i]);
-		    }
 		    $.ajax({
 		    	url : "/main/join",
 				processData: false,
 				contentType: false,
-				data: formData,
+				data: formdata,
 		    	type : "post",
 				success: function(result){
 					alert("회원가입 완료되었습니다.");

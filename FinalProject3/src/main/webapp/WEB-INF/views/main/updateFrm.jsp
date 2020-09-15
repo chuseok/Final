@@ -42,7 +42,7 @@ float: left;
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" >변경 할 닉네임</label>
-					<input class="form-control" type="text" id="userName" name="userName" placeholder="닉네임"/>
+					<input class="form-control" type="text" id="newUserName" name="userName" placeholder="닉네임"/>
 				</div>
 				<div class="form-group has-feedback">
 							<button class="nameCheck" type="button" id="nameCheck" name="nameCheck"onclick="fn_nameCheck();" value="N">중복확인</button>
@@ -151,7 +151,7 @@ float: left;
 				url : "/main/nameCheck",
 				type : "post",
 				dataType : "json",
-				data : {"userName" : $("#userName").val()},
+				data : {"userName" : $("#newUserName").val()},
 				success : function(data){
 					if(data == 1){
 						alert("중복된 닉네임입니다.");

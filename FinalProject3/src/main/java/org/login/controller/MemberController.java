@@ -1,27 +1,24 @@
 package org.login.controller;
 
-import java.io.File;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.login.domain.AuthVO;
 import org.login.domain.MemberVO;
 import org.login.service.MemberService;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.test.tst.NaverLoginBO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -33,13 +30,7 @@ public class MemberController {
 
 	private MemberService service;
 	
-	@GetMapping("/main/home1")
-	public void list(Model model) {
-		log.info("home1");
-		
-		model.addAttribute("home1", service.getList());
-	}
-	//�쉶�썝媛��엯
+
 	@PostMapping("/main/join")
 	public String register(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo") AuthVO vo, RedirectAttributes rttr) {
 		log.info("join: " + mem);
@@ -50,28 +41,23 @@ public class MemberController {
 		
 		try {
 			if(result ==1 && result2 ==1) {
-				return "/main/home1";
+				return "/home";
+				
 			}else if(result == 0) {
 				service.register(mem);
 				service.register(vo);			
 			}
-			// �엯�젰�맂 �븘�씠�뵒媛� 議댁옱�븳�떎硫� -> �떎�떆 �쉶�썝媛��엯 �럹�씠吏�濡� �룎�븘媛�湲� 
-			// 議댁옱�븯吏� �븡�뒗�떎硫� -> register
 		} catch (Exception e) {
 			throw new RuntimeException();
-		}
-		
+		}		
 		
 		rttr.addFlashAttribute("result",mem.getUserId());
 		rttr.addFlashAttribute("result",vo.getUserId());
-		
-		
-		return "redirect:/main/home1";
+				
+		return "redirect:/home";
 	}
-	@GetMapping("/main/join")
-	public void join() {
-		
-	}
+	
+	
 	// �쉶�썝 �깉�눜 get
 	@RequestMapping(value="/withdrawal", method = RequestMethod.GET)
 	public String withdrawalView(){
@@ -93,7 +79,7 @@ public String withdrawal(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo
 				service.withdrawal(mem);
 				
 			}else if(result == 0) {
-				return "redirect:/main/home1";
+				return "redirect:/main";
 			}
 			
 		} catch (Exception e) {
@@ -105,7 +91,7 @@ public String withdrawal(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo
 		rttr.addFlashAttribute("result",vo.getUserId());
 		
 		
-		return "redirect:/main/home1";
+		return "redirect:/main";
 	}
 		
 	
@@ -157,11 +143,11 @@ public String withdrawal(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo
 			throw new RuntimeException();
 		}
 		
-		
+		setPrincipal();
 		rttr.addFlashAttribute("result",mem.getUserId());
 		
 		
-		return "redirect:/main/home1";
+		return "redirect:/main";
 	}
 	@GetMapping("/main/updateFrm2")
 	public void update2() {
@@ -174,10 +160,12 @@ public String withdrawal(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo
 		
 				service.modify2(mem);
 				
+				setPrincipal();
+				
 		rttr.addFlashAttribute("result",mem.getUserId());
 		
 		
-		return "redirect:/main/home1";
+		return "redirect:/main";
 	}
 	//�빖�뱶�룿 踰덊샇 蹂�寃�
 	@GetMapping("/main/updateFrm3")
@@ -191,10 +179,12 @@ public String withdrawal(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo
 		
 				service.modify3(mem);
 				
+				setPrincipal();
+				
 		rttr.addFlashAttribute("result",mem.getUserId());
 		
 		
-		return "redirect:/main/home1";
+		return "redirect:/main";
 	}
 	//�씠硫붿씪二쇱냼 蹂�寃�
 		@GetMapping("/main/updateFrm4")
@@ -208,10 +198,12 @@ public String withdrawal(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo
 			
 					service.modify4(mem);
 					
+					setPrincipal();
+					
 			rttr.addFlashAttribute("result",mem.getUserId());
 			
 			
-			return "redirect:/main/home1";
+			return "redirect:/main";
 		}
     //�쉶�썝媛��엯 泥댄겕
 	@ResponseBody
@@ -235,6 +227,14 @@ public String withdrawal(@ModelAttribute("mem") MemberVO mem,@ModelAttribute("vo
 		int result = service.PwdCheck(mem);
 		return result;
 	}
+	
+	private void setPrincipal() {
+	      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	      Authentication authentication = new UsernamePasswordAuthenticationToken(auth.getPrincipal(), auth.getCredentials());
+	      SecurityContextHolder.getContext().setAuthentication(authentication);
+	   }
+	
+	
 
 	
 	

@@ -9,7 +9,7 @@ $(function(){
                 return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
             });
 		    //한글만
-			$(".form").validate({				
+			$("#loginForm").validate({				
 				rules:{
 					userId:{
 				    required: true, 

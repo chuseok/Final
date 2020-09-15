@@ -35,7 +35,7 @@
 
 		<div class="sidebar-navSection">
 			<div class="sidenav-menuItem">
-				<span class="UlmenuItem"> <a href=""> <span
+				<span class="UlmenuItem"> <a href="/learn/list"> <span
 						class="UlmenuItem-inner"> <i class="fas fa-th-large"></i>세트
 					</span></a></span>
 			</div>
@@ -93,5 +93,7 @@
 			</div>
 		</div>
 	</section>
+	<script src="/resources/js/folder.js"></script>
+	
 </body>
 </html>

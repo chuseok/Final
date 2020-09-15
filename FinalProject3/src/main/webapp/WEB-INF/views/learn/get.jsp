@@ -22,95 +22,95 @@
 <%@ include file="../includes/header.jsp" %>
 
 	<div class="HomeLayout">
-		<div class="HomeLayout-container">
-			<section class="HomeLayout-main">
-				<div class="mainWrapper">
+	 <div class="HomeLayout-container">
+	  <section class="HomeLayout-main">
+			<div class="mainWrapper">
 				<h2 class="wordTitle-two"></h2>
-					<div class="mainContents">
-						
-						<!-- 단어카드 -->
-						<section class="Section-WordCard">
-							<div class="flip-card">
-								<div class="flip-card-inner">
-									<div class="flip-card-front"></div>
-									<div class="flip-card-back"></div>
-								</div>
+				<div class="mainContents">
+					
+					<!-- 단어카드 -->
+					<section class="Section-WordCard">
+						<div class="flip-card">
+							<div class="flip-card-inner">
+								<div class="flip-card-front"></div>
+								<div class="flip-card-back"></div>
 							</div>
-							<div class="progressNBtns">
-								<button type="button" class="prevCard">
-									<i class="fas fa-arrow-left"></i>
-								</button>
-								<div class="cardProgress"></div>
-								<button type="button" class="nextCard">
-									<i class="fas fa-arrow-right"></i>
-								</button>
-							</div>
-						</section>
-						
-						<!-- 이동하기 -->
-						<section class="Section-SetPageModsGroup">
-							<div class="UIRow">
-								<div class="SetPageMods-groups">
-									<div class="SetPageMods-groupLabel">
-										<h2 class="UIHeading-two">학습</h2>
-									</div>
-									<div class="SetPageMods-buttonWrapper">
-										<div class="SetPageMods-button">
-											<span>학습하기</span> 
-											<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a"	href="/study"></a></div>
-										</div>
-										<div class="SetPageMods-button">
-											<span>주관식</span> 
-											<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a" href="/subjective"></a></div>
-										</div>
-										<div class="SetPageMods-button">
-											<span>테스트</span> 
-											<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a" href="/test"></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-						</section>
-						<!-- /.UIRow -->
-
-						<section class="Section-WordLists">
-						<div class="listOfWords">
-							<h2 class="UIHeading-two">이 세트의 단어<span class="numOfList"></span></h2>
-
-							<table class="oneOfWords">
-								<tbody>
-
-									<c:if test="${WordDTO.size() ==0 }">
-										<td colspan="2">아직 단어가 없습니다.</td>
-									</c:if>
-
-									<c:forEach items="${WordDTO}" var="list">
-										<form id="operForm" action="/learn/study">
-											<input type="hidden" name="id" value="<c:out value='${list.id }' />">
-											<input type="hidden" name="title" value="<c:out value='${list.title }' />">
-										</form>
-										
-										<c:forEach items="${list.item}" var="item">
-											<tr>
-												<td class="item-word"><c:out value='${item.word }' /></td>
-												<td class="item-meaning"><c:out	value='${item.meaning }' /></td>
-											</tr>
-										</c:forEach>
-									</c:forEach>
-
-								</tbody>
-							</table>
 						</div>
-						</section>
-						<!-- /.listOfWords -->
+						<div class="progressNBtns">
+							<button type="button" class="prevCard">
+								<i class="fas fa-arrow-left"></i>
+							</button>
+							<div class="cardProgress"></div>
+							<button type="button" class="nextCard">
+								<i class="fas fa-arrow-right"></i>
+							</button>
+						</div>
+					</section>
+					
+					<!-- 이동하기 -->
+					<section class="Section-SetPageModsGroup">
+						<div class="UIRow">
+							<div class="SetPageMods-groups">
+								<div class="SetPageMods-groupLabel">
+									<h2 class="UIHeading-two">학습</h2>
+								</div>
+								<div class="SetPageMods-buttonWrapper">
+									<div class="SetPageMods-button">
+										<span>학습하기</span> 
+										<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a"	href="/study"></a></div>
+									</div>
+									<div class="SetPageMods-button">
+										<span>주관식</span> 
+										<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a" href="/subjective"></a></div>
+									</div>
+									<div class="SetPageMods-button">
+										<span>테스트</span> 
+										<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a" href="/test"></a></div>
+									</div>
+								</div>
+							</div>
+						</div>
 						
+					</section>
+					<!-- /.UIRow -->
+
+					<section class="Section-WordLists">
+					<div class="listOfWords">
+						<h2 class="UIHeading-two">이 세트의 단어<span class="numOfList"></span></h2>
+
+						<table class="oneOfWords">
+							<tbody>
+
+								<c:if test="${WordDTO.size() ==0 }">
+									<td colspan="2">아직 단어가 없습니다.</td>
+								</c:if>
+
+								<c:forEach items="${WordDTO}" var="list">
+									<form id="operForm" action="/learn/study">
+										<input type="hidden" name="id" value="<c:out value='${list.id }' />">
+										<input type="hidden" name="title" value="<c:out value='${list.title }' />">
+									</form>
+									
+									<c:forEach items="${list.item}" var="item">
+										<tr>
+											<td class="item-word"><c:out value='${item.word }' /></td>
+											<td class="item-meaning"><c:out	value='${item.meaning }' /></td>
+										</tr>
+									</c:forEach>
+								</c:forEach>
+
+							</tbody>
+						</table>
 					</div>
+					</section>
+					<!-- /.listOfWords -->
+					
 				</div>
-			</section>
-			
-		</div>
+			</div>
+		</section>
+		
 	</div>
+</div>
 
 
 

@@ -12,67 +12,6 @@
   
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
-<style>
-
-.HomeLayout-vertical {
-	margin: 0 auto;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.homeHighlightText {
-	width: 100%;
-	padding: 6rem 0;
-	text-align: center;
-	font-size: 1.7rem;
-	font-weight: 600;
-}
-
-.splitBanner {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-}
-
-.splitBanner-img {
-	width: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.splitBanner-img img {
-	width: 80%;
-}
-
-.splitBanner-text {
-	width: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.description-title, .description-content {
-	width: 100%;
-}
-.description-title h3 {
-	font-size: 1.8rem;
-	width: 90%;
-	margin: 0 auto;
-}
-
-.description-content p {
-	font-size: 1rem;
-	padding: 2rem 0;
-	width: 80%;
-	margin-left: 10px;
-}
-
-</style>
 
 </head>
 

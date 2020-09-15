@@ -20,6 +20,8 @@
   	<!-- Bootstrap Core CSS -->
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+	
+<script type="text/javascript" src="/resources/js/join.js"></script>
 
 </head>
 <style>
@@ -142,6 +144,7 @@
     opacity: 1;
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -299,7 +302,7 @@
 				</h2>
 				</div>
 				<div class="form-group">
-				<form class="form" method="POST" action="/login" novalidate>
+				<form id="loginForm" class="form" method="POST" action="/login" novalidate>
 					<fieldset>
 					<p class="clearfix">
 						<label>아이디</label> <input type="text" id="Id" name="username" placeholder="영문,숫자 6~12자 입력하세요.">
@@ -342,7 +345,7 @@
 				<h4 class="modal-title">회원가입</h4>
 				<div class="close">+</div>
 			</div>
-			<form class="form" action="/main/join" method="POST" enctype="multipart/form-data" novalidate>
+			<form id="joinForm" class="form" action="/main/join" method="POST" enctype="multipart/form-data" novalidate>
 				<fieldset>
 					<p class="clearfix">
 						<label>아이디</label> <input type="text" id="userId" name="userId"
@@ -465,29 +468,30 @@ integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMh
 	</script>
 	
 	<script>
-	$(document).ready(function(){
-		$("#uploadBtn").on("click",function(e){
-			var formdata = new FormData();
-		    var inputFile = $("input[name='uploadFile']");
-		    var files = inputFile[0].files;
-		    console.log(files);
-		    //add filedate to formdata
-		    for(var i =0; i<files.length; i++){
-		    	formData.append("uploadFile",files[i]);
-		    }
-		    $.ajax({
-		    	url : "/main/join",
-				processData: false,
-				contentType: false,
-				data: formData,
-		    	type : "post",
-				success: function(result){
-					alert("회원가입 완료되었습니다.");
-				}
-		    });
-		});
-	});
-	</script>
+   $(document).ready(function() {
+      $("#uploadBtn").on("click", function(e) {
+         var formdata = new FormData();
+         var inputFile = $("input[name='uploadFile']");
+         var files = inputFile[0].files;
+         console.log(files);
+         //add filedate to formdata
+         for (var i = 0; i < files.length; i++) {
+            formData.append("uploadFile", files[i]);
+         }
+         $.ajax({
+            url : "/main/join",
+            processData : false,
+            contentType : false,
+            data : formData,
+            type : "post",
+            success : function(result) {
+               alert("회원가입 완료되었습니다.");
+            }
+         });
+      });
+   });
+</script>
+
 
 
 <script type="text/javascript">

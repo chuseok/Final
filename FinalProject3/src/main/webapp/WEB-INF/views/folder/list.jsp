@@ -21,8 +21,7 @@
 <!-- Custom Fonts -->
 <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-	
-<script src="/resources/js/folder.js"></script>
+
 </head>
 <body>
 

@@ -11,24 +11,20 @@
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">
 <title>암기용-Home</title>
-<%@ include file="includes/header.jsp" %>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<!-- Bootstrap Core CSS -->
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 	<!-- MetisMenu CSS -->
-<link href="/resources/vendor/metisMenu/metisMenu.min.css"
-	rel="stylesheet">
+<link href="/resources/vendor/metisMenu/metisMenu.min.css"	rel="stylesheet">
 	<!-- DataTables CSS -->
 <link
 	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
 	rel="stylesheet">
 	<!-- DataTables Responsive CSS -->
-<link
-	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+<link	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"	rel="stylesheet">
+<link rel="stylesheet"	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
 	
@@ -39,16 +35,14 @@
 <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
   
-<script src="/resources/js/folder.js"></script>
-
 </head>
 <body>
   
+<%@ include file="includes/header.jsp" %>
 
-
-  <div class="HomeLayout">
-    <div class="HomeLayout-container">
-    <%@ include file="includes/sidebar.jsp" %>
+<div class="HomeLayout">
+ <div class="HomeLayout-container">
+  <%@ include file="includes/sidebar.jsp" %>
     
 
   <section class="HomeLayout-main">
@@ -77,41 +71,41 @@
       </div>
     </div>
   </section>
-</div>
+ </div>
 </div>
 
 <!-- Modal -->
-	<div class="modal fade" id="myModal" tableindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times</button>
-					<h4 class="modal-title" id="myModalLabel">FOLDER</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label>Folder Title</label> <input class="form-control" name='folderTitle'
-							value='New Folder!!!!'>
-					</div>
-					<div class="form-group">
-						<label>Description</label> <input class="form-control" name='description'
-							value='description'>
-					</div>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" id='modalRegisterBtn' class="btn btn-default">Resister</button>
-					<button type="button" id='modalCloseBtn' class="btn btn-default"
-						data-dismiss="modal">Close</button>
-				</div>
+<div class="modal fade" id="myModal" tableindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times</button>
+				<h4 class="modal-title" id="myModalLabel">FOLDER</h4>
 			</div>
-			<!-- /.modal-content -->
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Folder Title</label> <input class="form-control" name='folderTitle'
+						value='New Folder!!!!'>
+				</div>
+				<div class="form-group">
+					<label>Description</label> <input class="form-control" name='description'
+						value='description'>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" id='modalRegisterBtn' class="btn btn-default">Resister</button>
+				<button type="button" id='modalCloseBtn' class="btn btn-default"
+					data-dismiss="modal">Close</button>
+			</div>
 		</div>
-		<!-- /.modal-dialog -->
+		<!-- /.modal-content -->
 	</div>
-	<!-- /.modal -->
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 	
 	<script>
 		$(document).ready(function() {
@@ -123,7 +117,7 @@
 			var modalInputFolderTitle = modal.find("input[name='folderTitle']");
 			var modalInputDescription = modal.find("input[name='description']");
 			var modalInputLink = modal.find("input[name='link']");
-
+	
 			var modalRegisterBtn = $("#modalRegisterBtn");
 			
 			//새 댓글 추가버튼

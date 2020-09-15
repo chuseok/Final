@@ -195,6 +195,7 @@ header a:hover {
 
 .userInfo div {
 	padding: 0 4px;
+	min-width: 80px;
 }
 
 .header-signIn {
@@ -227,6 +228,10 @@ header a:hover {
   
 }
 
+.HomeLayout-sidebar a:visited {
+	color: black;
+}
+
 .sidebar-navSection {
   padding: 20px;
   line-height: 1.625;
@@ -256,7 +261,6 @@ header a:hover {
 .sidenav-menuItem-home .UlmenuItem .UlmenuItem-inner {
   display: inline-block;
   padding: 10px 5px;
-  box-sizing: inherit;
   width: 100%;
 }
 
@@ -266,7 +270,7 @@ header a:hover {
 
 .sidenav-menuItem .UlmenuItem {
   width: 100%;
-  display:inline-block;
+  display: inline-block;
 }
 
 .sidenav-menuItem .UlmenuItem a {
@@ -438,7 +442,7 @@ header a:hover {
   border-radius: 6px;
   margin: 10px;
 	background-color: rgb(224, 224, 224);
-	}
+}
 
 
 

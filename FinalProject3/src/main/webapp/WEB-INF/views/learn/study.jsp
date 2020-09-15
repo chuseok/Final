@@ -171,8 +171,7 @@
 
 					</div>				
 				</div>
-				<!-- /.progress -->
-				
+				<!-- /.progress -->				
 				
 				<div class="sideBar-resetBox">
 					<button type="button" id="dataResetBtn">
@@ -192,10 +191,10 @@
 							<div class="question-text"></div>
 							</div>
 				      <div class="buttons" id="multipleAnswers">
-				         <button class="btn" id="option1"></button>
-				         <button class="btn" id="option2"></button>
-				         <button class="btn" id="option3"></button>
-				         <button class="btn" id="option4"></button>
+			         <button class="btn" id="option1"></button>
+			         <button class="btn" id="option2"></button>
+			         <button class="btn" id="option3"></button>
+			         <button class="btn" id="option4"></button>
 				      </div> 
 						</div>
 					</div>
@@ -231,6 +230,7 @@
 		</div>		
 	</div>
 </div>
+
 <script>
 $(document).ready(function(){
 	
@@ -302,7 +302,7 @@ $(document).ready(function(){
 		
 		for(i in WordCardArray)
 		{
-			console.log(i);
+			//console.log(i);
 			//debugger;
 			cardIndex = i;
 			if(WordCardArray[i].learningRate == 1){
@@ -347,14 +347,22 @@ $(document).ready(function(){
 	var selectIndex = 0; 
 	function selectQuestion()
 	{
+		console.log("subjcount : "+subjCount);
 		showProgress();
 		
-		if(lastCardLen == 0 && knownCardLen ==0){
+		if(lastCardLen == 0 && knownCardLen == 0){
 			showFinalResult();
 		}
+		else if(lastCardLen == 0 && knownCardLen != 0) {
+			showSubjQuestion();
+		}
+		else if(lastCardLen != 0 && knownCardLen == 0) {
+			showMultipleQustion();
+		}
 		else
-		{
-			if(knownCardLen >4 || lastCardLen ==0)
+		{//남은카드와 익숙함 둘다 0이 아닐때
+			
+			if(knownCardLen >4)
 			{//익숙함 단어가 5개 이상일 경우			
 				showSubjQuestion();
 			}
@@ -420,30 +428,7 @@ $(document).ready(function(){
 	}
 	
 	var btn = document.querySelectorAll('.btn');
-	
-	/* //Array의 prototype을 지정해주고, shuffle이라는 이름을 가진 함수를 생성
-	Array.prototype.shuffle = function () 
-	{
-	    var length = this.length;
-	    
-	    // 아래에서 length 후위 감소 연산자를 사용하면서 결국 0이된다.
-	    // 0은 false를 의미하기에 0이되면 종료.
-	    while (length) 
-	    {
-	        var index = Math.floor((length--) * Math.random());
-	 
-	        // 배열의 끝에서부터 0번째 아이템을 순차적으로 대입
-	        var temp = this[length];
-	 
-	        // 랜덤한 위치의 값을 맨뒤(this[length])부터 셋팅
-	        this[length] = this[index];
-	 
-	        // 랜덤한 위치에 위에 설정한 temp값 셋팅
-	        this[index] = temp;
-	    }
-	    return this;
-	}; */
-	
+		
 	function shuffle(a) 
 	{ 
 		var j, x, i; 
@@ -452,9 +437,7 @@ $(document).ready(function(){
 			x = a[i - 1]; 
 			a[i - 1] = a[j]; a[j] = x; 
 			} 
-		}
-
-	
+		}	
 	
 	//랜덤으로 나머지 보기 3개 옵션 생성
 	function getRandomOption()
@@ -527,7 +510,7 @@ $(document).ready(function(){
 	{
 		var userAswer = $('.subjective-answerArea').val();
 		
-		console.log("내가 쓴 답 : " + userAswer)
+		//console.log("내가 쓴 답 : " + userAswer)
 		if(userAswer == random.meaning)
 		{
 			
@@ -548,7 +531,7 @@ $(document).ready(function(){
 		{		
 			//오답페이지 출력
 			showProgress();
-			feedbackWrongAns();
+			feedbackWrongAns(userAswer);
 		}
 	}
 	
@@ -579,7 +562,8 @@ $(document).ready(function(){
 							
       } else {//오답일 때					
 				//오답페이지 출력
-				feedbackWrongAns();
+				console.log("객관식 오답 : "+answer)
+				feedbackWrongAns(answer);
       }
       optionArray = [];
   });
@@ -755,12 +739,12 @@ $(document).ready(function(){
 	
 	
 	//오답화면 출력
-	function feedbackWrongAns()
+	function feedbackWrongAns(userAnswer)
 	{
 		//debugger;
-		var userAswer = $('.subjective-answerArea').val();
+		//var userAswer = $('.subjective-answerArea').val();
 	
-		console.log(userAswer);
+		console.log(userAnswer);
 		var txt = '<div class="result-feedback">';
 		txt += '<div class="wrongAnsFeedback"><div class="feedback-header"><i class="far fa-tired"></i>';
 		txt += '학습이 필요해요!</div>';
@@ -769,7 +753,7 @@ $(document).ready(function(){
 		txt += '<div class="feedback-content">'+ random.word +'</div></div>';
 		txt += '<div class="wrongAns-feedback-box">';
 		txt += '<div class="feedback-label">입력하신 답</div>';
-		txt += '<div class="feedback-content">'+ userAswer +'</div></div>';
+		txt += '<div class="feedback-content">'+ userAnswer +'</div></div>';
 		txt += '<div class="wrongAns-feedback-box">';
 		txt += '<div class="feedback-label">정답</div>';
 		txt += '<div class="feedback-content" id="content-correct">'+ random.meaning +'</div></div>';
@@ -811,6 +795,5 @@ $(document).ready(function(){
 });//end doc.ready 
 </script>
 </body>
-
 
 </html>
