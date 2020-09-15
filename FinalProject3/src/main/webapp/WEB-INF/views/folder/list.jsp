@@ -212,7 +212,7 @@
 			
 			var folderIdValue = '<c:out value="${folder.folderId}"/>';
 			
-			var modal = $('.modal');
+			var modal = $('.fade');
 			/* $(".modal").modal("show"); */
 			var modalInputFolderTitle = modal.find("input[name='folderTitle']");
 			var modalInputDescription = modal.find("input[name='description']");
@@ -229,7 +229,7 @@
 					modal.find("input").val("");
 					modal.find("button[id !='modalCloseBtn']").hide();
 					modalRegisterBtn.show();
-				$(".modal").modal("show");
+				$(".fade").modal("show");
 			</sec:authorize>
 			});
 			
