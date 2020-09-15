@@ -25,79 +25,57 @@
 
 .homeHighlightText {
 	width: 100%;
-	padding: 10.5rem 0;
+	padding: 6rem 0;
+	text-align: center;
+	font-size: 1.7rem;
+	font-weight: 600;
 }
 
 .splitBanner {
 	width: 100%;
-}
-
-
-
-.homeBanner {
-	width: 100%;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #fff;
-	
+	flex-direction: row;
 }
 
-.homeBanner-img {
+.splitBanner-img {
 	width: 50%;
-	align-self: stretch;
-}
-
-.homeBanner-img img {
-	width: 100%;
-	align-self: stretch;
-} 
-
-.img-description {
-	background-color: #124789;
-	padding: 1rem 0;
-	color: #fff;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 }
 
-.img-description div {
-	padding: 1rem 0;
+.splitBanner-img img {
 	width: 80%;
 }
 
-.description-title p {
-	font-size: 3vw;
+.splitBanner-text {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.description-title, .description-content {
+	width: 100%;
+}
+.description-title h3 {
+	font-size: 1.8rem;
+	width: 90%;
+	margin: 0 auto;
 }
 
 .description-content p {
-	font-size: 2vw;
+	font-size: 1rem;
+	padding: 2rem 0;
+	width: 80%;
+	margin-left: 10px;
 }
-
-.homeBanner-description {
-	width: 50%;
-	display: flex;
-	margin-left: auto;
-	margin-right: auto;
-	align-self: stretch;
-	padding: 1rem 0;
-}
-
-.banner-text {
-	max-width: 26rem;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0 auto;
-}
-
-
-
 
 </style>
 
 </head>
+
 <body>
   
 <%@ include file="includes/header.jsp" %>
@@ -110,9 +88,7 @@
 
 	<section class="splitBanner">		
 			<div class="splitBanner-img">
-				<div class="img-center">
-					<img alt="img" src="">
-				</div>
+					<img alt="img" src="/resources/images/home/home1.jpg">
 			</div>
 			<div class="splitBanner-text">
 				<div class="description-title">
@@ -134,17 +110,13 @@
 				</div>
 			</div>	
 			<div class="splitBanner-img">
-				<div class="img-center">
-					<img alt="img" src="">
-				</div>
+					<img alt="img2" src="/resources/images/home/home2.jpg">
 			</div>		
 	</section>
 	
 	<section class="splitBanner">		
 			<div class="splitBanner-img">
-				<div class="img-center">
-					<img alt="img" src="">
-				</div>
+					<img alt="img3" src="/resources/images/home/home3.jpg">
 			</div>
 			<div class="splitBanner-text">
 				<div class="description-title">
