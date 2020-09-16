@@ -25,7 +25,6 @@ $(document).on('click', 'button', function(e){
 		var wordTitle = $('input[name=word-title]').val();
 		var word = document.getElementsByName("word");
 		var meaning = document.getElementsByName("meaning");
-		alert(word.value);
 		
 		if(!wordTitle) {
 			alert('제목을 입력하세요.');
@@ -59,7 +58,7 @@ $(document).on('click', 'button', function(e){
 		var csrfTokenValue = $("meta[name='_csrf']").attr("content");
 		var csrfHeaderName = $("meta[name='_csrf_header']").attr("content");
 		
-		console.log('${_csrf.headerName}');
+		console.log(csrfHeaderName);
 		
 		var item = JSON.stringify(arr);
 		
@@ -71,7 +70,7 @@ $(document).on('click', 'button', function(e){
 			data : {"item" : item,
 				"wordTitle" : wordTitle},
 			beforeSend : function(xhr) {
-				xhr.setRequestHeader('${_csrf.headerName}', csrfTokenValue);
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success : function(response) {
 				alert('리스트에 추가함.')

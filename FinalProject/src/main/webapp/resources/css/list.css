@@ -21,6 +21,151 @@ option {
 }
 
 
+
+.HomeLayout {
+	margin: 0 auto;
+	background-color: rgb(251, 251, 251);
+	min-height: 100%;
+	min-height: 100vh;
+	width: 100%;
+	height: 100%;
+}
+
+.HomeLayout-container {
+	/* display: table; */
+	max-width: 1300px;
+	margin: 0 auto;
+	height: 100vh;
+	min-height: 100%;
+	background-color: #fff;
+}
+
+.HomeLayout-main {
+	display: table-cell;
+	position: inherit;
+	font-size: 14px;
+	width: 100%;
+	height: 100vh;
+	vertical-align: top;
+}
+
+.mainWrapper {
+	height: 100vh;
+}
+
+.DashboardPage-header {
+	padding: 0 40px;
+}
+
+.DashboardPage-header .DashboardHeader {
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	height: 200px;
+}
+.DashboardPage-header .DashboardHeader .ProfileHeader-avatarContainer {
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	margin: 10px 0;
+	background-color: #d9dde8;
+	text-align:center;
+	
+}
+
+.UserAvatar {
+	background-image: url('../images/profile.jpg');
+	background-position: center; 
+	background-repeat: no-repeat;
+	width: 128px;
+   	display:inline-block;
+    height:180px;
+}
+
+.DashboardPage-header .DashboardHeader .ProfileHeader-mainContent {
+	width: 470px;
+	height: 80px;
+	border-radius: 6px;
+	margin: 10px;
+	background-color: rgb(224, 224, 224);
+	position: relative;
+	top: 50%;
+	left: 230px;
+	transform: translate(-50%, -50%);
+}
+
+.ProfileHeader-headline {
+    display: table;
+    position: relative;
+    height: 100%;
+}
+
+.ProfileHeader-username {
+    float: left;
+    margin: 0px 20px;
+    height: 100%;
+}
+
+.ProfileHeader-userInfo {
+	float: left;
+	line-height: 80px;
+	color: #a1aeb3;
+}
+
+.DashboardPage-main {
+	background: #f6f7fb;
+	padding: 40px;
+}
+
+.DashboardPage-main .ProfileFoldersPage {
+	position: relative;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.DashboardPage-main .ProfileFoldersPage .DashboardListItem {
+	width: 640px;
+	height: 73px;
+	border-radius: 5px;
+	margin: 10px 0;
+	background-color: #d9dde8;
+	box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.08);
+	
+}
+
+.FolderPreview-icon {
+	color: #c3c7d5;
+	margin-right: .75rem;
+	height: 1.5rem;
+	width: 1.5rem;
+	vertical-align: top;
+}
+.FolderPreview-cardByLineWrapper {
+	display: flex;
+}
+.FolderPreview-cardHeader {
+	margin-top: 36px;
+	margin-left:20px;
+	background-color: #d9dde8;
+}
+
+.FolderPreview-cardHeader .FolderPreview-cardHeaderTitle {
+	font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.FolderPreview-cardHeader .fa-folder {
+	color: #c3c7d5;
+	font-size: 1.5rem;
+	margin-right: .75rem;
+	
+}
+
+
+
+/* paging */
+
+
 .pagination {
   display: inline-block;
   padding-left: 0;

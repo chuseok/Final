@@ -21,7 +21,7 @@ $(function(){
 		return this.optional(element) || /^[\uAC00-\uD7A3]+$/.test(value);
 	}, "");
 		
-	$(".form").validate({
+	$("#joinForm").validate({
 		
 		submitHandler: function() {
 			
@@ -33,8 +33,6 @@ $(function(){
 			}
 			
 		},
-		
-
 
 		rules:{
 			userId:{
@@ -110,7 +108,6 @@ $(function(){
 				numeric : "숫자만 입력가능합니다."
 			}
 		},
-
 
 		errorElement : 'span', 	
 		errorClass: 'error',	

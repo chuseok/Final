@@ -7,52 +7,21 @@
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../resources/css/main.css">
 
-<link rel="stylesheet" href="../resources/css/get.css">
+<%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
-<link
-	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
-	rel="stylesheet">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Bootstrap Core CSS -->
-<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- MetisMenu CSS -->
-<link href="/resources/vendor/metisMenu/metisMenu.min.css"
-	rel="stylesheet">
-
-<!-- DataTables CSS -->
-<link
-	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
-	rel="stylesheet">
-
-<!-- DataTables Responsive CSS -->
-<link
-	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
-	rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link src="/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+	
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/get.css">
 <script src="/resources/js/wordBook.js"></script>
 <script src="/resources/js/folder.js"></script>
 </head>
 <body>
-
-	<%@ include file="/WEB-INF/views/includes/header.jsp"%>
-
-	<div class="HomeLayout">
+<div class="HomeLayout">
 		<div class="HomeLayout-container">
 			<%@ include file="/WEB-INF/views/includes/sidebar.jsp"%>
 
@@ -245,7 +214,6 @@
 		</div>
 	</div>
 	
-	
 	<!-- add Modal -->
 	
 	
@@ -352,7 +320,7 @@
 	</div>
 	<!-- /.share Modal -->
 	
-	
+
 	<div class="temp" oncontextmenu="return showContextMenu();">
 		<div id="contextMenu" class="context-menu">
 			<ul>
@@ -362,7 +330,6 @@
 		</div>
 		
 	</div>
-	
 	
 	<script>
 		var contextMenu = document.getElementById('contextMenu');

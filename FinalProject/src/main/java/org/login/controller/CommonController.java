@@ -1,0 +1,36 @@
+package org.login.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.test.tst.NaverLoginBO;
+
+import lombok.extern.log4j.Log4j;
+
+@Controller
+@Log4j
+public class CommonController {
+
+	@GetMapping("/accessError")
+	public void accessDenined(Authentication auth, Model model) {
+		log.info("Access Denied : " + auth);
+		
+		model.addAttribute("msg", "Access Denied");
+	}
+	
+	
+	@GetMapping("/customLogout")
+	public void logoutGET() {
+		log.info("custom logout");
+	}
+	
+	
+	
+	
+}

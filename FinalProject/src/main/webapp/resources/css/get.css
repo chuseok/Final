@@ -1,9 +1,16 @@
+.mainContents {
+	padding: 0 !important;
+}
+
+/* DashboardPage-header */
+
 .DashboardPage-header {
     padding: 40px !important;
 }
 .DashboardPage-header .DashboardHeader {
    	display: block !important;
     height: 80px;
+    position: relative;
 }
 
 .FolderPageHeader-info {
@@ -25,9 +32,6 @@
     color: #303545;
 }
 
-.DashboardHeaderActions {
-    position: static;
-}
 .FolderPageHeader-byline {
 	border-left: .125rem solid var(--ui_color_gray_90_foreground);
     color: #c3c7d5;
@@ -102,8 +106,13 @@
     text-align: center;
 }
 
-/* DashboardPage-main-header */
 
+
+/* DashboardPage-main */
+
+.DashboardPage-main {
+    background-color: #f6f7fb;
+}
 
 .DashboardFeedControls-sort {
     display: flex;
@@ -224,6 +233,7 @@ option {
     grid-template-rows: repeat(auto-fill,1fr);
     grid-column-gap: .75rem;
     grid-row-gap: .75rem;
+    padding: 30px 10px;
 }
 
 .UIBaseCard--noLinkBox {
