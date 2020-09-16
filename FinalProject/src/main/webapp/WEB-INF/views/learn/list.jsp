@@ -6,8 +6,11 @@
 	<meta charset="UTF-8">
   <title>암기용-Learn</title>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+  
 
   <link rel="stylesheet" href="/resources/css/main.css">
+  <link rel="stylesheet" href="/resources/css/list.css">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>	
@@ -24,22 +27,26 @@
 					<div class="mainContents">
 						<div class="mainContents-recentFeed">
 							<div class="recentFeed-header">
-								<h5>최근 학습한 단어장</h5>
+								<h5>내가 만든 단어장</h5>
 							</div>
 							<div class="recentFeed-cards">							
 
-								<c:forEach items="${list }" var="word" varStatus="vs">
-								<div class="recentFeed-cardItem">
-
-									<div class="recentFeed-cardItem-inner">
-										<span class="wordTitle"><c:out value="${word.title }" /></span>
-										<span class="wordId"><c:out value="${word.id }" /></span>
-									</div>
-									
-									<div class="recenFeed-cardItem-LinkBox">
-										<a class='move-wordList' href='get?id=<c:out value="${word.id }" />&title=<c:out value="${word.title }" />'></a>
-										<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
-									</div>
+								<c:forEach items="${myList }" var="word" varStatus="vs">
+									<div class="recentFeed-cardItem">
+	
+										<div class="recentFeed-cardItem-inner">
+											<div class="wordTitle">
+												<span><c:out value="${word.title }" /></span>
+											</div>
+											<div class="wordListNum">
+												<span> ${fn:length(word.item) }단어</span>
+											</div>
+										</div>
+										
+										<div class="recenFeed-cardItem-LinkBox">
+											<a class='move-wordList' href='get?id=<c:out value="${word.id }" />&title=<c:out value="${word.title }" />'></a>
+											<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
+										</div>
 									</div>
 								</c:forEach>
 							
@@ -53,11 +60,13 @@
 	
 <script>
 
-	$(document).ready(function(){
+	$(document).ready(function(){	
+
 		
 		history.replaceState({},null,null)
 		
-	
+		
+		console.log(${myList});
 	}); //document.ready.end
 
 </script>

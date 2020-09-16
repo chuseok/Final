@@ -578,7 +578,7 @@ $(document).ready(function(){
 			obj.id = wordId;
 			obj.title = wordTitle;
 			obj.word = upWord;
-			console.log(obj);
+			//console.log(obj);
 			
 			var jsonData = JSON.stringify(obj);
 			
@@ -636,7 +636,7 @@ $(document).ready(function(){
 				
 			obj.id = wordId;
 			obj.title = wordTitle;
-			console.log(obj);
+			//console.log(obj);
 			
 			var jsonData = JSON.stringify(obj);
 			

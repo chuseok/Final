@@ -35,8 +35,8 @@
 
 		<div class="sidebar-navSection">
 			<div class="sidenav-menuItem">
-				<span class="UlmenuItem"> <a href="/learn/list"> <span
-						class="UlmenuItem-inner"> <i class="fas fa-th-large"></i>세트
+				<span class="UlmenuItem"> <a href="/learn/list?id=<sec:authentication property="principal.member.userId"/>"> <span
+						class="UlmenuItem-inner"> <i class="fas fa-th-large"></i>내 세트
 					</span></a></span>
 			</div>
 			<div class="sidenav-menuItem">
@@ -78,15 +78,6 @@
     </div>
 
 		<div class="sidebar-footer">
-			<div>
-				<a href="">업그레이드</a>
-			</div>
-			<div>
-				<a href="">지원센터</a>
-			</div>
-			<div>
-				<a href="">개인정보 취급방침</a>
-			</div>
 			<div class="social-icons">
 				<i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i> <i
 					class="fab fa-facebook-f"></i>

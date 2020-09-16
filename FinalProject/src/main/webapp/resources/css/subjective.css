@@ -11,13 +11,9 @@
 	
 }
 
-.back-gray {
-	background-color: rgb(251, 251, 251);	
-}
 
 /* side-bar */
 .learn-sideBar {
-	width: 200px;
 	background-color: #fff;
 	padding: 20px;
 }
@@ -26,7 +22,6 @@
 	padding: 20px 0;
   line-height: 1.625;
   font-size: 100%;
-  width:180px;
   cursor: pointer;
   border-bottom: 1px solid #c0c0c0;
 }
@@ -39,7 +34,7 @@
 /* sidebar-progress */
 .sideBar-progressBox {
 	padding: 20px 0;
-	width:200px;
+	width:180px;
 }
 
 .progress-label {
@@ -75,7 +70,7 @@
 /* mainContent */
 .learn-mainContent {
 	position: relative;
-	width: 90%;
+	width: 85%;
 	padding: 30px;
 }
 

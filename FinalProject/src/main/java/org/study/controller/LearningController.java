@@ -1,10 +1,7 @@
 package org.study.controller;
 
 
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,11 +32,11 @@ public class LearningController {
 	
 	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(@RequestParam("id") String id, Model model) {
 		
-		log.info("get all list........");
+		log.info("get my list........");
 		
-		model.addAttribute("list", learningservice.getAllWordList());
+		model.addAttribute("myList", learningservice.getMyList(id));
 	}
 	
 	@GetMapping("/get")

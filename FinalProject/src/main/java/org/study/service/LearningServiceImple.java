@@ -264,6 +264,47 @@ public class LearningServiceImple implements LearningService {
 		
 	}
 
+	@Override
+	public JSONArray getMyList(String id) {
+		log.info("get myList.....");
+		
+		JSONArray wordArray = new JSONArray();
+		
 
+		JSONObject wordObj;
+
+		try {
+			List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
+					new TypeReference<List<WordDTO>>() {
+					});
+			int size = jsonDTOList.size();
+			for (int i = 0; i < size; i++) {
+				JSONArray itemArray = new JSONArray();
+				WordDTO str = jsonDTOList.get(i);
+
+				if (str.getId().equals(id)) {
+					log.info("id : " + str.getId());
+					wordObj = new JSONObject();
+
+					wordObj.put("id", str.getId());
+					wordObj.put("title", str.getTitle());
+
+					for (WordVO item : str.getItem()) {
+						JSONObject itemObj = new JSONObject();
+						itemObj.put("word", item.getWord());
+						itemObj.put("meaning", item.getMeaning());
+						itemObj.put("learningRate", item.getLearningRate());
+						itemArray.add(itemObj);
+					}
+
+					wordObj.put("item", itemArray);
+					wordArray.add(wordObj);
+				}
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return wordArray;
+	}
 
 }

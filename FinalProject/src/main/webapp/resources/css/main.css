@@ -1,5 +1,5 @@
 
-/*초기화*/
+/*珥덇린�솕*/
 html, body, div, span, applet, object, iframe,
 
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -46,7 +46,7 @@ html, body {
 /* * {
   box-sizing: inherit;
 
-} 모달 창이 찌그러짐*/
+} 紐⑤떖 李쎌씠 李뚭렇�윭吏�*/
 
 
 a {
@@ -318,7 +318,7 @@ header a:hover {
   color: #ff9a76;
 }
 
-/* side-nav 폴더 만들기 */
+/* side-nav �뤃�뜑 留뚮뱾湲� */
 
 .UILink {
 	display: block;
@@ -382,31 +382,50 @@ header a:hover {
   padding: 0;
 }
 
+.recentFeed-header {
+	padding: 1rem 0;
+}
+
 .mainContents-recentFeed .recentFeed-cards {
   display: flex;
   position: relative;
   flex-direction:row;
   flex-wrap: wrap;
+  padding: 1rem 0;
 }
 
-.mainContents-recentFeed .recentFeed-cards .recentFeed-cardItem {
-  width: 340px;
-  height: 180px;
-  border: 1px solid black;
+.recentFeed-cardItem {
+  width: 300px;
+  height: 100px;
+  border: 1px solid #ffde7d;
   border-radius: 6px;
   margin: 10px;
-  background-color: rgb(224, 224, 224);
-  position:relative
+  position:relative;
+  box-shadow: 0 1px 2px 0 #ffd966;
 }
 
-.mainContents-recentFeed .recentFeed-cards .recentFeed-cardItem-inner {
-  padding: 0.75rem 1rem;
+.recentFeed-cardItem-inner {
+  padding: 1.5rem 1.25rem;
   display: flex;
+  flex-direction: column;
+  
 }
 
-.mainContents-recentFeed .recentFeed-cards .recenFeed-cardItem-LinkBox {
-	width: 340px;
-  height: 180px;
+.recentFeed-cardItem-inner .wordTitle {	
+	text-align: left;	
+	font-size: 1.8rem;
+	font-weight: 550;
+}
+
+.recentFeed-cardItem-inner .wordListNum {
+	position: absolute;
+	bottom: 0.2rem;
+	right: 0.6rem;
+}
+
+.recenFeed-cardItem-LinkBox {
+	width: 300px;
+  height: 100px;
   /* border: 1px solid black; */
   border-radius: 6px;
   position: absolute;
@@ -415,7 +434,7 @@ header a:hover {
   left: 0;
 }
 
-.mainContents-recentFeed .recentFeed-cards .recenFeed-cardItem-LinkBox a {
+.recenFeed-cardItem-LinkBox a {
 	position: absolute;
 	display: inherit;
 	width: 100%;

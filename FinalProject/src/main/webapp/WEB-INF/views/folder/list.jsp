@@ -81,12 +81,13 @@
 								
 									<a href="/folder/get?folderId=<c:out value='${folder.folderId }'/>&userId=${currentUserName }">
 									<div class="UILinkBox">
-										<div class="FolderPreview-cardByLineWrapper"></div>
+										<div class="FolderPreview-cardByLineWrapper">
 										<header class="FolderPreview-cardHeader">
 											<i class="far fa-folder"></i>
 											<!-- <svg class="FolderPreview-icon" role="img"></svg> -->
 											<span class="FolderPreview-cardHeaderTitle"><c:out value="${folder.folderTitle }"/></span>
 										</header>
+										</div>
 									</div>
 									</a>
 								</div>

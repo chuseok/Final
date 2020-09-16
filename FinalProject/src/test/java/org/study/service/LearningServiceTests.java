@@ -53,6 +53,13 @@ public class LearningServiceTests {
 		
 	}
 	
+	@Test
+	public void testGetMyList() {
+				
+		log.info(learningservice.getMyList("sdf"));
+		
+	}
+	
 	
 	
 	
