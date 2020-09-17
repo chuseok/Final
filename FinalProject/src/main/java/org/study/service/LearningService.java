@@ -17,6 +17,10 @@ public interface LearningService {
 	public List<WordDTO> getAllWordList();
 	
 	public JSONArray getMyList(String id);
+	
+	public JSONArray getIdSearchList(String id);
+	
+	public JSONArray getTitleSearchList(String title);
 		
 	public JSONArray getWordJsonArray(String id, String title);
 		

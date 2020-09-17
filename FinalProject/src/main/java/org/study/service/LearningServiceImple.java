@@ -142,7 +142,7 @@ public class LearningServiceImple implements LearningService {
 		for (WordVO item : dto.getItem()) {
 			if (item.getWord().equals(word)) {
 				int rate = item.getLearningRate();
-				log.info("¹Ù²î±â Àü : "+rate);
+				log.info("ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ : "+rate);
 				if(rate == 0) {
 					item.setLearningRate(1);
 				}
@@ -150,7 +150,7 @@ public class LearningServiceImple implements LearningService {
 					rate += 1;
 					item.setLearningRate(rate);
 				}
-				log.info("¹Ù²ï ÈÄ : "+rate);
+				log.info("ï¿½Ù²ï¿½ ï¿½ï¿½ : "+rate);
 				//item.setLearningRate(1);
 				log.info(dto.getId()+','+dto.getTitle());
 				log.info(item.getWord()+','+item.getMeaning()+','+item.getLearningRate());
@@ -171,7 +171,7 @@ public class LearningServiceImple implements LearningService {
 		  { 
 			  WordDTO str = jsonDTOList.get(i);
 			  
-			  //¹Ù²ïµ¥ÀÌÅÍ·Î ÀúÀå
+			  //ï¿½Ù²ïµ¥ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½
 			  if(str.getId().equals(dto.getId()) && str.getTitle().equals(dto.getTitle()))
 			  { 
 				  str.setItem(dto.getItem());		  
@@ -196,7 +196,7 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
-		  //file·Î ÀúÀå
+		  //fileï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test01.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -251,7 +251,7 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
-		  //file·Î ÀúÀå
+		  //fileï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test01.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -306,5 +306,92 @@ public class LearningServiceImple implements LearningService {
 		}
 		return wordArray;
 	}
+	
+	@Override
+	public JSONArray getIdSearchList(String id) {
+		log.info("search Id.....");
+		
+		JSONArray wordArray = new JSONArray();
+		
+		JSONObject wordObj;
+
+		try {
+			List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
+					new TypeReference<List<WordDTO>>() {
+					});
+			int size = jsonDTOList.size();
+			for (int i = 0; i < size; i++) {
+				JSONArray itemArray = new JSONArray();
+				WordDTO str = jsonDTOList.get(i);
+
+				if (str.getId().contains(id)) {
+					log.info("id : " + str.getId());
+					wordObj = new JSONObject();
+
+					wordObj.put("id", str.getId());
+					wordObj.put("title", str.getTitle());
+
+					for (WordVO item : str.getItem()) {
+						JSONObject itemObj = new JSONObject();
+						itemObj.put("word", item.getWord());
+						itemObj.put("meaning", item.getMeaning());
+						itemObj.put("learningRate", item.getLearningRate());
+						itemArray.add(itemObj);
+					}
+
+					wordObj.put("item", itemArray);
+					wordArray.add(wordObj);
+				}
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return wordArray;
+	}
+
+	@Override
+	public JSONArray getTitleSearchList(String title) {
+		log.info("search Title.....");
+		
+		JSONArray wordArray = new JSONArray();
+		
+
+		JSONObject wordObj;
+
+		try {
+			List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
+					new TypeReference<List<WordDTO>>() {
+					});
+			int size = jsonDTOList.size();
+			for (int i = 0; i < size; i++) {
+				JSONArray itemArray = new JSONArray();
+				WordDTO str = jsonDTOList.get(i);
+
+				if (str.getTitle().contains(title)) {
+					log.info("id : " + str.getId());
+					wordObj = new JSONObject();
+
+					wordObj.put("id", str.getId());
+					wordObj.put("title", str.getTitle());
+
+					for (WordVO item : str.getItem()) {
+						JSONObject itemObj = new JSONObject();
+						itemObj.put("word", item.getWord());
+						itemObj.put("meaning", item.getMeaning());
+						itemObj.put("learningRate", item.getLearningRate());
+						itemArray.add(itemObj);
+					}
+
+					wordObj.put("item", itemArray);
+					wordArray.add(wordObj);
+				}
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return wordArray;
+	}
+
+	
 
 }

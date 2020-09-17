@@ -39,16 +39,7 @@
             <div class="recentFeed-cardItem">카드4</div>
           </div>
         </div>
-        <div class="mainContents-recommand">
-          <div class="recommand-header">
-            <h5>추천하는 단어장</h5>
-          </div>
-          <div class="recommand-cards">
-            <div class="recommand-cardItem">카드1</div>
-            <div class="recommand-cardItem">카드2</div>
-          </div>
-        </div>
-      </div>
+       </div>
     </div>
   </section>
 </div>

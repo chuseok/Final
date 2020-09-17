@@ -72,6 +72,17 @@ public class LearningController {
 		model.addAttribute("WordDTO", learningservice.getWordJsonArray(id, title));
 	}
 	
+	@GetMapping("/search")
+	public void searchList(@RequestParam String keyword, Model model) {
+		log.info("search...");
+		
+		String id = keyword;
+		model.addAttribute("idList",learningservice.getIdSearchList(id));
+		
+		String title = keyword;
+		model.addAttribute("titleList",learningservice.getTitleSearchList(title));
+		
+	}
 	
 	
 	

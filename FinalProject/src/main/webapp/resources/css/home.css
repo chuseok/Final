@@ -8,6 +8,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    max-width: 80%;
 }
 
 .homeHighlightText {
@@ -32,7 +33,7 @@
 
 .splitBanner-img img {
 	width: 80%;
-	max-width: 550px;
+	max-width: 530px;
 }
 
 .splitBanner-text {

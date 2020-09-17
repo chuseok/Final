@@ -211,7 +211,11 @@
       </div>
       <div style='display:none' class="header-transitionGroup-Wrapper">
      		<div class="header-search">
-     			<i class="fas fa-search"></i><input class="header-searchInput" type="search" name="headerSearch" autofocus/>
+     			<form id="searchForm" action="/search" method='get'>
+     			<i class="fas fa-search"></i>
+	     			<input class="header-searchInput" type="text" name="keyword" autofocus/>
+	     		</form>
+     			
      		</div>
      		<div class="header-searchClose">
      			<i class="fas fa-times"></i>
@@ -224,7 +228,7 @@
         </div>
 
         <div class="header-createSection">
-          <a href="">
+          <a href="/word/wordList">
             <i class="fas fa-folder-plus"></i>만들기
           </a>
         </div>
@@ -616,5 +620,25 @@ $(document).ready(function(){
 		$('.header-transitionGroup-Wrapper').toggle();
 	}
 	
+ </script>
+ 
+ <script>
+ 	var searchForm = $("#searchForm");
+ 	
+ 	//header search - enter
+	$('.header-searchInput').keypress(function(e){
+		if(e.keyCode == 13 && !e.shiftKey){
+			
+			if(!searchForm.find("input[name='keyword']").val()){
+				alert("키워드를 입력하세요.");
+				return false;
+			}
+			
+			searchForm.find("input[name='pageNum']").val("1");
+			e.preventDefault();
+			
+			searchForm.submit();
+		}
+	});
  </script>
 </html>

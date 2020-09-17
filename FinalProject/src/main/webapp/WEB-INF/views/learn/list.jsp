@@ -21,10 +21,11 @@
 
 	<div class="HomeLayout">
 		<div class="HomeLayout-container">
+			<%@ include file="../includes/sidebar.jsp" %>
 			<section class="HomeLayout-main">
-			<h2>학습하기</h2>
-				<div class="mainWrappesr">
+				<div class="mainWrapper">
 					<div class="mainContents">
+					<h2>내 세트</h2>
 						<div class="mainContents-recentFeed">
 							<div class="recentFeed-header">
 								<h5>내가 만든 단어장</h5>
