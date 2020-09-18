@@ -1,5 +1,5 @@
 
-/*珥덇린�솕*/
+/*initialization*/
 html, body, div, span, applet, object, iframe,
 
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -41,6 +41,7 @@ time, mark, audio, video {
 }
 html, body {
 	 min-height: 100%;
+	 font-size: 16px;
 }
 
 /* * {
@@ -297,24 +298,25 @@ header a:hover {
 
 .UlmenuItem-extend {
   padding-left: 20px;
+  width: 100%;
 
 }
 .UlmenuItem-extend i {
   padding-right: 10px;
 }
 
-.sidenav-menuItem .UlmenuItem-extend .UlmenuItem-inner {
+.UlmenuItem-extend .UlmenuItem-inner {
   display: inline-block;
   padding: 10px 5px;
   box-sizing: inherit;
   width: 100%;
 }
 
-.sidenav-menuItem .UlmenuItem-extend a{
+.UlmenuItem-extend .UlmenuItem-inner a{
 	color: black;
 }
 
-.sidenav-menuItem .UlmenuItem-extend a:hover {
+.UlmenuItem-extend .UlmenuItem-inner a:hover {
   color: #ff9a76;
 }
 
@@ -326,6 +328,7 @@ header a:hover {
   background-color: initial;
   border: none;    
   cursor: pointer;
+  color: #ff9a76;
 }
 
 /*sidebar-footer*/
@@ -364,7 +367,7 @@ header a:hover {
 
 .HomeLayout-container {
   display: table;
-  max-width: 1300px;
+  max-width: 1250px;
   height: 100%;
   background-color: #fff;
 }
@@ -378,12 +381,24 @@ header a:hover {
   height: 100%;
 }
 
+.mainContents {
+	font-size: 1.5rem;
+	font-weight: 500;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
 .mainContents-recentFeed {
   padding: 0;
 }
 
 .recentFeed-header {
 	padding: 1rem 0;
+}
+
+.recentFeed-header h5 {
+	font-size: 1.7rem;
+	font-weight: 600;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .mainContents-recentFeed .recentFeed-cards {
@@ -394,14 +409,33 @@ header a:hover {
   padding: 1rem 0;
 }
 
+.emptyList {
+	padding: 1.5rem;
+	min-width: 700px;	
+}
+
+.emptyList span { 
+	font-size: 1.4rem;
+	font-weight: 400;
+	
+}
+
 .recentFeed-cardItem {
   width: 300px;
   height: 100px;
-  border: 1px solid #ffde7d;
-  border-radius: 6px;
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
   margin: 10px;
   position:relative;
-  box-shadow: 0 1px 2px 0 #ffd966;
+  box-shadow: 0 2px 3px 0 #e9e9e9;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.recentFeed-cardItem:hover {
+	cursor: pointer;
+	border: 1px solid #ffde7d;
+	box-shadow: 0 2px 3px 0 #ffde7d;
 }
 
 .recentFeed-cardItem-inner {
@@ -421,6 +455,8 @@ header a:hover {
 	position: absolute;
 	bottom: 0.2rem;
 	right: 0.6rem;
+	font-size: 1.3rem;
+	font-weight: 450;
 }
 
 .recenFeed-cardItem-LinkBox {
@@ -441,6 +477,10 @@ header a:hover {
 	height: 100%;	
 	top : 0;
   left: 0;
+}
+
+.fa-angle-double-down {
+	padding: 0 4px;
 }
 	
 .mainContents-recommand {

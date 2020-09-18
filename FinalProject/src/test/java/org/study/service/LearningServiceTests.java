@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.study.domain.StudyDTO;
 import org.study.service.LearningService;
 
 import lombok.Setter;
@@ -35,21 +36,21 @@ public class LearningServiceTests {
 	
 	@Test
 	public void testGetWordDTO() {
-		log.info(learningservice.getWordDTO("hansol", "´Ü¾îÀå"));
+		log.info(learningservice.getWordDTO("hansol", "ï¿½Ü¾ï¿½ï¿½ï¿½"));
 		
 	}
 	
 	@Test
 	public void testgetWordList() {
 				
-		log.info(learningservice.getWordJsonArray("hansol", "´Ü¾îÀå"));
+		log.info(learningservice.getWordJsonArray("hansol", "ï¿½Ü¾ï¿½ï¿½ï¿½"));
 		
 	}
 	
 	@Test
 	public void testUpRate() {
 				
-		learningservice.upRate("hansol", "´Ü¾îÀå","dog");
+		learningservice.upRate("hansol", "ï¿½Ü¾ï¿½ï¿½ï¿½","dog");
 		
 	}
 	
@@ -58,6 +59,16 @@ public class LearningServiceTests {
 				
 		log.info(learningservice.getMyList("sdf"));
 		
+	}
+	
+	@Test
+	public void testAddRecentStudy() {
+		StudyDTO study = new StudyDTO();
+		study.setUserId("sdf");
+		study.setBookId("ë‹¨ì–´ìž¥");
+		study.setBookTitle("ìƒ‰ê¹”");
+		
+		learningservice.addRecentStudy(study);
 	}
 	
 	

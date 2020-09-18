@@ -30,6 +30,8 @@
 	<mybatis-spring:scan base-package="org.dragon.mapper"/>
 	<mybatis-spring:scan base-package="org.login.mapper"/>
 	<mybatis-spring:scan base-package="org.zerock.mapper"/>
+	<mybatis-spring:scan base-package="org.study.mapper"/>
+	
 	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" /> 

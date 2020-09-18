@@ -59,14 +59,15 @@
 									
 								</c:forEach>	
 							</div>
-							<div><a href="#" id="LoadMore">Load More</a></div>
+							<div><a href="#" id="LoadMore"><i class="fas fa-angle-double-down"></i>Load More</a></div>
 						</div>
 						
 						<div class="mainContents-searchFeed">
 							<div class="searchFeed-header">
 								<h5>TiTle : ${fn:length(titleList) }건</h5>
 							</div>
-							<div class="searchFeed-cards">							
+							<div class="searchFeed-cards">		
+												
 								<c:forEach items="${titleList }" var="word">
 									<div class="searchFeed-cardItem-large">
 	
@@ -98,7 +99,7 @@
 								</c:forEach>
 							
 							</div>
-							<div><a href="#" id="LoadMore-Title">Load More</a></div>
+							<div><a href="#" id="LoadMore-Title"><i class="fas fa-angle-double-down"></i>Load More</a></div>
 							
 						</div>						
 						

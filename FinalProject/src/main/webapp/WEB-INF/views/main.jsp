@@ -16,7 +16,8 @@
   <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
   <link rel="stylesheet" href="/resources/css/main.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
 </head>
 <body>
   
@@ -34,8 +35,15 @@
 					<div class="recentFeed-header">
 						<h5>내가 만든 단어장</h5>
 					</div>
-					<div class="recentFeed-cards">							
-
+					
+					<c:choose>							
+						<c:when test="${empty myList }">
+							<div class="emptyList"><span>아직 만들어진 단어장이 없습니다.</span></div>
+						</c:when>
+						
+						<c:otherwise>
+						<div class="recentFeed-cards">
+							
 						<c:forEach items="${myList }" var="word" varStatus="vs">
 							<div class="recentFeed-cardItem" style="display:none">
 
@@ -53,9 +61,12 @@
 									<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
 								</div>
 							</div>
-						</c:forEach>					
-					</div>
-					<div><a href="#" id="LoadMore">Load More</a></div>
+						</c:forEach>						
+						</div>
+						<div><a href="#" id="LoadMore"><i class="fas fa-angle-double-down"></i>Load More</a></div>
+					 </c:otherwise>		
+					</c:choose>
+					
 				</div>
     
         <div class="mainContents-recentFeed">

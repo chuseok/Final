@@ -10,7 +10,8 @@
   
 
   <link rel="stylesheet" href="/resources/css/main.css">
-  <link rel="stylesheet" href="/resources/css/list.css">
+  <!-- <link rel="stylesheet" href="/resources/css/list.css"> -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>	
@@ -30,28 +31,37 @@
 							<div class="recentFeed-header">
 								<h5>내가 만든 단어장</h5>
 							</div>
-							<div class="recentFeed-cards">							
-
-								<c:forEach items="${myList }" var="word" varStatus="vs">
-									<div class="recentFeed-cardItem">
-	
-										<div class="recentFeed-cardItem-inner">
-											<div class="wordTitle">
-												<span><c:out value="${word.title }" /></span>
+							<c:choose>							
+								<c:when test="${empty myList }">
+									<div class="emptyList"><span>아직 만들어진 단어장이 없습니다.</span></div>
+								</c:when>
+								
+								<c:otherwise>
+								<div class="recentFeed-cards">
+									
+									<c:forEach items="${myList }" var="word" varStatus="vs">
+										<div class="recentFeed-cardItem" style="display:none">
+			
+											<div class="recentFeed-cardItem-inner">
+												<div class="wordTitle">
+													<span><c:out value="${word.title }" /></span>
+												</div>
+												<div class="wordListNum">
+													<span> ${fn:length(word.item) }단어</span>
+												</div>
 											</div>
-											<div class="wordListNum">
-												<span> ${fn:length(word.item) }단어</span>
+											
+											<div class="recenFeed-cardItem-LinkBox">
+												<a class='move-wordList' href='/learn/get?id=<c:out value="${word.id }" />&title=<c:out value="${word.title }" />'></a>
+												<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
 											</div>
 										</div>
-										
-										<div class="recenFeed-cardItem-LinkBox">
-											<a class='move-wordList' href='get?id=<c:out value="${word.id }" />&title=<c:out value="${word.title }" />'></a>
-											<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
-										</div>
-									</div>
-								</c:forEach>
+									</c:forEach>						
+								</div>
+								<div><a href="#" id="LoadMore"><i class="fas fa-angle-double-down"></i>Load More</a></div>
+							 </c:otherwise>		
+							</c:choose>		
 							
-							</div>
 						</div>
 					</div>
 				</div>

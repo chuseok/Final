@@ -7,9 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WordBookVO {
+public class StudyDTO {
 	
 	private String userId;
-	private String wordTitle;
+	private String bookId;
+	private String bookTitle;
+	private String studyDate;	
 
 }

@@ -2,6 +2,7 @@ package org.study.service;
 
 import java.util.List;
 
+import org.study.domain.StudyDTO;
 import org.study.domain.WordDTO;
 import org.study.domain.WordVO;
 
@@ -23,12 +24,15 @@ public interface LearningService {
 	public JSONArray getTitleSearchList(String title);
 		
 	public JSONArray getWordJsonArray(String id, String title);
+	
 		
 	public WordDTO getWordDTO(String id, String title);
 	
 	public void upRate(String id, String title, String word);
 	
 	public void resetRate(String id, String title);
+	
+	public void addRecentStudy(StudyDTO study);
 	
 	
 }

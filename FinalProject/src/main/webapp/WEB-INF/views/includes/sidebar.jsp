@@ -16,12 +16,6 @@
 			</div>
 			<div class="sidenav-menuItem">
 				<span class="UlmenuItem"> <a href=""> <span
-						class="UlmenuItem-inner"> <i class="fas fa-search"></i>다이어그램
-							찾아보기
-					</span></a></span>
-			</div>
-			<div class="sidenav-menuItem">
-				<span class="UlmenuItem"> <a href=""> <span
 						class="UlmenuItem-inner"> <i class="fas fa-thumbs-up"></i>친구
 							추천
 					</span></a></span>

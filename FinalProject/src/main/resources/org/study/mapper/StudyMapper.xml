@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.study.mapper.StudyMapper">
+
+	
+	<insert id="insert">
+	insert into recentStudy (userId,bookId, bookTitle)
+	values (#{userId},#{bookId},#{bookTitle})
+	</insert>
+	
+	<resultMap type="org.study.domain.StudyDTO" id="studyDtoMap">
+	<result property="userId" column="bookId"/>
+	<result property="bookId" column="bookId"/>
+	<result property="bookTitle" column="bookTitle"/>
+	<result property="studyDate" column="studyDate"/>
+	</resultMap>
+
+
+	</mapper>

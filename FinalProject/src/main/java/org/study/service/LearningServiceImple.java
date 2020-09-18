@@ -10,8 +10,10 @@ import java.util.List;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.stereotype.Service;
+import org.study.domain.StudyDTO;
 import org.study.domain.WordDTO;
 import org.study.domain.WordVO;
+import org.study.mapper.StudyMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,6 +25,8 @@ import net.sf.json.JSONObject;
 @AllArgsConstructor
 public class LearningServiceImple implements LearningService {
 
+	private StudyMapper mapper;
+	
 	@Override
 	public JSONArray readAllJson() {
 
@@ -390,6 +394,14 @@ public class LearningServiceImple implements LearningService {
 			e1.printStackTrace();
 		}
 		return wordArray;
+	}
+
+	@Override
+	public void addRecentStudy(StudyDTO study) {
+		
+		log.info("insert recent study....");
+		
+		mapper.insert(study);		
 	}
 
 	
