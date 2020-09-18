@@ -314,7 +314,7 @@ $(document).ready(function(){
 			{
 				
 				//정답Array에 추가
-				addRightCardArray(random.word, random.meaning);
+				addCardArray(random.word, random.meaning, RightCardArray);
 				console.log(RightCardArray);
 				
 				//array에서 삭제
@@ -329,7 +329,7 @@ $(document).ready(function(){
 			else
 			{		
 				//오답Array에 추가
-				addWrongCardArray(random.word, random.meaning);
+				addCardArray(random.word, random.meaning, WrongCardArray);
 				console.log(WrongCardArray);
 				
 				//array에서 삭제
@@ -378,21 +378,15 @@ $(document).ready(function(){
 		});
 		
 		
-		
-		function addRightCardArray(word, meaning){
-			RightCardArray.push({
+		/* addCard */
+		function addCardArray(word, meaning, Array){
+			Array.push({
 				word : word,
 				meaning : meaning			
 			});
 		}
 		
-		function addWrongCardArray(word, meaning){
-			WrongCardArray.push({
-				word : word,
-				meaning : meaning			
-			});
-		}
-		
+	
 		//문제페이지 다시 보이기
 		function resetSubjectiveDiv(){
 			$('.result-feedback').remove();

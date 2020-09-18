@@ -74,7 +74,7 @@
 						</section>
 						<!-- /.UIRow -->
 
-						<section class="Section-WordLists">
+					<section class="Section-WordLists">
 						<div class="listOfWords">
 							<h2 class="UIHeading-two">이 세트의 단어<span class="numOfList"></span></h2>
 
@@ -102,8 +102,8 @@
 								</tbody>
 							</table>
 						</div>
-						</section>
-						<!-- /.listOfWords -->
+					</section>
+					<!-- ./listOfWords -->
 						
 					</div>
 				</div>

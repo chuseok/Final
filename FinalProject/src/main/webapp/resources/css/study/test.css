@@ -10,7 +10,6 @@
 
 /* side-bar */
 .learn-sideBar {
-	width: 200px;
 	background-color: #fff;
 	padding: 20px;
 }
@@ -21,11 +20,11 @@
   font-size: 100%;
   width:180px;
   cursor: pointer;
-  border-bottom: 1px solid #c0c0c0;
+  border-bottom: 1px solid #4850b9;
 }
 
 .sideBar-backBtnBox i {
-	color: #3ccfcf;
+	color: #4850b9;
 	padding-right: 8px;
 }
 
@@ -64,7 +63,7 @@
   border-top: 3px solid #206a5d; 
 }
 
-/*¹®Á¦ °øÅë*/
+/*ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 .subjectiveQuestion, .multipleQuestion, .shortQuestion {
 	padding-bottom: 2rem;
 	border-bottom: 1px solid #8fc0a9;
@@ -91,13 +90,13 @@
 	font-size: 17px;
 }
 
-/* ÁÖ°ü½Ä */
+/* ï¿½Ö°ï¿½ï¿½ï¿½ */
 .subjectiveQuestion {
 	display: flex;
 	flex-direction: column;
 }
 
-	/*¹®Á¦*/
+	/*ï¿½ï¿½ï¿½ï¿½*/
 .question-prompt {
 	display: flex;
 	padding: 1rem 0.5rem 0 0;
@@ -107,7 +106,7 @@
 	align-items:center;
 }
 
-	/*´ä*/
+	/*ï¿½ï¿½*/
 .question-answer {
 	padding-top: 0.5rem;	
 	width: 100%;
@@ -140,14 +139,14 @@
 }
 
 
-/* °´°ü½Ä */
-	/*¹®Á¦*/
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+	/*ï¿½ï¿½ï¿½ï¿½*/
 	#text-eng {
 		font-size: 18px;
 		font-weight: 400;
 	}
 	
-	/*º¸±â*/
+	/*ï¿½ï¿½ï¿½ï¿½*/
 	.multiRadios {
 		display:flex;
 		flex-direction: column;
@@ -162,7 +161,7 @@
 	padding-right: 5px;
 	}
 	
-/* ´Ü´äÇü */
+/* ï¿½Ü´ï¿½ï¿½ï¿½ */
 .fa-long-arrow-alt-right {
 	padding: 0 4px;
 	font-weight: 300;
@@ -170,7 +169,7 @@
 }
 
 
-/* Á¤´äÈ®ÀÎ¹öÆ° */
+/* ï¿½ï¿½ï¿½ï¿½È®ï¿½Î¹ï¿½Æ° */
 .testCheckButtonDiv {
 	margin-top: 2.0rem;
 }

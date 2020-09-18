@@ -12,6 +12,7 @@
 /* sidebar-progress */
 .sideBar-progressBox {
 	padding: 20px 0;
+	width: 180px;
 }
 
 .progress-label {

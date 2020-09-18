@@ -68,7 +68,7 @@
 							</div>
 							<div class="searchFeed-cards">							
 								<c:forEach items="${titleList }" var="word">
-									<div class="searchFeed-cardItem">
+									<div class="searchFeed-cardItem-large">
 	
 										<div class="searchFeed-cardItem-inner">
 											<div class="wordCardInfo">
@@ -84,12 +84,12 @@
 											</div>
 											<div class="wordList">
 												<c:forEach items="${word.item }" var="wordList" begin="0" end="3">
-													<div class="wordList-word"><span>${wordList.word }</span><span class="colorGray">${wordList.meaning }</span></div>
+													<div class="wordList-word"><span>${wordList.word }</span><br><span class="colorGray">${wordList.meaning }</span></div>
 												</c:forEach>
 											</div>
 										</div>
 										
-										<div class="searchFeed-cardItem-LinkBox">
+										<div class="searchFeed-cardItem-LinkBox-large">
 											<a class='move-wordList' href='/learn/get?id=<c:out value="${word.id }" />&title=<c:out value="${word.title }" />'></a>
 											<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
 										</div>
@@ -109,6 +109,8 @@
 	</div>
 
 <script>
+
+
 	var urlParams = new URLSearchParams(window.location.search);
 	console.log(urlParams.get('keyword'));
 	
@@ -118,20 +120,23 @@
 	
 	/* load more */
 	$(function(){
-	    $(".searchFeed-cardItem").slice(0, 10).show(); // select the first ten
-	    $("#LoadMore").click(function(e){ // click event for load more
+			/* load more - id */
+	    $(".searchFeed-cardItem").slice(0, 6).show();
+	    $("#LoadMore").click(function(e){
 	        e.preventDefault();
-	        $(this).parent().parent().find('.searchFeed-cards').find('.searchFeed-cardItem:hidden').slice(0, 10).slideDown(); // select next 10 hidden divs and show them
+	        $(".searchFeed-cardItem:hidden").slice(0, 8).slideDown();
 	        if($(".searchFeed-cardItem:hidden").length == 0)
 	        { 
 	        	$("#LoadMore").prop("disabled", false);	        
 	        }
 	    });
 	    
-	    $("#LoadMore-Title").click(function(e){ // click event for load more
+	    /* load more - title */
+	    $(".searchFeed-cardItem-large").slice(0, 8).show();
+	    $("#LoadMore-Title").click(function(e){
 	        e.preventDefault();
-	        $(this).parent().parent().find('.searchFeed-cards').find('.searchFeed-cardItem:hidden').slice(0, 10).slideDown(); // select next 10 hidden divs and show them
-	        if($(".searchFeed-cardItem:hidden").length == 0){ // check if any hidden divs still exist
+	        $(".searchFeed-cardItem-large:hidden").slice(0, 6).slideDown();
+	        if($(".searchFeed-cardItem-large:hidden").length == 0){
 	        	$("#LoadMore-Title").prop("disabled", false);
 	        }
 	    });

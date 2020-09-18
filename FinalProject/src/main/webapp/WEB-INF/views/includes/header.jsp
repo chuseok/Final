@@ -11,9 +11,12 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
+	
 <script src="/resources/jquery/jquery.validate.min.js"></script>	
 <script src="/resources/js/login.js"></script>	
 <link	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap Core CSS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -201,6 +204,80 @@
 	color: #fff;
 }
 
+body {
+		font-family: 'Varela Round', sans-serif;
+	}
+	.modal-login {
+		color: #636363;
+		width: 350px;
+		margin: 30px auto;
+	}
+	.modal-login .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		border: none;
+	}
+	.modal-login .modal-header {
+		border-bottom: none;
+		position: relative;
+		justify-content: center;
+	}
+	.modal-login h4 {
+		text-align: center;
+		font-size: 26px;
+	}
+	.modal-login  .form-group {
+		position: relative;
+	}
+	.modal-login i {
+		position: absolute;
+		left: 13px;
+		top: 11px;
+		font-size: 18px;
+	}
+	.modal-login .form-control {
+		padding-left: 40px;
+	}
+	.modal-login .form-control:focus {
+		border-color: #00ce81;
+	}
+	.modal-login .form-control, .modal-login .btn {
+		min-height: 40px;
+		border-radius: 3px; 
+	}
+	.modal-login .hint-text {
+		text-align: center;
+		padding-top: 10px;
+	}
+	.modal-login .close {
+        position: absolute;
+		top: -5px;
+		right: -5px;
+	}
+	.modal-login .btn {
+		background: #00ce81;
+		border: none;
+		line-height: normal;
+	}
+	.modal-login .btn:hover, .modal-login .btn:focus {
+		background: #00bf78;
+	}
+	.modal-login .modal-footer {
+		background: #ecf0f1;
+		border-color: #dee4e7;
+		text-align: center;
+		margin: 0 -20px -20px;
+		border-radius: 5px;
+		font-size: 13px;
+		justify-content: center;
+	}
+	.modal-login .modal-footer a {
+		color: #999;
+	}
+	.trigger-btn {
+		display: inline-block;
+		margin: 100px auto;
+	}
 </style>
 <body>
 
@@ -284,50 +361,46 @@
   
   <!-- 로그인 모달 -->
 	<div class="modal" id="loginModal" tableindex="-1" id="loginModal" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-login">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">로그인</h4>
 				<div class="close">&times</div>
 			</div>
 			<div class="modal-body">
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<h2>
 						<c:out value="${error}" />
 					</h2>
 					<h2>
 						<c:out value="${logout}" />
 					</h2>
-				</div>
-				<div class="form-group">
-					<form class="form" method="POST" action="/login" novalidate>
-						<fieldset>
-							<p class="clearfix">
-								<label>아이디</label> <input type="text" id="Id" name="username" placeholder="영문,숫자 6~12자 입력하세요.">
-							</p>
-							<p class="clearfix">
-								<label>비밀번호</label> <input type="password" id="password" name="password" placeholder="영문+숫자+특수문자 포함 8~16자로 입력해주세요.">
-							</p>				
-			
-							<p class="clearfix">
-								<input type="submit" value="로그인" class="button" id="loginModalBtn">
-							</p>
-							<input type="checkbox" name='remember-me'>아이디 저장
-							<p>
-								아이디가 없으신가요?<a href="/main/join"> 여기를 눌러주세요</a>
-							</p>
-								아이디를 잊어버리셨나요? <a href="#">아이디 찾기</a> 
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-						</fieldset>
-					</form>
-				</div>	
-				<div class="form-group">
-					<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
-					<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
-					<div id="naver_id_login" style="text-align:center"><a href="${url}">
-						<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+				</div> --%>
+				<form class="form" method="POST" action="/login" novalidate>
+					<div class="form-group">					
+						<i class="fa fa-user"></i><input class="form-control" type="text" id="Id" name="username" placeholder="영문,숫자 6~12자 입력하세요.">
 					</div>
-				</div>
+					<div class="form-group">
+						<i class="fa fa-lock"></i><input class="form-control" type="password" id="password" name="password" placeholder="영문+숫자+특수문자 포함 8~16자로 입력해주세요.">
+					</div>
+					<div class="form-group">
+						<input class="btn btn-primary btn-block btn-lg" type="submit" value="로그인" class="button" id="loginModalBtn">
+						<br><input type="checkbox" name='remember-me'>아이디 저장
+					</div>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<div class="form-group">
+						<!-- 네이버 로그인 화면으로 이동 시키는 URL -->
+						<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
+						<div id="naver_id_login" style="text-align:center"><a href="${url}">
+							<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+						</div>
+					</div>											
+				</form>
+				<div class="modal-footer">												
+					아이디가 없으신가요?<a href="/main/join"> 여기를 눌러주세요</a><br>
+					아이디를 잊어버리셨나요? <a href="#">아이디 찾기</a>
+					
+				</div>				
 			</div>	
 		</div>
 		</div>
@@ -335,45 +408,43 @@
 	
 	<!-- 회원가입모달 -->
 	<div class="modal" style="display:none;" id="joinModal">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-login">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">회원가입</h4>
 					<div class="close">&times</div>
 				</div>
-				<form class="joinForm" action="/main/join" method="POST" novalidate>
-					<fieldset>
-						<p class="clearfix">
-							<label>아이디</label> <input type="text" id="userId" name="userId" placeholder="영문,숫자 6~12자 입력하세요.">
-								<button class="idCheck" type="button" id="idCheck" name="idCheck"onclick="fn_idCheck();" value="N">중복확인</button>
-						</p>
-						<p class="clearfix">
-							<label>비밀번호</label> <input type="password" id="password" name="userPwd" placeholder="영문+숫자+특수문자 포함 8~16자로 입력해주세요.">
-						</p>
-						<p class="clearfix">
-							<label>닉네임</label> <input type="text" id="userName" name="userName"
-								placeholder="한글 2~5자로 입력해주세요.">
-							<button class="nameCheck" type="button" id="nameCheck" name="nameCheck"onclick="fn_nameCheck();" value="N">중복확인</button>
-						</p>
-						<p class="clearfix">
-							<label>이메일</label> 
-							<input type="email" id="email" name="email"
+				<div class="modal-body">
+					<form id="joinForm" class="form" action="/main/join" method="POST" novalidate>
+						<div class="form-group">					
+							<i class="fa fa-user"></i><input class="form-control" type="text" id="userId" name="userId" placeholder="아이디는 영문,숫자 6~12자 입력하세요.">
+							<br><button class="idCheck" type="button" id="idCheck" name="idCheck"onclick="fn_idCheck();" value="N">중복확인</button>
+						</div>
+						<div class="form-group">
+							<i class="fa fa-lock"></i><input class="form-control" type="password" id="password" name="userPwd" placeholder="영문+숫자+특문 포함 8~16자로 입력해주세요.">
+						</div>
+						<div class="form-group">
+							<i class="fas fa-user-edit"></i><input class="form-control" type="text" id="userName" name="userName" placeholder="닉네임은 한글 2~5자로 입력해주세요.">
+							<br><button class="nameCheck" type="button" id="nameCheck" name="nameCheck"onclick="fn_nameCheck();" value="N">중복확인</button>
+						</div>
+						<div class="form-group">
+							<i class="fas fa-envelope"></i><input class="form-control" type="email" id="email" name="email"
 								placeholder="ex)aaa@email.com">
-						</p>
-						<p class="clearfix">
-							<label>생년월일</label> <input type="date" id="date" name="birthday"
+						</div>
+						<div class="form-group">
+							<i class="fas fa-calendar-check"></i><input class="form-control" type="date" id="date" name="birthday"
 								placeholder="생년월일을 입력해주세요.">
-						</p>					
-						<p class="clearfix">
-							<label>전화번호</label> <input type="text" id="phoneno" name="phoneNo"
+						</div>					
+						<div class="form-group">
+							<i class="fas fa-phone"></i><input class="form-control" type="text" id="phoneno" name="phoneNo"
 								placeholder="ex)01012345678">
-						</p>	
-						<p class="clearfix">
-							<button type="submit"class="button" id="uploadBtn">가입하기</button>
-						</p>					
+						</div>	
+						<div class="form-group">
+							<button class="btn btn-primary btn-block btn-lg" type="submit"class="button" id="uploadBtn">가입하기</button>
+						</div>					
 						<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
-					</fieldset>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>	
@@ -463,13 +534,13 @@ integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMh
 	$(document).ready(function(){
 		$("#uploadBtn").on("click",function(e){
 			var formdata = new FormData();
-		    var inputFile = $("input[name='uploadFile']");
+		   /*  var inputFile = $("input[name='uploadFile']");
 		    var files = inputFile[0].files;
 		    console.log(files);
 		    //add filedate to formdata
 		    for(var i =0; i<files.length; i++){
 		    	formData.append("uploadFile",files[i]);
-		    }
+		    } */
 		    $.ajax({
 		    	url : "/main/join",
 				processData: false,

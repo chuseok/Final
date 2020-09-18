@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.study.service.LearningService;
 
 import com.test.tst.NaverLoginBO;
 
@@ -49,6 +50,7 @@ public class HomeController {
 	private MainService service;
 	private DragonService dragonService;
 	private MemberService memberService;
+	private LearningService learningservice;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -100,6 +102,8 @@ public class HomeController {
 				
 				dragonService.updateDragon(dragon);
 			}
+			
+			model.addAttribute("myList", learningservice.getMyList(userId));
 			model.addAttribute("text", session.getAttribute("text"));
 			model.addAttribute("hungry", session.getAttribute("hungry"));
 		}

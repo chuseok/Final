@@ -307,14 +307,14 @@ $(document).ready(function(){
 			cardIndex = i;
 			if(WordCardArray[i].learningRate == 1){
 				console.log("add 익숙함,,,"+WordCardArray[i].word);
-				addKnownCardArray(WordCardArray[i].word, WordCardArray[i].meaning);
+				addCardArray(WordCardArray[i].word, WordCardArray[i].meaning, KnownCardArray);
 			}
 			else if(WordCardArray[i].learningRate >=2){
 				console.log("add 완전함,,,"+ WordCardArray[i].word)
-				addWellKnownCardArray(WordCardArray[i].word, WordCardArray[i].meaning);
+				addCardArray(WordCardArray[i].word, WordCardArray[i].meaning, WellKnownCardArray);
 			}
 			else{
-				addLastCardArray(WordCardArray[i].word, WordCardArray[i].meaning);
+				addCardArray(WordCardArray[i].word, WordCardArray[i].meaning, LastCardArray);
 				console.log(LastCardArray);
 			}
 		}
@@ -515,7 +515,7 @@ $(document).ready(function(){
 		{
 			
 			//완전히 외움 Array에 추가하고 익숙함에서 삭제
-			addWellKnownCardArray(random.word, random.meaning);
+			addCardArray(random.word, random.meaning, WellKnownCardArray);
 			//console.log(wellknownCardLen);
 			KnownCardArray.splice(cardIndex,1);
 			//console.log(WordCardArray);
@@ -543,7 +543,7 @@ $(document).ready(function(){
 		
 		if (random.meaning == answer) {//정답일 때,
 	    	//Array에 추가 및 삭제
-				addKnownCardArray(random.word, random.meaning);
+				addCardArray(random.word, random.meaning, KnownCardArray);
 				//console.log(KnownCardArray);				
 				LastCardArray.splice(cardIndex,1);
 				
@@ -675,27 +675,14 @@ $(document).ready(function(){
 		}
 	});
 	
+	/* addCard */
+	function addCardArray(word, meaning, Array){
+		Array.push({
+			word : word,
+			meaning : meaning			
+		});
+	}
 
-	function addLastCardArray(word, meaning){
-		LastCardArray.push({
-			word : word,
-			meaning : meaning			
-		});
-	}
-	
-	function addKnownCardArray(word, meaning){
-		KnownCardArray.push({
-			word : word,
-			meaning : meaning			
-		});
-	}
-	
-	function addWellKnownCardArray(word, meaning){
-		WellKnownCardArray.push({
-			word : word,
-			meaning : meaning			
-		});
-	}
 	
 	//문제페이지 다시 보이기
 	function resetQuestionDiv(){
