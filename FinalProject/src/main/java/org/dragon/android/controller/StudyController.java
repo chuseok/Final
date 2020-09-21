@@ -51,7 +51,6 @@ public class StudyController {
         	int size = 0;
         	
         	WordDTO wordDTO = WordList.get(i);
-
         	
         	for (WordVO item : wordDTO.getItem()) {
         		size++;
@@ -61,8 +60,6 @@ public class StudyController {
                
 			}
         	percent = Math.round((float)count/size*100);
-
-     		
      		
         	map.put("userId", userId);
         	map.put("wordTitle", wordTitle);

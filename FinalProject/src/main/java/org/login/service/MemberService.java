@@ -7,8 +7,8 @@ import org.login.domain.MemberVO;
 
 public interface MemberService {
 
-	public void register(MemberVO mem);
-	public void register(AuthVO vo);
+	public int register(MemberVO mem);
+	public int register(AuthVO vo);
 	
 	public void withdrawal(MemberVO mem);
 	public void withdrawal(AuthVO vo);
