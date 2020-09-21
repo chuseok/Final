@@ -29,7 +29,7 @@
 	<context:component-scan base-package="org.login.controller" />
 	<context:component-scan base-package="org.zerock.controller" />
 	<context:component-scan base-package="org.zerock.service"/>
-	
+	<context:component-scan base-package="org.android.controller" />
 	
 	<context:component-scan base-package="com.test.tst" />
    <!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
