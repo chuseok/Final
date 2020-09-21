@@ -132,6 +132,48 @@ public class LearningServiceImple implements LearningService {
 		}
 		return wordArray;
 	}
+	
+	@Override
+	public JSONArray getLastWordJsonArray(String id, String title) {
+		// log.info("get wordList.....");
+
+		JSONArray wordArray = new JSONArray();
+		JSONArray itemArray = new JSONArray();
+
+		JSONObject wordObj;
+
+		try {
+			List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test02.json"),
+					new TypeReference<List<WordDTO>>() {
+					});
+			int size = jsonDTOList.size();
+			for (int i = 0; i < size; i++) {
+				WordDTO str = jsonDTOList.get(i);
+
+				if (str.getId().equals(id) && str.getTitle().equals(title)) {
+					wordObj = new JSONObject();
+
+					wordObj.put("id", str.getId());
+					wordObj.put("title", str.getTitle());
+
+					for (WordVO item : str.getItem()) {
+						JSONObject itemObj = new JSONObject();
+						itemObj.put("word", item.getWord());
+						itemObj.put("meaning", item.getMeaning());
+						itemObj.put("learningRate", item.getLearningRate());
+						itemArray.add(itemObj);
+					}
+
+					wordObj.put("item", itemArray);
+					wordArray.add(wordObj);
+				}
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return wordArray;
+	}
+
 
 	@Override
 	public WordDTO getWordDTO(String id, String title) {
@@ -167,7 +209,7 @@ public class LearningServiceImple implements LearningService {
 		  
 		  
 		  try { List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new
-		  File("C:/temp/test01.json"), new TypeReference<List<WordDTO>>() {}); 
+		  File("C:/temp/test02.json"), new TypeReference<List<WordDTO>>() {}); 
 		  
 		  int size = jsonDTOList.size(); 
 		  
@@ -202,7 +244,7 @@ public class LearningServiceImple implements LearningService {
 		
 		  //file�� ����
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
-		  FileOutputStream("C:\\temp\\test01.json"), "utf-8"));
+		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
 		  writer.flush(); 
 		  writer.close();	  
@@ -223,7 +265,7 @@ public class LearningServiceImple implements LearningService {
 		  JSONObject wordObj;		  
 		  
 		  try { List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new
-		  File("C:/temp/test01.json"), new TypeReference<List<WordDTO>>() {}); 
+		  File("C:/temp/test02.json"), new TypeReference<List<WordDTO>>() {}); 
 		  
 		  int size = jsonDTOList.size(); 
 		  
@@ -257,7 +299,7 @@ public class LearningServiceImple implements LearningService {
 		
 		  //file�� ����
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
-		  FileOutputStream("C:\\temp\\test01.json"), "utf-8"));
+		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
 		  writer.flush(); 
 		  writer.close();	  
@@ -400,10 +442,150 @@ public class LearningServiceImple implements LearningService {
 	public void addRecentStudy(StudyDTO study) {
 		
 		log.info("insert recent study....");
+		if(mapper.checkDup(study) == 1) {
+			log.info("delete...");
+			mapper.delete(study);
+		}		
 		
-		mapper.insert(study);		
+		mapper.insert(study);
 	}
 
-	
+	@Override
+	public void copyWordList(String id, String title) {
+		
+		WordDTO dto = getWordDTO(id, title);
+		
+		log.info("dto....");
+		log.info(dto);
+		
+		JSONArray wordArray = new JSONArray(); 
+		JSONArray itemArray = new JSONArray();
+
+		JSONObject wordObj;
+		
+		boolean inList = false;
+		
+		try {
+			
+			
+			String path = "C:/temp/test02.json";
+			File file = new File(path);
+
+			if(!file.exists()) {
+				
+				wordObj = new JSONObject();
+				wordArray = new JSONArray();
+				
+				wordObj.put("id", dto.getId()); 
+				wordObj.put("title", dto.getTitle());
+				wordObj.put("item", dto.getItem());
+				
+				wordArray.add(wordObj);
+				inList = true;
+			}
+			else {
+				
+				List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test02.json"),
+						new TypeReference<List<WordDTO>>() {
+						});
+				
+				
+				log.info("존재여부  : "+jsonDTOList.contains(dto));
+				
+				int size = jsonDTOList.size();
+				
+				
+				  for (int i = 0; i < size; i++) 
+				  {
+					  
+					  WordDTO str = jsonDTOList.get(i);
+					  itemArray = new JSONArray();
+					  
+					  if(str.getId().equals(id) && str.getTitle().equals(title)) {
+						  
+						  inList = true;
+					  }
+				  
+					  wordObj = new JSONObject();
+					  
+					  wordObj.put("id", str.getId()); 
+					  wordObj.put("title", str.getTitle());
+					  
+						  for (WordVO item : str.getItem()) 
+						  { 
+							  JSONObject itemObj = new JSONObject();
+							  
+							  
+							  itemObj.put("word", item.getWord()); 
+							  itemObj.put("meaning",item.getMeaning()); 
+							  itemObj.put("learningRate", item.getLearningRate());
+							  itemArray.add(itemObj); 
+						  }
+						  
+					  wordObj.put("item", itemArray); 
+					  wordArray.add(wordObj);
+					  //log.info(wordArray);
+					  //log.info(inList);
+				  }	  
+				
+			}
+						
+			if(inList) {
+				//단어장이 존재하면
+				log.info("aleady exist...");
+			}
+			else {						
+				wordObj = new JSONObject();
+				
+				wordObj.put("id", dto.getId()); 
+				wordObj.put("title", dto.getTitle());
+				wordObj.put("item", dto.getItem());
+				
+				wordArray.add(wordObj);
+			}			
+				log.info(wordArray);
+						
+		  //file save
+		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
+		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
+		  writer.write(wordArray.toString()); 
+		  writer.flush(); 
+		  writer.close();
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public JSONArray getMyRecentList(String id) {
+			
+		log.info("get Recent List.....");
+		
+		JSONArray wordArray = new JSONArray();		
+
+		JSONObject wordObj;
+		
+		List<StudyDTO> studyDTOList = mapper.getRecentList(id);
+		
+		int size = studyDTOList.size();
+		
+		for (int i = 0; i < size; i++) 
+		{
+			StudyDTO str = studyDTOList.get(i);
+
+			wordObj = new JSONObject();
+
+			wordObj.put("userId", str.getUserId());
+			wordObj.put("bookId", str.getBookId());
+			wordObj.put("bookTitle", str.getBookTitle());
+			wordObj.put("studyDate", str.getStudyDate());
+			
+			wordArray.add(wordObj);
+					
+		}
+		return wordArray;
+	}	
 
 }

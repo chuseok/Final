@@ -116,16 +116,14 @@
 
 <script>
 
-	$(document).ready(function(){
-		console.log('${WordDTO}');
-		
+$(document).ready(function(){
+	
 		var WordJsonArray;
 		var WordCardArray;
 		
 		var cardIndex;
 		var cardListLength;
-		
-		
+	
 		function initData() {
 			
 			WordJsonArray =  JSON.parse('${WordDTO}');
@@ -151,19 +149,38 @@
 		//단어장 제목 출력
 		$('.wordTitle-two').append(WordJsonArray[0]["title"]);
 		
+		
+		var userIdValue = '<sec:authentication property="principal.member.userId"/>';
+		
+		function addRecent(){
+			var obj = new Object();
+				
+			obj.bookId = userId;
+			obj.bookTitle = userTitle;
+			obj.userId = userIdValue;
+			//console.log(obj);
+			
+			var jsonData = JSON.stringify(obj);
+			
+			$.ajax({
+				type:"POST",
+				dataType: "json",
+				url: "/study/recent",
+				contentType:'application/json; charset=utf-8',
+				data:jsonData
+			});
+		};
+		
+		addRecent();
+		
+		
 		/* console.log(WordJsonArray[0]["title"]); */
 		/* console.log('${WordDTO}');
 		
-		console.log(WordCardArray);
-		console.log(WordCardArray[cardIndex]);
-		console.log(WordCardArray[cardIndex].word);
-		console.log(WordCardArray[cardIndex].meaning); */
+		console.log(WordCardArray);*/	
 		
-		
-		var cardProgressIndex;
 
 		//card progress 출력
-
 		function showProgress() 
 		{
 					var cardProgressIndex = cardIndex+1;
@@ -171,25 +188,25 @@
 					$('.cardProgress').empty();
 
 					/* console.log("단어장 길이: "+ cardListLength); */
-					$('.cardProgress').append(
-							cardProgressIndex + "/" + cardListLength);
+				$('.cardProgress').append(
+						cardProgressIndex + "/" + cardListLength);
 
-					if (cardProgressIndex == 1) {
-						
-						$('.prevCard').attr('disabled', true);
-						$('.nextCard').attr('disabled', false);
-						
-					} else if (cardProgressIndex == cardListLength) {
-						
-						$('.nextCard').attr('disabled', true);
-						$('.prevCard').attr('disabled', false);
-						
-					} else {
-						
-						$('.prevCard').attr('disabled', false);
-						$('.nextCard').attr('disabled', false);
-						
-					};
+				if (cardProgressIndex == 1) {
+					
+					$('.prevCard').attr('disabled', true);
+					$('.nextCard').attr('disabled', false);
+					
+				} else if (cardProgressIndex == cardListLength) {
+					
+					$('.nextCard').attr('disabled', true);
+					$('.prevCard').attr('disabled', false);
+					
+				} else {
+					
+					$('.prevCard').attr('disabled', false);
+					$('.nextCard').attr('disabled', false);
+					
+				};
 
 		}//showProgress end
 		

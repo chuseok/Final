@@ -1,7 +1,5 @@
 package org.study.mapper;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +30,39 @@ public class BoardMapperTests {
 		mapper.insert(study);
 		
 		log.info(study);
+	}
+	
+	@Test
+	public void testGetList() {
+			
+		mapper.getRecentList("sdf");
+		
+		log.info(mapper.getRecentList("sdf"));
+		
+	}
+	
+	@Test
+	public void testDelete() {
+		StudyDTO study = new StudyDTO();
+		
+		study.setUserId("sdf");
+		study.setBookId("11");
+		study.setBookTitle("22");	
+		
+		mapper.delete(study);
+		
+		log.info(study);
+	}
+	
+	@Test
+	public int testCheckDup() {
+		StudyDTO study = new StudyDTO();
+		
+		study.setUserId("sdf");
+		study.setBookId("sdf");
+		study.setBookTitle("숫자");	
+		
+		return mapper.checkDup(study);
 	}
 
 }

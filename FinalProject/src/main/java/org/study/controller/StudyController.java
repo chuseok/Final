@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.study.domain.StudyDTO;
 import org.study.domain.WordDTO;
 import org.study.service.LearningService;
 
@@ -62,6 +63,30 @@ public class StudyController {
 		log.info(id+","+title+"initialized.....");
 		
 		learningservice.resetRate(id,title);
+		/*
+		 * rttr.addAttribute("id",id); rttr.addAttribute("title",title);
+		 */
+		
+		return "success";
+				
+	}
+	
+	@RequestMapping(method = RequestMethod.POST,
+			value = "/study/recent",
+			consumes="application/json",
+			produces = {MediaType.TEXT_PLAIN_VALUE })
+	public String addRecent(@RequestBody Map<String, Object> param/* , RedirectAttributes rttr */ ) throws Exception {
+		String bookId = param.get("bookId").toString();
+		String bookTitle = param.get("bookTitle").toString();
+		String userId = param.get("userId").toString();
+		log.info(bookId +", "+ bookTitle +", " +userId);
+		
+		StudyDTO study = new StudyDTO();
+		study.setBookId(bookId);
+		study.setBookTitle(bookTitle);
+		study.setUserId(userId);		
+		
+		learningservice.addRecentStudy(study);
 		/*
 		 * rttr.addAttribute("id",id); rttr.addAttribute("title",title);
 		 */

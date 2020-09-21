@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.study.mapper.StudyMapper;
 import org.study.service.LearningService;
 
 import lombok.AllArgsConstructor;
@@ -44,6 +45,10 @@ public class LearningController {
 		
 		log.info("get word List..");
 		
+		learningservice.copyWordList(id, title);
+		
+		log.info("copy word List...");
+		
 		model.addAttribute("WordDTO", learningservice.getWordJsonArray(id, title));		
 		
 	}
@@ -61,7 +66,7 @@ public class LearningController {
 		
 		log.info("get Array " + title + " for study.....");
 		
-		model.addAttribute("WordDTO", learningservice.getWordJsonArray(id, title));
+		model.addAttribute("WordDTO", learningservice.getLastWordJsonArray(id, title));
 	}
 	
 	@GetMapping("/test")
