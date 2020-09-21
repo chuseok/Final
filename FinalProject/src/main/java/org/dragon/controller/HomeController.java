@@ -103,6 +103,7 @@ public class HomeController {
 				dragonService.updateDragon(dragon);
 			}
 			
+			model.addAttribute("recentList", learningservice.getMyRecentList(userId));
 			model.addAttribute("myList", learningservice.getMyList(userId));
 			model.addAttribute("text", session.getAttribute("text"));
 			model.addAttribute("hungry", session.getAttribute("hungry"));

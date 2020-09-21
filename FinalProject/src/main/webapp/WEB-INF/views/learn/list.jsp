@@ -29,7 +29,7 @@
 					<h2>내 세트</h2>
 						<div class="mainContents-recentFeed">
 							<div class="recentFeed-header">
-								<h5>내가 만든 단어장</h5>
+								<h5>내가 만든 단어장(${fn:length(myList) })</h5>
 							</div>
 							<c:choose>							
 								<c:when test="${empty myList }">
@@ -82,7 +82,7 @@
 
 </script>
 
-	<script>
+<script>
 	/* load more */
 	$(function(){
 			/* load more - id */

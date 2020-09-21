@@ -45,7 +45,7 @@
 						<div class="recentFeed-cards">
 							
 						<c:forEach items="${myList }" var="word" varStatus="vs">
-							<div class="recentFeed-cardItem" style="display:none">
+							<div class="recentFeed-cardItem-small" style="display:none">
 
 								<div class="recentFeed-cardItem-inner">
 									<div class="wordTitle">
@@ -63,7 +63,7 @@
 							</div>
 						</c:forEach>						
 						</div>
-						<div><a href="#" id="LoadMore"><i class="fas fa-angle-double-down"></i>Load More</a></div>
+						<div><a href="/learn/list?id=<sec:authentication property='principal.member.userId'/>" >내 단어장 보기</a></div>
 					 </c:otherwise>		
 					</c:choose>
 					
@@ -73,13 +73,39 @@
           <div class="recentFeed-header">
             <h5>최근 학습함</h5>
           </div>
-          <div class="recentFeed-cards">
-            <div class="recentFeed-cardItem">카드1</div>
-            <div class="recentFeed-cardItem">카드2</div>
-            <div class="recentFeed-cardItem">카드3</div>
-            <div class="recentFeed-cardItem">카드4</div>
-          </div>
+          <c:choose>							
+						<c:when test="${empty recentList }">
+							<div class="emptyList"><span>최근 학습한 단어장이 없습니다.</span></div>
+						</c:when>
+						
+						<c:otherwise>
+						<div class="recentFeed-cards">
+							
+						<c:forEach items="${recentList }" var="word" varStatus="vs">
+							<div class="recentFeed-cardItem" style="display:none">
+
+								<div class="recentFeed-cardItem-inner">
+									<div class="wordTitle">
+										<span><c:out value="${word.bookTitle }" /></span>
+									</div>
+									<div class="userId">
+										<span><c:out value="${word.bookId }" /></span>
+									</div>
+								</div>
+								
+								<div class="recenFeed-cardItem-LinkBox">
+									<a class='move-wordList' href='/learn/get?id=<c:out value="${word.bookId }" />&title=<c:out value="${word.bookTitle }" />'></a>
+									<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
+								</div>
+							</div>
+						</c:forEach>						
+						</div>
+						<div><a href="#" id="LoadMore"><i class="fas fa-angle-double-down"></i>Load More</a></div>
+					 </c:otherwise>		
+					</c:choose>
+					
         </div>
+        
        </div>
     </div>
   </section>
@@ -168,6 +194,9 @@
 				
 				</sec:authorize>
 			});
+			
+			console.log('${recentList}');
+			
 		});
 	</script>
 	
@@ -175,6 +204,7 @@
 	/* load more */
 	$(function(){
 			/* load more - id */
+			$(".recentFeed-cardItem-small").slice(0, 4).show();
 	    $(".recentFeed-cardItem").slice(0, 6).show();
 	    $("#LoadMore").click(function(e){
 	        e.preventDefault();
