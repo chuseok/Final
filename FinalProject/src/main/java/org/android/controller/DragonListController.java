@@ -1,6 +1,8 @@
 package org.android.controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import org.dragon.controller.DragonController;
 import org.dragon.controller.ProductController;
 import org.dragon.domain.CollectionVO;
 import org.dragon.domain.DragonVO;
+import org.dragon.domain.InventoryVO;
 import org.dragon.domain.ProductVO;
 import org.dragon.service.DragonService;
 import org.dragon.service.InventoryService;
@@ -266,6 +269,7 @@ public class DragonListController {
 		for(int i=0;i<shopList.size();i++) {
 			Map<String, String> map = new HashMap<String, String>();
 		
+			map.put("productId",shopList.get(i).getProductId()+"");
 			map.put("productImage", shopList.get(i).getProductImage());
 			map.put("productName", shopList.get(i).getProductName());
 			map.put("category", shopList.get(i).getCategory());
@@ -278,6 +282,34 @@ public class DragonListController {
 		return result;
 	
 	}
+	
+	@GetMapping(value = "/coin")
+	public Map<String, Integer> getCoinWithRequestAndResponse(HttpServletRequest request) {
+
+		String userId = request.getParameter("userId");
+		
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		int coin = service.getCoin(userId);
+		result.put("coin", coin);
+
+		return result;
+	}
+	
+	@PostMapping(value = "/shop/buy")
+	public void buyWithRequestAndResponse(HttpServletRequest request) {
+
+		String userId = request.getParameter("userId");
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		int buyAmount = Integer.parseInt(request.getParameter("buyAmount"));
+		
+		InventoryVO inventory = new InventoryVO(idGenerater(), userId, productId, buyAmount, null);
+		DragonVO dragon = new DragonVO(userId, 1, 0, 100, false);
+
+		invenService.buy(inventory, dragon);
+		
+		
+	}
+	
 	
 	public DragonVO setImg(DragonVO vo) {// 이미지 셋팅
 
@@ -295,5 +327,19 @@ public class DragonListController {
 			}
 		}
 		return vo;
+	}
+	private String idGenerater() {
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		String subNum = "";
+
+		for (int i = 1; i <= 6; i++) {
+			subNum += (int) (Math.random() * 10);
+		}
+
+		String orderId = ymd + subNum;
+		return orderId;
 	}
 }
