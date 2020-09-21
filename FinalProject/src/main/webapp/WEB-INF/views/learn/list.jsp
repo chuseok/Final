@@ -82,5 +82,21 @@
 
 </script>
 
+	<script>
+	/* load more */
+	$(function(){
+			/* load more - id */
+	    $(".recentFeed-cardItem").slice(0, 6).show();
+	    $("#LoadMore").click(function(e){
+	        e.preventDefault();
+	        $(".recentFeed-cardItem:hidden").slice(0, 8).slideDown();
+	        if($(".recentFeed-cardItem:hidden").length == 0)
+	        { 
+	        	$("#LoadMore").hide();	        
+	        }
+	    });
+	});
+	</script>
+
 </body>
 </html>
