@@ -29,12 +29,9 @@
 	<context:component-scan base-package="org.login.controller" />
 	<context:component-scan base-package="org.zerock.controller" />
 	<context:component-scan base-package="org.zerock.service"/>
-<<<<<<< HEAD
 	<context:component-scan base-package="org.android.controller" />
 	<context:component-scan base-package="org.dragon.android" />
 	<context:component-scan base-package="org.dragon.web" />
-=======
->>>>>>> e619321d49f7d6f57f0825ff4f82f184728036a1
 	
 	
 	<context:component-scan base-package="com.test.tst" />
