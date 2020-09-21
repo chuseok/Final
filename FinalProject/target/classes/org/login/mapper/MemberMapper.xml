@@ -74,7 +74,7 @@ UPDATE mem SET email=#{email} WHERE userId=#{userId}
 
 
 <select id="read" resultMap="memberMap">
-SELECT mem.userId, userPwd, userName, enabled, birthday, phoneNo, email, lastConn, auth 
+SELECT mem.userId, userPwd, userName, enabled, birthday, phoneNo, email, lastConn, auth, coin
 FROM mem mem LEFT OUTER JOIN tbl_member_auth auth on mem.userId = auth.userId
 WHERE mem.userId = #{userId}
 </select>
