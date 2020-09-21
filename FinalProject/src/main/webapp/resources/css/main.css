@@ -385,6 +385,7 @@ header a:hover {
 	font-size: 1.5rem;
 	font-weight: 500;
 	font-family: 'Nanum Gothic', sans-serif;
+	min-width: 700px;
 }
 
 .mainContents-recentFeed {
@@ -420,7 +421,7 @@ header a:hover {
 	
 }
 
-.recentFeed-cardItem {
+.recentFeed-cardItem, .recentFeed-cardItem-small {
   width: 300px;
   height: 100px;
   border: 1px solid #f2f2f2;
@@ -432,7 +433,7 @@ header a:hover {
   font-weight: 400;
 }
 
-.recentFeed-cardItem:hover {
+.recentFeed-cardItem:hover, .recentFeed-cardItem-small:hover {
 	cursor: pointer;
 	border: 1px solid #ffde7d;
 	box-shadow: 0 2px 3px 0 #ffde7d;
@@ -443,6 +444,11 @@ header a:hover {
   display: flex;
   flex-direction: column;
   
+}
+
+.recentFeed-cardItem-inner .userId {
+	font-size: 1.3rem;
+	color: #3ccfcf;
 }
 
 .recentFeed-cardItem-inner .wordTitle {	

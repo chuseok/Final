@@ -3,7 +3,6 @@ package org.dragon.service;
 import java.util.HashMap;
 import java.util.List;
 
-import org.dragon.domain.CollectionVO;
 import org.dragon.domain.DragonVO;
 import org.dragon.mapper.DragonMapper;
 import org.dragon.mapper.InventoryMapper;
@@ -124,30 +123,6 @@ public class DragonServiceImpl implements DragonService {
 		dragonVO.setFoodValue(100);
 		return mapper.update(dragonVO)==1;
 		
-	}
-	@Override
-	public List<CollectionVO> getListByDragonLists() {
-		
-		return mapper.getListByDragonLists();
-	}
-	@Override
-	public String getLevel1Name(String productImage) {
-		// TODO Auto-generated method stub
-		return mapper.getLevel1Name(productImage);
-	}
-	@Override
-	public String getLevel2Name(String productImage) {
-		// TODO Auto-generated method stub
-		return mapper.getLevel2Name(productImage);
-	}
-	@Override
-	public String getLevel3Name(String productImage) {
-		// TODO Auto-generated method stub
-		return mapper.getLevel3Name(productImage);
-	}
-	@Override
-	public DragonVO getDragonByDragonId(DragonVO dragonVO) {
-		return mapper.getById(dragonVO);
 	}
 	
 

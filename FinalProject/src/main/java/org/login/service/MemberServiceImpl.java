@@ -17,17 +17,18 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mapper;
 	
 	@Override
-	public int register(MemberVO mem) {  
+	public void register(MemberVO mem) {  
 
 		log.info("register....."+ mem);
-		return mapper.insert(mem); 
+    mapper.insert(mem); 
 	}
 	
 	
 	@Override
-	public int register(AuthVO vo) {
+	public void register(AuthVO vo) {
 		log.info("Auth......."+ vo);
-		return mapper.insertAuth(vo);
+		mapper.insertAuth(vo);
+
 	}
 	
 	@Override

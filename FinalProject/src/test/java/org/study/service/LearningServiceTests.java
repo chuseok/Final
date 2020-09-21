@@ -36,7 +36,7 @@ public class LearningServiceTests {
 	
 	@Test
 	public void testGetWordDTO() {
-		log.info(learningservice.getWordDTO("hansol", "�ܾ���"));
+		log.info(learningservice.getWordDTO("asd", "숫자asd"));
 		
 	}
 	
@@ -69,6 +69,13 @@ public class LearningServiceTests {
 		study.setBookTitle("색깔");
 		
 		learningservice.addRecentStudy(study);
+	}
+	
+	
+	@Test
+	public void testCopyRecentStudy() {
+		
+		learningservice.copyWordList("sdf", "색");
 	}
 	
 	

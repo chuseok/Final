@@ -61,7 +61,7 @@ public class LearningControllerTests {
 		log.info(
 				mockMvc.perform(MockMvcRequestBuilders.get("/learn/get")
 						.param("id", "hansol")
-						.param("title", "´Ü¾îÀå"))
+						.param("title", "ë‹¨ì–´ìž¥"))
 						.andReturn()
 						.getModelAndView().getModelMap());
 		
@@ -73,10 +73,21 @@ public class LearningControllerTests {
 		log.info(
 				mockMvc.perform(MockMvcRequestBuilders.post("/learn/subjective")
 						.param("id", "hansol")
-						.param("title", "´Ü¾îÀå"))
+						.param("title", "ï¿½Ü¾ï¿½ï¿½ï¿½"))
 						.andReturn()
-						.getModelAndView().getModelMap());
+						.getModelAndView().getModelMap());		
+	}
+	
+	@Test
+	public void testAddRecent() throws Exception {
 		
+		log.info(
+				mockMvc.perform(MockMvcRequestBuilders.post("/study/recent")
+						.param("bookId", "sdf")
+						.param("bookTitle", "í…ŒìŠ¤íŠ¸")
+						.param("userId", "sdf"))
+						.andReturn()
+						.getModelAndView().getModelMap());		
 	}
 	
 	

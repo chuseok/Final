@@ -32,7 +32,6 @@
 	<mybatis-spring:scan base-package="org.zerock.mapper"/>
 	<mybatis-spring:scan base-package="org.study.mapper"/>
 	
-	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" /> 
 		<property name="port" value="587" /> 
