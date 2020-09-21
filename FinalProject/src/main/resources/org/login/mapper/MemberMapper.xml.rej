@@ -1,0 +1,10 @@
+diff a/FinalProject/src/main/resources/org/login/mapper/MemberMapper.xml b/FinalProject/src/main/resources/org/login/mapper/MemberMapper.xml	(rejected hunks)
+@@ -74,7 +74,7 @@
+ 
+ 
+ <select id="read" resultMap="memberMap">
+-SELECT mem.userId, userPwd, userName, enabled, birthday, phoneNo, email, lastConn, auth 
++SELECT mem.userId, userPwd, userName, enabled, birthday, phoneNo, email, lastConn, auth, coin 
+ FROM mem mem LEFT OUTER JOIN tbl_member_auth auth on mem.userId = auth.userId
+ WHERE mem.userId = #{userId}
+ </select>
