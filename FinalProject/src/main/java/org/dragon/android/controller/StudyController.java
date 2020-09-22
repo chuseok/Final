@@ -71,4 +71,31 @@ public class StudyController {
 		return result;
 		
 	}
+	
+	
+	@GetMapping(value = "/getWordList")
+	public List<Map<String, String>> getWordList(HttpServletRequest request) {
+		
+		log.info("get my list........");
+		
+		String bookId = request.getParameter("bookId");
+		String bookTitle = request.getParameter("bookTitle");
+		
+		WordDTO worddto = learningservice.getWordDTO(bookId, bookTitle);
+		List<WordVO> wordvo = new ArrayList<WordVO>();
+		
+		List<Map<String, String>> result = new ArrayList<Map<String, String>>();
+		
+		for(int i=0; i<worddto.getItem().size(); i++) {
+			Map<String, String> map = new HashMap<String, String>();
+			
+			map.put("word", worddto.getItem().get(i).getWord());
+			map.put("meaning", worddto.getItem().get(i).getMeaning());
+			
+			result.add(map);
+		}
+		
+		return result;
+		
+	}
 }
