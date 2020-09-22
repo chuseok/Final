@@ -65,13 +65,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		long day = diff/(1000*60*60*24);
 		
 		if(sec>0&&hour==0)
-			session.setAttribute("text", min+"��"+sec+"�ʸ��� �����ϼ̽��ϴ�..");
+			session.setAttribute("text", min+"분"+sec+"초만에 접속하셨습니다.");
 		else if(hour>0&&day==0)
-			session.setAttribute("text", hour+"�ð�"+min+"�и��� �����ϼ̽��ϴ�.");
+			session.setAttribute("text", hour+"시"+min+"분만에 접속하셨습니다.");
 		else if(day>0)
-			session.setAttribute("text", day+"��"+hour+"�ð����� �����ϼ̽��ϴ�.");
+			session.setAttribute("text", day+"일"+hour+"시간만에 접속하셨습니다.");
 		else if(sec==0) {
-			session.setAttribute("text", "�޽����� �����ϴ�.");
+			//session.setAttribute("text", "메시지가 없습니다.");
 		}
 	}
 }

@@ -14,8 +14,35 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/resources/css/dragon/dragonPanel.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 </head>
 <style type="text/css">
+.bx-viewport{
+	height: 120px;
+}
+.bx-wrapper{
+	text-align: center;
+	border: 0px solid #fff;
+    background: rgb(255 255 255 / 0%);
+    box-shadow: 0 0 #ccc;
+    height: 120px;
+}
+.bx-wrapper li{
+	margin: 0 auto;
+	
+}
+.bx-wrapper img{
+	margin: 0 auto;
+}
+.bxslider{
+	margin-top: 30px;
+}
+.bxslider li{
+ 	vertical-align: middle;
+    display: inline-block;
+    height: 120px;
+}
+
 </style>
 <body>
   
@@ -107,6 +134,20 @@
 		</div>
 		<div id="inventory">
 				<div class="btn_array">
+					<ul class="bxslider">
+						<c:forEach var="item" items="${item}">
+						<c:if test="${item.category eq 'item'}">
+							<li class="button_item" data-des='${item.description}'
+								value="${item.productId}" name="${item.productName}">
+								<img alt="" src="${item.productImage}" width="50px"
+									height="50px">
+								<p>${item.productName}</p>
+								<p class="cnt">수량 : ${item.cnt }</p>
+							</li>
+						</c:if>
+					</c:forEach>
+					</ul>
+							<!--  
 					<c:forEach var="item" items="${item}">
 						<c:if test="${item.category eq 'item'}">
 							<button type="button" class="button_item" data-des='${item.description}'
@@ -118,6 +159,7 @@
 							</button>
 						</c:if>
 					</c:forEach>
+					-->
 				</div>
 			
 			<div id="banner_navi">
@@ -214,6 +256,7 @@
 
 <script type="text/javascript" src="../resources/js/dragon/jquery-asPieProgress.js"></script>
 <script type="text/javascript" src="../resources/js/dragon/slider.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
 
 
@@ -239,7 +282,7 @@ function callJqueryAjax(value) {//아이템 사용 ajax 처리
 			//$("input[name=description]").html(data.description);
 			//var val = $("input[name=description]").val();
 			//$('#inventory').load(location.href+ " .btn_array,#banner_navi");//page 값 갱신
-			$('button[value='+value+'] .cnt').text("수량 : "+data.cnt);
+			$('li[value='+value+'] .cnt').text("수량 : "+data.cnt);
 			if(data.cnt==0){
 				$('button[value='+value+']').css('display','none');
 			}
@@ -329,6 +372,15 @@ function equipBackground(id) {//배경 변경 처리
 }
 
 jQuery(function($) {
+	var bxslider = $('.bxslider').bxSlider({
+		  minSlides: 1,
+		  maxSlides: 4,
+		  slideWidth: 150,
+		  slideMargin: 10,
+		  touchEnabled: false,
+		  responsive: true,
+		  shrinkItems: true
+		});
 	
 	if('<c:out value="${alert}"/>'){//로그아웃상태일시 차단
 		document.location.href="/main";
@@ -434,6 +486,7 @@ jQuery(function($) {
 			$('#costume').slideToggle();
 		}
 		$('#inventory').slideToggle();
+		bxslider.reloadSlider();
 	});
 	$('#button_costume').on('click', function() {//custome 탭 버튼
 		var chk = $('#inventory').attr('style') === "display: block;"
