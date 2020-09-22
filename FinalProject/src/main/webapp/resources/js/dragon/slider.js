@@ -1,7 +1,7 @@
 
 
 var $container = $('#costume').width()-90;//탭 크기 제외한 이미지 슬라이더 panel width
-var $container_item = $('#inventory').width();
+var $container_item = $('#inventory').width()-1;
 var $display = 6;
 var $display_item = 4;//보여지는 아이템 개수
 
@@ -16,7 +16,7 @@ if($container>=540){
 		$display_item = 3;
 	}
 var $item = $container / $display;
-var $item_item = ($container_item / $display_item)-35;
+var $item_item = ($container_item / $display_item);
 var $count = $('.button_item').length;
 var $slidebox = $item_item * $count;
 var $count_dg = $('#inven-dg .costume-card').length;

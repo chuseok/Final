@@ -2,11 +2,12 @@
 .HomeLayout-main{
 	display:table-cell;
 	vertical-align: top;
-	padding-top: 100px; 
+	padding-top: 5%;
+	padding-left: 5%;
+	width: 700px;
 }
 #panel {
 	width: 90%;
-	margin: 0 auto;
 	min-width: 464px;
 }
 
@@ -121,6 +122,9 @@
 	align-items: center;
 	padding-top: 20px;
 }
+.row-content img{
+	vertical-align: baseline;
+}
 .pie_progress {
 	position:relative;
 	width: 130px;
@@ -165,7 +169,6 @@ progress {
       width: 90%;
       height: 100px;
       box-shadow: 0 8px 16px var(--shadow);
-      margin: 0 auto;
       min-width: 464px;
     }
 
@@ -260,8 +263,8 @@ progress {
 
     .tabbar>div input:checked+label svg {
       --y: -35px;
-      --s: 1.7;
-      padding-right: 7px;
+      --s: 1.9;
+      padding-right: 1px;
       fill: rgb(255 0 0);
 
     }
@@ -416,7 +419,7 @@ position: absolute;
 }
 
 #banner_navi button{
-	width: 10px;
+	width: 20px;
 	height: 20px;
 	margin-right: 5px;
 }
@@ -427,8 +430,9 @@ position: absolute;
 }
 
 #banner_navi_dg button{
-	width: 10px;
+	width: 20px;
 	height: 20px;
+	border-radius: 5px;
 }
 #banner_navi_bg{
 	position: absolute;
@@ -486,13 +490,6 @@ position: absolute;
 	height: 50px;
 	}
 	
-	.tabbar>div input:checked+label svg{
-		padding-right: 1px;
-	}
-	.tabbar>div input:checked+label span{
-		padding-right: 1px;
-	}
-	
 }
 @media screen and ( max-width: 914px ) {
   	progress {
@@ -511,12 +508,6 @@ position: absolute;
 		font-size: 15px;
 	}
 	
-	.tabbar>div input:checked+label svg{
-		padding-left: 10px;
-	}
-	.tabbar>div input:checked+label span{
-		padding-left: 10px;
-	}
 	
 	#dragon{
 		left: 33%;
@@ -543,7 +534,7 @@ position: absolute;
 	z-index: 999;
 }
 
-.modal-wrapper.open .modal {
+.modal-wrapper.open .modal-dragon {
 	margin-top: -200px;
 	opacity: 1;
 }
@@ -551,7 +542,7 @@ position: absolute;
 	filter: blur(4px);
 }
 
-.modal .content {
+.modal-dragon .content {
 	margin: 20px;
 }
 .content .card {

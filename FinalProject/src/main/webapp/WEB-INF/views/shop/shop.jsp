@@ -123,14 +123,9 @@ label img {
 					</div>
 				</c:forEach>
 			</section>
-	
-	<div class="btnArray">
-			<input type="button" value="용키우기" id="dragonBtn"
-				onclick="location.href='../dragon/dragonPanel'">
-			</div>
 		</div>
 		<div class="modal-wrapper">
-			<div class="modal">
+			<div class="modal-shop">
 				<div class="content">
 					<div class="card">
 						<nav>
@@ -192,7 +187,7 @@ label img {
 	</div>
 </div>
 </body>
-<script type="text/javascript" src="../resources/js/jquery.js"></script>
+
 <script type="text/javascript">
 
 function callJqueryAjax(name) {

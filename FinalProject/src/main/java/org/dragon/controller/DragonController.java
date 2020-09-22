@@ -128,6 +128,7 @@ public class DragonController {
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam("chooseDragon") int chooseDragon, Principal principal) {
+		
 		System.out.println("delete dragon : " + chooseDragon);
 		String userId = principal.getName();
 		DragonVO deleteDragon = service.getDragonByUser(userId);

@@ -56,8 +56,7 @@
   width: 15px;
   height: 15px;
   text-align: center;
-  line-height: 15px;
-  transform: translate(-30%, 70%);
+  line-height: 12px;
 }
 .header__notification .bell-icon .notification__list {
   position: absolute;
@@ -65,8 +64,8 @@
   width: 230px;
   list-style-type: none;
   text-align: center;
-  left: -90px;
-  top: 50px;
+  left: -103px;
+  top: 40px;
   border-radius: 7px;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
@@ -88,12 +87,9 @@
 }
 
 .header__notification .bell-icon .notification__list__name {
-  background: #fff;
   color: #9BB7C5;
-  padding: 10px 0;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
   font-size: 15px;

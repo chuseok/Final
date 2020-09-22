@@ -22,12 +22,12 @@
 h2.connection {
   font-size: 1em;
 }
-.row {
+.rankingrow {
   margin-bottom: 5px;
   position: relative;
-    top: 40%;
+  top: 10%;
   height: 100px;
-    font-size: 20px;
+  font-size: 20px;
 }
 .card {
  box-sizing: border-box;
@@ -121,7 +121,7 @@ i.fa-info-circle .tooltiptext::after{
   border: 3px solid #e45b6c;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 2px 10px 0 rgba(0, 0, 0, 0.15);
   position: relative;
-  top: 20%;
+  top: 0%;
   left: 50%;
   transform: translate(-50%, 50px);
 }
@@ -157,10 +157,9 @@ i.fa-info-circle .tooltiptext::after{
     display: inline-block;
     height: 130px;
     width: 130px;
-    margin: 40px 0;
-    padding-top: 30px;
+    padding-top: 5%;
     box-shadow: 0 4px 15px -10px rgba(0, 0, 0, 0.1), 0 5px 15px 1px rgba(0, 0, 0, 0.18), 0 0 0 15px #fff, 0 0 0 22px #e45b6c, 0 55px 50px -20px rgba(34, 36, 38, 0.25);
-    top: 20%;
+    top: 50%;
     position: relative;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -168,7 +167,7 @@ i.fa-info-circle .tooltiptext::after{
 .dial-title {
   font-size: 3.8em;
   font-weight: 400;
-  line-height: .8;
+  line-height: .5;
 }
 .dial-value {
   font-size: 1.8em;
@@ -176,7 +175,7 @@ i.fa-info-circle .tooltiptext::after{
 /*ranking top css end*/
 
 /*ranking 전체 영역 menu*/
-.menu {
+.card-section .card-menu {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: justify;
@@ -349,7 +348,7 @@ i.fa-info-circle .tooltiptext::after{
 	  <section class="HomeLayout-main">
 	    <div class="card">
 		<section class="card-info card-section">
-			<div class="avatar row">
+			<div class="avatar rankingrow">
 			</div>
 			
 			<section class="statistics">
@@ -372,7 +371,7 @@ i.fa-info-circle .tooltiptext::after{
 				</article>
 			</section>
 			
-			<section class="user row">
+			<section class="user rankingrow">
 				<h1 class="user-header">
 					${userInfo.userId}
 					<h2 id="connection">
@@ -397,15 +396,15 @@ i.fa-info-circle .tooltiptext::after{
 		</div>
 		</section>
 		<section class="card-details card-section">
-			
-			<nav class="menu">
+			<!-- 
+			<nav class="card-menu">
 				<article class="global menu-item menu-item-active">
 					<a href="#tab_global">Global</a> 
 				</article>
 				<article class="friends menu-item">
 					<a href="#tab_friends">Friends</a> 
 				</article>
-			</nav>
+			</nav> -->
 			<div class="ranking-window-body">
 	    <div class="ranking-window-awards" id="tab_global">
 	      <ul class="ranking-row ranking-header">
@@ -535,7 +534,6 @@ i.fa-info-circle .tooltiptext::after{
 	</div>
 	<input type="hidden" name="connectionTime" value="${connectionTime}">
 </body>
-<script type="text/javascript" src="../resources/js/jquery.js"></script>
 <script type="text/javascript">
 var currentDate = '<c:out value="${connectionTime}"/>';
 

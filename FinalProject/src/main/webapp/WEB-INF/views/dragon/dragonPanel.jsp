@@ -9,6 +9,7 @@
   <meta name="_csrf_header" content="${_csrf.headerName}">
   <title>암기용-dragon</title>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
   <link rel="stylesheet" href="/resources/css/main.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
@@ -29,7 +30,7 @@
     
 		<div id="dragonBackground" style="background-image: url(${background.productImage})">
 		<div id="overlay">
-		<img alt="" src="../resources/images/dead.svg">
+		<img alt="" src="../resources/images/icon/dead.svg">
 			<h2>용이 죽었습니다!</h2>
 			<div class="dead_btn">
 				<button class="chooseDragon">다른 용 선택</button>
@@ -38,7 +39,7 @@
 		</div>
 		<c:if test="${noDragon}">
 		<div id="alertNoDragon">
-		<img alt="" src="../resources/images/alertIcon.svg">
+		<img alt="" src="../resources/images/icon/alertIcon.svg">
 			<h2>용이 없습니다!</h2>
 			<div class="noDragon_btn">
 				<button class="goshop">구입하러 가기</button>
@@ -46,7 +47,7 @@
 		</div>
 		</c:if>
 		<div class="modal-wrapper">
-		<div class="modal">
+		<div class="modal-dragon">
 			<div class="content">
 				<div class="card">
 					<nav> 드래곤 선택
@@ -57,7 +58,7 @@
 						<c:forEach var="item" items="${dragonList}">
 							<div class="costume-card-modal" data-id="${item.dragonId}">
 								<div class="innerText">
-									<img alt="" src="../resources/images/dead.svg">
+									<img alt="" src="../resources/images/icon/dead.svg">
 								</div>
 								
 								<div class="test" style="background-image: url(${item.img})"
@@ -210,7 +211,7 @@
 <input type="hidden" name="dragonId" value="${values.dragonId }">
 
 </body>
-<script type="text/javascript" src="../resources/js/jquery.js"></script>
+
 <script type="text/javascript" src="../resources/js/dragon/jquery-asPieProgress.js"></script>
 <script type="text/javascript" src="../resources/js/dragon/slider.js"></script>
 <script type="text/javascript">
@@ -333,6 +334,9 @@ jQuery(function($) {
 		document.location.href="/main";
 		alert('로그인이 필요합니다!');
 		return false;
+	}
+	if('${fn:length(dragonList)}'==1){
+		$('.chooseEnd button').attr('disabled','true');
 	}
 	
 	var i = $("input[name=levelValue]").val();
