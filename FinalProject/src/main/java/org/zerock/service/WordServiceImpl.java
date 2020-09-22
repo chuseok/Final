@@ -6,22 +6,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
-import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.stereotype.Service;
-import org.zerock.domain.ItemType;
-import org.zerock.domain.ReadFileDTO;
-import org.zerock.domain.WordVO;
+import org.study.domain.WordDTO;
+import org.study.domain.WordVO;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -65,7 +58,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public JSONArray readJson(JSONArray jsonArray, ReadFileDTO jsonDTO) {
+	public JSONArray readJson(JSONArray jsonArray, WordDTO jsonDTO) {
 
 		log.info("readJson.....");
 
@@ -78,19 +71,16 @@ public class WordServiceImpl implements WordService {
 		Gson gson = new Gson();
 		JSONObject wordObj;
 
-//		BufferedReader reader;
 		Reader reader;
 		try {
-//			reader = Files.newBufferedReader(Paths.get("C:\\temp\\test01.json"), StandardCharsets.UTF_8);
-
-			List<ReadFileDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
-					new TypeReference<List<ReadFileDTO>>() {});
+			List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
+					new TypeReference<List<WordDTO>>() {});
 
 			int size = jsonDTOList.size();
 
 			for (int i = 0; i < size; i++) {
 
-				ReadFileDTO str = jsonDTOList.get(i);
+				WordDTO str = jsonDTOList.get(i);
 				
 				int removedIndex = 0;
 				/*
@@ -106,7 +96,7 @@ public class WordServiceImpl implements WordService {
 				wordObj.put("id", str.getId());
 				wordObj.put("title", str.getTitle());
 
-				for (ItemType item : str.getItem()) {
+				for (WordVO item : str.getItem()) {
 					JSONObject itemObj = new JSONObject();
 					itemObj.put("word", item.getWord());
 					itemObj.put("meaning", item.getMeaning());
@@ -135,7 +125,7 @@ public class WordServiceImpl implements WordService {
 			}
 			log.info("남은 단어장 확인 : " + jsonDTOList);
 			
-			for (ReadFileDTO j : jsonDTOList) {
+			for (WordDTO j : jsonDTOList) {
 				JSONArray resultArray = new JSONArray();
 				if(jsonDTOList.isEmpty()) {
 					log.info("비어있음.");
@@ -145,7 +135,7 @@ public class WordServiceImpl implements WordService {
 				oldObj.put("id", j.getId());
 				oldObj.put("title", j.getTitle());
 				
-				for (ItemType item : j.getItem()) {
+				for (WordVO item : j.getItem()) {
 					
 					JSONObject itemObj = new JSONObject();
 					itemObj.put("word", item.getWord());
@@ -171,7 +161,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public void writeJson(JSONArray jsonArray, List<ReadFileDTO> oldArray, ReadFileDTO jsonDTO) {
+	public void writeJson(JSONArray jsonArray, List<WordDTO> oldArray, WordDTO jsonDTO) {
 		log.info("writeJson.....");
 
 		JSONObject itemsObj = new JSONObject();
@@ -181,12 +171,12 @@ public class WordServiceImpl implements WordService {
 		try {
 			// 1.oldArray값을 풀어서 object로 다시 통째로 추가한 후 새로운 값을 추가
 			if (!oldArray.isEmpty()) {
-				for(ReadFileDTO j:oldArray) {
+				for(WordDTO j:oldArray) {
 					itemArray = new JSONArray();
 					itemsObj.put("id", j.getId());
 					itemsObj.put("title", j.getTitle());
 				
-					for (ItemType item : j.getItem()) {
+					for (WordVO item : j.getItem()) {
 						JSONObject itemObj = new JSONObject();
 						itemObj.put("word", item.getWord());
 						itemObj.put("meaning", item.getMeaning());
@@ -220,11 +210,11 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public List<ReadFileDTO> stringToJson(String result) {
-		List<ReadFileDTO> jsonDTOList = null;
+	public List<WordDTO> stringToJson(String result) {
+		List<WordDTO> jsonDTOList = null;
 		try {
 			jsonDTOList = new ObjectMapper().readValue(result,
-					new TypeReference<List<ReadFileDTO>>() {});
+					new TypeReference<List<WordDTO>>() {});
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
