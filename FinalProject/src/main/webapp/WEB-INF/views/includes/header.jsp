@@ -458,6 +458,7 @@ integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMh
 
 		$('.header-loginBtn').on("click",function(){
 			$('#loginModal').show();
+			sessionStorage.clear();//알림 메시지 확인 리셋
 		});
 				
 		$('.header-signInBtn').on("click",function(){
@@ -637,13 +638,13 @@ function sendMessage() {
     
 }
 
-function showMessageOutput(messageOutput) {
+function showMessageOutput(messageOutput) {//알림 메시지 출력
     var response = document.getElementsByClassName('notification__list');
     //var li = document.createElement('li');
     for(var i=0;i<response.length;i++){
     	var str = '<li class="list__item '+messageOutput.clicked+'">'
     	    +'<a href="#" class="list__item--link">'
-    	    +'<img src="https://cdn.tutsplus.com/net/uploads/legacy/213_chris/ChrisThumbnail.jpg" alt="" class="user-image" />'
+    	    //+'<img src="https://cdn.tutsplus.com/net/uploads/legacy/213_chris/ChrisThumbnail.jpg" alt="" class="user-image" />'
     	    +'<span class="messages">'
     	    +messageOutput.text+' ('+messageOutput.time+')'
     	    +'</span></a></li>';

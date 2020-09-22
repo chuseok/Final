@@ -14,8 +14,28 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/resources/css/dragon/dragonPanel.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  
 </head>
 <style type="text/css">
+.bxslider-inner {
+    vertical-align: middle;
+    display: inline-block;
+    float: none !important;
+    text-align: center;
+}
+.bx-wrapper{
+	margin: 0 auto;
+	background: #fff0;
+	border: 0px solid #fff;
+}
+.bx-wrapper img{
+	margin: 0 auto;
+}
+.bx-wrapper li{
+	text-align: center;
+}
 </style>
 <body>
   
@@ -107,6 +127,20 @@
 		</div>
 		<div id="inventory">
 				<div class="btn_array">
+				 <ul class="bxslider">
+				 	<c:forEach var="item" items="${item}">
+						<c:if test="${item.category eq 'item'}">
+							<li class="button_item" data-des='${item.description}'
+								value="${item.productId}" name="${item.productName}">
+								<img alt="" src="${item.productImage}" width="50px"
+									height="50px">
+								<p>${item.productName}</p>
+								<p class="cnt">수량 : ${item.cnt }</p>
+							</li>
+						</c:if>
+					</c:forEach>
+				 </ul> 
+				<!-- 
 					<c:forEach var="item" items="${item}">
 						<c:if test="${item.category eq 'item'}">
 							<button type="button" class="button_item" data-des='${item.description}'
@@ -117,7 +151,7 @@
 								<p class="cnt">수량 : ${item.cnt }</p>
 							</button>
 						</c:if>
-					</c:forEach>
+					</c:forEach> -->
 				</div>
 			
 			<div id="banner_navi">
@@ -204,7 +238,7 @@
   </section>
 </div>
 </div>
-<input type="hidden" value="${values.userId }" name="userId"> 
+<input type="hidden" value="${values.userId }" name="targetId"> 
 <input type="hidden" value="${values.foodValue }" name="hungryValue"> 
 <input type="hidden" value="${values.levelValue}" name="levelValue"> 
 <input type="hidden" value="${values.totalLevel}" name="totalLevelValue">
@@ -214,9 +248,8 @@
 
 <script type="text/javascript" src="../resources/js/dragon/jquery-asPieProgress.js"></script>
 <script type="text/javascript" src="../resources/js/dragon/slider.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
-
-
 
 function radioCheck(id) {//modal에서 드래곤 선택 시 radio 자동 체크
 	$("input[value="+id+"]").prop("checked", true);
@@ -239,7 +272,7 @@ function callJqueryAjax(value) {//아이템 사용 ajax 처리
 			//$("input[name=description]").html(data.description);
 			//var val = $("input[name=description]").val();
 			//$('#inventory').load(location.href+ " .btn_array,#banner_navi");//page 값 갱신
-			$('button[value='+value+'] .cnt').text("수량 : "+data.cnt);
+			$('li[value='+value+'] .cnt').text("수량 : "+data.cnt);
 			if(data.cnt==0){
 				$('button[value='+value+']').css('display','none');
 			}
@@ -329,6 +362,17 @@ function equipBackground(id) {//배경 변경 처리
 }
 
 jQuery(function($) {
+	var bxslider  = $('.bxslider').bxSlider({ 
+	    controls : true,	//좌우 화살표	
+	    pager:true,	//페이징 
+	    slideWidth: 150,
+	    minSlides: 1,
+	    maxSlides: 3,
+	    slideMargin: 10,
+	    adaptiveHeight: true,
+	    touchEnabled: false,
+	    responsive: true
+	});
 	
 	if('<c:out value="${alert}"/>'){//로그아웃상태일시 차단
 		document.location.href="/main";
@@ -362,10 +406,14 @@ jQuery(function($) {
 	$("div[data-id='<c:out value="${background.productId}"/>']").children('.innerText').css('visibility','visible');
 	
 	
-
+	
+	$(document).on('click', '#clickTest', function() {
+		alert("1111");
+	});
 	$(document).on('click', '.button_item', function() {
 		var targetDiv = $("div[data-id='"+selectedEgg+"'] .test");
 		callJqueryAjax($(this).attr('value'));
+		
 		var description = $(this).data("des");
 		var strArray = description.split(" ");
 		switch (strArray[0]) {
@@ -379,6 +427,7 @@ jQuery(function($) {
 		default:
 			break;
 		}
+		var levelValue = $("input[name=levelValue]").val();
 		var level = $("input[name=totalLevelValue]").val();
 		var hungry = $("input[name=hungryValue]").val();
 		if($("input[name=levelValue]").val()>=100){
@@ -388,11 +437,10 @@ jQuery(function($) {
 		}
 		var token = $("meta[name='_csrf']").attr("content");
 		var header = $("meta[name='_csrf_header']").attr("content");//security 설정
-		
 		$.ajax({
 			url : '/dragon/dragonPanel',
 			method : 'post',
-			data: {userId:$("input[name=userId]").val(),
+			data: {userId:$("input[name=targetId]").val(),
 				totalLevel : $("input[name=totalLevelValue]").val(),
 				foodValue : $("input[name=hungryValue]").val(),
 				levelValue : $("input[name=levelValue]").val(),
@@ -400,9 +448,7 @@ jQuery(function($) {
 				dragonId : $("input[name=dragonId]").val(),
 				equip : true},
 			dataType: "json",
-			beforeSend:function(xhr){
-				xhr.setRequestHeader(header, token);
-			},
+			
 			success : function(data, textStatus, jqXHR) {
 				document.getElementById("hungry_pro").value = data.foodValue;//포만감 갱신
 				$('.pie_progress').asPieProgress('go', data.levelValue);//레벨값 갱신
@@ -411,7 +457,7 @@ jQuery(function($) {
 				$('.pie_progress__content').html("LV "+data.totalLevel);
 				$('#dragon').attr("src",data.img);//드래곤 이미지 갱신
 				targetDiv.css({"background-image":"url("+data.img+")"}); //탭 안의 이미지 갱신
-				
+				bxslider.reloadSlider();
 			},
 			error : function(jqXHR, exception) {
 				console.log('Error occured!!');
@@ -420,7 +466,8 @@ jQuery(function($) {
 		
 			$('#dragon').animate({'top':'-=20px'},'fast');
 			$('#dragon').animate({'top':'+=20px'},'fast');
-		
+			
+			
 			
 	});
 
@@ -428,12 +475,15 @@ jQuery(function($) {
 		location.href='../shop/shop';
 	});
 
+	
+	
 	$('#button_inventory').on('click', function() {//inventory 탭 버튼
 		var chk = $('#costume').attr('style') === "display: block;"
 		if (chk) {
 			$('#costume').slideToggle();
 		}
 		$('#inventory').slideToggle();
+		bxslider.reloadSlider();
 	});
 	$('#button_costume').on('click', function() {//custome 탭 버튼
 		var chk = $('#inventory').attr('style') === "display: block;"

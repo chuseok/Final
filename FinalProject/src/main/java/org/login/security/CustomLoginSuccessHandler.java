@@ -65,13 +65,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		long day = diff/(1000*60*60*24);
 		
 		if(sec>0&&hour==0)
-			session.setAttribute("text", min+"ï¿½ï¿½"+sec+"ï¿½Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½..");
+			session.setAttribute("text", min+"ºÐ"+sec+"ÃÊ¸¸¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù");
 		else if(hour>0&&day==0)
-			session.setAttribute("text", hour+"ï¿½Ã°ï¿½"+min+"ï¿½Ð¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.");
+			session.setAttribute("text", hour+"½Ã"+min+"ºÐ¸¸¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù.");
 		else if(day>0)
-			session.setAttribute("text", day+"ï¿½ï¿½"+hour+"ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.");
+			session.setAttribute("text", day+"ÀÏ"+hour+"½Ã¸¸¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù.");
 		else if(sec==0) {
-			session.setAttribute("text", "ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			//session.setAttribute("text", "¸Þ½ÃÁö°¡ ¾ø½À´Ï´Ù.");
 		}
 	}
 }

@@ -325,7 +325,7 @@ i.fa-info-circle .tooltiptext::after{
 
 .overlay{
 	position: absolute;
-	top: 0;
+	top: 10%;
 	display: flex;
     align-items: center;
     justify-content: center;
@@ -333,7 +333,7 @@ i.fa-info-circle .tooltiptext::after{
 }
 .overlay h1{
 	font-size: 30px;
-	margin-top:10px;
+	margin-top: 30px;
 }
 </style>
 </head>
@@ -391,7 +391,7 @@ i.fa-info-circle .tooltiptext::after{
 		</section>
 		<section class="card-info card-section overlay">
 		<div>
-		<img alt="" src="../resources/images/alertIcon.svg" width="100px">
+		<img alt="" src="../resources/images/icon/alertIcon.svg" width="100px">
 		<h1>용을 구입해주세요!!</h1>
 		</div>
 		</section>
