@@ -51,19 +51,18 @@ public class InventoryServiceImpl implements InventoryService{
 				checkName =true;
 			}
 		}
-		int balance = dragonMapper.getCoin(dragonVO.getUserId()) - product.getPrice()*vo.getAmount();//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		int balance = dragonMapper.getCoin(dragonVO.getUserId()) - product.getPrice()*vo.getAmount();//³²Àº ÄÚÀÎ °³¼ö
 		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¾ï¿½ : "+balance);
 		if(!checkName){
 			mapper.insert(vo);
-			if(product.getCategory().equals("egg")) {//Ä«ï¿½×°ï¿½ï¿½ï¿½ eggï¿½Ï¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			if(product.getCategory().equals("egg")) {//¾ËÀ» ±¸ÀÔÇßÀ» ½Ã 
 				List<Integer> dragonIdList = dragonMapper.getDragonId(vo.getProductId());
 				int length = dragonIdList.size();
-				int dragonId = dragonIdList.get((int)(Math.random()*length));//ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Å©ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				int dragonId = dragonIdList.get((int)(Math.random()*length));//·£´ýÀ¸·Î µå·¡°ï id set
 				dragonVO.setDragonId(dragonId);
 				dragonMapper.create(dragonVO);	
 			}
-			if(dragonMapper.getAll(dragonVO.getUserId()).size()==1) {
-				//System.out.println("ï¿½Æ¹ï¿½ï¿½Íµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..");
+			if(dragonMapper.getAll(dragonVO.getUserId()).size()==1) {//µå·¡°ï °³¼ö°¡ ÇÏ³ª¹Û¿¡ ¾øÀ» ½Ã µå·¡°ï Àåºñ!
 				dragonVO.setEquip(true);
 				dragonMapper.updateEqiup(dragonVO);
 			}
