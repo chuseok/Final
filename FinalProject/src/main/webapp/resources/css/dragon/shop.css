@@ -1,3 +1,7 @@
+.HomeLayout-main{
+	width: 700px;
+}
+
 .main {
 	min-width: 320px;
 	max-width: 800px;
@@ -103,7 +107,7 @@ input:checked+label {
 	visibility: visible;
 }
 
-.modal-wrapper.open .modal {
+.modal-wrapper.open .modal-shop {
 	margin-top: -200px;
 	opacity: 1;
 }
@@ -143,7 +147,7 @@ nav .goDetail {
 	filter: blur(4px);
 }
 
-.modal .content {
+.modal-shop .content {
 	margin: 20px;
 }
 .wrapper {
@@ -168,6 +172,7 @@ nav .goDetail {
 .wrapper .container {
 	width: 130px;
 	height: 180px;
+	padding: 0px;
 }
 
 .wrapper .container .top {
@@ -179,7 +184,7 @@ nav .goDetail {
 	-moz-background-size: 100%;
 	-o-background-size: 100%;
 	background-size: 100%;
-	background-color: rgb(253 224 224 / 30%);
+	background-color: rgb(243 243 243 / 30%);
 }
 
 .wrapper .container .bottom {
@@ -193,11 +198,12 @@ nav .goDetail {
 }
 
 .wrapper .container .bottom h1 {
-	font-size: 17px;
+	font-size: 15px;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: bold;
 }
 
 .wrapper .container .bottom p {
@@ -224,7 +230,7 @@ nav .goDetail {
 	float: right;
 	width: calc(40px - 2px);
 	height: 100%;
-	background: #f1f1f1;
+	background: #ff8f8f14;
 	transition: background 0.5s;
 	border-left: solid thin rgba(0, 0, 0, 0.1);
 	display: flex;
@@ -301,7 +307,7 @@ nav .goDetail {
 .content .card .description {
 	padding: 30px;
 	float: left;
-	width: 50%;
+	width: 70%;
 	border-left: 2px solid #efefef;
 }
 
@@ -327,7 +333,6 @@ nav .goDetail {
 	text-transform: uppercase;
 	display: inline-block;
 	position: relative;
-	left: -35px;
 }
 
 .content .card .description h4 {
