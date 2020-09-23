@@ -81,6 +81,7 @@ public class WordController {
 			JSONArray array = JSONArray.fromObject(params.get("item"));
 			List<WordDTO> jsonDTO = service.stringToJson(params.get("oldItem").toString());
 			log.info("jsonDTO확인1 = " + jsonDTO);
+			log.info("array확인1 = " + array);
 			
 			WordDTO writeJson = new WordDTO();
 			writeJson.setId(userId.getName());

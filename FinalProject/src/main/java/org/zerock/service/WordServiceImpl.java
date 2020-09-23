@@ -27,38 +27,7 @@ import net.sf.json.JSONObject;
 public class WordServiceImpl implements WordService {
 
 	@Override
-	public WordVO createJson(WordVO word, String userId) {//이거 안씀!!!!!!!!!!!
-		JSONObject itemsObj = new JSONObject();
-		JSONObject itemObj = new JSONObject();
-		JSONObject wordInfo = new JSONObject();
-		JSONArray itemArray = new JSONArray();
-		JSONArray idArray = new JSONArray();
-		wordInfo.put("word", word.getWord());
-		wordInfo.put("meaning", word.getMeaning());
-		itemArray.add(wordInfo);
-		itemObj.put("item", itemArray);
-		itemsObj.put("items", itemObj);
-		itemsObj.put("id", userId);
-		idArray.add(itemsObj);
-
-		try {
-			BufferedWriter out = new BufferedWriter(
-					new OutputStreamWriter(new FileOutputStream("C:\\temp\\test01.json"), "UTF-8"));
-			out.write(idArray.toString());
-			out.flush();
-			out.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		log.info(itemsObj);
-		
-		return word;
-	}
-
-	@Override
-	public JSONArray readJson(JSONArray jsonArray, WordDTO jsonDTO) {
+	public JSONArray readJson(JSONArray jsonArray, WordDTO wordDTO) {
 
 		log.info("readJson.....");
 
@@ -73,14 +42,15 @@ public class WordServiceImpl implements WordService {
 
 		Reader reader;
 		try {
-			List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
+			List<WordDTO> readWordBookList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
 					new TypeReference<List<WordDTO>>() {});
 
-			int size = jsonDTOList.size();
+			int size = readWordBookList.size();
 
 			for (int i = 0; i < size; i++) {
 
-				WordDTO str = jsonDTOList.get(i);
+				WordDTO readWordBook = readWordBookList.get(i);
+				itemArray.clear();
 				
 				int removedIndex = 0;
 				/*
@@ -92,72 +62,70 @@ public class WordServiceImpl implements WordService {
 				 
 
 				wordObj = new JSONObject();
-
-				wordObj.put("id", str.getId());
-				wordObj.put("title", str.getTitle());
-
-				for (WordVO item : str.getItem()) {
+				wordObj.put("id", readWordBook.getId());
+				wordObj.put("title", readWordBook.getTitle());
+				log.info("readWordBook.getItem() : " + readWordBook.getItem());
+				for (WordVO w : readWordBook.getItem()) {
 					JSONObject itemObj = new JSONObject();
-					itemObj.put("word", item.getWord());
-					itemObj.put("meaning", item.getMeaning());
+					itemObj.put("word", w.getWord());
+					itemObj.put("meaning", w.getMeaning());
 					itemArray.add(itemObj);
+					
 				}
-
+				log.info("itemArray : " + itemArray);
+				
 				wordObj.put("item", itemArray);
 				wordArray.add(wordObj);
 
-				if (str.getId().equals(jsonDTO.getId()) && str.getTitle().equals(jsonDTO.getTitle())) {
-					log.info("id와 제목이 같음." + str.getId() + "," + str.getTitle());
-					log.info("입력한 제목 = " + jsonDTO.getTitle() + ", 읽어온 제목" + str.getTitle());
-					log.info("jsonDTOList = " + jsonDTOList + "\n");
-					jsonDTOList.remove(str);
-					size--;
-					i--;
+				if (readWordBook.getId().equals(wordDTO.getId()) && readWordBook.getTitle().equals(wordDTO.getTitle())) {
+					log.info("id와 제목이 같음.");
+					log.info("입력한 제목 = " + wordDTO.getTitle() + ", 읽어온 제목" + readWordBook.getTitle());
+					log.info("jsonDTOList = " + readWordBookList + "\n");
+					readWordBookList.remove(readWordBook);
+//					size--;
+//					i--;
 					
-				} else if (str.getId().equals(jsonDTO.getId()) && !str.getTitle().equals(jsonDTO.getTitle())) {
-					log.info("id가 같음." + str.getId() + "," + str.getTitle() + "\n");
+				} else if (readWordBook.getId().equals(wordDTO.getId()) && !readWordBook.getTitle().equals(wordDTO.getTitle())) {
+					log.info("id가 같음." + readWordBook.getId() + "," + readWordBook.getTitle() + "\n");
 
-				} else if (!str.getId().equals(jsonDTO.getId()) && !str.getTitle().equals(jsonDTO.getTitle())) {
-					log.info("같지 않음." + str.getId() + "," + str.getTitle());
+				} else if (!readWordBook.getId().equals(wordDTO.getId()) && !readWordBook.getTitle().equals(wordDTO.getTitle())) {
+					log.info("같지 않음." + readWordBook.getId() + "," + readWordBook.getTitle());
 					
 				}
 		
 			}
-			log.info("남은 단어장 확인 : " + jsonDTOList);
+			log.info("남은 단어장 : " + readWordBookList);
 			
-			for (WordDTO j : jsonDTOList) {
-				JSONArray resultArray = new JSONArray();
-				if(jsonDTOList.isEmpty()) {
-					log.info("비어있음.");
-				}
-				
-				oldObj = new JSONObject();
-				oldObj.put("id", j.getId());
-				oldObj.put("title", j.getTitle());
-				
-				for (WordVO item : j.getItem()) {
-					
-					JSONObject itemObj = new JSONObject();
-					itemObj.put("word", item.getWord());
-					itemObj.put("meaning", item.getMeaning());
-					
-					resultArray.add(itemObj);
-				}
-				System.out.println("넣은후");
-				oldObj.put("item", resultArray);
-				
-				newArray.add(oldObj);
-
-				log.info("write에 넘겨줌: " + oldObj + "\n");
-				log.info("write에 넘겨줌2: " + newArray + "\n");
-				
-			}
+//			for (WordDTO w : readWordBookList) {
+//				JSONArray resultArray = new JSONArray();
+//				if(readWordBookList.isEmpty()) {
+//					log.info("비어있음.");
+//				}
+//				
+//				oldObj = new JSONObject();
+//				oldObj.put("id", w.getId());
+//				oldObj.put("title", w.getTitle());
+//				
+//				for (WordVO item : w.getItem()) {
+//					
+//					JSONObject itemObj = new JSONObject();
+//					itemObj.put("word", item.getWord());
+//					itemObj.put("meaning", item.getMeaning());
+//					
+//					resultArray.add(itemObj);
+//				}
+//				System.out.println("넣은후");
+//				oldObj.put("item", resultArray);
+//				
+//				newArray.add(oldObj);
+//
+//			}
 
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 
-		return newArray;
+		return wordArray;
 	}
 
 	@Override
@@ -171,6 +139,7 @@ public class WordServiceImpl implements WordService {
 		try {
 			// 1.oldArray값을 풀어서 object로 다시 통째로 추가한 후 새로운 값을 추가
 			if (!oldArray.isEmpty()) {
+//				log.info("oldArray : 비어있지 않음");
 				for(WordDTO j:oldArray) {
 					itemArray = new JSONArray();
 					itemsObj.put("id", j.getId());
@@ -187,12 +156,13 @@ public class WordServiceImpl implements WordService {
 				}
 			}
 
-			// 2.id와 title값을 받아와서 넣거나 세션으로 가져오기
-			itemsObj.put("id", jsonDTO.getId());
-			itemsObj.put("title", jsonDTO.getTitle());
-			itemsObj.put("item", jsonArray);
+				itemsObj.put("id", jsonDTO.getId());
+				itemsObj.put("title", jsonDTO.getTitle());
+				itemsObj.put("item", jsonArray);
 
-			itemsArray.add(itemsObj);
+				itemsArray.add(itemsObj);
+
+			
 			BufferedWriter writer = new BufferedWriter(
 					new OutputStreamWriter(new FileOutputStream("C:\\temp\\test01.json"), "utf-8"));
 
@@ -204,8 +174,8 @@ public class WordServiceImpl implements WordService {
 			e.printStackTrace();
 		}
 
-		log.info("새로운 obj= " + itemsObj);
-		log.info("itemsArray= " + itemsArray + "\n");
+//		log.info("새로운 obj= " + itemsObj);
+//		log.info("itemsArray= " + itemsArray + "\n");
 
 	}
 

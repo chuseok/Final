@@ -196,6 +196,46 @@
     <div> <span class = "up"></span><span class = "down"></span> </div>
     <input type="text" name="word" style="width:200px;"/>
     <input type="text" name="meaning" style="width:200px;"/>
+    <!-- <div class="UIContainer">
+		<div class="CreateSetHeader-textarea CreateSetHeader-title">
+				<label class="UITextarea">
+					<div class="UITextarea-content">
+							<div class="AutoExpandTextarea UITextarea-textarea UITextarea-autoExpandTextarea">
+					
+							<div class="AutoExpandTextarea-wrapper">
+								<textarea maxlength="100" placeholder="제목을 입력하세요." tabindex="5" variant="default" class="AutoExpandTextarea-textarea" onchange="adjustHeight();" onkeypress="adjustHeight();" 
+								onkeydown="adjustHeight();" onkeyup="adjustHeight();" onscroll="return false;"></textarea>
+							</div>
+							</div>
+						<span class="UITextarea-border"></span>
+					</div>
+					<span class="UITextarea-label">
+						<span>단어</span>
+					</span>
+				</label>
+		</div>
+	</div>
+	
+	    <div class="UIContainer">
+		<div class="CreateSetHeader-textarea CreateSetHeader-title">
+				<label class="UITextarea">
+					<div class="UITextarea-content">
+							<div class="AutoExpandTextarea UITextarea-textarea UITextarea-autoExpandTextarea">
+					
+							<div class="AutoExpandTextarea-wrapper">
+								<textarea maxlength="100" placeholder="제목을 입력하세요." tabindex="5" variant="default" class="AutoExpandTextarea-textarea" onchange="adjustHeight();" onkeypress="adjustHeight();" 
+								onkeydown="adjustHeight();" onkeyup="adjustHeight();" onscroll="return false;"></textarea>
+							</div>
+							</div>
+						<span class="UITextarea-border"></span>
+					</div>
+					<span class="UITextarea-label">
+						<span>뜻</span>
+					</span>
+				</label>
+		</div>
+	</div> -->
+	
   </li>
   <li id="2">
     <div> <span class = "up"></span><span class = "down"></span> </div>
@@ -228,8 +268,8 @@
 <button data-oper="save">save</button>
 </form>
 
-
-<script src="<c:url value="/resources/js/sortable.js" />"></script>
+<%-- 
+<script src="<c:url value="/resources/js/sortable.js" />"></script> --%>
 <script>
 $(document).on('click', 'button', function(e){
 	e.preventDefault();
