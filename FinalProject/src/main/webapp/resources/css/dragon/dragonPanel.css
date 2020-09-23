@@ -89,7 +89,7 @@
 	text-align: center;
 }
 #alertNoDragon button{
-	width: 100px;
+	width: 130px;
 	border-style: solid;
     border-width: 0px 0px 3px;
     box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
@@ -329,7 +329,7 @@ progress {
 #inventory, #costume {
 	display: none;
 	height: 160px;
-	background-color: rgb(155, 155, 155);
+	background-color: rgb(152 152 152 / 50%);
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -352,6 +352,7 @@ progress {
 position: absolute;
 	height: 170px;
 	overflow: hidden;
+	width: 100%;/*¼öÁ¤*/
 }
 .btn_array button {
 	margin: 35px 0px 0px 30px;
