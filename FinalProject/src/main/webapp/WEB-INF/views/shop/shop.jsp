@@ -222,8 +222,7 @@ function checkBuy(name){
 		contentType: "application/json; charset=utf-8;",
 		success : function(data) {
 			var check = $('input:radio[name=tabs]:checked').val();
-			if(data&&(check=='tab3'||check=='tab2')){
-				
+			if(data&&check=='tab2'){
 				$('#alertBuy h3').css('display','block');
 				$('#buy').prop("disabled", true);
 			}

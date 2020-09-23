@@ -28,4 +28,9 @@
 	<delete id="deleteCostume">
 		delete from inventory where productid = #{productId}
 	</delete>
+	<select id="findNotUsedId" resultType="int">
+		select dragonlist.dragonid from dragonlist
+    	where eggid=#{eggId} and dragonlist.dragonid not in 
+    	(select dragonid from dragoninfo)
+</select>
 </mapper>

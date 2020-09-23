@@ -50,7 +50,7 @@ public class ProductController {
 		List<ProductVO> list = service.getList();
 		return new ResponseEntity<>(list,HttpStatus.OK);
 	}
-	@GetMapping(value="/get/{name}", produces = {MediaType.APPLICATION_XML_VALUE,
+	@GetMapping(value="/get/{name}", produces = {MediaType.APPLICATION_XML_VALUE, 
 			MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ProductVO>getListByName(@PathVariable("name")String name, Model model){
 		log.info("get name : "+name );
@@ -61,7 +61,7 @@ public class ProductController {
 	public ResponseEntity<Boolean> checkProduct(@PathVariable("name")String name, Principal principal){
 		log.info("check name : "+name);
 		if(principal==null) {
-			return null;
+			return null; 
 		}
 		String userId = principal.getName();
 		ProductVO target = service.getProductByName(name);

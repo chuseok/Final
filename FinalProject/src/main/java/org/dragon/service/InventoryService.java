@@ -18,4 +18,5 @@ public interface InventoryService {
 	public InventoryVO get(int productId);
 	public boolean check(String userId, int productId);
 	public int valueSettingByItem(int productId, String userId, int dragonId) throws ScriptException;
+	
 }

@@ -50,7 +50,7 @@ public class ShopController {
 		model.addAttribute("backgroundList", service.getProductByCategory("background"));
 		model.addAttribute("eggList", service.getProductByCategory("egg"));
 		model.addAttribute("coin", dragonService.getCoin(userId));
-		
+		 
 		
 	}
 
