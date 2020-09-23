@@ -91,6 +91,24 @@ public class LearningServiceImple implements LearningService {
 		jsonDTOList.forEach(System.out::println);
 		return jsonDTOList;
 	}
+	
+	
+	@Override
+	public List<WordDTO> getAllMyWordList() {
+		List<WordDTO> jsonDTOList = null;
+		try {
+			jsonDTOList = new ObjectMapper().readValue(new File("C:/temp/test02.json"),
+					new TypeReference<List<WordDTO>>() {
+					});
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		jsonDTOList.forEach(System.out::println);
+		return jsonDTOList;
+	}
+	
 
 	@Override
 	public JSONArray getWordJsonArray(String id, String title) {
@@ -177,6 +195,7 @@ public class LearningServiceImple implements LearningService {
 
 	@Override
 	public WordDTO getWordDTO(String id, String title) {
+		log.info("get dto");
 		List<WordDTO> worddto = getAllWordList();
 
 		return worddto.stream().filter(w -> w.getId().equals(id) && w.getTitle().equals(title)).findFirst().get();
@@ -188,7 +207,7 @@ public class LearningServiceImple implements LearningService {
 		for (WordVO item : dto.getItem()) {
 			if (item.getWord().equals(word)) {
 				int rate = item.getLearningRate();
-				log.info("�ٲ�� �� : "+rate);
+				log.info("upRate : "+rate);
 				if(rate == 0) {
 					item.setLearningRate(1);
 				}
@@ -586,6 +605,8 @@ public class LearningServiceImple implements LearningService {
 					
 		}
 		return wordArray;
-	}	
+	}
+
+		
 
 }

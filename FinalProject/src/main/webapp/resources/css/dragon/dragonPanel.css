@@ -326,7 +326,7 @@ progress {
 
 
 /*inventory, costume 클릭시 노출되는 div css*/
-#inventory, #costume {
+#inventory, #costume, #background {
 	display: none;
 	height: 160px;
 	background-color: rgb(152 152 152 / 50%);
@@ -378,7 +378,7 @@ position: absolute;
 	height: 170px;
 	align-items: center;
 	overflow: hidden;
-	left: 55px;
+	width: 100%;
 	
 }
 .costume-card{

@@ -23,7 +23,9 @@
 	border: 0px solid #fff;
     background: rgb(255 255 255 / 0%);
     box-shadow: 0 0 #ccc;
-    height: 120px;
+    height: 140px;
+    margin-left: 50px;
+    width: 80%;
 }
 .bx-wrapper li{
 	margin: 0 auto;
@@ -31,15 +33,64 @@
 .bx-wrapper img{
 	margin: 0 auto;
 }
-.bxslider{
+.bx-pager{
+	top: -20px;
+    text-align: left !important;
+    height: 10px;
+}
+.bxslider, .bxslider-background, .bxslider-dragon{
 	margin-top: 30px;
 }
-.bxslider li{
+.bxslider li, .bxslider-background li, .bxslider-dragon li{
  	vertical-align: middle;
     display: inline-block;
-    height: 120px;
+    height: 150px;
 }
-
+.bx-inner-style{
+	background-color: white;
+	width: 100px;
+	border-radius: 15px;
+}
+.bx-inner-style:hover{
+	cursor: pointer;
+}
+#slider-prev, #slider-prev-background, #slider-prev-dragon{
+	width: 25px;
+    position: absolute;
+    top: 0;
+    background: #00000040;
+    height: 100%;
+    text-align: center;
+}
+#slider-next, #slider-next-background, #slider-next-dragon{
+	width: 25px;
+    position: absolute;
+    right: 0;
+    background: #00000040;
+    height: 100%;
+    top: 0;
+    text-align: center;
+}
+#slider-prev:hover, #slider-prev-background:hover, #slider-prev-dragon:hover{
+	background: #00000080;
+}
+#slider-next:hover, #slider-next-background:hover, #slider-next-dragon:hover{
+	background: #00000080;
+}
+#slider-prev i, #slider-prev-background i, #slider-prev-dragon i{
+	line-height: 160px;
+	font-size: 20px;
+}
+#slider-prev i:hover, #slider-prev-background i:hover, #slider-prev-dragon i:hover{
+	color: white;
+}
+#slider-next i, #slider-next-background i, #slider-next-dragon i{
+	line-height: 160px;
+	font-size: 20px;
+}
+#slider-next i:hover, #slider-next-background i:hover, #slider-next-dragon i:hover{
+	color: white;
+}
 </style>
 <body>
   
@@ -131,19 +182,24 @@
 		</div>
 		<div id="inventory">
 				<div class="btn_array">
+				<div id="slider-prev"><i class="fas fa-angle-left"></i></div>
 				 <ul class="bxslider">
 				 	<c:forEach var="item" items="${item}">
 						<c:if test="${item.category eq 'item'}">
 							<li class="button_item" data-des='${item.description}'
 								value="${item.productId}" name="${item.productName}">
-								<img alt="" src="${item.productImage}" width="50px"
+								<div class="bx-inner-style">
+									<img alt="" src="${item.productImage}" width="50px"
 									height="50px">
-								<p>${item.productName}</p>
-								<p class="cnt">수량 : ${item.cnt }</p>
+									<p>${item.productName}</p>
+									<p class="cnt">수량 : ${item.cnt }</p>
+								</div>
+								
 							</li>
 						</c:if>
 					</c:forEach>
 				 </ul> 
+				 <div id="slider-next"><i class="fas fa-angle-right"></i></div>
 				 <!--  
 					<c:forEach var="item" items="${item}">
 						<c:if test="${item.category eq 'item'}">
@@ -158,13 +214,9 @@
 
 					</c:forEach> -->
 				</div>
-			
-			<div id="banner_navi">
-        			<button class="btn_left" data-btn="0"><</button>
-        			<button class="btn_right" data-btn="1">></button>
-    			</div>
 		</div>
 		<div id="costume">
+		<!-- 
 		<div class="tab">
 			<button class="tabLink" onclick="openTab(event,'inven-dg')" id="defaultOpen">
 				<svg>
@@ -177,24 +229,24 @@
           		</svg>
 			</button>
 		</div>
-
-			<div class="btn_array-costume" id="inven-background">
-				<c:forEach var="item" items="${item}">
-					<c:if test="${item.category eq 'background'}">
-						<div class="costume-card" data-id="${item.productId}">
+ -->
+			
+			
+			<!-- <div class="btn_array-costume" id="inven-dg"> -->
+			<div id="slider-prev-dragon"><i class="fas fa-angle-left"></i></div>
+			<ul class="bxslider-dragon">
+				<c:forEach var="item" items="${dragonList}">
+					<%-- <c:if test="${item.category eq 'egg'}"> --%>
+						<li class="costume-card" data-id="${item.dragonId}">
 							<div class="innerText">checked</div>
 							<div class="test"
-								style="background-image: url(${item.productImage})"></div>
-						</div>
-					</c:if>
+								style="background-image: url(${item.img})"></div>
+						</li>
+					<%-- </c:if> --%>
 				</c:forEach>
-				
-			</div>
-			<div id="banner_navi_bg">
-        			<button class="btn_left" data-btn="0"><</button>
-        			<button class="btn_right" data-btn="1">></button>
-    			</div>
-			<div class="btn_array-costume" id="inven-dg">
+			</ul>
+			<div id="slider-next-dragon"><i class="fas fa-angle-right"></i></div>
+			<!-- 
 				<c:forEach var="item" items="${dragonList}">
 					<%-- <c:if test="${item.category eq 'egg'}"> --%>
 						<div class="costume-card" data-id="${item.dragonId}">
@@ -204,15 +256,38 @@
 						</div>
 					<%-- </c:if> --%>
 				</c:forEach>
+				-->
 				<input type="hidden" class="selectedEgg" value="${selectedEgg}">
 				
-			</div>
-			<div id="banner_navi_dg">
-        			<button class="btn_left" data-btn="0"><</button>
-        			<button class="btn_right" data-btn="1">></button>
-    			</div>
-
 		</div>
+		<div id="background">
+			<div id="slider-prev-background"><i class="fas fa-angle-left"></i></div>
+			<ul class="bxslider-background">
+				<c:forEach var="item" items="${item}">
+					<c:if test="${item.category eq 'background'}">
+						<li class="costume-card" data-id="${item.productId}">
+							<div class="innerText">checked</div>
+							<div class="test"
+								style="background-image: url(${item.productImage})"></div>
+						</li>
+					</c:if>
+				</c:forEach>
+			</ul>
+			<div id="slider-next-background"><i class="fas fa-angle-right"></i></div>
+			<!--  
+				<c:forEach var="item" items="${item}">
+					<c:if test="${item.category eq 'background'}">
+						<div class="costume-card" data-id="${item.productId}">
+							<div class="innerText">checked</div>
+							<div class="test"
+								style="background-image: url(${item.productImage})"></div>
+						</div>
+					</c:if>
+				</c:forEach>
+				-->
+			
+		</div>
+		
 	</div>
 	<nav class="tabbar">
       <div>
@@ -223,19 +298,19 @@
           </svg>
           <span>Inventory</span>
         </label>
-        <input id="button_costume" type="radio" name="menu">
-        <label for="button_costume">
+        <input id="button_dragon" type="radio" name="menu">
+        <label for="button_dragon">
           <svg>
-            <use xlink:href="../resources/images/icon/hanger.svg#hanger">
+            <use xlink:href="../resources/images/icon/dragon.svg#dragon">
           </svg>
-          <span>Costume</span>
+          <span>Dragon</span>
         </label>
-        <input id="button_shop" type="radio" name="menu">
-        <label for="button_shop">
+        <input id="button_background" type="radio" name="menu">
+        <label for="button_background">
           <svg>
-            <use xlink:href="../resources/images/icon/shop.svg#shop">
+            <use xlink:href="../resources/images/icon/background.svg#background">
           </svg>
-          <span>Shop</span>
+          <span>Background</span>
         </label>
         <span></span>
       </div>
@@ -252,7 +327,6 @@
 </body>
 
 <script type="text/javascript" src="../resources/js/dragon/jquery-asPieProgress.js"></script>
-<script type="text/javascript" src="../resources/js/dragon/slider.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
 
@@ -263,55 +337,14 @@ function radioCheck(id) {//modal에서 드래곤 선택 시 radio 자동 체크
 }
 
 function callJqueryAjax(value) {//아이템 사용 ajax 처리
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");//security 설정
 	
-	$.ajax({
-		url : '/product/use/'+value,
-		method : 'post',
-		beforeSend:function(xhr){
-			xhr.setRequestHeader(header, token);
-		},
-		success : function(data, textStatus, jqXHR) {
-			//var strArray = data.description.split(" ");
-			//$("input[name=description]").html(data.description);
-			//var val = $("input[name=description]").val();
-			//$('#inventory').load(location.href+ " .btn_array,#banner_navi");//page 값 갱신
-			$('li[value='+value+'] .cnt').text("수량 : "+data.cnt);
-			if(data.cnt==0){
-				$('button[value='+value+']').css('display','none');
-			}
-			//init();
-		},
-		error : function(jqXHR, exception) {
-			console.log('Error occured!!');
-		}
-	});
+	
+	
 
 }
-function openTab(evt, menu) {//탭 이동 처리(Costume 버튼 안)
-	  var i, tabcontent, tablinks;
-	  tabcontent = document.getElementsByClassName("btn_array-costume");
-	  for (i = 0; i < tabcontent.length; i++) {
-	    tabcontent[i].style.display = "none";
-	  }
-	  tablinks = document.getElementsByClassName("tabLink");
-	  for (i = 0; i < tablinks.length; i++) {
-	    tablinks[i].className = tablinks[i].className.replace(" active", "");
-	  }
-	  document.getElementById(menu).style.display = "flex";
-	  evt.currentTarget.className += " active";
-	  if(menu=="inven-dg"){
-		  $('#banner_navi_bg').css('display','none');
-		  $('#banner_navi_dg').css('display','block');
-	  }else if(menu=="inven-background"){
-		  $('#banner_navi_dg').css('display','none');
-		  $('#banner_navi_bg').css('display','block');
-	  }
-	}
 
 	// Get the element with id="defaultOpen" and click on it
-	document.getElementById("defaultOpen").click();
+	//document.getElementById("defaultOpen").click();
 
 function equip(id) {
 	var token = $("meta[name='_csrf']").attr("content");
@@ -369,15 +402,49 @@ function equipBackground(id) {//배경 변경 처리
 jQuery(function($) {
 
 	var bxslider = $('.bxslider').bxSlider({
+		//controls: true,
 		  minSlides: 1,
 		  maxSlides: 4,
-		  slideWidth: 150,
+		  slideWidth: 130,
 		  slideMargin: 10,
 		  touchEnabled: false,
-		  responsive: true,
-		  shrinkItems: true
+		  shrinkItems: true,
+		  nextSelector: '#slider-next',  //다음으로 넘길 객체
+          prevSelector: '#slider-prev',
+		  nextText: '',
+	      prevText: '',
+	      infiniteLoop: false
 		});
-
+	var bxslider_background = $('.bxslider-background').bxSlider({
+		//controls: true,
+		  minSlides: 1,
+		  maxSlides: 4,
+		  slideWidth: 100,
+		  slideMargin: 10,
+		  touchEnabled: false,
+		  shrinkItems: true,
+		  nextSelector: '#slider-next-background',  //다음으로 넘길 객체
+          prevSelector: '#slider-prev-background',
+		  nextText: '',
+	      prevText: '',
+	      infiniteLoop: false
+		});
+	var bxslider_dragon = $('.bxslider-dragon').bxSlider({
+		//controls: true,
+		  minSlides: 1,
+		  maxSlides: 4,
+		  slideWidth: 100,
+		  slideMargin: 10,
+		  touchEnabled: false,
+		  shrinkItems: true,
+		  nextSelector: '#slider-next-dragon',  //다음으로 넘길 객체
+          prevSelector: '#slider-prev-dragon',
+		  nextText: '',
+	      prevText: '',
+	      infiniteLoop: false
+		});
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");//security 설정
 	
 	if('<c:out value="${alert}"/>'){//로그아웃상태일시 차단
 		document.location.href="/main";
@@ -407,17 +474,63 @@ jQuery(function($) {
 	//egg 선택 첫화면
 	
 	var selectedEgg = $('.selectedEgg').val();
-	$("div[data-id='"+selectedEgg+"']").children('.innerText').css('visibility','visible');
-	$("div[data-id='<c:out value="${background.productId}"/>']").children('.innerText').css('visibility','visible');
+	$("li[data-id='"+selectedEgg+"']").children('.innerText').css('visibility','visible');
+	$("li[data-id='<c:out value="${background.productId}"/>']").children('.innerText').css('visibility','visible');
 	
 	
 	
-	$(document).on('click', '#clickTest', function() {
-		alert("1111");
-	});
+	$('#slider-prev').click(function(){ //이전 이미지 클릭 시
+		bxslider.goToPrevSlide();
+	    return false;
+	    });
+	$('#slider-next').click(function(){  //다음이미지 클릭 시
+		bxslider.goToNextSlide();
+	    return false;
+	  });
+	$('#slider-prev-background').click(function(){ //이전 이미지 클릭 시
+		bxslider_background.goToPrevSlide();
+	    return false;
+	    });
+	$('#slider-next-background').click(function(){  //다음이미지 클릭 시
+		bxslider_background.goToNextSlide();
+	    return false;
+	  });
+	$('#slider-prev-dragon').click(function(){ //이전 이미지 클릭 시
+		bxslider_dragon.goToPrevSlide();
+	    return false;
+	    });
+	$('#slider-next-dragon').click(function(){  //다음이미지 클릭 시
+		bxslider_dragon.goToNextSlide();
+	    return false;
+	  });
 	$(document).on('click', '.button_item', function() {
-		var targetDiv = $("div[data-id='"+selectedEgg+"'] .test");
-		callJqueryAjax($(this).attr('value'));
+		var targetDiv = $("li[data-id='"+selectedEgg+"'] .test");
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");//security 설정
+		var value = $(this).attr('value');
+		$.ajax({
+			url : '/product/use/'+value,
+			method : 'post',
+			beforeSend:function(xhr){
+				xhr.setRequestHeader(header, token);
+			},
+			success : function(data, textStatus, jqXHR) {
+				//var strArray = data.description.split(" ");
+				//$("input[name=description]").html(data.description);
+				//var val = $("input[name=description]").val();
+				//$('#inventory').load(location.href+ " .btn_array,#banner_navi");//page 값 갱신
+				$('li[value='+value+'] .cnt').text("수량 : "+data.cnt);
+				if(data.cnt==0){
+					//$('li[value='+value+']').css('display','none');
+					$('li[value='+value+']').remove();
+					bxslider.reloadSlider();
+				}
+				//init();
+			},
+			error : function(jqXHR, exception) {
+				console.log('Error occured!!');
+			}
+		});
 		
 		var description = $(this).data("des");
 		var strArray = description.split(" ");
@@ -440,8 +553,7 @@ jQuery(function($) {
 			$("input[name=totalLevelValue]").val(parseInt(level) + 1);
 			$('.pie_progress').asPieProgress('reset');
 		}
-		var token = $("meta[name='_csrf']").attr("content");
-		var header = $("meta[name='_csrf_header']").attr("content");//security 설정
+		
 		$.ajax({
 			url : '/dragon/dragonPanel',
 			method : 'post',
@@ -468,44 +580,65 @@ jQuery(function($) {
 				console.log('Error occured!!');
 			}
 		});
-		
+			
 			$('#dragon').animate({'top':'-=20px'},'fast');
 			$('#dragon').animate({'top':'+=20px'},'fast');
 			
 			
 			
 	});
-
+/*
 	$(document).on('click', '#button_shop', function() { //shop 탭 버튼
 		location.href='../shop/shop';
 	});
 
-	
+*/	
 	
 	$('#button_inventory').on('click', function() {//inventory 탭 버튼
 		var chk = $('#costume').attr('style') === "display: block;"
+		var chk_shop = $('#background').attr('style') === "display: block;"
 		if (chk) {
 			$('#costume').slideToggle();
+		}
+		if(chk_shop){
+			$('#background').slideToggle();
 		}
 		$('#inventory').slideToggle();
 		bxslider.reloadSlider();
 	});
-	$('#button_costume').on('click', function() {//custome 탭 버튼
+	$('#button_dragon').on('click', function() {//custome 탭 버튼
 		var chk = $('#inventory').attr('style') === "display: block;"
+		var chk_shop = $('#background').attr('style') === "display: block;"
 		if (chk) {
 			$('#inventory').slideToggle();
 		}
+		if(chk_shop){
+			$('#background').slideToggle();
+		}
 		$('#costume').slideToggle();
+		bxslider_dragon.reloadSlider();
 	});
-	$('#inven-dg .costume-card').on('click', function() {//costume 선택 이벤트
+	$('#button_background').on('click', function() {//inventory 탭 버튼
+		var chk = $('#costume').attr('style') === "display: block;"
+		var chk_inven = $('#inventory').attr('style') === "display: block;"
+		if (chk) {
+			$('#costume').slideToggle();
+		}
+		if(chk_inven){
+			$('#inventory').slideToggle();
+		}
+		$('#background').slideToggle();
+		bxslider_background.reloadSlider();
+	});
+	$('#costume .costume-card').on('click', function() {//costume 선택 이벤트
 		
-		$('#inven-dg .costume-card').children('.innerText').css('visibility','hidden');
+		$('#costume .costume-card').children('.innerText').css('visibility','hidden');
 		$(this).children('.innerText').css('visibility','visible');
 		equip($(this).data('id'));
 	});
-	$('#inven-background .costume-card').on('click', function() {//costume 선택 이벤트
+	$('#background .costume-card').on('click', function() {//costume 선택 이벤트
 		
-		$('#inven-background .costume-card').children('.innerText').css('visibility','hidden');
+		$('#background .costume-card').children('.innerText').css('visibility','hidden');
 		$(this).children('.innerText').css('visibility','visible');
 		equipBackground($(this).data('id'));
 	});
@@ -530,16 +663,6 @@ jQuery(function($) {
 		location.href='../shop/shop';
 	});
 	
-	
-	//이미지 슬라이더 부분
-	
-	$(document).on('click','#banner_navi .btn_left',itemSlider);
-	$(document).on('click','#banner_navi .btn_right',itemSlider);
-	$('#banner_navi_bg .btn_left').on('click',backgroundSlider);
-	$('#banner_navi_bg .btn_right').on('click',backgroundSlider);
-	$('#banner_navi_dg .btn_left').on('click',dragonListSlider);
-	$('#banner_navi_dg .btn_right').on('click',dragonListSlider);
-
 });
 
 </script>

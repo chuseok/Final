@@ -17,8 +17,12 @@ public interface LearningService {
 	//json01
 	public JSONArray readAllJson();
 	
-	//json02
+	//json01
 	public List<WordDTO> getAllWordList();
+	
+	//json02
+	public List<WordDTO> getAllMyWordList();
+	
 	
 	public JSONArray getMyList(String id);
 	
