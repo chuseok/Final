@@ -517,7 +517,7 @@ public class LearningServiceImple implements LearningService {
 						});
 				
 				
-				log.info("議댁옱�뿬遺�  : "+jsonDTOList.contains(dto));
+				log.info("jsonDTOList dto  : "+jsonDTOList.contains(dto));
 				
 				int size = jsonDTOList.size();
 				
