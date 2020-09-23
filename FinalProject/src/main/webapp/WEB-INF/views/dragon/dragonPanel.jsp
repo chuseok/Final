@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/resources/css/dragon/dragonPanel.css">
+<<<<<<< HEAD
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
   
@@ -29,13 +30,43 @@
 	margin: 0 auto;
 	background: #fff0;
 	border: 0px solid #fff;
+=======
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+</head>
+<style type="text/css">
+.bx-viewport{
+	height: 120px;
+}
+.bx-wrapper{
+	text-align: center;
+	border: 0px solid #fff;
+    background: rgb(255 255 255 / 0%);
+    box-shadow: 0 0 #ccc;
+    height: 120px;
+}
+.bx-wrapper li{
+	margin: 0 auto;
+	
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
 }
 .bx-wrapper img{
 	margin: 0 auto;
 }
+<<<<<<< HEAD
 .bx-wrapper li{
 	text-align: center;
 }
+=======
+.bxslider{
+	margin-top: 30px;
+}
+.bxslider li{
+ 	vertical-align: middle;
+    display: inline-block;
+    height: 120px;
+}
+
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
 </style>
 <body>
   
@@ -127,8 +158,13 @@
 		</div>
 		<div id="inventory">
 				<div class="btn_array">
+<<<<<<< HEAD
 				 <ul class="bxslider">
 				 	<c:forEach var="item" items="${item}">
+=======
+					<ul class="bxslider">
+						<c:forEach var="item" items="${item}">
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
 						<c:if test="${item.category eq 'item'}">
 							<li class="button_item" data-des='${item.description}'
 								value="${item.productId}" name="${item.productName}">
@@ -139,8 +175,13 @@
 							</li>
 						</c:if>
 					</c:forEach>
+<<<<<<< HEAD
 				 </ul> 
 				<!-- 
+=======
+					</ul>
+							<!--  
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
 					<c:forEach var="item" items="${item}">
 						<c:if test="${item.category eq 'item'}">
 							<button type="button" class="button_item" data-des='${item.description}'
@@ -151,7 +192,12 @@
 								<p class="cnt">수량 : ${item.cnt }</p>
 							</button>
 						</c:if>
+<<<<<<< HEAD
 					</c:forEach> -->
+=======
+					</c:forEach>
+					-->
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
 				</div>
 			
 			<div id="banner_navi">
@@ -362,6 +408,7 @@ function equipBackground(id) {//배경 변경 처리
 }
 
 jQuery(function($) {
+<<<<<<< HEAD
 	var bxslider  = $('.bxslider').bxSlider({ 
 	    controls : true,	//좌우 화살표	
 	    pager:true,	//페이징 
@@ -373,6 +420,17 @@ jQuery(function($) {
 	    touchEnabled: false,
 	    responsive: true
 	});
+=======
+	var bxslider = $('.bxslider').bxSlider({
+		  minSlides: 1,
+		  maxSlides: 4,
+		  slideWidth: 150,
+		  slideMargin: 10,
+		  touchEnabled: false,
+		  responsive: true,
+		  shrinkItems: true
+		});
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
 	
 	if('<c:out value="${alert}"/>'){//로그아웃상태일시 차단
 		document.location.href="/main";
