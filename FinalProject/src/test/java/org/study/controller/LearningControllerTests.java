@@ -91,5 +91,17 @@ public class LearningControllerTests {
 	}
 	
 	
+	@Test
+	public void testGetWordLists() throws Exception {
+		
+		log.info(
+				mockMvc.perform(MockMvcRequestBuilders.post("/study/getWordList")
+						.param("id", "sdf")
+						.param("title", "색"))
+						.andReturn()
+						.getModelAndView().getModelMap());		
+	}
+	
+	
 
 }

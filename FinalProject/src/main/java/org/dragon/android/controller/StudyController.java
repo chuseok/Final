@@ -82,7 +82,6 @@ public class StudyController {
 		String bookTitle = request.getParameter("bookTitle");
 		
 		WordDTO worddto = learningservice.getWordDTO(bookId, bookTitle);
-		List<WordVO> wordvo = new ArrayList<WordVO>();
 		
 		List<Map<String, String>> result = new ArrayList<Map<String, String>>();
 		
