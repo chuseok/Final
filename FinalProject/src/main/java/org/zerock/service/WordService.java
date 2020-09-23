@@ -9,8 +9,6 @@ import net.sf.json.JSONArray;
 
 public interface WordService {
 
-	public WordVO createJson(WordVO word, String userId);
-	
 	public JSONArray readJson(JSONArray jsonArray, WordDTO jsonDTO);
 	
 	public void writeJson(JSONArray jsonArray,List<WordDTO> oldArray, WordDTO jsonDTO);
