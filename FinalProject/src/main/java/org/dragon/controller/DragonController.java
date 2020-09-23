@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -90,14 +91,14 @@ public class DragonController {
 			MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE })
 	@ResponseBody
 	public ResponseEntity<DragonVO> dragonUpdate(@ModelAttribute DragonVO vo, Model model) {
-		if (vo.getFoodValue() >= 100) {// 占쏙옙占쏙옙占쏙옙, 占쏙옙占쏙옙占쏙옙占쏙옙 100占쏙옙 占싼깍옙 占쏙옙 占쏙옙占쏙옙占쏙옙 100占쏙옙占쏙옙
+		if (vo.getFoodValue() >= 100) {
 			vo.setFoodValue(100);
 		} else if (vo.getLevelValue() >= 100) {
 			vo.setLevelValue(100);
 		}
-		service.updateDragon(vo);// DB占쏙옙 占쏙옙占쏙옙占싼곤옙 update
-
-		setImg(vo);// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占싱뱄옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙占실뤄옙 img占쏙옙占쏙옙 setting
+		service.updateDragon(vo);
+		System.out.print(vo);
+		setImg(vo);
 		model.addAttribute("dragonList", vo);
 
 		return new ResponseEntity<DragonVO>(vo, HttpStatus.OK);
@@ -109,9 +110,9 @@ public class DragonController {
 	public ResponseEntity<ProductVO> equip(@RequestParam("dragonId") String dragonId,
 			@RequestParam("lastId") String lastId, Principal principal, Model model) {
 		String userId = principal.getName();
-		service.updateEquip(new DragonVO(userId, Integer.parseInt(lastId), false));// 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占� 占썲래占쏙옙 false
-		service.updateEquip(new DragonVO(userId, Integer.parseInt(dragonId), true));// 占쏙옙占쏙옙 占쏙옙占쏙옙狗占쏙옙占� 占썲래占쏙옙 true
-		ProductVO vo = proService.getProductById(service.getEgg(userId)); // user占쏙옙 占쏙옙占쏙옙占� 占썲래占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙
+		service.updateEquip(new DragonVO(userId, Integer.parseInt(lastId), false));
+		service.updateEquip(new DragonVO(userId, Integer.parseInt(dragonId), true));
+		ProductVO vo = proService.getProductById(service.getEgg(userId)); 
 		return new ResponseEntity<ProductVO>(vo, HttpStatus.OK);
 	}
 
