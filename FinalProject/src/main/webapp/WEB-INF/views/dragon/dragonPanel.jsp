@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/resources/css/dragon/dragonPanel.css">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
   
@@ -46,7 +50,11 @@
 .bx-wrapper li{
 	margin: 0 auto;
 	
+<<<<<<< HEAD
 >>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
+=======
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
 }
 .bx-wrapper img{
 	margin: 0 auto;
@@ -65,7 +73,11 @@
     height: 120px;
 }
 
+<<<<<<< HEAD
 >>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
+=======
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
 </style>
 <body>
   
@@ -163,7 +175,11 @@
 =======
 					<ul class="bxslider">
 						<c:forEach var="item" items="${item}">
+<<<<<<< HEAD
 >>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
+=======
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
 						<c:if test="${item.category eq 'item'}">
 							<li class="button_item" data-des='${item.description}'
 								value="${item.productId}" name="${item.productName}">
@@ -180,7 +196,11 @@
 =======
 					</ul>
 							<!--  
+<<<<<<< HEAD
 >>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
+=======
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
 					<c:forEach var="item" items="${item}">
 						<c:if test="${item.category eq 'item'}">
 							<button type="button" class="button_item" data-des='${item.description}'
@@ -193,6 +213,13 @@
 						</c:if>
 <<<<<<< HEAD
 					</c:forEach> -->
+<<<<<<< HEAD
+=======
+=======
+					</c:forEach>
+					-->
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
 				</div>
 			
 			<div id="banner_navi">
@@ -403,6 +430,10 @@ function equipBackground(id) {//배경 변경 처리
 }
 
 jQuery(function($) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
 	var bxslider  = $('.bxslider').bxSlider({ 
 	    controls : true,	//좌우 화살표	
 	    pager:true,	//페이징 
@@ -424,7 +455,11 @@ jQuery(function($) {
 		  responsive: true,
 		  shrinkItems: true
 		});
+<<<<<<< HEAD
 >>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
+=======
+>>>>>>> 011339651da4deb0f2631006f39ed238162daf0c
+>>>>>>> 43361f13fb60ec20668ea50b3adfdc5cba033b8e
 	
 	if('<c:out value="${alert}"/>'){//로그아웃상태일시 차단
 		document.location.href="/main";
