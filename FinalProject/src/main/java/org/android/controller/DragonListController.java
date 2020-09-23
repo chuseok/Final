@@ -208,9 +208,11 @@ public class DragonListController {
 			Map<String, String> map = new HashMap<String, String>();
 			System.out.println(dragonImageList.get(i).getLevel1());
 			for (int j = 0; j < users.size(); j++) {
+				log.info("aaaaa : "+users.get(j).getDragonId());
 				if (users.get(j).getDragonId() == dragonImageList.get(i).getDragonId()) {
 					map.put("procession", "true");
 					map.put("dragonLevel", users.get(j).getTotalLevel() + "");
+					break;
 				} else {
 					map.put("procession", "false");
 					map.put("dragonLevel", "-1");
@@ -326,7 +328,7 @@ public class DragonListController {
 		return result;
 	}
 
-	public DragonVO setImg(DragonVO vo) {// ÀÌ¹ÌÁö ¼ÂÆÃ
+	public DragonVO setImg(DragonVO vo) {// ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 		int level = vo.getTotalLevel();
 		HashMap<String, String> dragonList = service.getImageByLevel(vo.getDragonId());
