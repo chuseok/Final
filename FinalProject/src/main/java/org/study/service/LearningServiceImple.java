@@ -200,10 +200,18 @@ public class LearningServiceImple implements LearningService {
 
 		return worddto.stream().filter(w -> w.getId().equals(id) && w.getTitle().equals(title)).findFirst().get();
 	}
+	
+	@Override
+	public WordDTO getMyWordDTO(String id, String title) {
+		log.info("get My dto");
+		List<WordDTO> worddto = getAllMyWordList();
+
+		return worddto.stream().filter(w -> w.getId().equals(id) && w.getTitle().equals(title)).findFirst().get();
+	}
 
 	@Override
 	public void upRate(String id, String title, String word) {
-		WordDTO dto = getWordDTO(id, title);
+		WordDTO dto = getMyWordDTO(id, title);
 		for (WordVO item : dto.getItem()) {
 			if (item.getWord().equals(word)) {
 				int rate = item.getLearningRate();
@@ -215,7 +223,7 @@ public class LearningServiceImple implements LearningService {
 					rate += 1;
 					item.setLearningRate(rate);
 				}
-				log.info("�ٲ� �� : "+rate);
+				log.info("占쌕뀐옙 占쏙옙 : "+rate);
 				//item.setLearningRate(1);
 				log.info(dto.getId()+','+dto.getTitle());
 				log.info(item.getWord()+','+item.getMeaning()+','+item.getLearningRate());
@@ -236,7 +244,7 @@ public class LearningServiceImple implements LearningService {
 		  { 
 			  WordDTO str = jsonDTOList.get(i);
 			  
-			  //�ٲﵥ���ͷ� ����
+			  //占쌕뀐데占쏙옙占싶뤄옙 占쏙옙占쏙옙
 			  if(str.getId().equals(dto.getId()) && str.getTitle().equals(dto.getTitle()))
 			  { 
 				  str.setItem(dto.getItem());		  
@@ -261,7 +269,7 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
-		  //file�� ����
+		  //file占쏙옙 占쏙옙占쏙옙
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -316,7 +324,7 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
-		  //file�� ����
+		  //file占쏙옙 占쏙옙占쏙옙
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -509,7 +517,7 @@ public class LearningServiceImple implements LearningService {
 						});
 				
 				
-				log.info("존재여부  : "+jsonDTOList.contains(dto));
+				log.info("議댁옱�뿬遺�  : "+jsonDTOList.contains(dto));
 				
 				int size = jsonDTOList.size();
 				
@@ -550,7 +558,7 @@ public class LearningServiceImple implements LearningService {
 			}
 						
 			if(inList) {
-				//단어장이 존재하면
+				//�떒�뼱�옣�씠 議댁옱�븯硫�
 				log.info("aleady exist...");
 			}
 			else {						

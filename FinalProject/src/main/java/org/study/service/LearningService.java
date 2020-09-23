@@ -40,6 +40,8 @@ public interface LearningService {
 			
 	public WordDTO getWordDTO(String id, String title);
 	
+	public WordDTO getMyWordDTO(String id, String title);
+	
 	public void upRate(String id, String title, String word);
 	
 	public void resetRate(String id, String title);
