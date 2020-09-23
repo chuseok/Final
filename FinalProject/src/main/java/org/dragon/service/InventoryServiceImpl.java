@@ -39,7 +39,7 @@ public class InventoryServiceImpl implements InventoryService{
 	
 	@Transactional
 	@Override
-	public void buy(InventoryVO vo, DragonVO dragonVO) {
+	public boolean buy(InventoryVO vo, DragonVO dragonVO) {
 		log.info("buy service : "+vo);
 		List<InventoryVO> inventory = mapper.findById(dragonVO.getUserId());
 		ProductVO product = proMapper.getById(vo.getProductId());
@@ -48,9 +48,14 @@ public class InventoryServiceImpl implements InventoryService{
 		
 		if(product.getCategory().equals("egg")) {
 			List<Integer> dragonIdList = mapper.findNotUsedId(vo.getProductId());
-			dragonVO.setDragonId(dragonIdList.get(0));
-			dragonMapper.create(dragonVO);
-			mapper.insert(vo);
+			if(dragonIdList.isEmpty()) {
+				return false;
+			}else {
+				dragonVO.setDragonId(dragonIdList.get(0));
+				dragonMapper.create(dragonVO);
+				mapper.insert(vo);
+			}
+			
 		}else {
 			for(InventoryVO i : inventory) {
 				if(i.getProductId()==vo.getProductId()) {
@@ -69,9 +74,9 @@ public class InventoryServiceImpl implements InventoryService{
 			dragonMapper.updateEqiup(dragonVO);
 		}
 		MemberVO user = memberMapper.read(vo.getUserId());
-		user.setCoin(balance);//���ΰ� ����
+		user.setCoin(balance);
 		dragonMapper.updateCoin(user);
-		
+		return true;
 	}
 
 	@Override

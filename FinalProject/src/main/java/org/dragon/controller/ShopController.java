@@ -56,13 +56,17 @@ public class ShopController {
 
 	@PostMapping("/buy")
 	public String buy(@RequestParam("productId") int productId, @RequestParam("buyAmount") int buyAmount,
-			Principal principal, Model rttr) {
+			Principal principal, Model model) {
 		String userId = principal.getName();
 
 		InventoryVO inventory = new InventoryVO(idGenerater(), userId, productId, buyAmount, null);
 		DragonVO dragon = new DragonVO(userId, 1, 0, 100, false);
 
-		invenService.buy(inventory, dragon);
+		if(invenService.buy(inventory, dragon)) {
+			model.addAttribute("buyError", 1);
+		}else {
+			model.addAttribute("buyError", 0);
+		}
 		return "redirect:/shop/shop";
 	}
 

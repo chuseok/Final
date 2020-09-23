@@ -54,7 +54,7 @@ public class DragonController {
 			return;
 		}
 		String userId = principal.getName();
-		DragonVO dragon = service.getDragonByUser(userId);// user占쏙옙 占쏙옙占쏙옙占쏙옙占� 占썲래占쏙옙 占쏙옙占쏙옙
+		DragonVO dragon = service.getDragonByUser(userId);
 
 		if (dragon == null) {
 			model.addAttribute("noDragon", true);
@@ -64,12 +64,12 @@ public class DragonController {
 			model.addAttribute("dragonList", null);
 			model.addAttribute("background", null);
 		} else {
-			List<ProductVO> inventory = invenService.getInventory(userId);// 占쌔댐옙 占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙품 占쏙옙占쏙옙트
+			List<ProductVO> inventory = invenService.getInventory(userId);
 			if (dragon != null) {
-				setImg(dragon);// 占쏙옙占쏙옙 占썲래占쏙옙 占싱뱄옙占쏙옙 占쏙옙占쏙옙
+				setImg(dragon);
 			}
 
-			// 占썲래占쏙리占쏙옙트 占싱뱄옙占쏙옙
+			
 			List<DragonVO> dragonList = service.getAllDragonByUser(userId);
 			dragonList.forEach(vo -> {
 				setImg(vo);
@@ -121,8 +121,8 @@ public class DragonController {
 	@ResponseBody
 	public ResponseEntity<ProductVO> equipBackground(@RequestBody DragonVO vo, Principal principal, Model model) {
 		String userId = principal.getName();
-		service.updateBackground(new DragonVO(userId, vo.getDragonId(), vo.getBackgroundId()));// DB占쏙옙 background 占쏙옙
-																								// update
+		service.updateBackground(new DragonVO(userId, vo.getDragonId(), vo.getBackgroundId()));
+																								
 		ProductVO background = proService.getProductById(vo.getBackgroundId());
 		return new ResponseEntity<ProductVO>(background, HttpStatus.OK);
 	}
@@ -135,7 +135,7 @@ public class DragonController {
 		DragonVO deleteDragon = service.getDragonByUser(userId);
 		service.delete(deleteDragon);
 		List<DragonVO> dragonList = service.getAllDragonByUser(userId);
-		dragonList.forEach(vo -> { // 占썲래占쏙옙占쏙옙 占쌓억옙占쏙옙 占쏙옙 占쌕몌옙 占썲래占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙 equip update
+		dragonList.forEach(vo -> { 
 			if (vo.getDragonId() == chooseDragon) {
 				vo.setEquip(true); 
 				service.updateEquip(vo);
@@ -146,7 +146,7 @@ public class DragonController {
 	}
 
 	@GetMapping("/revive")
-	public String revive(Principal principal) {// 占쏙옙占쏙옙占쏙옙占쏙옙 占쎌릴 占쏙옙占�
+	public String revive(Principal principal) {
 		if (principal == null) {
 			return "redirect:../main";
 		}

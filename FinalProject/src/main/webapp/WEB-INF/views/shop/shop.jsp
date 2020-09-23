@@ -226,6 +226,7 @@ function checkBuy(name){
 				$('#alertBuy h3').css('display','block');
 				$('#buy').prop("disabled", true);
 			}
+			
 		},
 		error : function(jqXHR, exception) {
 			console.log('Error occured!!');
@@ -384,6 +385,9 @@ $(document).ready(function() {
 		document.location.href="/main";
 		alert('로그인이 필요합니다!');
 		return false;
+	}
+	if('<c:out value="${buyError}"/>'){
+		alert("다른 알을 구매해주세요!");
 	}
 	
 	var selectedTab = localStorage.getItem("option");//탭값을 localStorage에 저장
