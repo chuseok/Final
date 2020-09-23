@@ -87,14 +87,7 @@ public class LearningController {
 		String title = keyword;
 		model.addAttribute("titleList",learningservice.getTitleSearchList(title));
 		
-	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 
 }
