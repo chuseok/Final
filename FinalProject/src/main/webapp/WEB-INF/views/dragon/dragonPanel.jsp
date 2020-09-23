@@ -29,13 +29,43 @@
 	margin: 0 auto;
 	background: #fff0;
 	border: 0px solid #fff;
+=======
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+</head>
+<style type="text/css">
+.bx-viewport{
+	height: 120px;
+}
+.bx-wrapper{
+	text-align: center;
+	border: 0px solid #fff;
+    background: rgb(255 255 255 / 0%);
+    box-shadow: 0 0 #ccc;
+    height: 120px;
+}
+.bx-wrapper li{
+	margin: 0 auto;
+	
+>>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
 }
 .bx-wrapper img{
 	margin: 0 auto;
 }
+<<<<<<< HEAD
 .bx-wrapper li{
 	text-align: center;
 }
+=======
+.bxslider{
+	margin-top: 30px;
+}
+.bxslider li{
+ 	vertical-align: middle;
+    display: inline-block;
+    height: 120px;
+}
+
+>>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
 </style>
 <body>
   
@@ -127,8 +157,13 @@
 		</div>
 		<div id="inventory">
 				<div class="btn_array">
+<<<<<<< HEAD
 				 <ul class="bxslider">
 				 	<c:forEach var="item" items="${item}">
+=======
+					<ul class="bxslider">
+						<c:forEach var="item" items="${item}">
+>>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
 						<c:if test="${item.category eq 'item'}">
 							<li class="button_item" data-des='${item.description}'
 								value="${item.productId}" name="${item.productName}">
@@ -139,8 +174,13 @@
 							</li>
 						</c:if>
 					</c:forEach>
+<<<<<<< HEAD
 				 </ul> 
 				<!-- 
+=======
+					</ul>
+							<!--  
+>>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
 					<c:forEach var="item" items="${item}">
 						<c:if test="${item.category eq 'item'}">
 							<button type="button" class="button_item" data-des='${item.description}'
@@ -151,6 +191,7 @@
 								<p class="cnt">수량 : ${item.cnt }</p>
 							</button>
 						</c:if>
+<<<<<<< HEAD
 					</c:forEach> -->
 				</div>
 			
@@ -373,6 +414,17 @@ jQuery(function($) {
 	    touchEnabled: false,
 	    responsive: true
 	});
+=======
+	var bxslider = $('.bxslider').bxSlider({
+		  minSlides: 1,
+		  maxSlides: 4,
+		  slideWidth: 150,
+		  slideMargin: 10,
+		  touchEnabled: false,
+		  responsive: true,
+		  shrinkItems: true
+		});
+>>>>>>> 2dd9708b1d9b2ef6c58d5782ad8d0a6aab7ba705
 	
 	if('<c:out value="${alert}"/>'){//로그아웃상태일시 차단
 		document.location.href="/main";
