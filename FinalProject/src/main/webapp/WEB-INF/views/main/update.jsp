@@ -22,11 +22,19 @@
 			padding-left: 4.5rem;
 			display: flex;
 			align-content: center;
-			min-width: 700px;
+			min-width: 985px;
+			padding-top: 4.5rem;
 		}
 		.home {
-			margin: 0 auto;
+			vertical-align: middle;
+			padding-left: 2.5rem;
 		}
+		/* .updateForm {
+			padding-left: 4.5rem;
+			display: flex;
+			align-content: center;
+			width: 225px;
+		} */
 	</style>	
 	</head>
 
@@ -36,9 +44,11 @@
  <div class="HomeLayout">
    <div class="HomeLayout-container">
 		<%@ include file="../includes/sidebar.jsp" %>
+		
+		
 		<div class="homeWrapper">
 			<div class="home">
-				<section id="container">
+				<section id="container" class="updateForm">
 					<form role="form" method="post" id="updateForm" action="/main/update"autocomplete="off">
 						<div class="form-group has-feedback">
 							<label class="control-label" for="userId">아이디</label>
