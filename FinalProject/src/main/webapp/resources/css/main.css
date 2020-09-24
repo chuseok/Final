@@ -121,7 +121,8 @@ header a:hover {
 
 .header-logo {
   font-size: 30px;
-  color: #fff
+  color: #fff;
+  margin-left: 20px;
 }
 
 .header-searchSection {
