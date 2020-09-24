@@ -40,149 +40,161 @@ label img {
     <div class="HomeLayout-container">
     <%@ include file="../includes/sidebar.jsp" %>
 	  <section class="HomeLayout-main">
-	    <div class="main">
-			<input id="tab1" type="radio" name="tabs" value="tab1" >
-			<!--디폴트 메뉴-->
-			<label class="tabLabel" for="tab1">item</label> 
-			<input id="tab2" type="radio" name="tabs" value="tab2"> 
-			<label class="tabLabel" for="tab2">background</label>
-	
-			<input id="tab3" type="radio" name="tabs" value="tab3"> 
-			<label class="tabLabel" for="tab3">eggs</label> 
-			<input type="hidden" id="selectedTab" value="tab">
-	
-			<section id="content1">
-				<c:forEach var="item" items="${itemList }">
-					<div class="wrapper">
-						<div class="container">
-							<div class="top">
-								<img src="${item.productImage }" width="110px">
-							</div>
-							<div class="bottom">
-								<div class="left">
-									<div class="details">
-										<h1>${item.productName }</h1>
-										<p>${item.price }</p>
+				<div class="mainWrapper">
+					<div class="mainContents">
+						<div class="main">
+							<input id="tab1" type="radio" name="tabs" value="tab1">
+							<!--디폴트 메뉴-->
+							<label class="tabLabel" for="tab1">item</label> <input id="tab2"
+								type="radio" name="tabs" value="tab2"> <label
+								class="tabLabel" for="tab2">background</label> <input id="tab3"
+								type="radio" name="tabs" value="tab3"> <label
+								class="tabLabel" for="tab3">eggs</label> <input type="hidden"
+								id="selectedTab" value="tab">
+
+							<section id="content1">
+								<c:forEach var="item" items="${itemList }">
+									<div class="wrapper">
+										<div class="container">
+											<div class="top">
+												<img src="${item.productImage }" width="110px">
+											</div>
+											<div class="bottom">
+												<div class="left">
+													<div class="details">
+														<h1>${item.productName }</h1>
+														<p>${item.price }</p>
+													</div>
+													<div class="goDetail" name="${item.productName }">
+														<img alt="" src="../resources/images/icon/cart.svg">
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="goDetail" name="${item.productName }">
-										<img alt="" src="../resources/images/icon/cart.svg">
+								</c:forEach>
+
+							</section>
+
+
+							<section id="content2">
+
+								<c:forEach var="item" items="${backgroundList}">
+									<div class="wrapper">
+										<div class="container">
+											<div class="top">
+												<img src="${item.productImage }" width="110px">
+											</div>
+											<div class="bottom">
+												<div class="left">
+													<div class="details">
+														<h1>${item.productName }</h1>
+														<p>${item.price }</p>
+													</div>
+													<div class="goDetail" name="${item.productName }">
+														<img alt="" src="../resources/images/icon/cart.svg">
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
+								</c:forEach>
+							</section>
+
+							<section id="content3">
+								<c:forEach var="item" items="${eggList}">
+									<div class="wrapper">
+										<div class="container">
+											<div class="top">
+												<img src="${item.productImage }" width="110px">
+											</div>
+											<div class="bottom">
+												<div class="left">
+													<div class="details">
+														<h1>${item.productName }</h1>
+														<p>${item.price }</p>
+													</div>
+													<div class="goDetail" name="${item.productName }">
+														<img alt="" src="../resources/images/icon/cart.svg">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</section>
 						</div>
-					</div>
-				</c:forEach>
-	
-			</section>
-			
-			
-			<section id="content2">
-				
-				<c:forEach var="item" items="${backgroundList}">
-					<div class="wrapper">
-						<div class="container">
-							<div class="top">
-								<img src="${item.productImage }" width="110px">
-							</div>
-							<div class="bottom">
-								<div class="left">
-									<div class="details">
-										<h1>${item.productName }</h1>
-										<p>${item.price }</p>
-									</div>
-									<div class="goDetail" name="${item.productName }">
-										<img alt="" src="../resources/images/icon/cart.svg">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</section>
-	
-			<section id="content3">
-				<c:forEach var="item" items="${eggList}">
-					<div class="wrapper">
-						<div class="container">
-							<div class="top">
-								<img src="${item.productImage }" width="110px">
-							</div>
-							<div class="bottom">
-								<div class="left">
-									<div class="details">
-										<h1>${item.productName }</h1>
-										<p>${item.price }</p>
-									</div>
-									<div class="goDetail" name="${item.productName }">
-										<img alt="" src="../resources/images/icon/cart.svg">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</section>
-		</div>
-		<div class="modal-wrapper">
-			<div class="modal-shop">
-				<div class="content">
-					<div class="card">
-						<nav>
-							<div class="goDetail">X</div>
-							<div class="coin">
-								<img alt="이미지 없음" src="../resources/images/icon/coin.svg" width="30px">
-								<span>${coin}</span>
-							</div>
-						</nav>
-						<div class="photo">
-							<img id="proimg_md">
-						</div>
-						<div class="description">
-							<form action="/shop/buy" method="post">
-								<h2 id="proname_md"></h2>
-								<h1 id="price_md"></h1>
-								<p id="description_md"></p>
-								
-								<div id="amountDiv">
-								<h4>수량 </h4><div class="select_mate" data-mate-select="active">
-									<select name="selectAmount" onchange="selectChange(this.value)"
-										onclick="return false;" id="">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="">---직접입력---</option>
-									</select>
-									<p class="selecionado_opcion" onclick="open_select(this)"></p>
-									<span onclick="open_select(this)" class="icon_select_mate"><svg
-											fill="#000000" height="24" viewBox="0 0 24 24" width="24"
-											xmlns="http://www.w3.org/2000/svg">
+						<div class="modal-wrapper">
+							<div class="modal-shop">
+								<div class="content">
+									<div class="card">
+										<nav>
+											<div class="goDetail">X</div>
+											<div class="coin">
+												<img alt="이미지 없음" src="../resources/images/icon/coin.svg"
+													width="30px"> <span>${coin}</span>
+											</div>
+										</nav>
+										<div class="photo">
+											<img id="proimg_md">
+										</div>
+										<div class="description">
+											<form action="/shop/buy" method="post">
+												<h2 id="proname_md"></h2>
+												<h1 id="price_md"></h1>
+												<p id="description_md"></p>
+
+												<div id="amountDiv">
+													<h4>수량</h4>
+													<div class="select_mate" data-mate-select="active">
+														<select name="selectAmount"
+															onchange="selectChange(this.value)"
+															onclick="return false;" id="">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+															<option value="">---직접입력---</option>
+														</select>
+														<p class="selecionado_opcion" onclick="open_select(this)"></p>
+														<span onclick="open_select(this)" class="icon_select_mate"><svg
+																fill="#000000" height="24" viewBox="0 0 24 24"
+																width="24" xmlns="http://www.w3.org/2000/svg">
 											<path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
 											<path d="M0-.75h24v24H0z" fill="none" />
 											</svg> </span>
-									<div class="cont_list_select_mate">
-										<ul class="cont_select_int">
-										</ul>
+														<div class="cont_list_select_mate">
+															<ul class="cont_select_int">
+															</ul>
+														</div>
+													</div>
+													<input type="text" name="buyAmount" id="buyAmount"
+														style="background: #DFDFDF;" value="1" readonly="readonly">
+
+													<h3>
+														총 가격 : <span id="totalPrice"></span>
+													</h3>
+												</div>
+												<div id="alertBuy">
+													<h3>이미 구매한 상품입니다.</h3>
+												</div>
+												<input type="hidden" name="productId"
+													value="${selectedProduct.productId}"> <input
+													type="hidden" name="productPrice"
+													value="${selectedProduct.price}"> <input
+													type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="button" id="buy">BUY</button>
+											</form>
+										</div>
 									</div>
 								</div>
-								<input type="text" name="buyAmount" id="buyAmount"
-									style="background: #DFDFDF;" value="1" readonly="readonly"> 
-									
-								<h3>총 가격 : <span id="totalPrice"></span></h3>
-								</div>
-								<div id="alertBuy"><h3>이미 구매한 상품입니다.</h3></div>
-									<input type="hidden" name="productId" value="${selectedProduct.productId}"> 
-									<input type="hidden" name="productPrice" value="${selectedProduct.price}">
-									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-								<button type="button" id="buy">BUY</button>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	  </section>
+			</section>
 	</div>
 </div>
 </body>
