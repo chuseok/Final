@@ -10,7 +10,7 @@ import org.dragon.domain.ProductVO;
 
 public interface InventoryService {
 
-	public void buy(InventoryVO vo, DragonVO dragonVO);
+	public boolean buy(InventoryVO vo, DragonVO dragonVO);
 	public ProductVO use(String userId, int selected);
 	public List<InventoryVO> orderList(String userId);
 	public List<ProductVO> getInventory(String userId);
@@ -18,4 +18,5 @@ public interface InventoryService {
 	public InventoryVO get(int productId);
 	public boolean check(String userId, int productId);
 	public int valueSettingByItem(int productId, String userId, int dragonId) throws ScriptException;
+	
 }

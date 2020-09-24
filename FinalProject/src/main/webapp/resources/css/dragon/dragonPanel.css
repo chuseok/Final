@@ -329,7 +329,7 @@ progress {
 #inventory, #costume, #background {
 	display: none;
 	height: 160px;
-	background-color: rgb(152 152 152 / 50%);
+	background-color: rgb(214 212 212 / 34%);
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -393,7 +393,7 @@ position: absolute;
 	background-size: 50px;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
-	background-color: slategrey; 
+	background-color: #41699273; 
 	outline: none;
 	cursor: pointer;
 }

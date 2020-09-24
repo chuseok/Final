@@ -205,7 +205,13 @@
 	$(function(){
 			/* load more - id */
 			$(".recentFeed-cardItem-small").slice(0, 4).show();
-	    $(".recentFeed-cardItem").slice(0, 6).show();
+	    $(".recentFeed-cardItem").slice(0, 4).show();
+	    $("#LoadMore").hide();
+	    if($(".recentFeed-cardItem:hidden").length > 0)
+        { 
+        	$("#LoadMore").show();	        
+        }
+	    
 	    $("#LoadMore").click(function(e){
 	        e.preventDefault();
 	        $(".recentFeed-cardItem:hidden").slice(0, 8).slideDown();
