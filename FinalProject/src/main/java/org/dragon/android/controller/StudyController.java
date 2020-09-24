@@ -38,7 +38,7 @@ public class StudyController {
         List<Integer> learningRateList = new ArrayList<>();
         
         
-        WordList = learningservice.getAllWordList();
+        WordList = learningservice.getAllMyWordList();
 		
         
         for(int i=0;i<WordList.size();i++) {
