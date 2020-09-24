@@ -123,6 +123,10 @@
 	$(function(){
 			/* load more - id */
 	    $(".searchFeed-cardItem").slice(0, 6).show();
+	    if($(".searchFeed-cardItem:hidden").length == 0)
+        { 
+        	$("#LoadMore").hide();	        
+        }
 	    $("#LoadMore").click(function(e){
 	        e.preventDefault();
 	        $(".searchFeed-cardItem:hidden").slice(0, 8).slideDown();
@@ -134,6 +138,10 @@
 	    
 	    /* load more - title */
 	    $(".searchFeed-cardItem-large").slice(0, 8).show();
+	    if($(".searchFeed-cardItem-large:hidden").length == 0)
+        { 
+        	$("#LoadMore-Title").hide();	        
+        }
 	    $("#LoadMore-Title").click(function(e){
 	        e.preventDefault();
 	        $(".searchFeed-cardItem-large:hidden").slice(0, 6).slideDown();

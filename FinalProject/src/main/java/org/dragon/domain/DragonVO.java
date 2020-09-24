@@ -38,4 +38,11 @@ public class DragonVO {
 		this.foodValue = foodValue;
 		this.equip = equip;
 	}
+	public DragonVO(String userId, int totalLevel, int levelValue, int foodValue, int backgroundId) {
+		this.userId = userId;
+		this.totalLevel = totalLevel;
+		this.levelValue = levelValue;
+		this.foodValue = foodValue;
+		this.backgroundId = backgroundId;
+	}
 }

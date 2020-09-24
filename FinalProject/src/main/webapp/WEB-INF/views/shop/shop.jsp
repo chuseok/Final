@@ -73,7 +73,6 @@ label img {
 					</div>
 				</c:forEach>
 	
-	
 			</section>
 			
 			
@@ -168,7 +167,7 @@ label img {
 									</div>
 								</div>
 								<input type="text" name="buyAmount" id="buyAmount"
-									style="background: #DFDFDF;" value="1"> 
+									style="background: #DFDFDF;" value="1" readonly="readonly"> 
 									
 								<h3>총 가격 : <span id="totalPrice"></span></h3>
 								</div>
@@ -386,7 +385,7 @@ $(document).ready(function() {
 		alert('로그인이 필요합니다!');
 		return false;
 	}
-	if('<c:out value="${buyError}"/>'){
+	if('<c:out value="${buyError}"/>'=='true'){
 		alert("다른 알을 구매해주세요!");
 	}
 	

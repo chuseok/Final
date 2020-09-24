@@ -193,7 +193,12 @@ header a:hover {
 	padding: 8px 2px;
 }
 
-.userInfo div {
+.userInfo .userInfo-name {
+	padding: 0 4px;
+	min-width: 95px;
+}
+
+.userInfo .userInfo-menu {
 	padding: 0 4px;
 	min-width: 80px;
 }
