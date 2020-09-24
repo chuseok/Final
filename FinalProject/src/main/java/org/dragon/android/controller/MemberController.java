@@ -8,9 +8,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.login.domain.AuthVO;
-import org.login.domain.MemberVO;
-import org.login.service.MemberService;
+import org.dragon.domain.login.AuthVO;
+import org.dragon.domain.login.MemberVO;
+import org.dragon.service.login.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

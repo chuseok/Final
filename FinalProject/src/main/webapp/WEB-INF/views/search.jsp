@@ -22,7 +22,7 @@
 <%@ include file="includes/header.jsp" %>
 
 	<div class="HomeLayout">
-		<div class="HomeLayout-container">
+		<div class="HomeLayout-container back-grey">
 			<section class="HomeLayout-main">
 			
 				<div class="mainWrapper">

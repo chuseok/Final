@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.dragon.domain.CollectionVO;
 import org.dragon.domain.DragonVO;
+import org.dragon.domain.login.MemberVO;
 import org.dragon.mapper.DragonMapper;
 import org.dragon.mapper.InventoryMapper;
 import org.dragon.mapper.ProductMapper;
-import org.login.domain.MemberVO;
-import org.login.mapper.MemberMapper;
+import org.dragon.mapper.login.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

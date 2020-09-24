@@ -12,7 +12,7 @@ import org.dragon.domain.ProductVO;
 import org.dragon.service.DragonService;
 import org.dragon.service.InventoryService;
 import org.dragon.service.ProductService;
-import org.login.service.MemberService;
+import org.dragon.service.login.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

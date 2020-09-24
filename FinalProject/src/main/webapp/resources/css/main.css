@@ -47,7 +47,7 @@ html, body {
 /* * {
   box-sizing: inherit;
 
-} 紐⑤떖 李쎌씠 李뚭렇�윭吏�*/
+} */
 
 
 a {
@@ -228,9 +228,15 @@ header a:hover {
   display: table-cell;
   position: relative;
   height: 100%;
-  background-color: rgb(251, 251, 251);
+  background-color: #fbfbfb;
   font-size: 14px;
-  
+  vertical-align: top;
+}
+
+.HomeLayout-main {
+	display: table-cell;
+  position: relative;
+  height: 100%;
 }
 
 .HomeLayout-sidebar a:visited {
@@ -372,8 +378,13 @@ header a:hover {
 .HomeLayout-container {
   display: table;
   max-width: 1250px;
-  height: 100%;
-  background-color: #fff;
+  height: 100vh;
+  /* background-color: #fff; */
+}
+
+.back-grey {
+	background-color : #fbfbfb;
+	height: 100vh;
 }
 
 .mainWrapper {
@@ -381,7 +392,7 @@ header a:hover {
 }
 
 .mainWrapper .mainContents {
-  padding: 0 40px;
+  padding: 4rem;
   height: 100%;
 }
 
@@ -389,7 +400,7 @@ header a:hover {
 	font-size: 1.5rem;
 	font-weight: 500;
 	font-family: 'Nanum Gothic', sans-serif;
-	min-width: 700px;
+	min-width: 985px;
 }
 
 .mainContents-recentFeed {
@@ -416,7 +427,7 @@ header a:hover {
 
 .emptyList {
 	padding: 1.5rem;
-	min-width: 700px;	
+	min-width: 985px;	
 }
 
 .emptyList span { 
@@ -447,7 +458,8 @@ header a:hover {
   padding: 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
-  
+  background-color: #fff;
+  border-radius: 6px;
 }
 
 .recentFeed-cardItem-inner .userId {

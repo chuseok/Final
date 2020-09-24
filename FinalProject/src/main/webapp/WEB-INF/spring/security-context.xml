@@ -5,10 +5,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="customAccessDenied" class="org.login.security.CustomAccessDeniedHandler"></bean>
-	<bean id="customLoginSuccess" class="org.login.security.CustomLoginSuccessHandler"></bean>
-	<bean id="customPasswordEncoder" class="org.login.security.CustomNoOpPasswordEncoder"></bean>
-	<bean id="customUserDetailsService" class="org.login.security.CustomUserDetailsService"></bean>	
+	<bean id="customAccessDenied" class="org.dragon.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess" class="org.dragon.security.CustomLoginSuccessHandler"></bean>
+	<bean id="customPasswordEncoder" class="org.dragon.security.CustomNoOpPasswordEncoder"></bean>
+	<bean id="customUserDetailsService" class="org.dragon.security.CustomUserDetailsService"></bean>	
 	<bean id="SessionDestoryListener" class="org.dragon.listener.SessionDestoryListener"></bean>
 	
 	<security:http pattern="/android/**" security="none"/>	
