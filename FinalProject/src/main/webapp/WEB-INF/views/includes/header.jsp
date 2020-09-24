@@ -655,9 +655,13 @@ function showMessageOutput(messageOutput) {//알림 메시지 출력
 window.addEventListener('click', bellCheck);
 
 if(<c:out value="${loginSuccess}"/> == true&&size==0){
+	$('.header__notification').css('display','flex');
 	connect();
-	setTimeout(sendMessage, 1000);
+	setTimeout(sendMessage, 2000);
 	
+}else if(<c:out value="${loginSuccess}"/> == false){
+	$('.header__notification').css('display','none');
+	disconnect();
 }
 $(document).ready(function(){
     // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때

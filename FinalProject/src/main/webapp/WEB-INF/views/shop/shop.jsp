@@ -73,7 +73,6 @@ label img {
 					</div>
 				</c:forEach>
 	
-	
 			</section>
 			
 			
@@ -386,7 +385,7 @@ $(document).ready(function() {
 		alert('로그인이 필요합니다!');
 		return false;
 	}
-	if('<c:out value="${buyError}"/>'){
+	if('<c:out value="${buyError}"/>'=='true'){
 		alert("다른 알을 구매해주세요!");
 	}
 	
