@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .mainContents-header {
-	padding-top: 4rem;	
+	padding-top: 1.5rem;	
 }
 
 .mainContents-header span {
@@ -97,8 +97,8 @@
 	text-align: center;  	
 }
 
-.colorGray {
-	color: #d3d3d3;
+.font-Grey {
+	color: #A9A9A9	;
 	padding-left: 4px;
 }
 
