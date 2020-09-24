@@ -161,12 +161,13 @@
 								</ul>
 								<input type="hidden" name="${_csrf.headerName}"
 									value="${_csrf.token}" />
+								
+								
+								</div>
 								<div class="CreateSetPage-publishButton">
 									<button class="UIButton" data-oper="add">add</button>
 									<button class="UIButton" data-oper="save">save</button>
 									
-								</div>
-								
 								</div>
 
 
@@ -193,8 +194,6 @@ $(document).on('click', 'button', function(e){
 	if (operation === 'save') {
 /*		formObj.attr("action", "/word/write");
 */		
-		
-		alert(operation);
 		var wordList = [];
 		var arr = new Array();
 		

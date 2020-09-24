@@ -22,7 +22,7 @@
 	</update>
 	<select id="get" resultType="org.dragon.domain.InventoryVO">
 	<![CDATA[
-		select * from inventory where productid=#{productId}
+		select * from inventory where productid=#{productId} and userid=#{userId}
 		]]>
 	</select>
 	<delete id="deleteCostume">

@@ -88,26 +88,8 @@
 	
 						
 						<div class="DashboardPage-main">
-							<!-- <div class="DashboardFeedControls is-showing">
-								<div class="DashboardFeedControls-sort">
-									<h6 class="UIHeading UIHeading--six"><span>Sort</span></h6>
-									<div class="DashboardFeedControls-dropdown">
-										<div class="UIDropdown">
-											<select class="UIDropdown-select">
-												<option value="recent">Latest</option>
-												<option value="alphabetical">Alphabetical</option>
-											</select>
-										</div>
-										
-									</div>
-								</div>
-								<div class="DashboardFeedControls-filter">
-									<input placeholder="Filter" class="UIInput-input">
-									<span class="UIInput-border"></span>
-								</div>
-							</div> -->
 							
-							<div class="UIDiv FolderPageSetsView-sets">
+							<!-- <div class="UIDiv FolderPageSetsView-sets">
 								<div class="UISetCard">
 								<div class="UIDiv UIBaseCard UIBaseCard--noLinkBox" data-bookId='11'>
 									<div class="UIDiv UIBaseCard-inner">
@@ -209,7 +191,7 @@
 									</div>
 								</div>
 								
-							</div>
+							</div> -->
 						</div>
 					</div>
 			</section>

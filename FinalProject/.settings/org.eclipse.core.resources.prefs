@@ -2,5 +2,6 @@ eclipse.preferences.version=1
 encoding//src/main/java/org/dragon/controller/DragonController.java=UTF-8
 encoding//src/main/java/org/dragon/controller/HomeController.java=UTF-8
 encoding//src/main/java/org/dragon/web/controller/MemberController.java=UTF-8
+encoding//src/main/java/org/login/security/CustomLoginSuccessHandler.java=UTF-8
 encoding//src/main/java/org/study/service/LearningServiceImple.java=UTF-8
 encoding//src/main/webapp/resources/css/main.css=UTF-8

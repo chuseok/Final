@@ -67,11 +67,11 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		if(sec>0&&hour==0)
 			session.setAttribute("text", min+"분"+sec+"초만에 접속하셨습니다.");
 		else if(hour>0&&day==0)
-			session.setAttribute("text", hour+"시"+min+"분만에 접속하셨습니다.");
+			session.setAttribute("text", hour+"시간"+min+"분만에 접속하셨습니다.");
 		else if(day>0)
 			session.setAttribute("text", day+"일"+hour+"시간만에 접속하셨습니다.");
 		else if(sec==0) {
-			//session.setAttribute("text", "메시지가 없습니다.");
+			//session.setAttribute("text", "硫붿떆吏�媛� �뾾�뒿�땲�떎.");
 		}
 	}
 }
