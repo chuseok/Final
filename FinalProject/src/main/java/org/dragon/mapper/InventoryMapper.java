@@ -12,4 +12,5 @@ public interface InventoryMapper {
 	public void update(InventoryVO vo);
 	public InventoryVO get(int productId);
 	public void deleteCostume(int productId);
+	public List<Integer> findNotUsedId(int eggId);
 }

@@ -3,10 +3,9 @@ console.log("Folder Module......");
 var folderService = (function() {
 	var csrfTokenValue = $("meta[name='_csrf']").attr("content");
 	var csrfHeaderName = $("meta[name='_csrf_header']").attr("content");
-	
+
 	function add(folder, callback, error) {
 		console.log("folder add..........");
-		
 
 		console.log(csrfHeaderName);
 		$.ajax({
@@ -18,12 +17,12 @@ var folderService = (function() {
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success : function(result, status, xhr) {
-				if(callback) {
+				if (callback) {
 					callback(result);
 				}
 			},
 			error : function(xhr, status, er) {
-				if(error) {
+				if (error) {
 					error(er);
 				}
 			}
@@ -32,7 +31,7 @@ var folderService = (function() {
 
 	function send(mail, callback, error) {
 		console.log("mail..........");
-		
+
 		$.ajax({
 			type : 'post',
 			url : '/mail/send',
@@ -42,22 +41,42 @@ var folderService = (function() {
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success : function(result, status, xhr) {
-				if(callback) {
+				if (callback) {
 					callback(result);
 				}
 			},
 			error : function(xhr, status, er) {
-				if(error) {
+				if (error) {
 					error(er);
 				}
 			}
 		});
 	}
 
-	
-	return {
-		add:add,
-		send:send
+	function remove(folderId, callback, error) {
 
+		$.ajax({
+			type : 'delete',
+			url : '/folder/' + folderId,
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			success : function(deleteResult, status, xhr) {
+				if (callback) {
+					callback(deleteResult);
+				}
+			},
+			error : function(xhr, status, er) {
+				if (error) {
+					error(er);
+				}
+			}
+		});
+	}
+
+	return {
+		add : add,
+		send : send,
+		remove : remove
 	};
 })();
