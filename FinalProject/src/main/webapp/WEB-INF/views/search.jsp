@@ -85,7 +85,7 @@
 											</div>
 											<div class="wordList">
 												<c:forEach items="${word.item }" var="wordList" begin="0" end="3">
-													<div class="wordList-word"><span>${wordList.word }</span><br><span class="colorGray">${wordList.meaning }</span></div>
+													<div class="wordList-word"><span>${wordList.word }</span><br><span class="font-Grey">${wordList.meaning }</span></div>
 												</c:forEach>
 											</div>
 										</div>
