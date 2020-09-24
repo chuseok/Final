@@ -126,14 +126,13 @@ html, body {
 }
 
 .SetPageMods-button {
-	width: 65px;
 	height:25px;
 	position:relative;
 	padding: 2px 4px;
 	
 }
 
-.UIRow .SetPageMods-groups .SetPageMods-buttonWrapper span {
+.SetPageMods-buttonWrapper span {
 	display: inline-block;
 	width: 80px;
 	height:25px;
@@ -141,22 +140,17 @@ html, body {
 	font-size: 15px;
 }
 
-.UIRow .SetPageMods-groups .SetPageMods-buttonWrapper span:hover {
-	color: #f85f73;
-	
-}
-
-.SetPageMods-button .SetPageMods-button-Linkbox {
+.SetPageMods-button-Linkbox {
 	position: absolute;
 	display: inherit;
 	width:80px;
 	height:25px;
 	top : 0;
-  left: 6px;
+  left: 2px;
 	margin: auto;
 }
 
-.SetPageMods-buttonWrapper .SetPageMods-button-Linkbox .SetPageMods-buttonWrapper-a {
+.SetPageMods-buttonWrapper-a {
 	position: absolute;
 	display: inherit;
 	width: 100%;
@@ -165,12 +159,12 @@ html, body {
   left: 0;
 }
 
-.SetPageMods-buttonWrapper .SetPageMods-button-Linkbox .SetPageMods-buttonWrapper-a:hover {
-	color: #f85f73;
+.SetPageMods-buttonWrapper-a:visited {
+	color:black;
 }
 
-.SetPageMods-buttonWrapper .SetPageMods-button-Linkbox .SetPageMods-buttonWrapper-a:visited {
-	color:black;
+.SetPageMods-buttonWrapper-a:hover {
+	opacity: 0.5;
 }
 
 /* 이 세트의 단어 */

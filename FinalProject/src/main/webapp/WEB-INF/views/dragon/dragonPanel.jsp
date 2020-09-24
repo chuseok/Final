@@ -101,25 +101,27 @@
     <%@ include file="../includes/sidebar.jsp" %>
     
   <section class="HomeLayout-main">
-    <div id="panel">
+  	<div class="mainWrapper">
+      <div class="mainContents">
+    	<div id="panel">
     
-		<div id="dragonBackground" style="background-image: url(${background.productImage})">
-		<div id="overlay">
-		<img alt="" src="../resources/images/icon/dead.svg">
-			<h2>용이 죽었습니다!</h2>
-			<div class="dead_btn">
-				<button class="chooseDragon">다른 용 선택</button>
-				<button id="reviveDragon">부활시키기</button>
+			<div id="dragonBackground" style="background-image: url(${background.productImage})">
+			<div id="overlay">
+				<img alt="" src="../resources/images/icon/dead.svg">
+				<h2>용이 죽었습니다!</h2>
+				<div class="dead_btn">
+					<button class="chooseDragon">다른 용 선택</button>
+					<button id="reviveDragon">부활시키기</button>
+				</div>
 			</div>
-		</div>
-		<c:if test="${noDragon}">
-		<div id="alertNoDragon">
-		<img alt="" src="../resources/images/icon/alertIcon.svg">
-			<h2>용이 없습니다!</h2>
-			<div class="noDragon_btn">
-				<button class="goshop">구입하러 가기</button>
+			<c:if test="${noDragon}">
+			<div id="alertNoDragon">
+			<img alt="" src="../resources/images/icon/alertIcon.svg">
+				<h2>용이 없습니다!</h2>
+				<div class="noDragon_btn">
+					<button class="goshop">구입하러 가기</button>
+				</div>
 			</div>
-		</div>
 		</c:if>
 		<div class="modal-wrapper">
 		<div class="modal-dragon">
@@ -315,6 +317,8 @@
         <span></span>
       </div>
     </nav>
+    </div>
+    </div>
   </section>
 </div>
 </div>
@@ -469,6 +473,7 @@ jQuery(function($) {
 	
 	var selectedEgg = $('.selectedEgg').val();
 	$("li[data-id='"+selectedEgg+"']").children('.innerText').css('visibility','visible');
+	$("div[data-id='"+selectedEgg+"']").children('.innerText').css('visibility','visible');
 	$("li[data-id='<c:out value="${background.productId}"/>']").children('.innerText').css('visibility','visible');
 	
 	
