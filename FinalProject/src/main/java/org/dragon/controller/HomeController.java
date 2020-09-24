@@ -16,10 +16,10 @@ import javax.servlet.http.HttpSession;
 
 import org.dragon.domain.DragonVO;
 import org.dragon.domain.UserVO;
+import org.dragon.domain.login.MemberVO;
 import org.dragon.service.DragonService;
 import org.dragon.service.MainService;
-import org.login.domain.MemberVO;
-import org.login.service.MemberService;
+import org.dragon.service.login.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.ContextRefreshedEvent;

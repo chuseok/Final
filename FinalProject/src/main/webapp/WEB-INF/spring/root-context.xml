@@ -28,6 +28,8 @@
 	</bean>
 	
 	<mybatis-spring:scan base-package="org.dragon.mapper"/>
+	
+	<mybatis-spring:scan base-package="org.dragon.mapper.login"/>
 	<mybatis-spring:scan base-package="org.login.mapper"/>
 	<mybatis-spring:scan base-package="org.zerock.mapper"/>
 	<mybatis-spring:scan base-package="org.study.mapper"/>

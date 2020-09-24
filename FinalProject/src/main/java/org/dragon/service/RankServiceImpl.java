@@ -10,7 +10,7 @@ import org.dragon.domain.DragonVO;
 import org.dragon.domain.RankVO;
 import org.dragon.mapper.DragonMapper;
 import org.dragon.mapper.RankMapper;
-import org.login.mapper.MemberMapper;
+import org.dragon.mapper.login.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

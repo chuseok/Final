@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.dragon.domain.CollectionVO;
 import org.dragon.domain.DragonVO;
-import org.login.domain.MemberVO;
+import org.dragon.domain.login.MemberVO;
 
 public interface DragonService {
 
