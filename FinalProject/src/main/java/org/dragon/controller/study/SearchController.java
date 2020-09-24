@@ -1,4 +1,4 @@
-package org.study.controller;
+package org.dragon.controller.study;
 
 
 import org.springframework.stereotype.Controller;
