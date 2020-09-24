@@ -1,6 +1,8 @@
 package org.dragon.service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.script.ScriptEngine;
@@ -42,6 +44,7 @@ public class InventoryServiceImpl implements InventoryService{
 	public boolean buy(InventoryVO vo, DragonVO dragonVO) {
 		log.info("buy service : "+vo);
 		List<InventoryVO> inventory = mapper.findById(dragonVO.getUserId());
+		InventoryVO background = new InventoryVO(idGenerater(), dragonVO.getUserId(), dragonVO.getBackgroundId(), 1, null);
 		ProductVO product = proMapper.getById(vo.getProductId());
 		boolean checkName = false; 
 		List<DragonVO> userList = dragonMapper.getAll(dragonVO.getUserId());
@@ -54,6 +57,8 @@ public class InventoryServiceImpl implements InventoryService{
 				dragonVO.setDragonId(dragonIdList.get(0));
 				dragonMapper.create(dragonVO);
 				mapper.insert(vo);
+				
+				mapper.insert(background);
 			}
 			
 		}else {
@@ -154,7 +159,7 @@ public class InventoryServiceImpl implements InventoryService{
 		DragonVO targetDragon = dragonMapper.getById(dragonVO);
 		Integer result = -1;
 		switch (strArray[0]) {
-		case "Ìè¨ÎßåÍ∞ê":
+		case "∆˜∏∏∞®":
 			int value = targetDragon.getFoodValue();
 			String foo = value+strArray[1];
 			result = (Integer)engine.eval(foo);
@@ -164,7 +169,7 @@ public class InventoryServiceImpl implements InventoryService{
 			targetDragon.setFoodValue(result);
 			dragonMapper.update(targetDragon);
 			break;
-		case "Í≤ΩÌóòÏπò":
+		case "∞Ê«Ëƒ°":
 			value = dragonMapper.get(userId).getLevelValue();
 			foo = value+strArray[1];
 			result = (Integer)engine.eval(foo);
@@ -184,7 +189,20 @@ public class InventoryServiceImpl implements InventoryService{
 		return result;
 	}
 	
-	
+	private String idGenerater() {
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		String subNum = "";
+
+		for (int i = 1; i <= 6; i++) {
+			subNum += (int) (Math.random() * 10);
+		}
+
+		String orderId = ymd + subNum;
+		return orderId;
+	}
 
 	
 }

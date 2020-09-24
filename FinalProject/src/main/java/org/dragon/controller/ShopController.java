@@ -60,13 +60,14 @@ public class ShopController {
 		String userId = principal.getName();
 
 		InventoryVO inventory = new InventoryVO(idGenerater(), userId, productId, buyAmount, null);
-		DragonVO dragon = new DragonVO(userId, 1, 0, 100, false);
-
+		DragonVO dragon = new DragonVO(userId,1,0,100,71);
+		
 		if(invenService.buy(inventory, dragon)) {
 			rttr.addFlashAttribute("buyError", false);
 		}else {
 			rttr.addFlashAttribute("buyError", true);
 		}
+		//inventory = new InventoryVO(idGenerater(), userId, 71, 1, null);
 		return "redirect:/shop/shop";
 	}
 
