@@ -1,6 +1,9 @@
-a {
+a:link {
   color: #337ab7;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+body {
+	font-size: 14px;
 }
 a:hover,
 a:focus {
@@ -31,20 +34,20 @@ option {
 	height: 100%;
 }
 
-.HomeLayout-container {
-	/* display: table; */
+/* .HomeLayout-container {
+	display: table;
 	max-width: 1300px;
 	margin: 0 auto;
 	height: 100vh;
 	min-height: 100%;
 	background-color: #fff;
-}
+} */
 
 .HomeLayout-main {
 	display: table-cell;
 	position: inherit;
 	font-size: 14px;
-	width: 100%;
+	width: 985px;
 	height: 100vh;
 	vertical-align: top;
 }
@@ -75,7 +78,7 @@ option {
 }
 
 .UserAvatar {
-	background-image: url('../images/profile.jpg');
+	/* background-image: url('../images/profile.jpg'); */
 	background-position: center; 
 	background-repeat: no-repeat;
 	width: 128px;
@@ -84,7 +87,7 @@ option {
 }
 
 .DashboardPage-header .DashboardHeader .ProfileHeader-mainContent {
-	width: 470px;
+	width: 50%;
 	height: 80px;
 	border-radius: 6px;
 	margin: 10px;
@@ -96,21 +99,36 @@ option {
 }
 
 .ProfileHeader-headline {
-    display: table;
+    display: flex;
+    align-items: center;
     position: relative;
+    height: 80px;
+    flex-direction: row;
+}
+
+.ProfileHeader-userId {
+	float: left;
+    margin: 0px 20px;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .ProfileHeader-username {
-    float: left;
-    margin: 0px 20px;
-    height: 100%;
+	font-size: 15px;
+    font-weight: 600;
+    color: darkgray;
+    margin: 5px 0 0 5px;
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
-
 .ProfileHeader-userInfo {
 	float: left;
 	line-height: 80px;
 	color: #a1aeb3;
+	font-size: 15px;
+	margin-left: 5px;
 }
 
 .DashboardPage-main {
@@ -223,6 +241,7 @@ option {
     flex-wrap: nowrap;
     float:left;
     align-items: center;
+    height: 40px;
 }
 
 
@@ -260,7 +279,7 @@ option {
     outline: none;
     padding: .625rem 0 .625rem 1rem;
     font-weight: 600;
-    font-size: .875rem;
+    font-size: 12px;
     line-height: 1.285714285714286;
     transition: all .12s cubic-bezier(.47,0,.745,.715);
     width: calc(100% + 100px);
@@ -270,6 +289,8 @@ option {
     
     width: 40%;
     float:right;
+    font-size: initial;
+    height: 40px;
 }
 
 .UIInput-input {

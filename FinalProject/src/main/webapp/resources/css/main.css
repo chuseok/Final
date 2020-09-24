@@ -32,9 +32,9 @@ time, mark, audio, video {
 
     border: 0;
 
-    font-size: 100%;
+  /*   font-size: 100%;
 
-    font: inherit;
+    font: inherit; */
 
     vertical-align: baseline;
 
@@ -80,9 +80,9 @@ header a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 81.25em;
-  padding: 0 2.5em;
-  margin: 0 auto;
+/*   max-width: 81.25em;
+  padding: 0 2.5em; */
+  margin: 0 20px;
   height: 80px;
   background-color: #f85f73;
   color: #fff;
@@ -90,7 +90,6 @@ header a:hover {
 
 .header-navbar .header-logo {
 	min-width: 80px;
-	height: 30px;
   font-family: 'Gamja Flower', cursive;
 }
 
@@ -98,7 +97,7 @@ header a:hover {
   display: flex;
   width: inherit;
   width: 80%;
-  height: 100px;
+  height: 100%;
   align-items: center;
   margin-left: 80px;
 }

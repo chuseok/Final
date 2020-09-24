@@ -10,8 +10,8 @@
 
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
-<link rel="stylesheet" href="../resources/css/list.css">
 <link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="../resources/css/list.css">
 
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
@@ -38,12 +38,16 @@
 								</div>
 								<div class="ProfileHeader-mainContent">
 									<div class="ProfileHeader-headline">
-										<span class="ProfileHeader-username">
+										<div class="ProfileHeader-userId">
 											<h2><sec:authentication property="principal.member.userId"/></h2>
-										</span>
-										<span class="ProfileHeader-userInfo">
-											<span class="ProfileHeader-userFullName"><sec:authentication property="principal.member.userName"/></span>
-										</span>
+										</div>
+										<div class="ProfileHeader-username">
+											<span class="ProfileHeader-createBy">create by</span>
+											<span class="ProfileHeader-userInfo">
+												<span class="ProfileHeader-userFullName"><sec:authentication property="principal.member.userName"/></span>
+											</span>
+										</div>
+										
 										
 									</div>
 								</div>

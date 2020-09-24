@@ -11,22 +11,29 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
-<link rel="stylesheet" href="/resources/css/main.css">
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 
-<link href="<c:url value="/resources/css/createWord.css" />"
-	rel="stylesheet">
 <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
 	rel="stylesheet" type="text/css" />
-
 <script type="text/javascript"
 	src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="/resources/css/main.css">
+<link href="<c:url value="/resources/css/createWord.css" />"
+	rel="stylesheet">
 <script src="/resources/js/wordBook.js"></script>
+
 <!-- Custom Fonts -->
 <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+	
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+	crossorigin="anonymous">
 </head>
 <body>
 	<div class="HomeLayout">
@@ -56,7 +63,6 @@
 									</div>
 								</div>
 
-CreateSetPage-container
 								<div class="UIContainer">
 									<div class="CreateSetHeader-textarea CreateSetHeader-title">
 										<label class="UITextarea">
@@ -79,74 +85,92 @@ CreateSetPage-container
 										</label>
 									</div>
 								</div>
-
-
-
+								
+								
+								<div class="StudiableItems">
+								
 								<ul class="TermRows">
 									<li id="1">
-										<div>
-											<span class="up"></span><span class="down"></span>
-										</div> <input type="text" name="word" class="word"
-										style="width: 200px;" /> <input type="text" name="meaning"
-										class="meaning" style="width: 200px; margin-left: 10px;" />
+										<div class="StudiableItemToolbar-upDowm">
+											<span class="up"></span><span class="down">
+										</div>
+										<div class="TermContent">
+										<input type="text" name="word" class="word" style="width: 200px;" />
+										<input type="text" name="meaning" class="meaning" style="width: 200px; margin-left: 10px;" />
+										</div>
+										
 										<div class="ItemType">
 											<p>단어</p>
 											<p class="RichTextEditor-labelText">뜻</p>
 										</div>
 									</li>
 									<li id="2">
-										<div>
-											<span class="up"></span><span class="down"></span>
-										</div> <input type="text" name="word" class="word"
-										style="width: 200px;" /> <input type="text" name="meaning"
-										class="meaning" style="width: 200px; margin-left: 10px;" />
+										<div class="StudiableItemToolbar-upDowm">
+											<span class="up"></span><span class="down">
+										</div>
+										<div class="TermContent">
+										<input type="text" name="word" class="word" style="width: 200px;" />
+										<input type="text" name="meaning" class="meaning" style="width: 200px; margin-left: 10px;" />
+										</div>
 										<div class="ItemType">
 											<p>단어</p>
-											<p class="meaning">뜻</p>
+											<p class="RichTextEditor-labelText">뜻</p>
 										</div>
 									</li>
 									<li id="3">
-										<div>
-											<span class="up"></span><span class="down"></span>
-										</div> <input type="text" name="word" class="word"
-										style="width: 200px;" /> <input type="text" name="meaning"
-										class="meaning" style="width: 200px; margin-left: 10px;" />
+										<div class="StudiableItemToolbar-upDowm">
+											<span class="up"></span><span class="down">
+										</div>
+										<div class="TermContent">
+										<input type="text" name="word" class="word" style="width: 200px;" />
+										<input type="text" name="meaning" class="meaning" style="width: 200px; margin-left: 10px;" />
+										</div>
 										<div class="ItemType">
 											<p>단어</p>
-											<p class="meaning">뜻</p>
+											<p class="RichTextEditor-labelText">뜻</p>
 										</div>
 									</li>
 									<li id="4">
-										<div>
-											<span class="up"></span><span class="down"></span>
-										</div> <input type="text" name="word" class="word"
-										style="width: 200px;" /> <input type="text" name="meaning"
-										class="meaning" style="width: 200px; margin-left: 10px;" />
+										<div class="StudiableItemToolbar-upDowm">
+											<span class="up"></span><span class="down">
+										</div>
+										<div class="TermContent">
+										<input type="text" name="word" class="word" style="width: 200px;" />
+										<input type="text" name="meaning" class="meaning" style="width: 200px; margin-left: 10px;" />
+										</div>
 										<div class="ItemType">
 											<p>단어</p>
-											<p class="meaning">뜻</p>
+											<p class="RichTextEditor-labelText">뜻</p>
 										</div>
 
 									</li>
 									<li id="5">
-										<div>
-											<span class="up"></span><span class="down"></span>
-										</div> <input type="hidden" name="numbering" value="5" /> <input
-										type="text" name="word" class="word" style="width: 200px;" />
-										<input type="text" name="meaning" class="meaning"
-										style="width: 200px; margin-left: 10px;" />
+										<div class="StudiableItemToolbar-upDowm">
+											<span class="up"></span><span class="down">
+										</div>
+										<div class="TermContent">
+										<input type="text" name="word" class="word" style="width: 200px;" />
+										<input type="text" name="meaning" class="meaning" style="width: 200px; margin-left: 10px;" />
+										</div>
 										<div class="ItemType">
 											<p>단어</p>
-											<p class="meaning">뜻</p>
+											<p class="RichTextEditor-labelText">뜻</p>
 										</div>
 
 									</li>
 								</ul>
 								<input type="hidden" name="${_csrf.headerName}"
 									value="${_csrf.token}" />
+								<div class="CreateSetPage-publishButton">
+									<button class="UIButton" data-oper="add">add</button>
+									<button class="UIButton" data-oper="save">save</button>
+									
+								</div>
+								
+								</div>
 
-								<button class="UIButton" data-oper="add">add</button>
-								<button class="UIButton" data-oper="save">save</button>
+
+								
 						</form>
 
 
@@ -243,7 +267,6 @@ $(document).on('click', 'button', function(e){
 		});
 		
 	} else if (operation === 'add') {
-
 	        
 		var str="";
 		var setUL = $(".TermRows");
@@ -251,11 +274,11 @@ $(document).on('click', 'button', function(e){
 		count++;
 				
 		str += '<li id="'+count+'">';
-		str += '<div><span class = "up"></span><span class = "down"></span></div>';
-		str += '<input type="hidden" value="'+ count +'">';
+		str += '<div class="StudiableItemToolbar-upDowm"><span class = "up"></span><span class = "down"></span></div>';
+		str += '<div class="TermContent"><input type="hidden" value="'+ count +'">';
 		str += '<input type="text" name="word" class="word" style="width:200px;"/>';
-		str += '<input type="text" name="meaning" class="meaning" style="width:200px; margin-left: 10px;"/>';
-		str += '<div class="ItemType"><p>단어</p><p class="meaning">뜻</p></div>';
+		str += '<input type="text" name="meaning" class="meaning" style="width:200px; margin-left: 10px;"/></div>';
+		str += '<div class="ItemType"><p>단어</p><p class="RichTextEditor-labelText">뜻</p></div>';
 		str += '</li>';
 
 		setUL.append(str);
