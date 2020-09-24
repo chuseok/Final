@@ -12,13 +12,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <style type="text/css">
-  .HomeLayout-main {
-    display: table-cell;
-    vertical-align: top;
-    padding-top: 10px;
-    width: 700px;
-}
-
 /*ranking top css*/
 h2.connection {
   font-size: 1em;
@@ -36,7 +29,6 @@ h2.connection {
   display: inline-block;
   background: #fff;
   min-width: 50%;
-  margin-left:5%;
   border-radius: 5px;
   overflow: hidden;
   /* box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15), 0 55px 50px -20px rgba(34, 36, 38, 0.25); */
@@ -348,6 +340,8 @@ i.fa-info-circle .tooltiptext::after{
     <%@ include file="../includes/sidebar.jsp" %>
     
 	  <section class="HomeLayout-main">
+	  <div class="mainWrapper">
+		<div class="mainContents">
 	    <div class="card">
 		<section class="card-info card-section">
 			<div class="avatar rankingrow">
@@ -530,6 +524,8 @@ i.fa-info-circle .tooltiptext::after{
 	      </div>
 	  </div>
 		</section>
+	</div>
+	</div>
 	</div>
 	  </section>
 	</div>
