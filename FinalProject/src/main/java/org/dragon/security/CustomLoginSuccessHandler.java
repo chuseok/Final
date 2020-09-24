@@ -65,11 +65,11 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		long day = diff/(1000*60*60*24);
 		
 		if(sec>0&&hour==0)
-			session.setAttribute("text", min+"�?"+sec+"초만?�� ?��?��?��?��?��?��?��.");
+			session.setAttribute("text", min+"분 "+sec+"초만에 접속하였습니다.");
 		else if(hour>0&&day==0)
-			session.setAttribute("text", hour+"?���?"+min+"분만?�� ?��?��?��?��?��?��?��.");
+			session.setAttribute("text", hour+"시간 "+min+"분만에 접속하였습니다.");
 		else if(day>0)
-			session.setAttribute("text", day+"?��"+hour+"?��간만?�� ?��?��?��?��?��?��?��.");
+			session.setAttribute("text", day+"일 "+hour+"시간만에 접속하였습니다.");
 		else if(sec==0) {
 			//session.setAttribute("text", "硫붿?��吏�媛� �뾾�뒿�땲�떎.");
 		}

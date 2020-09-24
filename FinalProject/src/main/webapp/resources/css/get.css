@@ -30,6 +30,7 @@
     display: table-cell;
     vertical-align: middle;
     color: #303545;
+    padding-left: 10px;
 }
 
 .FolderPageHeader-byline {
@@ -274,6 +275,10 @@ option {
 .UIButton--borderless {
 	background-color: initial;
 	color: #303545;
+}
+
+.UserLink-username {
+	font-size: 15px;
 }
 
 

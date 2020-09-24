@@ -41,7 +41,7 @@
 								</div>
 								<div class="DashboardHeaderTitle">
 <!-- 									<i class="fas fa-folder DashboardFolderIcon"></i>
- -->									<i class="fas fa-folder DashboardFolderIcon"></i>
+ -->									<i class="far fa-folder DashboardFolderIcon"></i>
 									<span class="DashboardHeaderTitle-title"><c:out value="${folder.folderTitle }"/></span>
 								</div>
 								<div class="DashboardHeaderActions">
