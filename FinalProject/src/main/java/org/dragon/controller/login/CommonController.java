@@ -2,6 +2,8 @@ package org.dragon.controller.login;
 
 import javax.servlet.http.HttpSession;
 
+import org.dragon.domain.word.Criteria;
+import org.dragon.service.study.LearningService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.study.service.LearningService;
-import org.zerock.domain.Criteria;
 
 import com.test.tst.NaverLoginBO;
 

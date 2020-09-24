@@ -23,14 +23,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.study.controller" />
-	<context:component-scan base-package="org.dragon.controller"/>
+	<context:component-scan base-package="org.dragon.controller.study" />
+	<context:component-scan base-package="org.dragon.controller.game"/>
 	<context:component-scan base-package="org.dragon.controller.login"/>
-	<context:component-scan base-package="org.dragon.service"/>
-	<context:component-scan base-package="org.login.controller" />
-	<context:component-scan base-package="org.zerock.controller" />
-	<context:component-scan base-package="org.zerock.service"/>
+	<context:component-scan base-package="org.dragon.controller.word" />
 	<context:component-scan base-package="org.android.controller" />
+	
+	<context:component-scan base-package="org.dragon.service.game"/>
+	<context:component-scan base-package="org.dragon.service.word"/>
+	<context:component-scan base-package="org.dragon.service.study"/>
+	<context:component-scan base-package="org.dragon.service.login"/>
+	
 	<context:component-scan base-package="org.dragon.android" />
 	<context:component-scan base-package="org.dragon.web" />
 	

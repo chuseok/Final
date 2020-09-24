@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.dragon.mapper.MainMapper;
+import org.dragon.mapper.game.MainMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -65,13 +65,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler{
 		long day = diff/(1000*60*60*24);
 		
 		if(sec>0&&hour==0)
-			session.setAttribute("text", min+"ë¶?"+sec+"ì´ˆë§Œ?— ? ‘?†?•˜?…¨?Šµ?‹ˆ?‹¤.");
+			session.setAttribute("text", min+"ï¿½?"+sec+"ì´ˆë§Œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.");
 		else if(hour>0&&day==0)
-			session.setAttribute("text", hour+"?‹œê°?"+min+"ë¶„ë§Œ?— ? ‘?†?•˜?…¨?Šµ?‹ˆ?‹¤.");
+			session.setAttribute("text", hour+"?ï¿½ï¿½ï¿½?"+min+"ë¶„ë§Œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.");
 		else if(day>0)
-			session.setAttribute("text", day+"?¼"+hour+"?‹œê°„ë§Œ?— ? ‘?†?•˜?…¨?Šµ?‹ˆ?‹¤.");
+			session.setAttribute("text", day+"?ï¿½ï¿½"+hour+"?ï¿½ï¿½ê°„ë§Œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.");
 		else if(sec==0) {
-			//session.setAttribute("text", "ï§ë¶¿?–†ï§ï¿½åª›ï¿½ ï¿½ë¾¾ï¿½ë’¿ï¿½ë•²ï¿½ë–.");
+			//session.setAttribute("text", "ï§ë¶¿?ï¿½ï¿½ï§ï¿½åª›ï¿½ ï¿½ë¾¾ï¿½ë’¿ï¿½ë•²ï¿½ë–.");
 		}
 	}
 }

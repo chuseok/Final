@@ -89,8 +89,8 @@
 						
 						<div class="DashboardPage-main">
 							
-							<!-- <div class="UIDiv FolderPageSetsView-sets">
-								<div class="UISetCard">
+							<div class="UIDiv FolderPageSetsView-sets">
+								<!-- <div class="UISetCard">
 								<div class="UIDiv UIBaseCard UIBaseCard--noLinkBox" data-bookId='11'>
 									<div class="UIDiv UIBaseCard-inner">
 										<div class="UIBaseCard-header">
@@ -189,9 +189,9 @@
 										</div>
 										
 									</div>
-								</div>
+								</div> -->
 								
-							</div> -->
+							</div>
 						</div>
 					</div>
 			</section>

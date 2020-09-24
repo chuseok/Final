@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dragon.mapper.game.InventoryMapper">
+	<insert id="insert">
+		insert into inventory(inventoryid, userid, productid, amount)
+		values(#{inventoryId},#{userId},#{productId},#{amount})
+	</insert>
+	<select id="findById" resultType="org.dragon.domain.game.InventoryVO">
+		<![CDATA[
+		select * from inventory where userid=#{userId}
+		]]>
+	</select>
+	<delete id="delete">
+		delete from inventory where inventoryid=#{inventoryId}
+	</delete>
+	<update id="update">
+		update inventory
+		set amount = #{amount}
+		where inventoryid = #{inventoryId}
+	</update>
+	<select id="get" resultType="org.dragon.domain.game.InventoryVO">
+	<![CDATA[
+		select * from inventory where productid=#{productId} and userid=#{userId}
+		]]>
+	</select>
+	<delete id="deleteCostume">
+		delete from inventory where productid = #{productId}
+	</delete>
+	<select id="findNotUsedId" resultType="int">
+		select dragonlist.dragonid from dragonlist
+    	where eggid=#{eggId} and dragonlist.dragonid not in 
+    	(select dragonid from dragoninfo)
+</select>
+</mapper>

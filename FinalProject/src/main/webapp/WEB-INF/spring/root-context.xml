@@ -9,7 +9,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<context:component-scan base-package="org.study.service"></context:component-scan>
+	<context:component-scan base-package="org.dragon.service.game.study"></context:component-scan>
 	<context:component-scan base-package="org.login.service"></context:component-scan>
 	<!-- DB -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -29,16 +29,12 @@
 	
 	<mybatis-spring:scan base-package="org.dragon.mapper"/>
 	
-	<mybatis-spring:scan base-package="org.dragon.mapper.login"/>
-	<mybatis-spring:scan base-package="org.login.mapper"/>
-	<mybatis-spring:scan base-package="org.zerock.mapper"/>
-	<mybatis-spring:scan base-package="org.study.mapper"/>
 	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" /> 
 		<property name="port" value="587" /> 
 		<property name="username" value="90127lucy@gmail.com" /> 
-		<property name="password" value="Hansol1790!" />
+		<property name="password" value="Mabsosa1790!" />
 		<property name="javaMailProperties"> 
 			<props> 
 				<prop key="mail.smtp.auth">true</prop> 

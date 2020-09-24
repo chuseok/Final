@@ -7,12 +7,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.dragon.domain.study.WordDTO;
+import org.dragon.domain.study.WordVO;
+import org.dragon.service.study.LearningService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.study.domain.WordDTO;
-import org.study.domain.WordVO;
-import org.study.service.LearningService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;

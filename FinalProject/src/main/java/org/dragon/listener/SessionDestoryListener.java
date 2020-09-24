@@ -2,7 +2,7 @@ package org.dragon.listener;
 
 import java.util.List;
 
-import org.dragon.mapper.MainMapper;
+import org.dragon.mapper.game.MainMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.core.context.SecurityContext;

@@ -1,13 +1,13 @@
 package org.study.service;
 
 
+import org.dragon.domain.study.StudyDTO;
+import org.dragon.service.study.LearningService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.study.domain.StudyDTO;
-import org.study.service.LearningService;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
