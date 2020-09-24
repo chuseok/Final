@@ -613,7 +613,30 @@ $(document).ready(function(){
 	//처음부터 다시하기 버튼
 	$(document).on("click","#resetBtn",function(e){
 		e.preventDefault();
-		window.location.reload();
+		
+		console.log("처음부터 다시하기");
+		var obj = new Object();
+		var wordId = WordJsonArray[0]["id"];
+		var wordTitle = WordJsonArray[0]["title"];
+			
+		obj.id = wordId;
+		obj.title = wordTitle;
+		//console.log(obj);
+		
+		var jsonData = JSON.stringify(obj);
+		
+		$.ajax({
+			type:"POST",
+			dataType: "json",
+			url: "/study/resetrate",
+			contentType:'application/json; charset=utf-8',
+			data:jsonData
+
+			});	
+	
+		setTimeout(function(){
+			window.location.reload();
+		},300);
 	});
 	
 	//모르겠어요 버튼
@@ -646,14 +669,6 @@ $(document).ready(function(){
 				url: "/study/resetrate",
 				contentType:'application/json; charset=utf-8',
 				data:jsonData
-				/* ,
-				success: function(result){
-					console.log(result);
-					if(result == 'success'){
-						alert('새로고침');
-						window.location.reload();
-					}
-				} */
 				});	
 		
 			setTimeout(function(){
