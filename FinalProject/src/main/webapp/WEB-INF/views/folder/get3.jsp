@@ -85,8 +85,6 @@
 							</div>
 						</div>
 						
-	
-						
 						<div class="DashboardPage-main">
 							<!-- <div class="DashboardFeedControls is-showing">
 								<div class="DashboardFeedControls-sort">
@@ -216,8 +214,6 @@
 		</div>
 	</div>
 	
-	
-	
 	<!-- add Modal -->
 	
 	
@@ -250,13 +246,18 @@
 						</div>
 					</div>
 				</div>
-				
+				<div class="modal-footer">
+					<button type="button" id='modalRegisterBtn' class="btn btn-default">Resister</button>
+					<button type="button" id='modalCloseBtn' class="btn btn-default"
+						data-dismiss="modal">Close</button>
+				</div>
 			</div>
 			<!-- /.modal-content -->
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.add Modal -->
+	
 	
 	<!-- share Modal -->
 	<div class="modal fade" id="shareModal" tableindex="-1" role="dialog"
@@ -319,41 +320,16 @@
 	</div>
 	<!-- /.share Modal -->
 	
-	
-	<div class="temp" oncontextmenu="return showContextMenu();">
-        <div id="contextMenu" class="context-menu">
-            <ul>
-                <li class="menuItem">remove</li>
-                <li class="separator"></li>
-            </ul>
-	
-	</div>
-	</div>
 
-    <div class="modal fade" id="RemoveModal" tableindex="-1" role="dialog"
-		aria-labelledby="RemoveModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times</button>
-					<h4 class="modal-title" id="RemoveModalLabel">Delete Folder</h4>
-				</div>
-				<div class="modal-body">
-					
-										<span>Are you sure Delete this folder?</span>
-									
-				</div>
-				<div class="modal-footer">
-					<button type="button" id='modalDeleteBtn' class="btn btn-default" data-oper='remove'>Delete</button>
-					<button type="button" id='modalCloseBtn' class="btn btn-default"
-						data-dismiss="modal">Close</button>
-				</div>
-			</div>
-				</div>
-		<!-- /.modal-dialog -->
+	<div class="temp" oncontextmenu="return showContextMenu();">
+		<div id="contextMenu" class="context-menu">
+			<ul>
+				<li class="menuItem">remove</li>
+				<li class="separator"></li>
+			</ul>
+		</div>
+		
 	</div>
-	<!-- /.Remove Modal -->
 	
 	<script>
 		var contextMenu = document.getElementById('contextMenu');
@@ -660,9 +636,6 @@
 	var userIdValue = '<sec:authentication property="principal.member.userId"/>';
 	</sec:authorize>
 		$(document).ready(function() {
-			
-			
-			
 			$("button").on("click", function(e) {
 				e.preventDefault();
 				
@@ -698,17 +671,7 @@
 					
 					document.execCommand('copy');
 
-				}else if(operation ==='ellipsis'){
-				 var modal = $('#RemoveModal');
-				 $("#RemoveModal").modal("show");
-				 //alert('remove');
-				}else if(operation ==='remove'){
-					var folderId = '<c:out value="${folder.folderId}"/>';
-					folderService.remove(folderId, function(result){
-						alert('삭제되었습니다');
-						self.location="/folder/list";
-						}); 
-					};
+				}
 			});
 		});
 	</script>

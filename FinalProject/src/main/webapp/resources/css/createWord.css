@@ -37,32 +37,9 @@ textarea {
     padding: 2px;
 }
 
-body  { 
-  margin: 20px auto; 
-  width: 350px;
-  color: #383838;
-}
-
 h1 { font-size: 2em; }
-ul { 
-  padding: 0; 
-  margin: 0 auto;
-  width: 80%;
-  list-style-type: none; 
-}
 
-ul li { 
-  cursor: move;
-  margin: 0 3px 3px 3px; 
-  padding: 0.3em; 
-  font-size: 1.25em; 
-  width: 500px;
-  height: 80px;
-  border: 1px solid #d3d3d3;
-  background: #e6e6e6;
-}
-
-ul div  { 
+.TermRows div  { 
   font-family: FontAwesome;
   font-size: 0.5em;
   letter-spacing: 10px;
@@ -73,7 +50,13 @@ ul .up, ul .down { float: left; }
 ul .up:before { content: "\f077"; }
 ul .down:before { content: "\f078"; }
 
+.wordForm {
+	width: fit-content;
+	background: #f6f7fb;
+}
+
 .CreateSetHeader {
+	width: 500px;
     background: #fff;
     overflow: visible;
     padding: 1.5rem 0 2rem;
@@ -115,8 +98,9 @@ ul .down:before { content: "\f078"; }
 }
 
 .CreateSetHeader-headingText {
-    /* display: -webkit-flex; */
     display: flex;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 .CreateSetHeader-infoButtonWrap {
@@ -203,391 +187,100 @@ ul .down:before { content: "\f078"; }
     -webkit-tap-highlight-color: rgba(255,255,255,0);
 }
 
-
-
-/* .CreateSetHeader-textarea {
-    max-width: 36.75rem;
-    position: relative;
-    z-index: 301;
-}
-
-.CreateSetHeader-title {
-    white-space: nowrap;
-    font-weight: 700;
-    font-size: 1.875rem;
-    line-height: 1.266666666666667;
-}
-
-.SpecialCharacterTextarea {
-    position: relative;
-}
-
-.UITextarea {
-    cursor: pointer;
-    display: block;
-    font-weight: 400;
-    font-size: 1.125rem;
-    line-height: 1.444444444444444;
-}
-
-.UITextarea-content {
-    -ms-flex-align: start;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    width: 100%;
-}
-
-.UITextarea-textarea.UITextarea-autoExpandTextarea {
-    resize: none;
-}
-
-.AutoExpandTextarea-sizer {
-    visibility: hidden;
-}
-
-.AutoExpandTextarea-wrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.UITextarea-textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: initial;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    color: var(--ui_color_gray_20);
-    cursor: text;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    font: inherit;
-    letter-spacing: inherit;
-    line-height: inherit;
-    outline: none;
-    overflow: hidden;
-    padding-bottom: .375rem;
-    resize: vertical;
-    text-align: inherit;
-    white-space: pre-wrap;
-    width: 100%;
-    word-break: break-word;
-}
-
-.AutoExpandTextarea-textarea {
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    border: none;
-    color: inherit;
-    cursor: inherit;
-    display: block;
-    font: inherit;
-    line-height: inherit;
-    outline: none;
-    overflow: hidden;
-    resize: none;
-    text-shadow: inherit;
-    -webkit-tap-highlight-color: rgba(255,255,255,0);
-}
-
-.AutoExpandTextarea-sizer, .AutoExpandTextarea-textarea {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    -webkit-font-smoothing: antialiased;
-}
-
-.CreateSetPage-container {
-    background: #f6f7fb;
-}
-
-.CreateSetPage-list {
-    *zoom: 1;
-    padding: 1.25rem 0;
-    position: relative;
-}
-
-.TermRows-termRowWrap {
-    counter-increment: studiable-item;
-}
-
-.TermRow {
-    -ms-flex-align: start;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
-    counter-increment: term-row;
-    display: -webkit-flex;
-    display: flex;
-    width: 100%;
-}
-
-.TermRow-bareSide--word {
-    padding-right: 4.1875rem;
-    width: 50%;
-}
-
-.TermRow-bareSide {
-    display: none;
-    padding-bottom: 2.125rem;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-.FormattedText, .TermText {
-    -webkit-font-smoothing: antialiased;
-}
-
-.TermContent-inner {
-    background-color: var(--card-background);
-    border-radius: .5rem;
-    cursor: move;
-    position: relative;
-}
-
-.TermContent.rt-clean-design .StudiableItemToolbar {
-    margin-bottom: 0;
-    margin-top: 0;
-    padding: .75rem;
-}
-
-.StudiableItemToolbar {
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    border-bottom: 2px solid #f6f7fb;
-    display: -webkit-flex;
-    display: flex;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    transition: all .12s ease;
-}
-
-.StudiableItemToolbar-counter {
+.UITextarea-label {
+	margin-top: 3px;
     color: #939bb4;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: .0875rem;
-    line-height: 1.5;
-}
-
-.StudiableItemToolbar-counter, .StudiableItemToolbar-dragToggle {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    width: 4rem;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-}
-
-.StudiableItemToolbar-editableToggles {
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    cursor: default;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    transform: translateY(.125rem);
-}
-
-.ContextToggle {
-    display: inline-block;
-    vertical-align: bottom;
-}
-
-.UIIconButton {
-    display: inline-block;
-}
-
-.UIIconButton .UIButton {
-    border-radius: 50%;
-    margin: 0;
-    padding: 0;
-}
-
-.UIIconButton .UIButton-wrapper {
-    padding: .5625rem;
-}
-
-.UIIconButton .UIIcon {
     display: block;
-    pointer-events: none;
-    height: 1.125rem;
-    width: 1.125rem;
 }
 
-.UIIcon {
-    display: inline-block;
-    fill: currentColor;
-    height: 1rem;
-    width: 1rem;
+.TermRows {
+	width: 500px;
+	padding: 0;
+    margin: 0 auto;
+    list-style-type: none;
+    cursor: move;
+    margin: 0 3px 3px 3px;
+    padding: 0.3em;
+    font-size: 1.25em;
+    height: 80px;
+    /* border: 1px solid #d3d3d3; */
+    background: #fff;
+    border-radius: .5rem;
 }
 
-.TermContent.rt-clean-design .StudiableItemToolbar-dragToggle {
-    width: 1.5rem;
+
+
+
+
+
+
+
+.TermRows {
+
 }
 
-.StudiableItemToolbar-counter, .StudiableItemToolbar-dragToggle {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    width: 4rem;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.word, .meaning {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #303545;
 }
 
-.TermContent.rt-clean-design .StudiableItemToolbar-actionableToggles {
-    overflow-x: hidden;
-    width: 2.5rem;
+.word:focus, .meaning:focus {
+	animation-name: border-focus;
+	animation-duration: 0.1s;
+	animation-fill-mode: forwards;
+	cursor: pointer;
 }
 
-.StudiableItemToolbar-actionableToggles {
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    width: 4rem;
-    margin-left: .75rem;
+@keyframes border-focus {
+	from {
+	}
+	to {
+	border-bottom: 3px solid #ffcd1f;
+	}
 }
 
-.ContextToggle {
-    display: inline-block;
-    vertical-align: bottom;
-}
 
-.TermContent.rt-clean-design .TermContent-inner-padding {
-    padding-left: .75rem;
-}
 
-.TermContent-inner-padding {
-    padding: .75rem .75rem 1.5rem 4.625rem;
-}
 
-.TermContent-sideWrap {
-    display: table;
-    min-height: 3.375rem;
-    table-layout: fixed;
-    transition: none .3s ease-out;
-    transition-property: background;
-    width: 100%;
-}
 
-.TermContent-side--word {
-    padding-left: .75rem;
-    padding-right: 1.25rem;
-    width: 50%;
-}
 
-.TermContent-side {
-    cursor: text;
-    display: table-cell;
-    padding-top: .75rem;
-    position: relative;
-    vertical-align: top;
-    word-break: break-word;
-    z-index: 1;
-}
-
-.TermContent-side--definition {
-    padding-left: 1.25rem;
-    padding-right: .75rem;
-    width: 50%;
-}
-
-.WordSide {
-    position: relative;
-}
-
-.TermContent.rt-clean-design .DefinitionSide .RichTextEditor, .TermContent.rt-clean-design .DefinitionSide .SpecialCharacterTextarea, .TermContent.rt-clean-design .WordSide .RichTextEditor, .TermContent.rt-clean-design .WordSide .SpecialCharacterTextarea {
-    padding-top: 1rem;
-}
-
-.PMEditor.is-scaled-lang .ProseMirror[pm-placeholder], .PMEditor:not(.is-scaled-lang) {
-    font-weight: 400;
-    font-size: 1.125rem;
-    line-height: 1.444444444444444;
-}
-
-.PMEditor {
-    cursor: text;
-}
-
-.ProseMirror[contenteditable] {
-    overflow-wrap: break-word;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-.ProseMirror, .ProseMirror-focused {
-    box-shadow: none;
-    outline: none;
-}
-
-.DefinitionSide {
-    position: relative;
-    word-break: break-word;
-}
-
-.DefinitionSide-richTextEditor {
-    -ms-flex-align: start;
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row-reverse;
-    -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-}
-
-.TermRowSeparator {
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    display: -webkit-flex;
-    display: flex;
-    height: 1.25rem;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    margin-left: 5.375rem;
-    position: relative;
-    z-index: 1;
-}
-
- */
+ 
+ .ItemType {
+ 	display: flex;
+    margin: 3px 0 0 18px;
+    width: auto;
+    font-size: 12px;
+    color: #939bb4;
+ }
+ .RichTextEditor-labelText {
+ 	margin: 0 0 0 173px;
+ }
+ 
+ 
+ 
+ 
 .UITextarea-border {
     -webkit-align-self: flex-end;
     align-self: flex-end;
