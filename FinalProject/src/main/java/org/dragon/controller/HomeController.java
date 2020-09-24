@@ -81,10 +81,11 @@ public class HomeController {
 			Date now = new Date();
 			long diff = now.getTime()-last.getTime();
 			
-			if(diff<1000*60*60*24) {//占쏙옙占쌈시곤옙 占쏙옙占�
+			/*if(diff<1000*60*60*24) {*/
+			if(diff<1000*60) {//test
 				diff = 0;
 			}else {
-				diff /= 1000*60*60*24;
+				diff /= 1000*60*1;//1붐마다 포만감 1씩 감소
 			}
 			
 			
@@ -95,6 +96,7 @@ public class HomeController {
 					dragon.setFoodValue(0);
 				}else {
 					dragon.setFoodValue(val);
+					System.out.println("드래곤 : "+dragon+" -> 포만감 "+diff+" 씩 감소됨");
 				}
 				if(val<30) {
 					session.setAttribute("hungry", "드래곤의 포만감이 30%미만입니다. 밥을 주세요!");

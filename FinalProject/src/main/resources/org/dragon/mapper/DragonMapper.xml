@@ -30,7 +30,7 @@
 	foodvalue = #{foodValue},
 	toyvalue = #{toyValue}
 	where userid = #{userId}
-	and equip = '1'
+	and dragonid = #{dragonId}
 </update>
 <select id="getCoin" resultType="int">
 	select coin from mem where userid = #{userId}

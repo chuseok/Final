@@ -10,7 +10,7 @@ public interface InventoryMapper {
 	public void delete(String inventoryId);
 	public List<InventoryVO> findById(String userId);
 	public void update(InventoryVO vo);
-	public InventoryVO get(int productId);
+	public InventoryVO get(InventoryVO vo);
 	public void deleteCostume(int productId);
 	public List<Integer> findNotUsedId(int eggId);
 }

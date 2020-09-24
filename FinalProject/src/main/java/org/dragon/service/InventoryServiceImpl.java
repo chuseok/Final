@@ -57,8 +57,10 @@ public class InventoryServiceImpl implements InventoryService{
 				dragonVO.setDragonId(dragonIdList.get(0));
 				dragonMapper.create(dragonVO);
 				mapper.insert(vo);
+				if(mapper.get(background)==null) {
+					mapper.insert(background);
+				}
 				
-				mapper.insert(background);
 			}
 			
 		}else {
@@ -131,9 +133,9 @@ public class InventoryServiceImpl implements InventoryService{
 	}
 
 	@Override
-	public InventoryVO get(int productId) {
-		log.info("get product : "+productId);
-		return mapper.get(productId);
+	public InventoryVO get(InventoryVO vo) {
+		log.info("get product : "+vo);
+		return mapper.get(vo);
 	}
 
 	
