@@ -47,7 +47,7 @@
     height: 150px;
 }
 .bx-inner-style{
-	background-color: white;
+	background-color: #41699273;
 	width: 100px;
 	border-radius: 15px;
 }
@@ -634,6 +634,7 @@ jQuery(function($) {
 		
 		$('#costume .costume-card').children('.innerText').css('visibility','hidden');
 		$(this).children('.innerText').css('visibility','visible');
+		$(this).children('.test').css('border-radius','0px');
 		equip($(this).data('id'));
 	});
 	$('#background .costume-card').on('click', function() {//costume 선택 이벤트

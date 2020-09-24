@@ -167,7 +167,7 @@ label img {
 									</div>
 								</div>
 								<input type="text" name="buyAmount" id="buyAmount"
-									style="background: #DFDFDF;" value="1"> 
+									style="background: #DFDFDF;" value="1" readonly="readonly"> 
 									
 								<h3>총 가격 : <span id="totalPrice"></span></h3>
 								</div>
