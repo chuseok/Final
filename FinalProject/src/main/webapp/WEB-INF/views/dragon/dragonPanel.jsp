@@ -47,7 +47,7 @@
     height: 150px;
 }
 .bx-inner-style{
-	background-color: #41699273;
+	background-color: #fbfbfb;
 	width: 100px;
 	border-radius: 15px;
 }
@@ -336,12 +336,6 @@ function radioCheck(id) {//modal에서 드래곤 선택 시 radio 자동 체크
 	$("div").find("[data-id="+id+"]").css({"border": "3px solid red"});
 }
 
-function callJqueryAjax(value) {//아이템 사용 ajax 처리
-	
-	
-	
-
-}
 
 	// Get the element with id="defaultOpen" and click on it
 	//document.getElementById("defaultOpen").click();

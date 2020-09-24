@@ -15,7 +15,7 @@ public interface InventoryService {
 	public List<InventoryVO> orderList(String userId);
 	public List<ProductVO> getInventory(String userId);
 	public void refresh(InventoryVO vo);
-	public InventoryVO get(int productId);
+	public InventoryVO get(InventoryVO vo);
 	public boolean check(String userId, int productId);
 	public int valueSettingByItem(int productId, String userId, int dragonId) throws ScriptException;
 	
