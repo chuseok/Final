@@ -1,4 +1,4 @@
-package org.dragon.listener;
+package org.dragon.listener.game;
 
 import java.util.List;
 

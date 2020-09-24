@@ -9,7 +9,7 @@
 	<bean id="customLoginSuccess" class="org.dragon.security.CustomLoginSuccessHandler"></bean>
 	<bean id="customPasswordEncoder" class="org.dragon.security.CustomNoOpPasswordEncoder"></bean>
 	<bean id="customUserDetailsService" class="org.dragon.security.CustomUserDetailsService"></bean>	
-	<bean id="SessionDestoryListener" class="org.dragon.listener.SessionDestoryListener"></bean>
+	<bean id="SessionDestoryListener" class="org.dragon.listener.game.SessionDestoryListener"></bean>
 	
 	<security:http pattern="/android/**" security="none"/>	
 	<security:http auto-config="true" use-expressions="true">

@@ -151,10 +151,10 @@
   }
 }
 
-/*무경씨꺼 코드 */
+/*menu */
 .menu {
 	position: absolute;
-	
+	z-index: 30;
 }
 .menu a {
 	cursor: pointer;
