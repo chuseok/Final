@@ -37,26 +37,43 @@ textarea {
     padding: 2px;
 }
 
+textarea::placeholder {
+  color: #939bb4;
+}
+
 h1 { font-size: 2em; }
+
+.StudiableItemToolbar-upDowm {
+	width: 10px;
+}
+.TermContent {
+	width: 100%;
+}
 
 .TermRows div  { 
   font-family: FontAwesome;
   font-size: 0.5em;
   letter-spacing: 10px;
-  width: 10px;
+
 }
 
 ul .up, ul .down { float: left; }
 ul .up:before { content: "\f077"; }
 ul .down:before { content: "\f078"; }
 
+.HomeLayout-main {
+	width: 985px;
+	display: table-cell;
+    vertical-align: top;
+}
+
 .wordForm {
-	width: fit-content;
+
 	background: #f6f7fb;
 }
 
 .CreateSetHeader {
-	width: 500px;
+
     background: #fff;
     overflow: visible;
     padding: 1.5rem 0 2rem;
@@ -106,6 +123,10 @@ ul .down:before { content: "\f078"; }
 .CreateSetHeader-infoButtonWrap {
     margin-left: auto;
     white-space: nowrap;
+}
+
+.CreateSetPage-container {
+	
 }
 
 .UIButton, .UIButton:visited, html.touch .UIButton:focus:hover:not(:active) {
@@ -185,6 +206,7 @@ ul .down:before { content: "\f078"; }
     resize: none;
     text-shadow: inherit;
     -webkit-tap-highlight-color: rgba(255,255,255,0);
+    font-size: 15px;
 }
 
 .UITextarea-label {
@@ -193,19 +215,27 @@ ul .down:before { content: "\f078"; }
     display: block;
 }
 
+
+
+
+.StudiableItems {
+	padding: 20px 0;
+    background: #f6f7fb;
+    margin-top: 40px;
+}
+
 .TermRows {
-	width: 500px;
+	width: 600px;
 	padding: 0;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     list-style-type: none;
     cursor: move;
-    margin: 0 3px 3px 3px;
-    padding: 0.3em;
+    /* margin: 0 3px 3px 3px; */
+    padding: 0 2.5rem;
     font-size: 1.25em;
-    height: 80px;
+    height: 100%;
     /* border: 1px solid #d3d3d3; */
-    background: #fff;
-    border-radius: .5rem;
+    /* background: #f6f7fb; */
 }
 
 
@@ -215,8 +245,10 @@ ul .down:before { content: "\f078"; }
 
 
 
-.TermRows {
-
+.TermRows li {
+    background: #fff;
+    border-radius: .5rem;
+    margin-bottom: 10px;
 }
 
 
@@ -273,12 +305,15 @@ ul .down:before { content: "\f078"; }
     width: auto;
     font-size: 12px;
     color: #939bb4;
+    width: 100%;
  }
  .RichTextEditor-labelText {
  	margin: 0 0 0 173px;
  }
  
- 
+ .CreateSetPage-publishButton {
+ margin: 0 2.5rem;
+ }
  
  
 .UITextarea-border {
