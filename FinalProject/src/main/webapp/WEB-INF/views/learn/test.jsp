@@ -613,10 +613,7 @@ $(document).ready(function(){
 			str += '<span>'+score+'</span></div></div>';
 			
 			$('.learn-sideBar').append(str);
-		};
-		
-		
-		
+		};		
 		
 });//end doc.ready 
 </script>

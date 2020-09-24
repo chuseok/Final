@@ -505,9 +505,7 @@ $(document).ready(function(){
 			e.preventDefault();
 			feedbackWrongAns();
 		});
-		
-		
-		
+				
 	});//end doc.ready 
 
 	
