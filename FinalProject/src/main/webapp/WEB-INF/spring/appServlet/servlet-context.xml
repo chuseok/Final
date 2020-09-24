@@ -23,7 +23,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.dragon.controller.study" />
+	<context:component-scan base-package="org.study.controller" />
 	<context:component-scan base-package="org.dragon.controller"/>
 	<context:component-scan base-package="org.dragon.service"/>
 	<context:component-scan base-package="org.login.controller" />

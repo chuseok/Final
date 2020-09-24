@@ -1,4 +1,4 @@
-package org.dragon.controller.study;
+package org.study.controller;
 
 import java.util.List;
 import java.util.Map;

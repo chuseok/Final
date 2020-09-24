@@ -1,4 +1,4 @@
-package org.dragon.controller.study;
+package org.study.controller;
 
 
 import org.springframework.security.access.prepost.PreAuthorize;
