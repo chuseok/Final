@@ -618,7 +618,6 @@ nav .chooseDragon {
 .costume-card-modal{
 	float: left;
 	margin: 15px;
-	width: 80px;
 	position: relative;
 }
 .costume-card-modal.show{

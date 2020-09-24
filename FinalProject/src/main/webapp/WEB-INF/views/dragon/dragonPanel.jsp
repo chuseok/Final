@@ -469,6 +469,7 @@ jQuery(function($) {
 	
 	var selectedEgg = $('.selectedEgg').val();
 	$("li[data-id='"+selectedEgg+"']").children('.innerText').css('visibility','visible');
+	$("div[data-id='"+selectedEgg+"']").children('.innerText').css('visibility','visible');
 	$("li[data-id='<c:out value="${background.productId}"/>']").children('.innerText').css('visibility','visible');
 	
 	
