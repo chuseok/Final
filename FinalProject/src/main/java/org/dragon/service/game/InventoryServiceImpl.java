@@ -44,7 +44,7 @@ public class InventoryServiceImpl implements InventoryService{
 	public boolean buy(InventoryVO vo, DragonVO dragonVO) {
 		log.info("buy service : "+vo);
 		List<InventoryVO> inventory = mapper.findById(dragonVO.getUserId());
-		InventoryVO background = new InventoryVO(idGenerater(), dragonVO.getUserId(), dragonVO.getBackgroundId(), 1, null);
+		InventoryVO background = new InventoryVO(idGenerater(), dragonVO.getUserId(), 71, 1, null);
 		ProductVO product = proMapper.getById(vo.getProductId());
 		boolean checkName = false; 
 		List<DragonVO> userList = dragonMapper.getAll(dragonVO.getUserId());
@@ -161,7 +161,7 @@ public class InventoryServiceImpl implements InventoryService{
 		DragonVO targetDragon = dragonMapper.getById(dragonVO);
 		Integer result = -1;
 		switch (strArray[0]) {
-		case "������":
+		case "포만감":
 			int value = targetDragon.getFoodValue();
 			String foo = value+strArray[1];
 			result = (Integer)engine.eval(foo);
@@ -171,7 +171,7 @@ public class InventoryServiceImpl implements InventoryService{
 			targetDragon.setFoodValue(result);
 			dragonMapper.update(targetDragon);
 			break;
-		case "����ġ":
+		case "경험치":
 			value = dragonMapper.get(userId).getLevelValue();
 			foo = value+strArray[1];
 			result = (Integer)engine.eval(foo);
