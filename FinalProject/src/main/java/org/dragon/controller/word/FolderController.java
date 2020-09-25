@@ -72,7 +72,7 @@ public class FolderController {
 //		model.addAttribute("pageMaker", new PageDTO(cri, total));
 //	}
 	
-	@PostMapping("/register") //db¿¡ ÀÚ·á°¡ insert
+	@PostMapping("/register") //dbï¿½ï¿½ ï¿½Ú·á°¡ insert
 	public String register(FolderVO folder, RedirectAttributes rttr) {
 		
 		log.info("register: " + folder);

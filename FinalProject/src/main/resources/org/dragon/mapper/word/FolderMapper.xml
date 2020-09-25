@@ -75,8 +75,6 @@ select * from folder where folderId > 0
 </select>
 
 <select id="getTotalCount" resultType="int">
-	select count(*) from folder where 
-	<include refid="criteria"></include>
-	and folderId > 0
+	select count(*) from folder where folderId > 0
 </select>
 </mapper>
