@@ -185,7 +185,7 @@
 					userId : userIdValue
 				};
 				folderService.add(folder, function(result) {
-					alert(result);
+					/* alert(result); */
 								
 					modal.find("input").val();
 					modal.modal("hide");

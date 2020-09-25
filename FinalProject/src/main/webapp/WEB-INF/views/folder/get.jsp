@@ -526,7 +526,7 @@
 						folderId : folderIdValue
 				};
 				wordBookService.updateFromFolder(wordBook, function(result) {
-					alert(result);
+					/* alert(result); */
 					showList(1);
 				});
 				
@@ -572,7 +572,7 @@
 							folderId : +0
 					};
 					wordBookService.updateFromFolder(wordBook, function(result) {
-						alert(result);
+						/* alert(result); */
 						showList(1);
 						showYourSets();
 					});
