@@ -207,7 +207,7 @@ $(document).on('click', 'button', function(e){
 			return;
 		} 
 		for(i=0; i<word.length; i++) {
-			if(!word[i].value) {
+			if(!word[i].value || !meaning[i].value) {
 				alert('내용을 입력하세요.');
 				return;
 			}
@@ -242,7 +242,7 @@ $(document).on('click', 'button', function(e){
 				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success : function(response) {
-				alert('리스트에 추가함.')
+				/* alert('리스트에 추가함.'); */
 			}
 		});
 
@@ -261,7 +261,7 @@ $(document).on('click', 'button', function(e){
 		};
 		
 		wordBookService.add(wordBook, function(result) {
-			alert(result);
+			alert("저장되었습니다.");
 			
 		});
 		

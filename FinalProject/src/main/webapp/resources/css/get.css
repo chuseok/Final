@@ -91,12 +91,12 @@
 	color: #303545 !important;
 	color: #939bb4;
 }
-.fa-plus {
+/* .fa-plus {
 	display: block;
     pointer-events: none;
     height: 1.125rem;
     width: 1.125rem;
-}
+} */
 
 .UIIconButton .UIButton-wrapper {
     padding: 12px;
