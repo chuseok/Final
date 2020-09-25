@@ -15,7 +15,7 @@
 		<level value="info" />
 	</logger>
 	
-	<logger name="org.login.controller">
+	<logger name="org.dragon.controller">
 		<level value="info" />
 	</logger>
 	
