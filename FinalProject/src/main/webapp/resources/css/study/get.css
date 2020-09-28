@@ -36,7 +36,6 @@ html, body {
 
 .Section-WordCard .progressNBtns {	
 	padding: 10px;	
-	height: 55px;
 }
 
 .Section-WordCard .progressNBtns button{
@@ -93,18 +92,37 @@ html, body {
 .prevCard, .nextCard {
 	outline: none;
 	border: none;
-	background-color: #fff;
+	background-color: #fbfbfb;
 }
 
+.prevCard, .nextCard:hover {
+	color: #ffb400;
+}
 
 /* 이동하기 */
+.fas {
+	 padding-right: 5px;
+}
+
+.fa-shapes {
+	color: #ffb400;
+}
+
+.fa-pencil-alt {
+	color: #2d4059;
+}
+
+.fa-scroll {
+	color: #4CAF50;
+}
+
 .Section-SetPageModsGroup {
 	margin: 15px 0;
 }
 
 .UIRow {
 	padding: 8px 0;	
-	height: 90px;
+	/* height: 90px; */
 }
 .UIRow .SetPageMods-groups {
 	padding: 5px 0;
@@ -113,7 +131,7 @@ html, body {
 
 .UIHeading-two {
 	color: #596e79;
-	padding: 12px 8px 0 0; 
+	padding: 1.5rem 0; 
 	font-size: 2rem;
 	/* border-top: 1px solid #878ecd; */
 }
@@ -128,7 +146,7 @@ html, body {
 .SetPageMods-button {
 	height:25px;
 	position:relative;
-	padding: 2px 4px;
+	padding: 2px 8px;
 	
 }
 
@@ -145,9 +163,14 @@ html, body {
 	display: inherit;
 	width:80px;
 	height:25px;
-	top : 0;
-  left: 2px;
+	top : 2px;
+  left: 8px;
 	margin: auto;
+}
+
+.SetPageMods-button-Linkbox:hover {
+	box-shadow: 0 0.2rem 0.275rem rgba(0,0,0,.08);
+	border-radius: 6px;
 }
 
 .SetPageMods-buttonWrapper-a {
@@ -170,33 +193,36 @@ html, body {
 /* 이 세트의 단어 */
 .Section-WordLists {
 	padding: 20px 0;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 }
-.oneOfWords {
+.listOfwords-table {
 	width: 100%;
 	table-layout: fixed;
 	border-spacing: 0 15px;
 	margin-left: 1.5rem;
 }
 
-.oneOfWords tr {
-	height: 29px;
-}
-
-.oneOfWords tr:odd {
-	background-color: #FFC;
-}
-
-.oneOfWords td {
-	padding: 4px 10px;
-	font-size: 1.5rem;	
+.oneOfWords{
+	background-color: #fff;
+	padding: 1rem 0.7rem;
+	margin: 0.8rem 0;
+	box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.08);
+	cursor: pointer;
 }
 
 .item-word {
-	width: 20%;
-	border-right: 1px solid #e3dfc8;
-	font-size: 1rem;
+	width: 25%;
+	border-right: 1px solid #e3e3e3;
+	font-size: 1.8rem;
+	float: left;
+	margin-right: 0.7rem;
 }
+
+.item-meaning {
+	font-size: 1.5rem;
+	padding: 4px 0;
+}
+
 
 
 

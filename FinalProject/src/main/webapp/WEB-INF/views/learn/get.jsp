@@ -21,7 +21,7 @@
 
 <%@ include file="../includes/header.jsp" %>
 
-	<div class="HomeLayout">
+	<div class="HomeLayout back-grey">
 		<div class="HomeLayout-container">
 			<section class="HomeLayout-main">
 				<div class="mainWrapper">
@@ -56,15 +56,15 @@
 									</div>
 									<div class="SetPageMods-buttonWrapper">
 										<div class="SetPageMods-button">
-											<span>학습하기</span> 
+											<span><i class="fas fa-shapes"></i>학습하기</span> 
 											<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a"	href="/study"></a></div>
 										</div>
 										<div class="SetPageMods-button">
-											<span>주관식</span> 
+											<span><i class="fas fa-pencil-alt"></i>주관식</span> 
 											<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a" href="/subjective"></a></div>
 										</div>
 										<div class="SetPageMods-button">
-											<span>테스트</span> 
+											<span><i class="fas fa-scroll"></i>테스트</span> 
 											<div class="SetPageMods-button-Linkbox"><a class="SetPageMods-buttonWrapper-a" href="/test"></a></div>
 										</div>
 									</div>
@@ -78,9 +78,6 @@
 						<div class="listOfWords">
 							<h2 class="UIHeading-two">이 세트의 단어<span class="numOfList"></span></h2>
 
-							<table class="oneOfWords">
-								<tbody>
-
 									<c:if test="${WordDTO.size() ==0 }">
 										<td colspan="2">아직 단어가 없습니다.</td>
 									</c:if>
@@ -92,15 +89,13 @@
 										</form>
 										
 										<c:forEach items="${list.item}" var="item">
-											<tr>
-												<td class="item-word"><c:out value='${item.word }' /></td>
-												<td class="item-meaning"><c:out	value='${item.meaning }' /></td>
-											</tr>
+											<div class="oneOfWords">
+												<div class="item-word"><c:out value='${item.word }' /></div>
+												<div class="item-meaning"><c:out	value='${item.meaning }' /></div>
+											</div>
 										</c:forEach>
 									</c:forEach>
-
-								</tbody>
-							</table>
+									
 						</div>
 					</section>
 					<!-- ./listOfWords -->
@@ -194,17 +189,22 @@ $(document).ready(function(){
 				if (cardProgressIndex == 1) {
 					
 					$('.prevCard').attr('disabled', true);
+					$('.prevCard').css('color','#e6e7e5' );
 					$('.nextCard').attr('disabled', false);
 					
 				} else if (cardProgressIndex == cardListLength) {
 					
 					$('.nextCard').attr('disabled', true);
+					$('.nextCard').css('color','#e6e7e5' );
 					$('.prevCard').attr('disabled', false);
+					
 					
 				} else {
 					
 					$('.prevCard').attr('disabled', false);
 					$('.nextCard').attr('disabled', false);
+					$('.prevCard').css('color', '#333333');
+					$('.nextCard').css('color', '#333333');
 					
 				};
 

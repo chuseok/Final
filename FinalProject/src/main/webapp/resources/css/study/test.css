@@ -23,6 +23,10 @@
   border-bottom: 1px solid #4850b9;
 }
 
+.sideBar-backBtnBox:hover {
+	color: #ffde7d;
+}
+
 .sideBar-backBtnBox i {
 	color: #4850b9;
 	padding-right: 8px;
@@ -44,7 +48,7 @@
 
 .progress-label .fa-scroll {
 	padding-right: 8px;
-	color: #1f4e5f;
+	color: #206a5d;
 }
 
 /* mainContent */
