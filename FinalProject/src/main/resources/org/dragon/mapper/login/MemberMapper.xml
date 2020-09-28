@@ -63,6 +63,7 @@ UPDATE mem SET email=#{email} WHERE userId=#{userId}
 <result property="phoneNo" column="phoneNo"/>
 <result property="email" column="email"/>
 <result property="lastConn" column="lastConn"/>
+<result property="coin" column="coin"/>
 <collection property="authList" resultMap="authMap">
 </collection>
 </resultMap>
