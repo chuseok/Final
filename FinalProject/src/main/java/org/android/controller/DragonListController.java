@@ -247,6 +247,8 @@ public class DragonListController {
 
 				if (userItemList.get(j).getProductId() == backgroundList.get(i).getProductId()) {
 					map.put("procession", "true");
+					map.put("backgroundImage", backgroundList.get(i).getProductImage());
+					map.put("backgroundName", backgroundList.get(i).getProductName());
 					break;
 				} else {
 					map.put("procession", "false");

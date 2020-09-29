@@ -54,6 +54,7 @@ public class DragonController {
 		}
 		String userId = principal.getName();
 		DragonVO dragon = service.getDragonByUser(userId);
+		System.out.println(dragon);
 
 		if (dragon == null) {
 			model.addAttribute("noDragon", true);
