@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.dragon.domain.game.CollectionVO;
 import org.dragon.domain.game.DragonVO;
+import org.dragon.domain.game.InventoryVO;
 import org.dragon.domain.login.MemberVO;
 import org.dragon.mapper.game.DragonMapper;
 import org.dragon.mapper.game.InventoryMapper;
@@ -105,7 +106,13 @@ public class DragonServiceImpl implements DragonService {
 	@Override
 	public boolean delete(DragonVO dragonVO) {
 		int proId = mapper.getProductId(dragonVO.getDragonId());
-		invenMapper.deleteCostume(proId);
+		List<InventoryVO> list = invenMapper.findById(dragonVO.getUserId());
+		for(InventoryVO vo : list) {
+			if(vo.getProductId()==proId) {
+				invenMapper.delete(vo.getInventoryId());
+				break;
+			}
+		}
 		return mapper.delete(dragonVO)==1;
 	}
 	@Override

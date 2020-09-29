@@ -77,7 +77,6 @@ public class DragonListController {
 		String userId = request.getParameter("userId");
 		List<Map<String, String>> result = new ArrayList<Map<String, String>>();
 		List<DragonVO> dragonList = service.getAllDragonByUser(userId);
-
 		for (int i = 0; i < dragonList.size(); i++) {
 			DragonVO target = setImg(dragonList.get(i));
 			Map<String, String> map = new HashMap<String, String>();
@@ -176,7 +175,6 @@ public class DragonListController {
 		Map<String, Integer> result = new HashMap<String, Integer>();
 
 		MemberVO member = memberService.get(userId);
-
 		if (member.getCoin() < 20000) {
 			result.put("checkCoin", -1);
 			result.put("coin", -1);
@@ -206,7 +204,6 @@ public class DragonListController {
 
 		for (int i = 0; i < dragonImageList.size(); i++) {
 			Map<String, String> map = new HashMap<String, String>();
-			System.out.println(dragonImageList.get(i).getLevel1());
 			for (int j = 0; j < users.size(); j++) {
 				log.info("aaaaa : "+users.get(j).getDragonId());
 				if (users.get(j).getDragonId() == dragonImageList.get(i).getDragonId()) {
@@ -299,7 +296,7 @@ public class DragonListController {
 			return;
 		}
 		InventoryVO inventory = new InventoryVO(idGenerater(), userId, productId, buyAmount, null);
-		DragonVO dragon = new DragonVO(userId, 1, 0, 100, false);
+		DragonVO dragon = new DragonVO(userId, 1, 0, 100, 71);
 		invenService.buy(inventory, dragon);
 	}
 
@@ -315,13 +312,11 @@ public class DragonListController {
 		Map<String, Integer> result = new HashMap<String, Integer>();
 		
 		if(category.equals("egg") || category.equals("background")) {
-			List<InventoryVO> invenList = invenService.orderList(userId);
-			for(int i = 0;i<invenList.size();i++) {
-				if(invenList.get(i).getProductId()==productId) {
-					result.put("buyCheck", 1);
-					result.put("coin", coin);
-					return result;
-				}
+			List<Integer> dragonIdList = invenService.findNotUsedId(productId, userId);
+			if(dragonIdList.isEmpty()) {
+				result.put("buyCheck", 1);
+				result.put("coin", coin);
+				return result;
 			}
 		}
 		result.put("buyCheck", 0);
