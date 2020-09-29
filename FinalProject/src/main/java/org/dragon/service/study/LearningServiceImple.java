@@ -561,7 +561,7 @@ public class LearningServiceImple implements LearningService {
 				//�떒�뼱�옣�씠 議댁옱�븯硫�
 				log.info("aleady exist...");
 			}
-			else {						
+			else {					
 				wordObj = new JSONObject();
 				
 				wordObj.put("id", dto.getId()); 
