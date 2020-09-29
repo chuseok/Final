@@ -81,11 +81,11 @@ public class HomeController {
 			Date now = new Date();
 			long diff = now.getTime()-last.getTime();
 			
-			/*if(diff<1000*60*60*24) {*/
-			if(diff<1000*60) {//test
+			if(diff<1000*60*60*24) {//1일 이상 접속하지 않았을 경우
+				/*if(diff<1000*60) {//test*/
 				diff = 0;
 			}else {
-				diff /= 1000*60*1;//1붐마다 포만감 1씩 감소
+				diff /= 1000*60*10;//10붐마다 포만감 1씩 감소
 			}
 			
 			

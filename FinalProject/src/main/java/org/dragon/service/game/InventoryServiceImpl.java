@@ -55,6 +55,10 @@ public class InventoryServiceImpl implements InventoryService{
 				return false;
 			}else {
 				dragonVO.setDragonId(dragonIdList.get(0));
+				if(dragonMapper.get(dragonVO.getUserId())==null){
+					dragonVO.setEquip(true);
+					dragonMapper.create(dragonVO);
+				}
 				dragonMapper.create(dragonVO);
 				mapper.insert(vo);
 				if(mapper.get(background)==null) {
