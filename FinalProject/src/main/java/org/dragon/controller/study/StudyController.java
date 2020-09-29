@@ -3,8 +3,11 @@ package org.dragon.controller.study;
 import java.util.List;
 import java.util.Map;
 
+import org.dragon.domain.login.MemberVO;
 import org.dragon.domain.study.StudyDTO;
 import org.dragon.domain.study.WordDTO;
+import org.dragon.service.game.DragonService;
+import org.dragon.service.login.MemberService;
 import org.dragon.service.study.LearningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +30,10 @@ public class StudyController {
 	
 	@Autowired
 	private LearningService learningservice;
+	@Autowired
+	private DragonService dragonService;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping("/study")
 	public List<WordDTO> getAllWordList(){
@@ -49,6 +56,12 @@ public class StudyController {
 		String id = param.get("id").toString();
 		String title = param.get("title").toString();
 		String word = param.get("word").toString();
+		
+		//코인값 증가
+		MemberVO user = memberService.get(id);
+		user.setCoin(user.getCoin()+100);
+		dragonService.updateCoin(user);
+		
 		learningservice.upRate(id,title,word);
 	}
 	
