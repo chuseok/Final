@@ -8,20 +8,22 @@
 	<![CDATA[
 	select d.userid, 
 	ROW_NUMBER()over(ORDER BY sum(totallevel)+
-	(sum(inven.amount)*100) desc)as rank,
+	((select count(*) from inventory where inventory.userid = d.userid)*10) desc)as rank,
 	sum(totallevel) as totallevel, 
-	sum(totallevel)+(sum(inven.amount)*100) as score
+	sum(totallevel)+(select count(*) from inventory where inventory.userid = d.userid)*10 as score
 	from 
 	(
-		select userid, totallevel
+		select userid, totallevel, dragonid
 		from dragoninfo
-	)d, 
-	inventory inven, 
+	)d,
 	(
 		select proid, category from product
-	) pro
-	where inven.productid = pro.proid 
-	and inven.userid = d.userid
+	) pro,
+    (
+        select dragonid, eggid from dragonlist
+    ) list
+	where list.eggid = pro.proid
+	and list.dragonid = d.dragonid
 	and (pro.category = 'egg' or pro.category ='background')
 	group by d.userid 
 	FETCH FIRST 10 ROWS ONLY
@@ -31,22 +33,24 @@
 	<![CDATA[
 	select d.userid, 
 	ROW_NUMBER()over(ORDER BY sum(totallevel)+
-	(sum(inven.amount)*100) desc)as rank,
+	((select count(*) from inventory where inventory.userid = d.userid)*10) desc)as rank,
 	sum(totallevel) as totallevel, 
-	sum(totallevel)+(sum(inven.amount)*100) as score
+	sum(totallevel)+(select count(*) from inventory where inventory.userid = d.userid)*10 as score
 	from 
 	(
-		select userid, totallevel
+		select userid, totallevel, dragonid
 		from dragoninfo
-	)d, 
-	inventory inven, 
+	)d,
 	(
 		select proid, category from product
-	) pro
-	where inven.productid = pro.proid 
-	and inven.userid = d.userid
+	) pro,
+    (
+        select dragonid, eggid from dragonlist
+    ) list
+	where list.eggid = pro.proid
+	and list.dragonid = d.dragonid
 	and (pro.category = 'egg' or pro.category ='background')
-	group by d.userid
+	group by d.userid 
 	having d.userid = #{userId}
 	]]>
 </select>

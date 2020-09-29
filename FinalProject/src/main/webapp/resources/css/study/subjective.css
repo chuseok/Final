@@ -17,12 +17,16 @@
 }
 
 .sideBar-backBtnBox {
-	padding: 20px 0;
+	padding: 20px 8px;
   line-height: 1.625;
   font-size: 100%;
   width:180px;
   cursor: pointer;
   border-bottom: 1px solid #4850b9;
+}
+
+.sideBar-backBtnBox:hover {
+	color: #ffde7d;
 }
 
 .sideBar-backBtnBox i {

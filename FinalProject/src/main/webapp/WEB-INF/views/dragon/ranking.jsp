@@ -319,7 +319,7 @@ i.fa-info-circle .tooltiptext::after{
 
 .overlay{
 	position: absolute;
-	top: 10%;
+	top: 3%;
 	display: flex;
     align-items: center;
     justify-content: center;

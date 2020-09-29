@@ -50,7 +50,7 @@ public class InventoryServiceImpl implements InventoryService{
 		List<DragonVO> userList = dragonMapper.getAll(dragonVO.getUserId());
 		
 		if(product.getCategory().equals("egg")) {
-			List<Integer> dragonIdList = mapper.findNotUsedId(vo.getProductId());
+			List<Integer> dragonIdList = mapper.findNotUsedId(vo.getProductId(), vo.getUserId());
 			if(dragonIdList.isEmpty()) {
 				return false;
 			}else {
@@ -204,6 +204,12 @@ public class InventoryServiceImpl implements InventoryService{
 
 		String orderId = ymd + subNum;
 		return orderId;
+	}
+
+	@Override
+	public List<Integer> findNotUsedId(int productId, String userId) {
+		// TODO Auto-generated method stub
+		return mapper.findNotUsedId(productId, userId);
 	}
 
 	
