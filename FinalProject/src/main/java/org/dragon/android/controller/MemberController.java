@@ -1,6 +1,7 @@
 package org.dragon.android.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -109,6 +110,10 @@ public class MemberController {
 		long min = diff/(1000*60)%60;
 		long hour = diff/(1000*60*60)%24;
 		long day = diff/(1000*60*60*24);
+		
+		
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result.put("lastConn", transFormat.format(lastConn));
 		
 		if(sec>0&&hour==0)
 			result.put("connectionAlert", min+"분 "+sec+"초만에 접속하였습니다.");
