@@ -45,8 +45,11 @@ public class StudyController {
 	
 	@RequestMapping("/study/{id}/{title}")
 	public WordDTO getWordDTO(@PathVariable String id, @PathVariable String title ) {
+		log.info("getWordDTO...");
+		log.info(learningservice.getWordDTO(id,title));
+		
 		return learningservice.getWordDTO(id,title);
-	}	
+	}//test01 read
 	
 	@RequestMapping(method = RequestMethod.POST,
 			value = "/study/uprate",
@@ -57,7 +60,7 @@ public class StudyController {
 		String title = param.get("title").toString();
 		String word = param.get("word").toString();
 		
-		//코인값 증가
+		//肄붿씤媛� 利앷�
 		MemberVO user = memberService.get(id);
 		user.setCoin(user.getCoin()+100);
 		dragonService.updateCoin(user);
