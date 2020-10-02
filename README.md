@@ -1,14 +1,13 @@
 # 암기용 - 단어암기 페이지
 
-단어암기 페이지 spring mvc web project
+> 단어암기 페이지 spring mvc web project
 
 
 ## Table of Contents
 
 * [introduction](#introduction)
 * [Technologies](#Technologies)
-
-
+* [Features](#Features)
 
 ## introduction
 
@@ -25,6 +24,9 @@ spring mvc 패턴을 익히기 위해 제작하였습니다.
 * Spring Security
 * Oracle
 
+## Features
 
+* 단어 암기장 기능
+* 
 
 
