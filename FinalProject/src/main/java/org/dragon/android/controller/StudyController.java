@@ -1,6 +1,7 @@
 package org.dragon.android.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -113,13 +114,14 @@ public class StudyController {
     		map.put("bookTitle", wordDTO.getTitle());
     		map.put("word", w.getWord());
     		map.put("meaning", w.getMeaning());
+    		map.put("learningRate", Integer.toString(w.getLearningRate()));
         	
         	result.add(map);
     		
         }
         log.info(result);
-        
-		
+        //random ¼¯°í
+		Collections.shuffle(result);
 //    	log.info(learningservice.getLastWordJsonArray(userId, bookTitle));
 //    	
 //    	learningservice.getLastWordJsonArray(userId, bookTitle);
@@ -127,5 +129,20 @@ public class StudyController {
 		return result;
 		
 	}
+	
+	@GetMapping(value = "/modify/RateFromQuestion")
+	public void modifyRateFromQuestion(HttpServletRequest request) {
+		
+		log.info("modify/RateFromQuestion........");
+		
+		String userId = request.getParameter("userId");
+		String bookTitle = request.getParameter("bookTitle");
+		String word = request.getParameter("word");
+
+        learningservice.updateRateFromQuestion(userId, bookTitle, word);
+
+	}
+	
+	
 }
 
