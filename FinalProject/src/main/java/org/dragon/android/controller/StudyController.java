@@ -1,6 +1,7 @@
 package org.dragon.android.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,25 +33,22 @@ public class StudyController {
 		
 		log.info("get all list........");
 		
-        List<WordDTO> WordList = new ArrayList<WordDTO>();
+        List<WordDTO> bookList = new ArrayList<WordDTO>();
         List<Map<String, String>> result = new ArrayList<Map<String, String>>();
-        JSONArray itemArray = new JSONArray();
-        List<Integer> learningRateList = new ArrayList<>();
         
-        
-        WordList = learningservice.getAllMyWordList();
+        bookList = learningservice.getAllMyWordList();
 		
         
-        for(int i=0;i<WordList.size();i++) {
+        for(int i=0;i<bookList.size();i++) {
         	Map<String, String> map = new HashMap<String, String>();
-        	String userId = WordList.get(i).getId();
-        	String wordTitle = WordList.get(i).getTitle();
+        	String userId = bookList.get(i).getId();
+        	String wordTitle = bookList.get(i).getTitle();
         	
         	int count = 0;
         	int percent = 0;
         	int size = 0;
         	
-        	WordDTO wordDTO = WordList.get(i);
+        	WordDTO wordDTO = bookList.get(i);
         	
         	for (WordVO item : wordDTO.getItem()) {
         		size++;
@@ -97,4 +95,54 @@ public class StudyController {
 		return result;
 		
 	}
+	
+	@GetMapping(value = "/get/LearnedWordBook")
+	public List<Map<String, String>> getLearnedWordBook(HttpServletRequest request) {
+		
+		log.info("get Learned Word Book........");
+		
+		String userId = request.getParameter("userId");
+		String bookTitle = request.getParameter("bookTitle");
+		
+        List<Map<String, String>> result = new ArrayList<Map<String, String>>();
+
+		WordDTO wordDTO = learningservice.getMyWordDTO(userId, bookTitle);
+		
+        for(WordVO w : wordDTO.getItem()) {
+        	Map<String, String> map = new HashMap<String, String>();
+    		map.put("userId", wordDTO.getId());
+    		map.put("bookTitle", wordDTO.getTitle());
+    		map.put("word", w.getWord());
+    		map.put("meaning", w.getMeaning());
+    		map.put("learningRate", Integer.toString(w.getLearningRate()));
+        	
+        	result.add(map);
+    		
+        }
+        log.info(result);
+        //random ¼¯°í
+		Collections.shuffle(result);
+//    	log.info(learningservice.getLastWordJsonArray(userId, bookTitle));
+//    	
+//    	learningservice.getLastWordJsonArray(userId, bookTitle);
+    	
+		return result;
+		
+	}
+	
+	@GetMapping(value = "/modify/RateFromQuestion")
+	public void modifyRateFromQuestion(HttpServletRequest request) {
+		
+		log.info("modify/RateFromQuestion........");
+		
+		String userId = request.getParameter("userId");
+		String bookTitle = request.getParameter("bookTitle");
+		String word = request.getParameter("word");
+
+        learningservice.updateRateFromQuestion(userId, bookTitle, word);
+
+	}
+	
+	
 }
+

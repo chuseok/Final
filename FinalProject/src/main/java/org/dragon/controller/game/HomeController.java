@@ -75,17 +75,16 @@ public class HomeController {
 		HttpSession session = request.getSession();
 		if(principal!=null){
 			String userId = principal.getName();
-			DateFormat format = new SimpleDateFormat("ddHHmm");
 			Date last = service.getDate(userId);
 			//service.updateDate(userId);
 			Date now = new Date();
 			long diff = now.getTime()-last.getTime();
 			
-			/*if(diff<1000*60*60*24) {*/
-			if(diff<1000*60) {//test
+			if(diff<1000*60*60*24) {//1일이상 미접속시 
+				/*if(diff<1000*60) {//test*/
 				diff = 0;
 			}else {
-				diff /= 1000*60*1;//1붐마다 포만감 1씩 감소
+				diff /= 1000*60*10;//10분마다 1씩 감소
 			}
 			
 			
@@ -96,10 +95,9 @@ public class HomeController {
 					dragon.setFoodValue(0);
 				}else {
 					dragon.setFoodValue(val);
-					System.out.println("드래곤 : "+dragon+" -> 포만감 "+diff+" 씩 감소됨");
 				}
 				if(val<30) {
-					session.setAttribute("hungry", "드래곤의 포만감이 30%미만입니다. 밥을 주세요!");
+					session.setAttribute("hungry", "드래곤의 포만감이 30% 이하입니다. 빨리 밥을 주세요!");
 				}
 				
 				dragonService.updateDragon(dragon);
@@ -144,15 +142,15 @@ public class HomeController {
 		logger.info("logout: " + logout);
 	      
 	      if(error!=null) {
-	         model.addAttribute("error", "아이디 또는 비밀번호 오류입니다!");
+	         model.addAttribute("error", "�븘�씠�뵒 �삉�뒗 鍮꾨�踰덊샇 �삤瑜섏엯�땲�떎!");
 	      }
 	      if(logout!=null) {
-	         model.addAttribute("logout", "로그아웃 하였습니다!");
+	         model.addAttribute("logout", "濡쒓렇�븘�썐 �븯���뒿�땲�떎!");
 	      }
 	      String naverAuthUrl = NaverLoginBO.getAuthorizationUrl(session);
 	        
 	         
-	        System.out.println("네이버:" + naverAuthUrl);
+	        System.out.println("�꽕�씠踰�:" + naverAuthUrl);
 	      model.addAttribute("url", naverAuthUrl);
 	   }
 	
