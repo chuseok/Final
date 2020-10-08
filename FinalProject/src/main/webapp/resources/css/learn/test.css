@@ -1,7 +1,6 @@
 .HomeLayout-container-box {
 	display: flex;
 	max-width: 1200px;
-	height: 100vh;
   min-height: 100%;
   margin: 0 auto;
 	background-color: rgb(251, 251, 251);
@@ -67,7 +66,6 @@
   border-top: 3px solid #206a5d; 
 }
 
-/*���� ����*/
 .subjectiveQuestion, .multipleQuestion, .shortQuestion {
 	padding-bottom: 2rem;
 	border-bottom: 1px solid #8fc0a9;
@@ -94,13 +92,11 @@
 	font-size: 17px;
 }
 
-/* �ְ��� */
 .subjectiveQuestion {
 	display: flex;
 	flex-direction: column;
 }
 
-	/*����*/
 .question-prompt {
 	display: flex;
 	padding: 1rem 0.5rem 0 0;
@@ -110,7 +106,6 @@
 	align-items:center;
 }
 
-	/*��*/
 .question-answer {
 	padding-top: 0.5rem;	
 	width: 100%;
@@ -143,14 +138,11 @@
 }
 
 
-/* ������ */
-	/*����*/
 	#text-eng {
 		font-size: 18px;
 		font-weight: 400;
 	}
 	
-	/*����*/
 	.multiRadios {
 		display:flex;
 		flex-direction: column;
@@ -165,7 +157,6 @@
 	padding-right: 5px;
 	}
 	
-/* �ܴ��� */
 .fa-long-arrow-alt-right {
 	padding: 0 4px;
 	font-weight: 300;
@@ -173,7 +164,6 @@
 }
 
 
-/* ����Ȯ�ι�ư */
 .testCheckButtonDiv {
 	margin-top: 2.0rem;
 }

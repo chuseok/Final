@@ -10,7 +10,7 @@
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   
   <link rel="stylesheet" href="/resources/css/main.css">
-  <link rel="stylesheet" href="/resources/css/study/get.css">
+  <link rel="stylesheet" href="/resources/css/learn/get.css">
   
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>

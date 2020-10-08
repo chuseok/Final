@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+.mainContents-myCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.myCards-header {
+	padding: 1rem 0;
+}
+
+.myCards-header h5 {
+	font-size: 1.7rem;
+	font-weight: 600;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.mainContents-myCards .myCards-cards {
+  display: flex;
+  position: relative;
+  flex-direction:row;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.emptyList {
+	padding: 1.5rem;
+	min-width: 985px;	
+}
+
+.emptyList span { 
+	font-size: 1.4rem;
+	font-weight: 400;
+	
+}
+
+.myCards-cardItem {
+  width: 500px;
+  height: 60px;
+  /* border: 1px solid #f2f2f2; */
+  border: 1.5px solid #f4eeff;
+  border-radius: 4px;
+  margin: 1rem;
+  position: relative;
+  box-shadow: 0 1.5px 2.3px 0 #e9e9e9;
+}
+
+.myCards-cardItem-inner {
+  padding: 1.7rem 1.5rem;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.myCards-cardItem-inner .userId {
+	font-size: 1.3rem;
+	color: #3ccfcf;
+}
+
+.myCards-cardItem-inner .wordTitle {	
+	text-align: left;	
+	font-size: 1.8rem;
+	font-weight: 550;
+}
+
+.myCards-cardItem-inner .wordListNum {
+	font-size: 1.3rem;
+}
+
+.myCards-cardItem-LinkBox {
+	width: 500px;
+  height: 60px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+}
+
+.myCards-cardItem-LinkBox a {
+	position: absolute;
+	display: inherit;
+	width: 100%;
+	height: 100%;	
+	top : 0;
+  left: 0;
+}
+
+.myCards-cardItem-LinkBox:hover {
+	cursor: pointer;
+	border-bottom: 4px solid #ffde7d;
+}
+
+
