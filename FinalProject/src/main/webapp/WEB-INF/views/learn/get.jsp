@@ -127,19 +127,13 @@ $(document).ready(function(){
 			cardIndex = 0;
 			cardListLength = WordCardArray.length;
 			
-		}
+		};
+		
 		initData();
 		
-		//oper-form value전달
 		var userId = WordJsonArray[0]["id"];
 		var userTitle = WordJsonArray[0]["title"];
 		
-		$('input[name="id"]').val(userId);
-		//console.log($('input[name="id"]').val());
-		$('input[name="title"]').val(userTitle);
-		//console.log($('input[name="title"]').val());
-
-
 		$('.numOfList').append('('+cardListLength+')');
 		//단어장 제목 출력
 		$('.wordTitle-two').append(WordJsonArray[0]["title"]);
@@ -153,7 +147,6 @@ $(document).ready(function(){
 			obj.bookId = userId;
 			obj.bookTitle = userTitle;
 			obj.userId = userIdValue;
-			//console.log(obj);
 			
 			var jsonData = JSON.stringify(obj);
 			
@@ -169,20 +162,12 @@ $(document).ready(function(){
 		addRecent();
 		
 		
-		/* console.log(WordJsonArray[0]["title"]); */
-		/* console.log('${WordDTO}');
-		
-		console.log(WordCardArray);*/	
-		
-
 		//card progress 출력
 		function showProgress() 
 		{
-					var cardProgressIndex = cardIndex+1;
+				var cardProgressIndex = cardIndex+1;
 			
-					$('.cardProgress').empty();
-
-					/* console.log("단어장 길이: "+ cardListLength); */
+				$('.cardProgress').empty();
 				$('.cardProgress').append(
 						cardProgressIndex + "/" + cardListLength);
 
@@ -196,35 +181,28 @@ $(document).ready(function(){
 					
 					$('.nextCard').attr('disabled', true);
 					$('.nextCard').css('color','#e6e7e5' );
-					$('.prevCard').attr('disabled', false);
+					$('.prevCard').attr('disabled', false);					
 					
-					
-				} else {
-					
+				} else {					
 					$('.prevCard').attr('disabled', false);
 					$('.nextCard').attr('disabled', false);
 					$('.prevCard').css('color', '#333333');
-					$('.nextCard').css('color', '#333333');
-					
+					$('.nextCard').css('color', '#333333');					
 				};
-
-		}//showProgress end
+		};
 		
 		
 		function showCard()		
 		{
-			//card출력
 			var cardWord = WordCardArray[cardIndex].word;
 			var cardMeaning = WordCardArray[cardIndex].meaning;
-
-			/* console.log("단어: "+ cardWord); */
 
 			$('.flip-card-front').append(cardWord);
 			$('.flip-card-back').append(cardMeaning);
 			
-			showProgress();
+			showProgress();		
+		};
 		
-		};//end showCard
 		
 		//card click - flip animation
 		var card = document.querySelector('.flip-card-inner');
@@ -244,7 +222,6 @@ $(document).ready(function(){
 			$('.flip-card-back').empty();
 			cardIndex += 1;
 			showCard(cardIndex);			
-			//console.log(cardIndex)
 		});
 		
 		prevBtn.on("click", function(e){
@@ -253,7 +230,6 @@ $(document).ready(function(){
 			$('.flip-card-back').empty();
 			cardIndex -= 1;
 			showCard(cardIndex);			
-			//console.log(cardIndex)
 		});
 		
 		

@@ -95,6 +95,7 @@
 						
 				<div class="testCheckButtonDiv">
 					<button type="button" class="testCheckBtn" id="testCheckBtn"><span>정답 확인</span></button>
+					<button type="button" class="testCheckBtn" id="testRestartBtn"><span>테스트 다시하기</span></button>					
 				</div>			
 				</section>	
 			</div>
@@ -155,30 +156,30 @@ $(document).ready(function(){
 	{
 		if(cardListLength >= 15)
 		{//단어가 15개 이상인 경우
-			for(var i=0; i<15; i++)
-			{
+			for(var i=0; i<15; i++){
 				getRandomQuiz();
 			}
 		}
 		else
 		{//단어가 15개 미만인 경우
-			for(var i=0; i<cardListLength; i++)
-			{
+			for(var i=0; i<cardListLength; i++){
 				getRandomQuiz();
 			}				
 		}
 	} 
 	
 	initData();
+	$("#testRestartBtn").css("display","none");
+
 	
 	function sortQuiz(){
 		console.log("sortQuiz data length: " + quizDataLength);
 		if(quizDataLength == 15){
-			var quizNum = parseInt(quizDataLength / 3);
+			var quizNum = 5;
 			subNum = multiNum = shortNum = quizNum;
 		}
 		else
-		{//
+		{
 			var quizNum = parseInt(quizDataLength / 3);
 			var quizNumTail = quizDataLength % 3;
 			if(quizNumTail == 0)
@@ -244,7 +245,6 @@ $(document).ready(function(){
 			var index = 1;
 				for(var i= startNum; i<lastNum; i++)
 				{
-					//debugger;
 					var question = QuizDataArray[i].word;
 					MultiCorrectArray.push(QuizDataArray[i].meaning);
 					//보기출력
@@ -388,23 +388,36 @@ $(document).ready(function(){
 	}	
 	
 	sortQuiz();
-	
+
 	
 	//정답확인 버튼
 	$(document).on("click","#testCheckBtn",function(e){
-		e.preventDefault();
-		checkSubjAns();
-		checkMultiAns();
-		checkShortAns();
-		showScore();
+		var check = true;
+		$('input:radio').each(function(){
+			var name = $(this).attr("name");
+			if($("input:radio[name="+name+"]:checked").length == 0){
+				check = false;
+			}			
+		});
 		
-		$(this).css("display","none");
-		$("#testRestartBtn").css("display","block");
+		if(check){
+			checkSubjAns();
+			checkMultiAns();
+			checkShortAns();
+			showScore();
+			
+			$(this).css("display","none");
+			$("#testRestartBtn").css("display","block");
+		}
+		else{
+			alert('문제를 모두 풀어주세요.');
+		}		
+		
+		
 	});
 	
 	//테스트 재시작 버튼
 	$(document).on("click","#testRestartBtn",function(e){
-		e.preventDefault();
 		location.reload();
 	});
 	
@@ -438,7 +451,6 @@ $(document).ready(function(){
 		//주관식 피드백출력
 		function showSubjFeedback(result,text,ans,quizIndex){
 			var str ="";
-			//debugger;
 			
 			if(result == true){
 				str = '<div class="feedback-label"><span>정답</span></div>';
@@ -455,8 +467,7 @@ $(document).ready(function(){
 				
 				$('.answerField-input').remove();
 				$('#sub'+quizIndex).append(str);
-			}
-			
+			};			
 		};
 		
 		//객관식 정답확인
@@ -517,10 +528,8 @@ $(document).ready(function(){
 					showShortFeedback(false,input,ans,quizIndex);
 					incorrectNum += 1;
 				}
-				index += 1;	
-				
-			});
-		 
+				index += 1;				
+			});		 
 		};
 		
 		//단답형 피드백 출력
@@ -562,7 +571,7 @@ $(document).ready(function(){
 		
 });//end doc.ready 
 </script>
-</body>
 
+</body>
 
 </html>
