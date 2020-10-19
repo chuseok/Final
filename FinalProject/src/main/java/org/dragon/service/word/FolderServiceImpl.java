@@ -60,6 +60,19 @@ public class FolderServiceImpl implements FolderService {
 		log.info("get total count");
 		return mapper.getTotalCount(cri);
 	}
+	
+	@Override
+	   public List<FolderVO> getListAlp(Criteria cri) {
+	      log.info("get List with criteria: " + cri);
+	      
+	      return mapper.getListWithPagingAlp(cri);
+	   }
+	
+	@Override
+    public int FolderCheck(FolderVO folder){
+       int result = mapper.FolderCheck(folder);
+       return result;
+    }
 
 	
 

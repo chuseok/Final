@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -52,6 +54,9 @@ public class FolderController {
 	public void list(Criteria cri, Model model) { 
 		log.info("list: " + cri);
 		model.addAttribute("list", service.getList(cri));
+		log.info("listAlp: " + cri);
+		model.addAttribute("listAlp", service.getListAlp(cri));
+
 		//model.addAttribute("pageMaker", new PageDTO(cri, 123));
 		
 		int total = service.getTotal(cri);
@@ -72,18 +77,31 @@ public class FolderController {
 //		model.addAttribute("pageMaker", new PageDTO(cri, total));
 //	}
 	
-	@PostMapping("/register") //db�� �ڷᰡ insert
-	public String register(FolderVO folder, RedirectAttributes rttr) {
-		
-		log.info("register: " + folder);
-		
-		service.register(folder);
-		
-		rttr.addFlashAttribute("result",folder.getFolderId());
-		
-		return "redirect:/folder/list";
-	}
-	
+	 @PostMapping("/register") //db    ڷᰡ insert
+	   public String register(FolderVO folder, RedirectAttributes rttr) {
+	      
+	      int result = service.FolderCheck(folder);
+	      
+	      log.info("register: " + folder);
+	      
+	      if(result ==1) {
+	         return "";
+	      }else if(result == 0) {
+	         service.register(folder);
+	         
+	      }
+	      rttr.addFlashAttribute("result",folder.getFolderId());
+	      
+	      return "redirect:/folder/list";
+	   }
+	   
+   @ResponseBody
+   @RequestMapping(value="/FolderCheck", method = RequestMethod.POST)
+   public int FolderChk(FolderVO folder) throws Exception {
+      int result = service.FolderCheck(folder);
+      return result;
+   }
+
 	
 	@GetMapping({"/modify", "/get"})
 	public void get(@RequestParam("folderId") Long folderId, @RequestParam("userId") String userId, Model model) {

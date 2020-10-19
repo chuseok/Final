@@ -15,7 +15,7 @@ public class Criteria {
 	private int amount;
 	private String userId;
 	private String type;
-	private String keyword;
+	private String folderKeyword;
 	private Long folderId;
 	
 	public Criteria() {
@@ -38,7 +38,7 @@ public class Criteria {
 				.queryParam("pageNum", this.pageNum)
 				.queryParam("amount", this.getAmount())
 				.queryParam("type", this.getType())
-				.queryParam("pageNum", this.getKeyword())
+	            .queryParam("pageNum", this.getFolderKeyword())
 				.queryParam("userId", this.getUserId())
 				.queryParam("folderId", this.getFolderId());
 		

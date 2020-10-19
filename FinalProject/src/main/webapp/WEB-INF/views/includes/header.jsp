@@ -19,10 +19,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap Core CSS -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-<link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  	
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+<link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  	
 	
 <script type="text/javascript" src="/resources/js/join.js"></script>
 </head>
@@ -187,17 +185,17 @@
 	display: block;
 }
 
-.menu .menu-hide li a :hover {	
-	opacity: 0.5;
-  cursor: pointer;
-}
-
 #logoutBtn {
 	height: 18px;
 	font-size: 12px;
 	backgroung-color: #2d4059;
 	text-align: right;
 	color: #fff;
+}
+
+#logoutBtn:hover {
+	opacity: 0.5;
+  cursor: pointer;
 }
 
 body {
@@ -338,9 +336,9 @@ body {
 									<ul class="menu-hide">								
 										<li><a href="../main/update">회원정보변경</a></li>
 										<li><a href="/withdrawal">회원탈퇴</a></li>
-										<li><form action="/customLogout" method="post">
+										<li><form id="logoutFrm" action="/customLogout" method="post">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-													<button id="logoutBtn">로그아웃</button>											
+													<button type="button" id="logoutBtn">로그아웃</button>											
 												</form>
 										</li>
 									</ul>							
@@ -712,5 +710,10 @@ $(document).ready(function(){
 			searchForm.submit();
 		}
 	});
+ 	
+$('#logoutBtn').on("click", function(){
+		logoutFrm.submit();
+		e.preventDefault();
+		});
  </script>
 </html>

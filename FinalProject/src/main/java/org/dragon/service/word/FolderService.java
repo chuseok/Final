@@ -19,5 +19,10 @@ public interface FolderService {
 	
 	public List<FolderVO> getList(Criteria cri);
 	
+	public List<FolderVO> getListAlp(Criteria cri);
+	
 	public int getTotal(Criteria cri);
+	
+	public int FolderCheck(FolderVO folder);
+
 }
