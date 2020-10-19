@@ -45,40 +45,34 @@
    <div class="HomeLayout-container">
 		<%@ include file="../includes/sidebar.jsp" %>
 		
-	 <section class="HomeLayout-main">
-    <div class="mainWrapper">
-      <div class="mainContents">	
 		
-				<div class="homeWrapper">
-					<div class="home">
-						<section id="container" class="updateForm">
-							<form role="form" method="post" id="updateForm" action="/main/update"autocomplete="off">
-								<div class="form-group has-feedback">
-									<label class="control-label" for="userId">아이디</label>
-									<input class="form-control" type="text" id="userId" name="userId" value="<sec:authentication property="principal.member.userId" />" readonly="readonly"/>
-								</div>
-								<div class="form-group has-feedback">
-									<label class="control-label" for="userPwd">패스워드</label>
-									<input class="form-control" type="password" id="userPwd" name="userPwd" />
-								</div>
-								<div class="form-group has-feedback">
-									<label class="control-label" for="userName">성명</label>
-									<input class="form-control" type="text" id="userName" name="userName" value="<sec:authentication property="principal.member.userName" />" readonly="readonly"/>
-								</div>
-								<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
-							</form>
-							<div class="form-group has-feedback">
-								<button class="btn btn-success" type="submit" id="submit">변경하러가기</button>
-								<button class="cencle btn btn-danger" type="button">취소</button>
-							</div>							
-						</section>
+		<div class="homeWrapper">
+			<div class="home">
+				<section id="container" class="updateForm">
+					<form role="form" method="post" id="updateForm" action="/main/update"autocomplete="off">
+						<div class="form-group has-feedback">
+							<label class="control-label" for="userId">아이디</label>
+							<input class="form-control" type="text" id="userId" name="userId" value="<sec:authentication property="principal.member.userId" />" readonly="readonly"/>
+						</div>
+						<div class="form-group has-feedback">
+							<label class="control-label" for="userPwd">패스워드</label>
+							<input class="form-control" type="password" id="userPwd" name="userPwd" />
+						</div>
+						<div class="form-group has-feedback">
+							<label class="control-label" for="userName">성명</label>
+							<input class="form-control" type="text" id="userName" name="userName" value="<sec:authentication property="principal.member.userName" />" readonly="readonly"/>
+						</div>
+						<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+					</form>
+					<div class="form-group has-feedback">
+						<button class="btn btn-success" type="submit" id="submit">변경하러가기</button>
+						<button class="cencle btn btn-danger" type="button">취소</button>
 					</div>
-					<!-- ./home -->
-				</div>
-				
+					
+				</section>
 			</div>
+			<!-- ./home -->
 		</div>
-	</section>
 		
 	</div>
  </div>

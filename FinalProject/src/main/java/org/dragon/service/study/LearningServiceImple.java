@@ -244,6 +244,7 @@ public class LearningServiceImple implements LearningService {
 		  { 
 			  WordDTO str = jsonDTOList.get(i);
 			  
+			  //�뜝�뙐�먮뜲�뜝�룞�삕�뜝�떢琉꾩삕 �뜝�룞�삕�뜝�룞�삕
 			  if(str.getId().equals(dto.getId()) && str.getTitle().equals(dto.getTitle()))
 			  { 
 				  str.setItem(dto.getItem());		  
@@ -268,6 +269,7 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
+		  //file�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -383,6 +385,7 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
+		  //file�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -412,7 +415,7 @@ public class LearningServiceImple implements LearningService {
 			for (int i = 0; i < size; i++) {
 				JSONArray itemArray = new JSONArray();
 				WordDTO str = jsonDTOList.get(i);
-				//equals
+
 				if (str.getId().equals(id)) {
 					log.info("id : " + str.getId());
 					wordObj = new JSONObject();
@@ -454,7 +457,7 @@ public class LearningServiceImple implements LearningService {
 			for (int i = 0; i < size; i++) {
 				JSONArray itemArray = new JSONArray();
 				WordDTO str = jsonDTOList.get(i);
-				//contains
+
 				if (str.getId().contains(id)) {
 					log.info("id : " + str.getId());
 					wordObj = new JSONObject();
@@ -613,6 +616,7 @@ public class LearningServiceImple implements LearningService {
 			}
 						
 			if(inList) {
+				//占쎈뼊占쎈선占쎌삢占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙
 				log.info("aleady exist...");
 			}
 			else {					
