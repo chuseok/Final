@@ -223,7 +223,7 @@ public class LearningServiceImple implements LearningService {
 					rate += 1;
 					item.setLearningRate(rate);
 				}
-				log.info("占쌕뀐옙 占쏙옙 : "+rate);
+				log.info("�뜝�뙐�먯삕 �뜝�룞�삕 : "+rate);
 				//item.setLearningRate(1);
 				log.info(dto.getId()+','+dto.getTitle());
 				log.info(item.getWord()+','+item.getMeaning()+','+item.getLearningRate());
@@ -244,7 +244,6 @@ public class LearningServiceImple implements LearningService {
 		  { 
 			  WordDTO str = jsonDTOList.get(i);
 			  
-			  //占쌕뀐데占쏙옙占싶뤄옙 占쏙옙占쏙옙
 			  if(str.getId().equals(dto.getId()) && str.getTitle().equals(dto.getTitle()))
 			  { 
 				  str.setItem(dto.getItem());		  
@@ -269,7 +268,6 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
-		  //file占쏙옙 占쏙옙占쏙옙
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -281,6 +279,67 @@ public class LearningServiceImple implements LearningService {
 		  }
 		  
 	}//end upRate
+	
+	@Override
+	public void updateRateFromQuestion(String id, String title, String word) {
+		WordDTO wordDTO = getMyWordDTO(id, title);
+		for (WordVO w : wordDTO.getItem()) {
+			if (w.getWord().equals(word)) {
+				int learningRate = 2;
+				w.setLearningRate(learningRate);
+			}
+		}				
+		  JSONArray wordArray = new JSONArray(); 
+		  JSONArray itemArray = new JSONArray();
+		  
+		  JSONObject wordObj;
+		  
+		  
+		  try { List<WordDTO> jsonDTOList = new ObjectMapper().readValue(new
+		  File("C:/temp/test02.json"), new TypeReference<List<WordDTO>>() {}); 
+		  
+		  int size = jsonDTOList.size(); 
+		  
+		  for (int i = 0; i < size; i++) 
+		  { 
+			  WordDTO str = jsonDTOList.get(i);
+	
+			  //같은 곳에 덮어쓰기
+			  if(str.getId().equals(wordDTO.getId()) && str.getTitle().equals(wordDTO.getTitle()))
+			  { 
+				  str.setItem(wordDTO.getItem());		  
+			  } 
+					
+			  wordObj = new JSONObject(); 
+			  wordObj.put("id", str.getId());
+			  wordObj.put("title", str.getTitle()); 
+			  
+			  for (WordVO item : str.getItem()) 
+			  { 
+				  JSONObject itemObj = new JSONObject();
+				  itemObj.put("word", item.getWord()); 
+				  itemObj.put("meaning", item.getMeaning());
+				  itemObj.put("learningRate", item.getLearningRate());
+				  itemArray.add(itemObj); 
+			  }			
+			  
+			  wordObj.put("item",str.getItem());
+			  wordArray.add(wordObj);
+			  
+		 }		  
+		  log.info(wordArray);	  
+		
+		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
+		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
+		  writer.write(wordArray.toString()); 
+		  writer.flush(); 
+		  writer.close();	  
+		  
+		  } catch (IOException e1){ 
+			  e1.printStackTrace(); 
+		  }
+		  
+	}
 	
 	
 	@Override
@@ -324,7 +383,6 @@ public class LearningServiceImple implements LearningService {
 		 }		  
 		  log.info(wordArray);	  
 		
-		  //file占쏙옙 占쏙옙占쏙옙
 		  BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(new
 		  FileOutputStream("C:\\temp\\test02.json"), "utf-8"));
 		  writer.write(wordArray.toString()); 
@@ -354,7 +412,7 @@ public class LearningServiceImple implements LearningService {
 			for (int i = 0; i < size; i++) {
 				JSONArray itemArray = new JSONArray();
 				WordDTO str = jsonDTOList.get(i);
-
+				//equals
 				if (str.getId().equals(id)) {
 					log.info("id : " + str.getId());
 					wordObj = new JSONObject();
@@ -396,7 +454,7 @@ public class LearningServiceImple implements LearningService {
 			for (int i = 0; i < size; i++) {
 				JSONArray itemArray = new JSONArray();
 				WordDTO str = jsonDTOList.get(i);
-
+				//contains
 				if (str.getId().contains(id)) {
 					log.info("id : " + str.getId());
 					wordObj = new JSONObject();
@@ -427,8 +485,6 @@ public class LearningServiceImple implements LearningService {
 		log.info("search Title.....");
 		
 		JSONArray wordArray = new JSONArray();
-		
-
 		JSONObject wordObj;
 
 		try {
@@ -441,7 +497,6 @@ public class LearningServiceImple implements LearningService {
 				WordDTO str = jsonDTOList.get(i);
 
 				if (str.getTitle().contains(title)) {
-					log.info("id : " + str.getId());
 					wordObj = new JSONObject();
 
 					wordObj.put("id", str.getId());
@@ -558,7 +613,6 @@ public class LearningServiceImple implements LearningService {
 			}
 						
 			if(inList) {
-				//�떒�뼱�옣�씠 議댁옱�븯硫�
 				log.info("aleady exist...");
 			}
 			else {					

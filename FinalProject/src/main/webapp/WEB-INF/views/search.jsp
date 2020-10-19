@@ -64,7 +64,7 @@
 						
 						<div class="mainContents-searchFeed">
 							<div class="searchFeed-header">
-								<h5>TiTle : ${fn:length(titleList) }건</h5>
+								<h5>TiTle (${fn:length(titleList) })</h5>
 							</div>
 							<div class="searchFeed-cards">		
 												
@@ -85,7 +85,7 @@
 											</div>
 											<div class="wordList">
 												<c:forEach items="${word.item }" var="wordList" begin="0" end="3">
-													<div class="wordList-word"><span>${wordList.word }</span><br><span class="font-Grey">${wordList.meaning }</span></div>
+													<div class="wordList-word"><span>${wordList.word }</span><br><span class="font-grey">${wordList.meaning }</span></div>
 												</c:forEach>
 											</div>
 										</div>

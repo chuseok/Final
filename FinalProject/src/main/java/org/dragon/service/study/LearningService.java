@@ -13,8 +13,7 @@ public interface LearningService {
 	public JSONArray readAllJson();
 	
 	//json01
-	public List<WordDTO> getAllWordList();
-	
+	public List<WordDTO> getAllWordList();	
 	//json02
 	public List<WordDTO> getAllMyWordList();
 	
@@ -27,18 +26,21 @@ public interface LearningService {
 	public JSONArray getIdSearchList(String id);
 	
 	public JSONArray getTitleSearchList(String title);
+	
 		
 	public JSONArray getWordJsonArray(String id, String title);
 	
 	public JSONArray getLastWordJsonArray(String id, String title);
 	
 			
-	public WordDTO getWordDTO(String id, String title);
+	public WordDTO getWordDTO(String id, String title);	
 	
-	//json02
-	public WordDTO getMyWordDTO(String id, String title);
+	public WordDTO getMyWordDTO(String id, String title); //json02
+	
 	
 	public void upRate(String id, String title, String word);
+	
+	public void updateRateFromQuestion(String id, String title, String word);
 	
 	public void resetRate(String id, String title);
 	

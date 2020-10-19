@@ -4,6 +4,17 @@ html, body {
   height: 100%;
 }
 
+.HomeLayout-container {
+	width: 80%;
+  display: flex;
+  margin: auto;
+}
+
+.HomeLayout-main {
+	margin: auto;
+	width: 80%;
+}
+
 .mainWrapper .mainContents {
 	position: relative;
 	padding: 4.5rem;
@@ -14,7 +25,6 @@ html, body {
 	flex-direction: column;
 	height:100%;
 }
-
 
 /* learn - card */
 .HomeLayout-main .wordTitle-two {

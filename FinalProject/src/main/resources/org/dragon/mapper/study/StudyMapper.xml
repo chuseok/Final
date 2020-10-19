@@ -4,9 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 <mapper namespace="org.dragon.mapper.study.StudyMapper">
 	
 	<select id="getRecentList" resultType="org.dragon.domain.study.StudyDTO">
-		<![CDATA[select * from recentstudy 
+		select * from recentstudy 
 		where userId = #{userId} 
-		order by studyDate DESC]]>
+		order by studyDate DESC
 	</select>
 	
 	<select id="checkDup" resultType="int">
