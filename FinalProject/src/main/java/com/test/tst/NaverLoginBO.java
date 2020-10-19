@@ -21,8 +21,8 @@ public class NaverLoginBO {
     //response_type: ���� ������ ���� ���а�. code�� ���� ������ �ֽ��ϴ�.
     //redirect_uri: ���̹� �α��� ������ ����� ���޹��� �ݹ� URL(URL ���ڵ�). ���ø����̼��� ����� �� Callback URL�� ������ �����Դϴ�.
     //state: ���ø����̼��� ������ ���� ��ū
-    private final static String CLIENT_ID = "dgLk_OEWWkiLt3wMT0wd";       //���̹�API Client ID
-    private final static String CLIENT_SECRET = "fzE3FjhU2u";                      
+    private final static String CLIENT_ID = "_s0JZjO27ugm1oIktx5Q";       //���̹�API Client ID
+    private final static String CLIENT_SECRET = "f0mPObgvB5";                      
     private final static String REDIRECT_URI = "http://localhost:8080/callback.do";
     private final static String SESSION_STATE = "oauth_state";
     /* ������ ��ȸ API URL */
