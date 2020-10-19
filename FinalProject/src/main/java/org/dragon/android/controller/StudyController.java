@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.dragon.domain.study.WordDTO;
 import org.dragon.domain.study.WordVO;
 import org.dragon.service.study.LearningService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
@@ -93,6 +95,28 @@ public class StudyController {
 			
 			result.add(map);
 		}
+		
+		return result;
+		
+	}
+	
+	@GetMapping(value = "/get")
+	public List<Map<String, String>> getWord(HttpServletRequest request) {
+		
+		log.info("단어장 가져오기");
+		
+		String id = request.getParameter("userId");
+		String title = request.getParameter("wordTitle");
+		
+        List<WordDTO> WordList = new ArrayList<WordDTO>();
+        List<Map<String, String>> result = new ArrayList<Map<String, String>>();
+		
+		//learningservice.copyWordList(id, title);//test02 write
+		
+		log.info("copy word List...");
+		log.info(learningservice.getWordJsonArray(id, title));
+		
+		learningservice.getWordJsonArray(id, title);//test01 read
 		
 		return result;
 		
