@@ -1,9 +1,16 @@
 package org.dragon.controller.word;
 
 
+import java.security.Principal;
+import java.util.List;
+
+import org.dragon.domain.game.DragonVO;
+import org.dragon.domain.game.RankVO;
 import org.dragon.domain.word.Criteria;
 import org.dragon.domain.word.FolderVO;
 import org.dragon.domain.word.PageDTO;
+import org.dragon.service.game.DragonService;
+import org.dragon.service.game.RankService;
 import org.dragon.service.word.FolderService;
 import org.dragon.service.word.WordBookService;
 import org.springframework.http.HttpStatus;
@@ -18,9 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -32,6 +37,8 @@ import lombok.extern.log4j.Log4j;
 public class FolderController {
 	
 	private FolderService service;
+	private RankService rankService;
+	private DragonService dragonService;
 	private WordBookService wordBookService;
 
 	
@@ -51,18 +58,28 @@ public class FolderController {
 
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/list") 
-	public void list(Criteria cri, Model model) { 
+	public void list(Principal principal,Criteria cri, Model model) { 
 		log.info("list: " + cri);
 		model.addAttribute("list", service.getList(cri));
-		log.info("listAlp: " + cri);
-		model.addAttribute("listAlp", service.getListAlp(cri));
 
-		//model.addAttribute("pageMaker", new PageDTO(cri, 123));
-		
 		int total = service.getTotal(cri);
 		log.info("total: " + total);
-		
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		
+		String userId = principal.getName();
+		
+		DragonVO vo = dragonService.getDragonByUser(userId);
+		if(vo==null) {
+			model.addAttribute("profile", -1);
+		}else {
+			List<RankVO> rankingList = rankService.getRankList();
+			RankVO userInfo = rankService.getUserRank(userId);
+			model.addAttribute("rank", rankingList);
+			model.addAttribute("userInfo", userInfo);
+			model.addAttribute("profile", userInfo.getImg());
+			
+			
+		}
 	}
 	 
 	
@@ -77,31 +94,18 @@ public class FolderController {
 //		model.addAttribute("pageMaker", new PageDTO(cri, total));
 //	}
 	
-	 @PostMapping("/register") //db    ڷᰡ insert
-	   public String register(FolderVO folder, RedirectAttributes rttr) {
-	      
-	      int result = service.FolderCheck(folder);
-	      
-	      log.info("register: " + folder);
-	      
-	      if(result ==1) {
-	         return "";
-	      }else if(result == 0) {
-	         service.register(folder);
-	         
-	      }
-	      rttr.addFlashAttribute("result",folder.getFolderId());
-	      
-	      return "redirect:/folder/list";
-	   }
-	   
-   @ResponseBody
-   @RequestMapping(value="/FolderCheck", method = RequestMethod.POST)
-   public int FolderChk(FolderVO folder) throws Exception {
-      int result = service.FolderCheck(folder);
-      return result;
-   }
-
+	@PostMapping("/register") //db�� �ڷᰡ insert
+	public String register(FolderVO folder, RedirectAttributes rttr) {
+		
+		log.info("register: " + folder);
+		
+		service.register(folder);
+		
+		rttr.addFlashAttribute("result",folder.getFolderId());
+		
+		return "redirect:/folder/list";
+	}
+	
 	
 	@GetMapping({"/modify", "/get"})
 	public void get(@RequestParam("folderId") Long folderId, @RequestParam("userId") String userId, Model model) {
