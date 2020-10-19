@@ -98,7 +98,6 @@ public class StudyController {
 		
 	}
 	
-<<<<<<< HEAD
 	@GetMapping(value = "/get")
 	public List<Map<String, String>> getWord(HttpServletRequest request) {
 		
@@ -120,7 +119,6 @@ public class StudyController {
 		return result;
 		
 	}
-=======
 	@GetMapping(value = "/get/LearnedWordBook")
 	public List<Map<String, String>> getLearnedWordBook(HttpServletRequest request) {
 		
@@ -145,7 +143,7 @@ public class StudyController {
     		
         }
         log.info(result);
-        //random ¼¯°í
+        //random ï¿½ï¿½ï¿½ï¿½
 		Collections.shuffle(result);
 //    	log.info(learningservice.getLastWordJsonArray(userId, bookTitle));
 //    	
@@ -167,8 +165,6 @@ public class StudyController {
         learningservice.updateRateFromQuestion(userId, bookTitle, word);
 
 	}
-	
-	
->>>>>>> 33ba687a58835e1deb4036a1d064a97519acfdb0
+
 }
 

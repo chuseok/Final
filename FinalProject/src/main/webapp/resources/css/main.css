@@ -390,12 +390,12 @@ header a:hover {
 
 .mainWrapper {
   height: 100%;
-  width: calc(80% + 265px);
+  padding: 0 40px;
   margin: auto;
 }
 
 .mainWrapper .mainContents {
-  padding: 4rem;
+  padding: 4rem 0;
   height: 100%;
 }
 
@@ -408,7 +408,7 @@ header a:hover {
 
 .mainContents-recentFeed {
   padding: 0;
-  max-width: 80%;
+  max-width: 90%;
   margin: auto;
 }
 

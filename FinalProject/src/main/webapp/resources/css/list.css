@@ -85,8 +85,8 @@ option {
 }
 
 .UserAvatar {
-	/* background-image: url('../images/profile.jpg'); */
 	background-position: center; 
+	background-size: 100px;
 	background-repeat: no-repeat;
 	width: 128px;
    	display:inline-block;
@@ -142,8 +142,7 @@ option {
 .DashboardPage-main {
 	background: #f6f7fb;
 	padding: 40px;
-	min-width: 720px;
-  max-width: 780px;
+	width: 100%;
 }
 
 .DashboardPage-main .ProfileFoldersPage {
@@ -297,7 +296,7 @@ option {
 
 .DashboardFeedControls-filter {
     
-    width: 40%;
+    width: 250px;
     float:right;
     font-size: initial;
     height: 40px;
@@ -336,4 +335,8 @@ option {
     box-shadow: 0 0.125rem 0 0 #303545;
     transition: all .12s cubic-bezier(.47,0,.745,.715);
     width: 100%;
+}
+
+.pull-right {
+	font-size: 16px;
 }

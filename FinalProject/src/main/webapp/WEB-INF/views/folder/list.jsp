@@ -21,7 +21,11 @@
 <!-- Custom Fonts -->
 <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-
+<style type="text/css">
+  .UserAvatar {
+	background-image: url("${profile}");
+	}
+</style>
 </head>
 <body>
 
@@ -106,10 +110,10 @@
 								<div class="recommand-cardItem">카드2</div>
 							</div>
 						</div> -->
-						
+					
 						
 					</div>
-					<div class='pull-right'>
+						<div class='pull-right'>
 							<ul class="pagination">
 								<c:if test="${pageMaker.prev }">
 								<li class="paginate_button previous"><a href="${pageMaker.startPage-1 }">Previous</a>
@@ -257,5 +261,6 @@
 			});
 		});
 	</script>
+	
 </body>
 </html>
