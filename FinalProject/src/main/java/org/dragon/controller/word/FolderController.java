@@ -78,7 +78,6 @@ public class FolderController {
 			model.addAttribute("userInfo", userInfo);
 			model.addAttribute("profile", userInfo.getImg());
 			
-			
 		}
 	}
 	 
