@@ -78,7 +78,7 @@ option {
 }
 
 .UserAvatar {
-	/* background-image: url('../images/profile.jpg'); */
+	background-size: 100px;
 	background-position: center; 
 	background-repeat: no-repeat;
 	width: 128px;

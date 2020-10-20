@@ -360,7 +360,7 @@
       </sec:authorize>
       
       if(!userIdValue) {
-         userIdValue = <c:out value="${pageMaker.cri.userId}"/>
+         userIdValue = '<c:out value="${pageMaker.cri.userId}"/>';
       } 
       
       var bookUL = $(".FolderPageSetsView-sets");
