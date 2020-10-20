@@ -46,7 +46,7 @@ select count(*) from folder where folderTitle = #{folderTitle}
 </select>
 
 <sql id="criteria">
-
+	userId = #{userId} and 
 	 <trim prefix="(" suffix=") AND " prefixOverrides="OR">
          <foreach item='type' collection="typeArr">
             <trim prefix="OR">

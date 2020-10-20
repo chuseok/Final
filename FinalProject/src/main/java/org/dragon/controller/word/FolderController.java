@@ -62,6 +62,7 @@ public class FolderController {
 	@GetMapping("/list") 
 	public void list(Principal principal,Criteria cri, Model model) { 
 		log.info("list: " + cri);
+		cri.setUserId(principal.getName());
 		model.addAttribute("list", service.getList(cri));
       log.info("listAlp: " + cri);
       model.addAttribute("listAlp", service.getListAlp(cri));
