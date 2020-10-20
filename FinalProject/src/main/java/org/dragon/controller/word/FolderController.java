@@ -25,7 +25,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -61,6 +63,8 @@ public class FolderController {
 	public void list(Principal principal,Criteria cri, Model model) { 
 		log.info("list: " + cri);
 		model.addAttribute("list", service.getList(cri));
+      log.info("listAlp: " + cri);
+      model.addAttribute("listAlp", service.getListAlp(cri));
 
 		int total = service.getTotal(cri);
 		log.info("total: " + total);
@@ -99,12 +103,27 @@ public class FolderController {
 		
 		log.info("register: " + folder);
 		
+		int result = service.FolderCheck(folder);
+
+		if(result ==1) {
+	         return "";
+	      }else if(result == 0) {
+	         service.register(folder);
+	         
+	      }
 		service.register(folder);
 		
 		rttr.addFlashAttribute("result",folder.getFolderId());
 		
 		return "redirect:/folder/list";
 	}
+	
+	 @ResponseBody
+	   @RequestMapping(value="/FolderCheck", method = RequestMethod.POST)
+	   public int FolderChk(FolderVO folder) throws Exception {
+	      int result = service.FolderCheck(folder);
+	      return result;
+	   }
 	
 	
 	@GetMapping({"/modify", "/get"})

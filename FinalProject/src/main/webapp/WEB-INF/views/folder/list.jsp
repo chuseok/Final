@@ -25,6 +25,9 @@
   .UserAvatar {
 	background-image: url("${profile}");
 	}
+	
+	.alp { display: none; }
+	
 </style>
 </head>
 <body>
@@ -60,27 +63,35 @@
 						</div>
 						<div class="DashboardPage-main">
 						
+            <form id="foldersearchForm" action="/folder/list" method="get">
+						
 						
 							<div class="DashboardFeedControls is-showing">
 								<div class="DashboardFeedControls-sort">
 									<h6 class="UIHeading UIHeading--six"><span>Sort</span></h6>
 									<div class="DashboardFeedControls-dropdown">
 										<div class="UIDropdown">
-											<select class="UIDropdown-select">
-												<option value="recent">Latest</option>
-												<option value="alphabetical">Alphabetical</option>
-											</select>
+											 <select class="UIDropdown-select" name="type" id="sel">                      
+                         <option value="L" <c:out value="${pageMaker.cri.type eq 'L'?'selected':''}"/>
+                         <c:if test="${param.sel}">selected="selected"</c:if>>Latest</option>
+                         <option value="A" <c:out value="${pageMaker.cri.type eq 'A'?'selected':''}"/>
+                         <c:if test="${param.sel}">selected="selected"</c:if>>Alphabetical</option>
+                        </select>
 										</div>
 										
 									</div>
 								</div>
 								<div class="DashboardFeedControls-filter">
-									<input placeholder="Filter" class="UIInput-input">
-									<span class="UIInput-border"></span>
-								</div>
-							</div>
-							
-							
+                    <input placeholder="Filter" type='text' class="UIInput-input" name='folderKeyword' 
+                    value='<c:out value="${ pageMaker.cri.folderKeyword }"/>'>
+                    <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
+                            <input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
+                    <span class="UIInput-border"></span>                   
+                 </div>
+                 </div>
+              </form>
+                   
+               <div class="lat">   
 							<div class="ProfileFoldersPage">
 								<sec:authentication property="principal.member.userId" var="currentUserName"/>
 								<c:forEach items="${list }" var="folder">
@@ -110,7 +121,31 @@
 								<div class="recommand-cardItem">카드2</div>
 							</div>
 						</div> -->
-					
+
+						<div class="alp">   
+                <div class="ProfileFoldersPage">
+                   <sec:authentication property="principal.member.userId" var="currentUserName"/>
+                   <c:forEach items="${listAlp }" var="folder">
+                   <c:if test="${folder.userId eq currentUserName}">
+                   <div class="DashboardListItem">
+                   
+                      <a href="/folder/get?folderId=<c:out value='${folder.folderId }'/>&userId=${currentUserName }">
+                      <div class="UILinkBox">
+                         <div class="FolderPreview-cardByLineWrapper">
+                         <header class="FolderPreview-cardHeader">
+                            <i class="far fa-folder"></i>
+                            <!-- <svg class="FolderPreview-icon" role="img"></svg> -->
+                            <span class="FolderPreview-cardHeaderTitle"><c:out value="${folder.folderTitle }"/></span>
+                         </header>
+                         </div>
+                      </div>
+                      </a>
+                   </div>
+                   </c:if>
+                   
+                   </c:forEach>
+                </div>
+             </div>   					
 						
 					</div>
 						<div class='pull-right'>
@@ -137,7 +172,8 @@
         <form id='actionForm' action='/folder/list' method='get'>
         	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
         	<input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
-        	<%-- <input type='hidden' name='userId' value='${pageMaker.cri.userId }'> --%>
+          <input type='hidden' name='type' value='<c:out value="${ pageMaker.cri.type }"/>'>
+          <input type='hidden' name='folderKeyword'  value='<c:out value="${ pageMaker.cri.folderKeyword }"/>'>
         </form>
 			</section>
 		</div>
@@ -157,7 +193,7 @@
 				<div class="modal-body">
 					
 					<div class="form-group">
-						<label>Folder Title</label> <input class="form-control" name='folderTitle'
+                <label>Folder Title</label> <input class="form-control" name='folderTitle'
 							value='New Folder!!!!'>
 					</div>
 					<div class="form-group">
@@ -167,7 +203,7 @@
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" id='modalRegisterBtn' class="btn btn-default">Resister</button>
+          <button type="button" id='modalRegisterBtn' class="btn btn-default" onclick="fn_folderCheck();" value="N">Resister</button>
 					<button type="button" id='modalCloseBtn' class="btn btn-default"
 						data-dismiss="modal">Close</button>
 				</div>
@@ -261,6 +297,68 @@
 			});
 		});
 	</script>
+	
+	 <!-- //정렬  -->
+   <script>
+        jQuery('.UIDropdown-select').change(function() {
+           var state = jQuery('.UIDropdown-select option:selected').val();
+           var actionForm = $("#actionForm");
+           if ( state == 'A' ) {
+              jQuery('.lat').hide();
+              jQuery('.alp').show();
+              actionForm.find("input[name='type']").val("A");
+           } else if(state =='L'){ 
+              jQuery('.lat').show();
+              jQuery('.alp').hide();
+              actionForm.find("input[name='type']").val("L");
+           }
+        });
+        //검색하고 값유지
+     
+        var sta = $("#sel").val();
+        if ( sta == 'A' ) {
+           jQuery('.lat').hide();
+           jQuery('.alp').show();
+        } else if(sta =='L'){ 
+           jQuery('.lat').show();
+           jQuery('.alp').hide();
+        };
+        </script>
+        
+        <script>
+        function fn_folderCheck(){
+           $.ajax({
+              url : "/folder/FolderCheck",
+              type : "post",
+              dataType : "json",
+              data : {"folderTitle" : $("#folderTitle").val()},
+              success : function(data){
+                 if(data == 1){
+                    alert("중복된 폴더명입니다.");
+                 }
+              }
+           })
+           
+           
+        }
+
+      /* 검색설정 */
+      var searchForm = $("#foldersearchForm");
+      
+      $('.UIInput-input').keypress(function(e){
+         if(e.keyCode == 13 && !e.shiftKey){
+            if(!searchForm.find("input[name='folderKeyword']").val()){
+               alert("키워드를 입력하세요.");
+               return false;
+            }
+            
+            searchForm.find("input[name='pageNum']").val("1");
+            e.preventDefault();
+            
+            searchForm.submit();
+         };
+      });
+      </script>
 	
 </body>
 </html>
