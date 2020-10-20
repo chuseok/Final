@@ -37,6 +37,8 @@ public class LearningController {
 		
 		log.info("get my list........");
 		
+		log.info(learningservice.getMyList(id));
+		
 		model.addAttribute("myList", learningservice.getMyList(id));
 	}
 	
@@ -48,6 +50,7 @@ public class LearningController {
 		learningservice.copyWordList(id, title);
 		
 		log.info("copy word List...");
+		log.info(learningservice.getWordJsonArray(id, title));
 		
 		model.addAttribute("WordDTO", learningservice.getWordJsonArray(id, title));		
 		
@@ -65,6 +68,8 @@ public class LearningController {
 	public void moveStudy(@RequestParam("id") String id, @RequestParam("title") String title, Model model) {
 		
 		log.info("get Array " + title + " for study.....");
+		
+		log.info(learningservice.getLastWordJsonArray(id, title));
 		
 		model.addAttribute("WordDTO", learningservice.getLastWordJsonArray(id, title));
 	}

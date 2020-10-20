@@ -31,7 +31,45 @@
     <div class="mainWrapper">
       <div class="mainContents">
       
-      	<div class="mainContents-recentFeed">
+      	
+    
+        <div class="mainContents-recentFeed">
+          <div class="recentFeed-header">
+            <h5>최근 학습함</h5>
+          </div>
+          <c:choose>							
+						<c:when test="${empty recentList }">
+							<div class="emptyList"><span>최근 학습한 단어장이 없습니다.</span></div>
+						</c:when>
+						
+						<c:otherwise>
+						<div class="recentFeed-cards">
+							
+						<c:forEach items="${recentList }" var="word" varStatus="vs">
+							<div class="recentFeed-cardItem" style="display:none">
+
+								<div class="recentFeed-cardItem-inner">
+									<div class="wordTitle">
+										<span><c:out value="${word.bookTitle }" /></span>
+									</div>
+									<div class="userId">
+										<span><c:out value="${word.bookId }" /></span>
+									</div>
+								</div>
+								
+								<div class="recenFeed-cardItem-LinkBox">
+									<a class='move-wordList' href='/learn/get?id=<c:out value="${word.bookId }" />&title=<c:out value="${word.bookTitle }" />'></a>
+								</div>
+							</div>
+						</c:forEach>						
+						</div>
+						<div><a href="#" id="LoadMore"><i class="fas fa-angle-double-down"></i>Load More</a></div>
+					 </c:otherwise>		
+					</c:choose>
+					
+        </div>
+        
+        <div class="mainContents-recentFeed">
 					<div class="recentFeed-header">
 						<h5>내가 만든 단어장</h5>
 					</div>
@@ -68,43 +106,6 @@
 					</c:choose>
 					
 				</div>
-    
-        <div class="mainContents-recentFeed">
-          <div class="recentFeed-header">
-            <h5>최근 학습함</h5>
-          </div>
-          <c:choose>							
-						<c:when test="${empty recentList }">
-							<div class="emptyList"><span>최근 학습한 단어장이 없습니다.</span></div>
-						</c:when>
-						
-						<c:otherwise>
-						<div class="recentFeed-cards">
-							
-						<c:forEach items="${recentList }" var="word" varStatus="vs">
-							<div class="recentFeed-cardItem" style="display:none">
-
-								<div class="recentFeed-cardItem-inner">
-									<div class="wordTitle">
-										<span><c:out value="${word.bookTitle }" /></span>
-									</div>
-									<div class="userId">
-										<span><c:out value="${word.bookId }" /></span>
-									</div>
-								</div>
-								
-								<div class="recenFeed-cardItem-LinkBox">
-									<a class='move-wordList' href='/learn/get?id=<c:out value="${word.bookId }" />&title=<c:out value="${word.bookTitle }" />'></a>
-									<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
-								</div>
-							</div>
-						</c:forEach>						
-						</div>
-						<div><a href="#" id="LoadMore"><i class="fas fa-angle-double-down"></i>Load More</a></div>
-					 </c:otherwise>		
-					</c:choose>
-					
-        </div>
         
        </div>
     </div>

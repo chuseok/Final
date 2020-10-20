@@ -94,13 +94,7 @@ $(document).on('click', 'button', function(e){
 		setUL.append(str);
 	}
 	/*formObj.submit();*/
-	
 
-	
-
-	
-	
-	
 	/*var wordList = [];
 	var arr = new Array();
 	

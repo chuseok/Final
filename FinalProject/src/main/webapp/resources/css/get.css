@@ -5,6 +5,7 @@
 /* DashboardPage-header */
 
 .DashboardPage-header {
+	width: 1092px;
     padding: 40px !important;
 }
 .DashboardPage-header .DashboardHeader {
@@ -112,6 +113,7 @@
 /* DashboardPage-main */
 
 .DashboardPage-main {
+	width: 1092px;
     background-color: #f6f7fb;
 }
 
@@ -230,7 +232,7 @@ option {
 
 .FolderPageSetsView-sets {
     display: grid;
-    grid-template-columns: repeat(2, 475px);
+    grid-template-columns: repeat(2, 530px);
     grid-template-rows: repeat(auto-fill,1fr);
     grid-column-gap: .75rem;
     grid-row-gap: .75rem;
@@ -269,7 +271,7 @@ option {
 }
 
 .UserLink {
-	padding-right: 335px;
+	padding-right: 320px;
 }
 
 .UIButton--borderless {

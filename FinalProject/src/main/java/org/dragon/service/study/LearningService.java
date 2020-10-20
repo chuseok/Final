@@ -40,6 +40,8 @@ public interface LearningService {
 	
 	public void upRate(String id, String title, String word);
 	
+	public void updateRateFromQuestion(String id, String title, String word);
+	
 	public void resetRate(String id, String title);
 	
 	public void addRecentStudy(StudyDTO study);
