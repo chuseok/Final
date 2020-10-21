@@ -23,6 +23,7 @@
 	<div class="HomeLayout">
 		<div class="HomeLayout-container">
 			<%@ include file="../includes/sidebar.jsp" %>
+			
 			<section class="HomeLayout-main">
 				<div class="mainWrapper">
 					<div class="mainContents">
