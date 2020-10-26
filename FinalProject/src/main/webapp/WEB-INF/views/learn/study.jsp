@@ -275,6 +275,7 @@ $(document).ready(function(){
 		knownCardLen = KnownCardArray.length;
 		wellknownCardLen = WellKnownCardArray.length;
 	};
+
 	
 	//meaning만 들어있는 array생성
 	function getMeaningArray(){
@@ -283,6 +284,7 @@ $(document).ready(function(){
 			x= WordCardArray[i].meaning;
 			meanArray.push(x);
 		}
+		meanArray = Array.from(new Set(meanArray));
 	};
 	
 	//지난 데이터 읽어오기	
