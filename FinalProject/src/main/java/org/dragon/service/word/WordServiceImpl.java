@@ -14,8 +14,6 @@ import org.dragon.domain.study.WordDTO;
 import org.dragon.domain.study.WordVO;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import net.sf.json.JSONArray;
@@ -33,93 +31,47 @@ public class WordServiceImpl implements WordService {
 
 		JSONArray wordArray = new JSONArray();
 		JSONArray itemArray = new JSONArray();
-		
-		JSONArray newArray = new JSONArray();
-		JSONObject oldObj = null;
-
-		Gson gson = new Gson();
 		JSONObject wordObj;
 
-		Reader reader;
 		try {
-			List<WordDTO> readWordBookList = new ObjectMapper().readValue(new File("C:/temp/test01.json"),
+			List<WordDTO> wordBookList = new ObjectMapper().readValue(
+					new File("C:/temp/test01.json"),
 					new TypeReference<List<WordDTO>>() {});
 
-			int size = readWordBookList.size();
-
-			for (int i = 0; i < size; i++) {
-
-				WordDTO readWordBook = readWordBookList.get(i);
+			for (int i = 0; i < wordBookList.size(); i++) {
+				WordDTO wordBook = wordBookList.get(i);
 				itemArray.clear();
-				
-				int removedIndex = 0;
-				/*
-				 * log.info("id : " + str.getId()); log.info("title : " + str.getTitle());
-				 * log.info("item : " + str.getItem()); for(ItemType item: str.getItem()) {
-				 * log.info("word : " + item.getWord()); log.info("meaning : " +
-				 * item.getMeaning()); }
-				 */
-				 
 
 				wordObj = new JSONObject();
-				wordObj.put("id", readWordBook.getId());
-				wordObj.put("title", readWordBook.getTitle());
-				log.info("readWordBook.getItem() : " + readWordBook.getItem());
-				for (WordVO w : readWordBook.getItem()) {
+				wordObj.put("id", wordBook.getId());
+				wordObj.put("title", wordBook.getTitle());
+				log.info("wordBook.getItem() : " + wordBook.getItem());
+				
+				for (WordVO w : wordBook.getItem()) {
 					JSONObject itemObj = new JSONObject();
 					itemObj.put("word", w.getWord());
 					itemObj.put("meaning", w.getMeaning());
 					itemArray.add(itemObj);
-					
 				}
 				log.info("itemArray : " + itemArray);
 				
 				wordObj.put("item", itemArray);
 				wordArray.add(wordObj);
 
-				if (readWordBook.getId().equals(wordDTO.getId()) && readWordBook.getTitle().equals(wordDTO.getTitle())) {
-					log.info("id�� ������ ����.");
-					log.info("�Է��� ���� = " + wordDTO.getTitle() + ", �о�� ����" + readWordBook.getTitle());
-					log.info("jsonDTOList = " + readWordBookList + "\n");
-					readWordBookList.remove(readWordBook);
-//					size--;
-//					i--;
+				if (wordBook.getId().equals(wordDTO.getId()) && wordBook.getTitle().equals(wordDTO.getTitle())) {
+					log.info("입력한 id와 title이 일치");
+					wordBookList.remove(wordBook);
 					
-				} else if (readWordBook.getId().equals(wordDTO.getId()) && !readWordBook.getTitle().equals(wordDTO.getTitle())) {
-					log.info("id�� ����." + readWordBook.getId() + "," + readWordBook.getTitle() + "\n");
+				} else if (wordBook.getId().equals(wordDTO.getId()) && !wordBook.getTitle().equals(wordDTO.getTitle())) {
+					log.info("입력한 id만 일치" + wordBook.getId() + "," + wordBook.getTitle() + "\n");
 
-				} else if (!readWordBook.getId().equals(wordDTO.getId()) && !readWordBook.getTitle().equals(wordDTO.getTitle())) {
-					log.info("���� ����." + readWordBook.getId() + "," + readWordBook.getTitle());
+				} else if (!wordBook.getId().equals(wordDTO.getId()) && !wordBook.getTitle().equals(wordDTO.getTitle())) {
+					log.info("다름" + wordBook.getId() + "," + wordBook.getTitle());
 					
 				}
 		
 			}
-			log.info("���� �ܾ��� : " + readWordBookList);
-			
-//			for (WordDTO w : readWordBookList) {
-//				JSONArray resultArray = new JSONArray();
-//				if(readWordBookList.isEmpty()) {
-//					log.info("�������.");
-//				}
-//				
-//				oldObj = new JSONObject();
-//				oldObj.put("id", w.getId());
-//				oldObj.put("title", w.getTitle());
-//				
-//				for (WordVO item : w.getItem()) {
-//					
-//					JSONObject itemObj = new JSONObject();
-//					itemObj.put("word", item.getWord());
-//					itemObj.put("meaning", item.getMeaning());
-//					
-//					resultArray.add(itemObj);
-//				}
-//				System.out.println("������");
-//				oldObj.put("item", resultArray);
-//				
-//				newArray.add(oldObj);
-//
-//			}
+			log.info("wordBookList : " + wordBookList);
 
 		} catch (IOException e1) {
 			e1.printStackTrace();
