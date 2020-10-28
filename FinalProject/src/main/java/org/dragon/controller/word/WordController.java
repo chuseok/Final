@@ -34,7 +34,6 @@ public class WordController {
 	@GetMapping("/wordList")
 	public void getWordList(Model model) {
 		log.info("wordList ......");
-//		model.addAttribute("word", service.createJson(word));
 	}
 
 	@PostMapping("/read")
@@ -44,9 +43,6 @@ public class WordController {
 
 		JSONArray array = JSONArray.fromObject(item);
 
-//		JSONArray wordArray = service.readJson(array, wordTitle);
-//		String result = wordArray.toString();
-//		rttr.addAttribute("item", result);
 		WordDTO readJson = new WordDTO();
 		readJson.setId(userId.getName());
 		readJson.setTitle(wordTitle);
@@ -59,8 +55,6 @@ public class WordController {
 		map.put("wordTitle", wordTitle);
 		rttr.addFlashAttribute("map", map);
 		return "redirect:/word/write";
-		
-		//���� ���� ���� ��� ó��
 
 	}
 
@@ -77,11 +71,13 @@ public class WordController {
 			for (String s : params.keySet()) {
 				log.info("Key : " + s + ", params.get(s) : " + params.get(s));
 			}
+
+			Object item = params.get("item");
 			
-			JSONArray array = JSONArray.fromObject(params.get("item"));
+			JSONArray array = JSONArray.fromObject(item);
 			List<WordDTO> jsonDTO = service.stringToJson(params.get("oldItem").toString());
-			log.info("jsonDTOȮ��1 = " + jsonDTO);
-			log.info("arrayȮ��1 = " + array);
+			log.info("jsonDTO : " + jsonDTO);
+			log.info("array : " + array);
 			
 			WordDTO writeJson = new WordDTO();
 			writeJson.setId(userId.getName());

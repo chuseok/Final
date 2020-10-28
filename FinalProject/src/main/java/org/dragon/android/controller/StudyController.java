@@ -143,12 +143,9 @@ public class StudyController {
     		
         }
         log.info(result);
-        //random ����
+
 		Collections.shuffle(result);
-//    	log.info(learningservice.getLastWordJsonArray(userId, bookTitle));
-//    	
-//    	learningservice.getLastWordJsonArray(userId, bookTitle);
-    	
+
 		return result;
 		
 	}
