@@ -32,5 +32,5 @@
 		select dragonlist.dragonid from dragonlist
     	where eggid=#{eggId} and dragonlist.dragonid not in 
     	(select dragonid from dragoninfo where userid=#{userId})
-</select>
+    </select>
 </mapper>

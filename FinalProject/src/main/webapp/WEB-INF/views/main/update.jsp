@@ -45,7 +45,8 @@
    <div class="HomeLayout-container">
 		<%@ include file="../includes/sidebar.jsp" %>
 		
-		
+		<section class="HomeLayout-main">
+				<div class="mainWrapper">
 		<div class="homeWrapper">
 			<div class="home">
 				<section id="container" class="updateForm">
@@ -73,6 +74,9 @@
 			</div>
 			<!-- ./home -->
 		</div>
+		
+		</div>
+		</section>
 		
 	</div>
  </div>

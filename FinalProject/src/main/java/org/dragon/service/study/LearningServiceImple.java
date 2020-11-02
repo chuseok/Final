@@ -488,8 +488,6 @@ public class LearningServiceImple implements LearningService {
 		log.info("search Title.....");
 		
 		JSONArray wordArray = new JSONArray();
-		
-
 		JSONObject wordObj;
 
 		try {
@@ -502,7 +500,6 @@ public class LearningServiceImple implements LearningService {
 				WordDTO str = jsonDTOList.get(i);
 
 				if (str.getTitle().contains(title)) {
-					log.info("id : " + str.getId());
 					wordObj = new JSONObject();
 
 					wordObj.put("id", str.getId());

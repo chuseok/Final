@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
  <link rel="stylesheet" href="/resources/css/main.css">
- <link rel="stylesheet" href="/resources/css/study/subjective.css"> 
- <link rel="stylesheet" href="/resources/css/study/study.css">
+ <link rel="stylesheet" href="/resources/css/learn/subjective.css"> 
+ <link rel="stylesheet" href="/resources/css/learn/study.css">
   
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
@@ -234,8 +234,7 @@
 <script>
 $(document).ready(function(){
 	
-	var WordJsonArray;
-	
+	var WordJsonArray;	
 	var WordCardArray;
 	
 	var LastCardArray = new Array();
@@ -251,7 +250,6 @@ $(document).ready(function(){
 
 	var meanArray = new Array();
 	var optionArray = new Array();
-	var option;
 	var random;
 	var answer;
 	
@@ -260,41 +258,34 @@ $(document).ready(function(){
 
 	function initData() 
 	{	
-		console.log("initData 실행,,,")
 		WordJsonArray =  JSON.parse('${WordDTO}');
 		WordCardArray = WordJsonArray[0]["item"];
 		
+		subjCount, multiCount = 0;
 		cardIndex = 0;
 		cardListLen = WordCardArray.length;
 		
 		//MeanArray 생성
-		getMeaningArray();
+		getMeaningArray();		
 		
-		
-		//초기 카드 나누기		
+		//이전데이터로 카드 나누기		
 		sortInitCardArray();
 		
 		lastCardLen = LastCardArray.length;
 		knownCardLen = KnownCardArray.length;
 		wellknownCardLen = WellKnownCardArray.length;
-		
-		subjCount = 0;
-		multiCount = 1;		
+	};
 
-	}
-	
-	
 	
 	//meaning만 들어있는 array생성
 	function getMeaningArray(){
 		for(i in WordCardArray)
 		{
 			x= WordCardArray[i].meaning;
-			//console.log(x);
 			meanArray.push(x);
 		}
-			console.log("meanArray : " + meanArray);		
-	}
+		meanArray = Array.from(new Set(meanArray));
+	};
 	
 	//지난 데이터 읽어오기	
 	function sortInitCardArray()
@@ -302,20 +293,19 @@ $(document).ready(function(){
 		
 		for(i in WordCardArray)
 		{
-			//console.log(i);
-			//debugger;
 			cardIndex = i;
-			if(WordCardArray[i].learningRate == 1){
-				console.log("add 익숙함,,,"+WordCardArray[i].word);
-				addCardArray(WordCardArray[i].word, WordCardArray[i].meaning, KnownCardArray);
+			var word = WordCardArray[i].word;
+			var meaning = WordCardArray[i].meaning;
+			var rate = WordCardArray[i].learningRate;
+			
+			if(rate == 1){
+				moveWord(word, meaning, KnownCardArray);
 			}
-			else if(WordCardArray[i].learningRate >=2){
-				console.log("add 완전함,,,"+ WordCardArray[i].word)
-				addCardArray(WordCardArray[i].word, WordCardArray[i].meaning, WellKnownCardArray);
+			else if(rate >=2){
+				moveWord(word, meaning, WellKnownCardArray);
 			}
 			else{
-				addCardArray(WordCardArray[i].word, WordCardArray[i].meaning, LastCardArray);
-				console.log(LastCardArray);
+				moveWord(word, meaning, LastCardArray);
 			}
 		}
 	}
@@ -325,11 +315,9 @@ $(document).ready(function(){
 	{
 		//남은카드		
 		lastCardLen = LastCardArray.length;
-		//console.log("남은카드: " + cardListLen);
 		
 		knownCardLen = KnownCardArray.length;
 		wellknownCardLen = WellKnownCardArray.length;
-
 		
 		$('#progress-left').empty();
 		$('#progress-left').append(lastCardLen);
@@ -338,46 +326,44 @@ $(document).ready(function(){
 		$('#progress-known').append(knownCardLen);			
 		
 		$('#progress-wellKnown').empty();
-		$('#progress-wellKnown').append(wellknownCardLen);
-									
+		$('#progress-wellKnown').append(wellknownCardLen);				
 
-	};//showProgress end
+	};//showProgress end	
+	
+	
+	var selectIndex = 0; 
 	
 	//문제출력 control
-	var selectIndex = 0; 
 	function selectQuestion()
 	{
-		console.log("subjcount : "+subjCount);
-		showProgress();
+		showProgress();		
 		
 		if(lastCardLen == 0 && knownCardLen == 0){
+			//더 이상 낼 문제가 없을경우
 			showFinalResult();
 		}
-		else if(lastCardLen == 0 && knownCardLen != 0) {
-			showSubjQuestion();
-		}
-		else if(lastCardLen != 0 && knownCardLen == 0) {
-			showMultipleQustion();
-		}
-		else
-		{//남은카드와 익숙함 둘다 0이 아닐때
-			
-			if(knownCardLen >4)
-			{//익숙함 단어가 5개 이상일 경우			
-				showSubjQuestion();
-			}
-			else if(knownCardLen < 5 && subjCount > 0 && subjCount < 5){
-				showSubjQuestion();
-			}
-			else if (subjCount >= 5){
-				subjCount = 0;
+		else{
+			if(isMatched()){
+				//객관식 출력
 				showMultipleQustion();
 			}
-			else 
-			{//익숙함 단어가 5개 이하일 경우
-				showMultipleQustion();
+			else {
+				//주관식 출력
+				showSubjQuestion();			
 			}
 		}	
+	};
+	
+	function isMatched()
+	{
+		
+		if(lastCardLen == 0){	return false;	}
+		if(multiCount == 5){ multiCount =0; return false; }
+		if(subjCount>=1 && subjCount <5){	return false;	}
+		
+		if(subjCount = 6){subjCount =0;}
+
+		return true;
 	};
 	
 	
@@ -391,7 +377,6 @@ $(document).ready(function(){
 			color: 'black'
 		});
 		
-		//showProgress();
 		if(lastCardLen !== 0)
 			{
 				cardIndex = Math.floor(Math.random() * LastCardArray.length);
@@ -418,14 +403,13 @@ $(document).ready(function(){
 					if(btnText == ''){
 						$(this).remove();
 					}
-				});
-				
+				});				
 				multiCount +=1;
 			}
 		else {
 			selectQuestion();
 		}
-	}
+	};
 	
 	var btn = document.querySelectorAll('.btn');
 		
@@ -437,7 +421,7 @@ $(document).ready(function(){
 			x = a[i - 1]; 
 			a[i - 1] = a[j]; a[j] = x; 
 			} 
-		}	
+	};	
 	
 	//랜덤으로 나머지 보기 3개 옵션 생성
 	function getRandomOption()
@@ -450,16 +434,12 @@ $(document).ready(function(){
 				var option = meanArray[Math.floor(Math.random() * meanArray.length)];
 				if(! sameOption(option)){
 					optionArray.push(option);
-					//console.log("new option: "+ option);
 					i++;
 				}
-				//console.log("optionArray : " + optionArray);
 			}	
 		}
 		shuffle(optionArray);
-		//optionArray.shuffle();
-		//console.log("셔플 후 optionArray : " + optionArray);
-	}
+	};
 
 	//3개 optionArray 중복 체크
 	function sameOption(option)
@@ -479,77 +459,37 @@ $(document).ready(function(){
 		$('.subjectiveQuestion').show();
 		$('.subjective-answerArea').val('');
 		$('.subjective-answerArea').focus();
-		
+
 		subjCount += 1;
-		//showProgress();
-		//console.log("문제출제...");
-		//console.log(cardListLen)
+		
 		if(knownCardLen !== 0)
 		{
 			cardIndex = Math.floor(Math.random() * KnownCardArray.length);
-			//console.log(cardIndex);
 			
 			random = KnownCardArray[cardIndex];
 			var question = random.word;
 
-			/* console.log("단어: "+ cardWord); */
-
 			$('.question-text').empty();
 			$('.question-text').append(question);
-			//$('.flip-card-back').append(cardMeaning);								
 		}			
 		else
 		{
-			showFinalResult();
-		}
-	};//end show subjective Question
-
-		
-	//주관식 정답확인
-	function checkCorrect()
-	{
-		var userAswer = $('.subjective-answerArea').val();
-		
-		//console.log("내가 쓴 답 : " + userAswer)
-		if(userAswer == random.meaning)
-		{
-			
-			//완전히 외움 Array에 추가하고 익숙함에서 삭제
-			addCardArray(random.word, random.meaning, WellKnownCardArray);
-			//console.log(wellknownCardLen);
-			KnownCardArray.splice(cardIndex,1);
-			//console.log(WordCardArray);
-			
-			//학습률 올리기
-			upRate(random.word);
-			console.log("uprate: "+random.word);
-			
-			//문제출제 control
 			selectQuestion();
 		}
-		else
-		{		
-			//오답페이지 출력
-			showProgress();
-			feedbackWrongAns(userAswer);
-		}
-	}
-	
+	};
+
 	//객관식 정답 확인
 	$(document).on("click",".btn",function(e){
 		e.preventDefault();
 		answer = $(this).text();
-		console.log(answer);
 		
-		if (random.meaning == answer) {//정답일 때,
+		if (random.meaning == answer) {//정답일 때
 	    	//Array에 추가 및 삭제
-				addCardArray(random.word, random.meaning, KnownCardArray);
-				//console.log(KnownCardArray);				
+				moveWord(random.word, random.meaning, KnownCardArray);
 				LastCardArray.splice(cardIndex,1);
 				
 				//학습률 올리기
 				upRate(random.word);
-				console.log("uprate: "+answer);
 				
 				$(this).css({
 					backgroundColor: '#17b978',
@@ -560,14 +500,37 @@ $(document).ready(function(){
 					selectQuestion();
 				},900);
 							
-      } else {//오답일 때					
-				//오답페이지 출력
-				console.log("객관식 오답 : "+answer)
+      } else {//오답일 때
 				feedbackWrongAns(answer);
       }
       optionArray = [];
   });
 	
+		
+	//주관식 정답확인
+	function checkCorrect()
+	{
+		var userAswer = $('.subjective-answerArea').val();		
+		if(userAswer == random.meaning)
+		{			
+			//완전히 외움 Array에 추가하고 익숙함에서 삭제
+			moveWord(random.word, random.meaning, WellKnownCardArray);
+			KnownCardArray.splice(cardIndex,1);
+			
+			//학습률 올리기
+			upRate(random.word);
+			
+			//문제출제 control
+			selectQuestion();
+		}
+		else
+		{
+			//오답페이지 출력
+			feedbackWrongAns(userAswer);
+		}
+	};
+	
+
 	//학습률 올리기
  	function upRate(answer){
 			var obj = new Object();
@@ -578,7 +541,6 @@ $(document).ready(function(){
 			obj.id = wordId;
 			obj.title = wordTitle;
 			obj.word = upWord;
-			//console.log(obj);
 			
 			var jsonData = JSON.stringify(obj);
 			
@@ -591,18 +553,16 @@ $(document).ready(function(){
 			});
 		};
 		
-	//upRate('cat');
  
-	//정답버튼
+	//주관식 정답버튼
 	var checkCorrectBtn = $('.subjective-submitBtn');
 	checkCorrectBtn.on("click", function(e)
 		{			
 			e.preventDefault();
-			checkCorrect();
-			
+			checkCorrect();			
 		});
 	
-	//계속하기버튼
+	//계속하기 버튼
 	$(document).on("click","#continueBtn",function(e){
 		e.preventDefault();
 		resetQuestionDiv();
@@ -614,14 +574,12 @@ $(document).ready(function(){
 	$(document).on("click","#resetBtn",function(e){
 		e.preventDefault();
 		
-		console.log("처음부터 다시하기");
 		var obj = new Object();
 		var wordId = WordJsonArray[0]["id"];
 		var wordTitle = WordJsonArray[0]["title"];
 			
 		obj.id = wordId;
 		obj.title = wordTitle;
-		//console.log(obj);
 		
 		var jsonData = JSON.stringify(obj);
 		
@@ -642,24 +600,23 @@ $(document).ready(function(){
 	//모르겠어요 버튼
 	$(document).on("click","#dontKnowBtn",function(e){
 		e.preventDefault(); 
-		feedbackWrongAns();
+		var userAswer = $('.subjective-answerArea').val();
+		feedbackWrongAns(userAswer);
 	});
 	
-	//data reset버튼
+	//초기화 버튼
 	$('#dataResetBtn').click(function(e){
 		e.preventDefault(); 
 		
 		var confirm = window.confirm("정말 초기화 하시겠습니까?");
 		
 		if(confirm){
-			console.log("초기화하기");
 			var obj = new Object();
 			var wordId = WordJsonArray[0]["id"];
 			var wordTitle = WordJsonArray[0]["title"];
 				
 			obj.id = wordId;
 			obj.title = wordTitle;
-			//console.log(obj);
 			
 			var jsonData = JSON.stringify(obj);
 			
@@ -675,11 +632,7 @@ $(document).ready(function(){
 				window.location.reload();
 			},300);
 		
-			}		
-		else{
-			console.log("취소함.");
-		}
-		
+			}				
 	});
 	
 	//정답확인- enter
@@ -690,8 +643,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	/* addCard */
-	function addCardArray(word, meaning, Array){
+	function moveWord(word, meaning, Array){
 		Array.push({
 			word : word,
 			meaning : meaning			
@@ -705,49 +657,15 @@ $(document).ready(function(){
 		$('.quizDiv').show();
 	};
 	
-	
-	//결과보기(중간)	//아직 학습하기에서 안씀
-	function result() {
-		if(wrongCardLength !== 0){
-			var allCardLength = cardListLen;
-			//cardListLen = cardListLen+rightCardLength+wrongCardLength;
-			var rightPer = Math.round((rightCardLength/allCardLength)*100);
-			var wrongPer = Math.round((wrongCardLength/allCardLength)*100);
-			var progressPer = Math.round((rightCardLength/allCardLength)*100);
-			
-			var resultinnDiv = $('.subjectiveQuestion');
-			var txt = '<div class="result-feedback"><div class="feedback-box" id="rightResult">';
-			txt += '<div class="feedback-description">정답</div>';
-			txt += '<div class="feedback-count">'+RightCardArray.length+'</div>';
-			txt += '<div class="feedback-percentage">'+rightPer+'%'+'</div>';
-			txt += '</div><div class="feedback-box" id="wrongResult">';
-			txt += '<div class="feedback-description">오답</div>';
-			txt += '<div class="feedback-count">'+WrongCardArray.length+'</div>';
-			txt += '<div class="feedback-percentage">'+wrongPer+'%'+'</div></div>';
-			txt += '<div class="feedback-box"><div class="feedback-description">전체 진행률</div>';
-			txt += '<div class="feedback-count">'+RightCardArray.length+'/'+allCardLength+'</div>';
-			txt += '<div class="feedback-percentage">'+progressPer+'%'+'</div></div>';				
-			txt += '<div class="continueBtnBox"><button id="continueBtn" type="button">계속하시려면 클릭하세요';
-			txt += '</button></div>';
-			
-			$('.quizDiv').hide();
-			$('.subjectiveQuestion').append(txt);				
-		}
-		else
-		{
-			selectQuestion();
-		}
-	};//.result()
-	
-	
+
 	//오답화면 출력
 	function feedbackWrongAns(userAnswer)
 	{
-		//debugger;
-		//var userAswer = $('.subjective-answerArea').val();
-	
-		console.log(userAnswer);
 		var txt = '<div class="result-feedback">';
+		if(userAnswer === undefined ){
+			return '';
+		}
+		
 		txt += '<div class="wrongAnsFeedback"><div class="feedback-header"><i class="far fa-tired"></i>';
 		txt += '학습이 필요해요!</div>';
 		txt += '<div class="feedback-boxs"><div class="wrongAns-feedback-box">';
@@ -772,10 +690,8 @@ $(document).ready(function(){
 	//최종 결과 화면
 	function showFinalResult(){
 		showProgress()
-		//debugger;
+
 		var txt = '<div class="finalResult">';
-		//console.log(RightCardArray);
-		//console.log(rightCardLength);
 
 		for(i=0; i<wellknownCardLen;i++)
 		{
@@ -790,6 +706,7 @@ $(document).ready(function(){
 		$('.subjectiveQuestion').append(txt);
 	}
 	
+	//초기실행
 	initData();
 	showProgress();
 	selectQuestion();

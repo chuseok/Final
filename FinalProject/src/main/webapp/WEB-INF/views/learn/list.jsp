@@ -10,9 +10,9 @@
   
 
   <link rel="stylesheet" href="/resources/css/main.css">
-  <!-- <link rel="stylesheet" href="/resources/css/list.css"> -->
+  <link rel="stylesheet" href="/resources/css/learn/list.css">
   
-  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Gothic&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>	
 </head>
@@ -23,12 +23,13 @@
 	<div class="HomeLayout">
 		<div class="HomeLayout-container">
 			<%@ include file="../includes/sidebar.jsp" %>
+			
 			<section class="HomeLayout-main">
 				<div class="mainWrapper">
 					<div class="mainContents">
 					<h2>내 세트</h2>
-						<div class="mainContents-recentFeed">
-							<div class="recentFeed-header">
+						<div class="mainContents-myCards">
+							<div class="myCards-header">
 								<h5>내가 만든 단어장(${fn:length(myList) })</h5>
 							</div>
 							<c:choose>							
@@ -37,12 +38,12 @@
 								</c:when>
 								
 								<c:otherwise>
-								<div class="recentFeed-cards">
+								<div class="myCards">
 									
 									<c:forEach items="${myList }" var="word" varStatus="vs">
-										<div class="recentFeed-cardItem" style="display:none">
+										<div class="myCards-cardItem" style="display:none">
 			
-											<div class="recentFeed-cardItem-inner">
+											<div class="myCards-cardItem-inner">
 												<div class="wordTitle">
 													<span><c:out value="${word.title }" /></span>
 												</div>
@@ -51,7 +52,7 @@
 												</div>
 											</div>
 											
-											<div class="recenFeed-cardItem-LinkBox">
+											<div class="myCards-cardItem-LinkBox">
 												<a class='move-wordList' href='/learn/get?id=<c:out value="${word.id }" />&title=<c:out value="${word.title }" />'></a>
 												<%-- <a class='move-wordList' href='<c:out value="${vs.index }" />'></a> --%>
 											</div>
@@ -78,19 +79,22 @@
 		
 		
 		console.log(${myList});
-	}); //document.ready.end
+	});
 
 </script>
 
 <script>
 	/* load more */
 	$(function(){
-			/* load more - id */
-	    $(".recentFeed-cardItem").slice(0, 6).show();
+	    $(".myCards-cardItem").slice(0, 10).show();
+	    $("#LoadMore").hide();
+	    if($(".myCards-cardItem:hidden").length > 0){
+	    	$("#LoadMore").show();	        
+	    }
 	    $("#LoadMore").click(function(e){
 	        e.preventDefault();
-	        $(".recentFeed-cardItem:hidden").slice(0, 8).slideDown();
-	        if($(".recentFeed-cardItem:hidden").length == 0)
+	        $(".myCards-cardItem:hidden").slice(0, 10).slideDown();
+	        if($(".myCards-cardItem:hidden").length == 0)
 	        { 
 	        	$("#LoadMore").hide();	        
 	        }

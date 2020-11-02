@@ -103,9 +103,6 @@ public class StudyController {
 		study.setUserId(userId);		
 		
 		learningservice.addRecentStudy(study);
-		/*
-		 * rttr.addAttribute("id",id); rttr.addAttribute("title",title);
-		 */
 		
 		return "success";
 				
