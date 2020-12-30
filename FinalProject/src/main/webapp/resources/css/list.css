@@ -1,0 +1,327 @@
+a:link {
+  color: #337ab7;
+  text-decoration: none !important;
+}
+body {
+	font-size: 14px;
+}
+a:hover,
+a:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+a:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+
+
+.HomeLayout {
+	margin: 0 auto;
+	background-color: rgb(251, 251, 251);
+	min-height: 100%;
+	min-height: 100vh;
+	width: 1100px;
+    height: 1100px;
+}
+
+/* .HomeLayout-container {
+	display: table;
+	max-width: 1300px;
+	margin: 0 auto;
+	height: 100vh;
+	min-height: 100%;
+	background-color: #fff;
+} */
+
+.HomeLayout-main {
+	display: table-cell;
+	position: inherit;
+	font-size: 14px;
+	width: 100%;
+	height: 100vh;
+	vertical-align: top;
+}
+
+.mainWrapper {
+}
+
+.DashboardPage-header {
+	padding: 0 40px;
+}
+
+.DashboardPage-header .DashboardHeader {
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	height: 200px;
+	align-items: center;
+}
+.DashboardPage-header .DashboardHeader .ProfileHeader-avatarContainer {
+	width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #d9dde8;
+    text-align: center;
+    display: table;
+    position: relative;
+}
+
+.UserAvatar {
+	background-size: 60px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 80px;
+    display: inline-block;
+    height: 80px;
+}
+
+.DashboardPage-header .DashboardHeader .ProfileHeader-mainContent {
+	width: 50%;
+    border-radius: 6px;
+    background-color: rgb(224, 224, 224);
+    position: relative;
+    left: 230px;
+    transform: translate(-50%, 0%);
+    display: table;
+}
+
+.ProfileHeader-headline {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 80px;
+    flex-direction: row;
+}
+
+.ProfileHeader-userId {
+	float: left;
+    margin: 0px 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.ProfileHeader-username {
+	font-size: 15px;
+    font-weight: 600;
+    color: darkgray;
+    margin: 5px 0 0 5px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+.ProfileHeader-userInfo {
+	float: left;
+	line-height: 80px;
+	color: #a1aeb3;
+	font-size: 15px;
+	margin-left: 5px;
+}
+
+.DashboardPage-main {
+	background: #f6f7fb;
+	padding: 40px;
+}
+
+.DashboardPage-main .ProfileFoldersPage {
+	position: relative;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+.DashboardPage-main .ProfileFoldersPage .DashboardListItem {
+	width: 640px;
+	height: 73px;
+	border-radius: 5px;
+	margin: 10px 0;
+	background-color: #d9dde8;
+	box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.08);
+	
+}
+
+.FolderPreview-icon {
+	color: #c3c7d5;
+	margin-right: .75rem;
+	height: 1.5rem;
+	width: 1.5rem;
+	vertical-align: top;
+}
+.FolderPreview-cardByLineWrapper {
+	display: flex;
+}
+.FolderPreview-cardHeader {
+	margin-top: 36px;
+	margin-left:20px;
+	background-color: #d9dde8;
+}
+
+.FolderPreview-cardHeader .FolderPreview-cardHeaderTitle {
+	font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.FolderPreview-cardHeader .fa-folder {
+	color: #c3c7d5;
+	font-size: 1.5rem;
+	margin-right: .75rem;
+	
+}
+
+
+
+/* paging */
+
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.pagination > li {
+  display: inline;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+
+/* previous, next */
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+
+
+/* DashboardPage-main-header */
+
+.is-showing {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 40px;
+}
+
+.DashboardFeedControls-sort {
+    display: flex;
+    flex-wrap: nowrap;
+    float:left;
+    align-items: center;
+    height: 40px;
+}
+
+
+.DashboardFeedControls-dropdown {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.UIDropdown {
+    background: #fff;
+    border: .125rem solid #d9dde8;
+    border-radius: .25rem;
+    color: #3ccfcf;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0 2.5rem 0 0;
+    position: relative;
+    vertical-align: middle;
+    width: auto;
+}
+
+.UIDropdown-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    border-radius: .25rem;
+    color: #3ccfcf;
+    cursor: pointer;
+    display: block;
+    font: inherit;
+    margin: 0;
+    outline: none;
+    padding: .625rem 0 .625rem 1rem;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: calc(100% + 100px);
+}
+
+.DashboardFeedControls-filter {
+    
+    width: 40%;
+    float:right;
+    font-size: initial;
+    height: 40px;
+}
+
+.UIInput-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: initial;
+    border: none;
+    border-radius: .25rem;
+    box-shadow: none;
+    color: #1a1d28;
+    cursor: text;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    outline: none;
+    padding-bottom: .375rem;
+    text-align: inherit;
+    white-space: pre-wrap;
+    width: 100%;
+    word-break: break-word;
+}
+
+.UIInput-border {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+    -ms-flex-item-align: end;
+    display: block;
+    height: .25rem;
+    box-shadow: 0 0.125rem 0 0 #303545;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: 100%;
+}
