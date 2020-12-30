@@ -1,0 +1,537 @@
+.mainContents {
+	padding: 0 !important;
+}
+
+/* DashboardPage-header */
+
+.DashboardPage-header {
+	width: 1092px;
+    padding: 40px !important;
+}
+.DashboardPage-header .DashboardHeader {
+   	display: block !important;
+    height: 80px;
+    position: relative;
+}
+
+.FolderPageHeader-info {
+	display: block;
+    margin-bottom: .75rem;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.285714285714286;
+    color: #303545;
+}
+.DashboardHeaderTitle {
+	display: table;
+}
+
+.DashboardHeaderTitle-title {
+	font-size: 30px;
+    display: table-cell;
+    vertical-align: middle;
+    color: #303545;
+    padding-left: 10px;
+}
+
+.FolderPageHeader-byline {
+	border-left: .125rem solid var(--ui_color_gray_90_foreground);
+    color: #c3c7d5;
+    margin-left: 1.25rem;
+    padding: .125rem 0 .125rem 1.25rem;
+}
+	
+.DashboardHeaderActions {
+	position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.MenuIconWithTooltip {
+    display: inline-block;
+    text-align: center;
+}
+
+.DashboardHeaderActions .MenuIconWithTooltip+.MenuIconWithTooltip {
+    margin-left: .5rem;
+}
+
+.UIButton {
+
+    appearance: none;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    max-width: 100%;
+    padding: .75rem 1.5rem;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: auto;
+}
+
+.UIIconButton {
+	display: inline-block;
+}
+
+.UIIconButton .UIButton {
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.UIButton, .UIButton:visited, html.touch .UIButton:focus:hover:not(:active) {
+    background-color: #3ccfcf;
+    color: #fff;
+}
+.DashboardFolderIcon {
+	font-size: 50px !important;
+	color: #303545 !important;
+	color: #939bb4;
+}
+/* .fa-plus {
+	display: block;
+    pointer-events: none;
+    height: 1.125rem;
+    width: 1.125rem;
+} */
+
+.UIIconButton .UIButton-wrapper {
+    padding: 12px;
+}
+
+.MenuIconWithTooltip {
+	display: inline-block;
+    text-align: center;
+}
+
+
+
+/* DashboardPage-main */
+
+.DashboardPage-main {
+	width: 1092px;
+    background-color: #f6f7fb;
+}
+
+.DashboardFeedControls-sort {
+    display: flex;
+    flex-wrap: nowrap;
+    float:left;
+}
+
+.DashboardFeedControls-filter {
+    
+    width: 40%;
+    float:right;
+}
+
+.DashboardFeedControls-sort .UIHeading {
+    align-items: center;
+
+}
+
+.DashboardFeedControls-dropdown {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.UIDropdown {
+    background: #fff;
+    border: .125rem solid #d9dde8;
+    border-radius: .25rem;
+    color: #3ccfcf;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0 2.5rem 0 0;
+    position: relative;
+    vertical-align: middle;
+    width: auto;
+}
+
+.UIDropdown-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    border-radius: .25rem;
+    color: #3ccfcf;
+    cursor: pointer;
+    display: block;
+    font: inherit;
+    margin: 0;
+    outline: none;
+    padding: .625rem 0 .625rem 1rem;
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: calc(100% + 100px);
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.UIInput-content {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    width: 100%;
+    border-radius: .25rem;
+}
+
+.UIInput-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: initial;
+    border: none;
+    border-radius: .25rem;
+    box-shadow: none;
+    color: #1a1d28;
+    cursor: text;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    outline: none;
+    padding-bottom: .375rem;
+    text-align: inherit;
+    white-space: pre-wrap;
+    width: 100%;
+    word-break: break-word;
+}
+
+.UIInput-border {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+    -ms-flex-item-align: end;
+    display: block;
+    height: .25rem;
+    box-shadow: 0 0.125rem 0 0 #303545;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: 100%;
+}
+
+
+/* DashboardPage-main-content */
+
+
+.FolderPageSetsView-sets {
+    display: grid;
+    grid-template-columns: repeat(2, 530px);
+    grid-template-rows: repeat(auto-fill,1fr);
+    grid-column-gap: .75rem;
+    grid-row-gap: .75rem;
+    padding: 30px 10px;
+}
+
+.UIBaseCard--noLinkBox {
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.08);
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    background-color: #fff;
+    border-bottom: .25rem solid hsla(0,0%,100%,0);
+    border-radius: .25rem;
+    cursor: pointer;
+    padding: .75rem 1.25rem;
+    position: relative;
+}
+.UserAvatar {
+	background-size: 30px;
+	width: 30px;
+    height: 30px;
+}
+
+.is-showing {
+	width: 100%;
+    height: 40px;
+    margin-bottom: 40px;
+}
+.UIBaseCard-footer {
+	display: flex;
+}
+.UIBaseCard-header {
+	padding-bottom: 40px;
+}
+.UserLink-inner {
+	display: flex;
+}
+
+.UserLink {
+	padding-right: 320px;
+}
+
+.UIButton--borderless {
+	background-color: initial;
+	color: #303545;
+}
+
+.UserLink-username {
+	font-size: 15px;
+}
+
+
+
+/* create set modal */
+.create-set {
+	text-align: center;
+}
+
+.ToggleInclusionCard-heading {
+	display: inline-block;
+	padding: 0 .625rem;
+    word-break: break-word;
+}
+
+.ToggleInclusionCard-toggle {
+	display: inline-block;
+	float: right;
+}
+
+.ToggleListItem {
+	background: #fff;
+    display: table;
+    padding: 1.25rem;
+    width: 100%;
+}
+
+/* toggle */
+.UISwitch-input {
+	display: none;
+    position: relative;
+    top: -100%;
+    left: -100%;
+    cursor: pointer;
+}
+
+#minus {
+	display: none;
+}
+
+.UISwitch-input + label {
+    display: inline-block;
+    background-color: white;
+}
+
+.UISwitch-input + label i {
+    font-size: 2em;
+}
+
+.UISwitch-input:checked + label i#plus{
+    display: none;
+}
+/* and show the cross icon */
+.UISwitch-input:checked + label i#minus{
+    display: block;
+}
+
+
+/* cntextMenu */
+
+.temp {
+	background: #f6f6f6;
+	height: 100%;
+}
+
+.context-menu {
+	width: 200px;
+	height: auto;
+	box-shadow: 0 0 20px 0 #ccc;
+	position: absolute;
+	display: none;
+}
+
+.context-menu ul {
+	list-style: none;
+	padding: 5px 9px 5px 0px;
+}
+
+.context-menu ul li:not(.separator) {
+	padding: 10px 5px 10px 5px;
+	border-left: 4px solid transparent;
+	cursor: pointer;
+}
+
+.context-menu ul li:hover {
+	background: #eee;
+	border-left: 4px solid #666;
+}
+
+.separator {
+	height: 1px;
+	background: #dedede;
+	margin: 2px 0px 2px 0px;
+}
+
+/* shareModal */
+.ShareModalOptions-input {
+	padding-top: .5rem;
+}
+
+.ShareModalOptions-input, .ShareModalOptions-textarea {
+    overflow: hidden;
+}
+
+.ShareModalOptions-button {
+	float: right;
+    margin-left: 2rem;
+}
+
+.senderEmail-button {
+	appearance: none;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    max-width: 100%;
+    padding: .75rem 1.5rem;
+    font-weight: 600;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: auto;
+}
+
+.copyLink-button {
+	appearance: none;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    max-width: 100%;
+    padding: .75rem 1.5rem;
+    font-weight: 600;
+    line-height: 1.285714285714286;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    width: auto;
+}
+
+.UIInput {
+    cursor: pointer;
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.444444444444444;
+}
+
+.UIInput-label {
+    color: #939bb4;
+    display: block;
+    margin-top: .625rem;
+    text-align: inherit;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .0625rem;
+    line-height: 1.333333333333333;
+    user-select: none;
+}
+
+.UIInput-input {
+    -moz-appearance: none;
+    appearance: none;
+    background-color: initial;
+    border: none;
+    border-radius: .25rem;
+    box-shadow: none;
+    color: #1a1d28;
+    cursor: text;
+    flex: 1 1 auto;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    outline: none;
+    padding-bottom: .375rem;
+    text-align: inherit;
+    white-space: pre-wrap;
+    width: 100%;
+    word-break: break-word;
+}
+
+.UIButton-wrapper {
+	align-items: center;
+    display: inline-flex;
+    white-space: pre-wrap;
+    justify-content: center;
+    width: 100%;
+}
+/* 
+.UIDiv+.UIDiv, .UIDiv+[class^=UI], [class^=UI]+.UIDiv {
+    margin-top: 1.5rem;
+} */
+
+.UIHorizontalRule {
+    border: none;
+    border-bottom: .0625rem solid #f6f7fb;
+    height: 0;
+    margin-bottom: 0;
+    overflow: visible;
+}
+
+.UITextarea {
+    cursor: pointer;
+    display: block;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.444444444444444;
+}
+
+.UITextarea-content {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.UITextarea[aria-readonly=true] .UITextarea-textarea {
+    border: .125rem solid #303545;
+    padding: .75rem;
+    transition: none .12s cubic-bezier(.47,0,.745,.715);
+    transition-property: border-color;
+}
+
+.UITextarea-textarea[rows="1"] {
+    resize: none;
+    white-space: nowrap;
+}
+
+.UITextarea-textarea {
+    appearance: none;
+    background-color: initial;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #1a1d28;
+    cursor: text;
+    flex: 1 1 auto;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    outline: none;
+    overflow: hidden;
+    padding-bottom: .375rem;
+    resize: vertical;
+    text-align: inherit;
+    white-space: pre-wrap;
+    width: 100%;
+    word-break: break-word;
+}
+
+.ShareModalOptions-textarea .UITextarea-textarea {
+    height: 2.625rem;
+    overflow: hidden;
+    padding: .5rem .75rem!important;
+}

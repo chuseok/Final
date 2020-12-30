@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dragon.mapper.game.RankMapper">
+
+<select id="getRankList" resultType="org.dragon.domain.game.RankVO">
+	<![CDATA[
+	select d.userid, 
+	ROW_NUMBER()over(ORDER BY sum(totallevel)+
+	((select count(*) from inventory where inventory.userid = d.userid)*10) desc)as rank,
+	sum(totallevel) as totallevel, 
+	sum(totallevel)+(select count(*) from inventory where inventory.userid = d.userid)*10 as score
+	from 
+	(
+		select userid, totallevel, dragonid
+		from dragoninfo
+	)d,
+	(
+		select proid, category from product
+	) pro,
+    (
+        select dragonid, eggid from dragonlist
+    ) list
+	where list.eggid = pro.proid
+	and list.dragonid = d.dragonid
+	and (pro.category = 'egg' or pro.category ='background')
+	group by d.userid 
+	FETCH FIRST 10 ROWS ONLY
+	]]>
+</select>
+<select id="getUserRank" resultType="org.dragon.domain.game.RankVO">
+	<![CDATA[
+	select d.userid, 
+	ROW_NUMBER()over(ORDER BY sum(totallevel)+
+	((select count(*) from inventory where inventory.userid = d.userid)*10) desc)as rank,
+	sum(totallevel) as totallevel, 
+	sum(totallevel)+(select count(*) from inventory where inventory.userid = d.userid)*10 as score
+	from 
+	(
+		select userid, totallevel, dragonid
+		from dragoninfo
+	)d,
+	(
+		select proid, category from product
+	) pro,
+    (
+        select dragonid, eggid from dragonlist
+    ) list
+	where list.eggid = pro.proid
+	and list.dragonid = d.dragonid
+	and (pro.category = 'egg' or pro.category ='background')
+	group by d.userid 
+	having d.userid = #{userId}
+	]]>
+</select>
+<select id="getProfile">
+	
+</select>
+
+</mapper>
