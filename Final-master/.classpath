@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path=".metadata/.plugins/org.eclipse.wst.server.core/tmp0/work/Catalina/localhost/ROOT"/>
-	<classpathentry kind="src" path="FinalProject/src/main/java"/>
-	<classpathentry kind="src" path="FinalProject/src/test/java"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
