@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: 90127
-=======
-Built-By: koitt03a
->>>>>>> 53b08b6e51b469dcdf164da7a0cf9e44d6dbfa7d
-Build-Jdk: 11.0.7
-Created-By: Maven Integration for Eclipse
-
