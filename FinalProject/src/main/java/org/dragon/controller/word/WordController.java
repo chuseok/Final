@@ -46,7 +46,7 @@ public class WordController {
 		WordDTO readJson = new WordDTO();
 		readJson.setId(userId.getName());
 		readJson.setTitle(wordTitle);
-		JSONArray oldArray = service.readJson(array, readJson);//삭제된 값을 읽어와야됌
+		JSONArray oldArray = service.readJson(array, readJson);
 
 		String result = oldArray.toString();
 		

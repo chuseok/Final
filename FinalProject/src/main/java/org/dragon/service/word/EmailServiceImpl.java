@@ -49,7 +49,7 @@ public class EmailServiceImpl implements EmailService {
 	 
 	    emailSender.send(message);
 		
-	}//íŒŒì¼ì²¨ë¶€ë¥¼ í•˜ëŠ” ê²½ìš°
+	}//ÆÄÀÏÃ·ºÎ¸¦ ÇÏ´Â °æ¿ì
 
 	
 	

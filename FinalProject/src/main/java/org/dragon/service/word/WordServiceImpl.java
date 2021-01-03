@@ -26,8 +26,6 @@ public class WordServiceImpl implements WordService {
 
 	@Override
 	public JSONArray readJson(JSONArray jsonArray, WordDTO wordDTO) {
-		//item값 안쓴느듯? 넘겨줄때 쓰나
-		//읽을려는 id title
 		log.info("readJson.....");
 
 		JSONArray wordArray = new JSONArray();
@@ -47,7 +45,7 @@ public class WordServiceImpl implements WordService {
 				wordObj.put("id", wordBook.getId());
 				wordObj.put("title", wordBook.getTitle());
 				log.info("wordBook.getItem() : " + wordBook.getItem());
-				//id와 title이 값으면 밑에 for문에서 넣지 않기 여기서!!
+
 				for (WordVO w : wordBook.getItem()) {
 					JSONObject itemObj = new JSONObject();
 					itemObj.put("word", w.getWord());
@@ -93,9 +91,7 @@ public class WordServiceImpl implements WordService {
 		JSONArray itemsArray = new JSONArray();
 
 		try {
-			// 1.oldArray���� Ǯ� object�� �ٽ� ��°�� �߰��� �� ���ο� ���� �߰�
 			if (!oldArray.isEmpty()) {
-//				log.info("oldArray : ������� ����");
 				for(WordDTO j:oldArray) {
 					itemArray = new JSONArray();
 					itemsObj.put("id", j.getId());
@@ -130,8 +126,6 @@ public class WordServiceImpl implements WordService {
 			e.printStackTrace();
 		}
 
-//		log.info("���ο� obj= " + itemsObj);
-//		log.info("itemsArray= " + itemsArray + "\n");
 
 	}
 
@@ -143,7 +137,6 @@ public class WordServiceImpl implements WordService {
 					new TypeReference<List<WordDTO>>() {});
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
 		}

@@ -51,8 +51,8 @@ public class WordBookController {
 		: new ResponseEntity<>("update", HttpStatus.OK);
 	}
 	
-	//pageëŠ” service.getListì—ì„œ í•„ìš”ë¡œí•¨
-	//íŠ¹ì • í˜ì´ì§€ì˜ ë‹¨ì–´ì¥ ëª©ë¡ í™•ì¸
+	//page´Â service.getList¿¡¼­ ÇÊ¿ä·ÎÇÔ
+	//Æ¯Á¤ ÆäÀÌÁöÀÇ ´Ü¾îÀå ¸ñ·Ï È®ÀÎ
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping(value="/pages/{page}/folders/{folderId}/users/{userId}",
 			produces = {

@@ -28,10 +28,10 @@ import net.sf.json.JSONObject;
 @Log4j
 @AllArgsConstructor
 public class StudyController {
-	//TODO : 한글깨짐 확인
+	//TODO : 학습 진행 유무에 상관없이 단어장을 불러올 수 있어야 함
 	private LearningService learningservice;
 	
-	//�븰�뒿�븳 �떒�뼱�옣 以� �떒�뼱�옣 �젣紐�, �븰�뒿瑜� 媛��졇�삤湲�
+	//학습한 단어장 중 단어장 제목, 학습률 가져오기
 	@GetMapping(value = "/wordbooks-infomation")
 	public List<Map<String, String>> getList(HttpServletRequest request) {
 		
@@ -68,7 +68,7 @@ public class StudyController {
 		return result;
 	}
 	
-	//�떒�뼱�옣 �궡�슜�쓽 �닚�꽌瑜� �옖�뜡�븯寃� 諛붽퓭�꽌 媛��졇�삤湲�
+	//단어장 내용의 순서를 랜덤하게 바꿔서 가져오기
 	@GetMapping(value = "/wordbooks-contents/random")
 	public List<Map<String, String>> getListRandom(HttpServletRequest request) {
 		
@@ -97,7 +97,7 @@ public class StudyController {
 		return result;
 	}
 	
-	//�떒�뼱�� �쑜 媛��졇�삤湲�
+	//단어와 뜻 가져오기
 	@GetMapping(value = "/wordbooks-contents")
 	public List<Map<String, String>> getWordList(HttpServletRequest request) {
 		
@@ -109,7 +109,7 @@ public class StudyController {
 		WordDTO worddto = learningservice.getWordDTO(bookId, bookTitle);
 		
 		List<Map<String, String>> result = new ArrayList<Map<String, String>>();
-		//TODO: 以묐났�릺�뒗 肄붾뱶 �븿�닔濡� �젙由�, getList�� 以묐났
+		//TODO: 중복되는 코드 함수로 정리, getList와 중복
 		for(int i=0; i<worddto.getItem().size(); i++) {
 			Map<String, String> map = new HashMap<String, String>();
 			
@@ -121,7 +121,7 @@ public class StudyController {
 		return result;
 	}
 	
-	//�븰�뒿瑜� 蹂�寃쏀븯湲�
+	//학습률 변경하기
 	@PostMapping(value = "/learning-rate")
 	public void modifyLearningRate(HttpServletRequest request) {
 		
