@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/org/dragon/android/controller/StudyController.java=UTF-8
 encoding//src/main/java/org/dragon/controller/game/HomeController.java=UTF-8
 encoding//src/main/java/org/dragon/controller/study/StudyController.java=UTF-8
 encoding//src/main/java/org/dragon/security/CustomLoginSuccessHandler.java=UTF-8
