@@ -76,10 +76,11 @@ public class StudyController {
 		
 		String userId = request.getParameter("userId");
 		String bookTitle = request.getParameter("bookTitle");
+		log.info(userId + ", " + bookTitle);
 		
         List<Map<String, String>> result = new ArrayList<Map<String, String>>();
 
-		WordDTO wordDTO = learningservice.getMyWordDTO(userId, bookTitle);
+		WordDTO wordDTO = learningservice.getWordDTO(userId, bookTitle);
 		
         for(WordVO w : wordDTO.getItem()) {
         	Map<String, String> map = new HashMap<String, String>();

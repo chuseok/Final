@@ -205,6 +205,7 @@ public class LearningServiceImple implements LearningService {
 	public WordDTO getMyWordDTO(String id, String title) {
 		log.info("get My dto");
 		List<WordDTO> worddto = getAllMyWordList();
+		log.info("get My Dto : " + id + ", " + title);
 
 		return worddto.stream().filter(w -> w.getId().equals(id) && w.getTitle().equals(title)).findFirst().get();
 	}

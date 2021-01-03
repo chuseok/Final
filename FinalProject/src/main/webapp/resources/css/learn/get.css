@@ -16,7 +16,7 @@ html, body {
 }
 
 .mainWrapper .mainContents {
-	position: relative;
+	/* position: relative; */
 	padding: 4.5rem;
 }
 
