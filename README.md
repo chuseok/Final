@@ -18,6 +18,7 @@ spring mvc 패턴을 익히기 위해 제작하였습니다.
 ## Setup
 
 dragon.sql을 다운 받아서 실행시킵니다.
+
 c드라이브 밑에 Temp 폴더를 생성합니다.
 
 ## Technologies
