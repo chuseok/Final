@@ -44,7 +44,7 @@ var wordBookService = (function() {
 					error(er);
 				}
 			});
-	}//단어장 목록
+	}
 	
 	function getYourSet(userId, callback, error) {
 		$.getJSON("/wordbooks/user/" + userId + "/your-sets" + ".json",
