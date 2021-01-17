@@ -89,24 +89,6 @@ public class FolderController {
 		}
 	}
 	
-	
-	/*
-	 * @PostMapping("/register") public String register(FolderVO folder,
-	 * RedirectAttributes rttr) {
-	 * 
-	 * log.info("register: " + folder);
-	 * 
-	 * int result = service.FolderCheck(folder);
-	 * 
-	 * if(result ==1) { return ""; }else if(result == 0) { service.register(folder);
-	 * 
-	 * } service.register(folder);
-	 * 
-	 * rttr.addFlashAttribute("result",folder.getFolderId());
-	 * 
-	 * return "redirect:/folder/list"; }
-	 */
-	
 	@ResponseBody
 	@RequestMapping(value="/FolderCheck", method = RequestMethod.POST)
 	public int FolderChk(FolderVO folder) throws Exception {

@@ -60,7 +60,6 @@ public class WordController {
 
 	}
 
-	//TODO: ajax GET /word/write 404 error??
 	@GetMapping("/write")
 	public void write(Principal userId, RedirectAttributes rttr, HttpServletRequest req) {
 
